@@ -5,6 +5,7 @@ Tests all components: Models, Reputation, KAIRON, Agents, ML, RAG
 """
 
 import sys
+from pathlib import Path
 import asyncio
 import uuid
 import time
@@ -15,7 +16,11 @@ from decimal import Decimal
 import warnings
 warnings.filterwarnings('ignore')
 
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 print("=" * 70)
 print("AGP-CORE COMPREHENSIVE REAL ENVIRONMENT TEST")

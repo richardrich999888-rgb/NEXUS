@@ -83,14 +83,15 @@ class ProtocolEnforcer:
             )
 
         # 2. Check for anomalies
-        
-        # 2. Get agent's current alignment
+        anomalies = self.anomaly.detect_anomalies(agent_id, agent_name)
+
+        # 3. Get agent's current alignment
         alignment = self.verifier.get_alignment(agent_id)
         
-        # 3. Get agent's behavioral stats
+        # 4. Get agent's behavioral stats
         stats = self.rag.get_agent_stats(agent_id)
         
-        # 4. Build evaluation context
+        # 5. Build evaluation context
         context = {
             "alignment": alignment,
             "success_rate": stats.get("success_rate", 0.5),
@@ -103,11 +104,11 @@ class ProtocolEnforcer:
             "agent_id": agent_id
         }
         
-        # 5. Evaluate governance rules
+        # 6. Evaluate governance rules
         blocking_rules = self.rules.get_blocking_rules(agent_id, context)
         triggered_rules = self.rules.evaluate(agent_id, context)
         
-        # 6. Check for critical anomalies (auto-escalate)
+        # 7. Check for critical anomalies (auto-escalate)
         critical_anomalies = [a for a in anomalies if a.is_critical()]
         if critical_anomalies:
             for anomaly in critical_anomalies:
@@ -118,7 +119,7 @@ class ProtocolEnforcer:
                     "evidence": anomaly.evidence
                 })
         
-        # 7. Determine decision
+        # 8. Determine decision
         rules_names = [rule.name for rule, _ in triggered_rules]
         
         if blocking_rules:

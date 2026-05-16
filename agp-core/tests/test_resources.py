@@ -5,7 +5,12 @@ Verifies quota enforcement and resource tracking.
 """
 
 import sys
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+from pathlib import Path
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 from src.os.resources.controller import resource_controller, ResourceQuota, ResourceType
 

@@ -5,6 +5,7 @@ Test the distributed filesystem with /proc, /home, and /shared.
 """
 
 import sys
+from pathlib import Path
 import asyncio
 from datetime import datetime
 
@@ -12,7 +13,11 @@ from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 print("=" * 70)
 print("KAIRON-FS: DISTRIBUTED FILESYSTEM TEST")

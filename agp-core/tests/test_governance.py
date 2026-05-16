@@ -5,10 +5,15 @@ Tests behavioral RAG, rules, alignment, and enforcement.
 """
 
 import sys
+from pathlib import Path
 import asyncio
 from datetime import datetime
 
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 print("=" * 70)
 print("AGENT GOVERNANCE PROTOCOL (AGP) VERIFICATION")

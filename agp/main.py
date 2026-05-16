@@ -2,7 +2,8 @@
 """AGP Demo - Agent Governance Protocol"""
 import sys
 import hashlib
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from core import (
     TaskType, Task, ValidatorInfo, ReputationRecord, ReputationScore,

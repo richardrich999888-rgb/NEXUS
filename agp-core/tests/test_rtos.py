@@ -5,9 +5,14 @@ Verifies priority scheduling, deadline handling, and motor control separation.
 """
 
 import sys
+from pathlib import Path
 import asyncio
 import time
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 from src.os.rtos.scheduler import rt_scheduler, TaskPriority
 

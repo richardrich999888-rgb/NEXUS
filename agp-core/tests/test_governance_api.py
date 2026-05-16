@@ -4,11 +4,16 @@ Verifies alignment endpoints, history, and human escalation loop.
 """
 
 import sys
+from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 from datetime import datetime
 
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 from src.main import app
 from src.governance import agp, protocol_enforcer, behavioral_rag, ActionType, Outcome, BehaviorRecord

@@ -5,8 +5,13 @@ Verifies safety watchdog and hardware deployment features.
 """
 
 import sys
+from pathlib import Path
 import time
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 from src.os.ros2.production import (
     production_adapter, SafetyWatchdog, WatchdogConfig
@@ -97,11 +102,10 @@ test("Emergency stop sent", result.get("status") == "published")
 
 # 8. Verify deployment files exist
 print("\n[8] VERIFYING DEPLOYMENT FILES...")
-import os
-deploy_dir = "/Users/richardrich/Desktop/NEXUS/agp-core/deploy"
-test("Dockerfile.ros2 exists", os.path.exists(f"{deploy_dir}/Dockerfile.ros2"))
-test("entrypoint.sh exists", os.path.exists(f"{deploy_dir}/entrypoint.sh"))
-test("systemd service exists", os.path.exists(f"{deploy_dir}/agp-os-robot.service"))
+deploy_dir = ROOT / "deploy"
+test("Dockerfile.ros2 exists", (deploy_dir / "Dockerfile.ros2").exists())
+test("entrypoint.sh exists", (deploy_dir / "entrypoint.sh").exists())
+test("systemd service exists", (deploy_dir / "agp-os-robot.service").exists())
 
 # Cleanup
 production_adapter.disconnect()

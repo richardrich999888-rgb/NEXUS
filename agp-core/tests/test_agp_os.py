@@ -5,6 +5,7 @@ Simulate Boot, Load 50 Agents, and Induce Kernel Panic (High Cortisol).
 """
 
 import sys
+from pathlib import Path
 import asyncio
 import structlog
 import random
@@ -14,7 +15,11 @@ from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
-sys.path.insert(0, '/Users/richardrich/Desktop/NEXUS/agp-core')
+ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / "src").exists() and (parent / "tests").exists()
+)
+sys.path.insert(0, str(ROOT))
 
 from src.os import kernel, syscall_handler, SysCallType, ProcessState, context_manager, shell
 from src.models import Hormone, EndocrineState

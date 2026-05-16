@@ -10,7 +10,7 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
-from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from src.os.kernel import kernel
 from src.os.observability.prometheus import prom_metrics
@@ -19,7 +19,7 @@ from src.os.security.auth import auth_manager
 
 import structlog
 
-from prometheus_client import make_asgi_app, Counter, Histogram
+from prometheus_client import Counter, Histogram
 import time
 
 from src.config import settings
@@ -190,11 +190,6 @@ async def metrics_middleware(request: Request, call_next):
 # Include API routers
 app.include_router(api_v1_router, prefix="/api/v1")
 
-# Mount Prometheus metrics
-metrics_app = make_asgi_app()
-app.mount("/metrics", metrics_app)
-
-
 # Root endpoints
 @app.on_event("startup")
 async def startup_event():
@@ -221,12 +216,6 @@ async def system_stats():
         },
         "persistence": db.get_stats(),
         "health": "ok"
-    }
-    return {
-        "service": "AGP-CORE",
-        "version": settings.app_version,
-        "status": "operational",
-        "description": "Artificial Governance Protocol with Endocrine-based Reputation"
     }
 
 
