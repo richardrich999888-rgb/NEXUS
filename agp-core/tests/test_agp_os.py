@@ -58,9 +58,9 @@ async def run_os_simulation():
              if r < 0.8:
                  await syscall_handler.handle(pid, SysCallType.EXEC, {"task": "do_something", "complexity": random.random()})
              elif r < 0.9:
-                 syscall_handler.handle(pid, SysCallType.MALLOC, {"amount": 500})
+                 await syscall_handler.handle(pid, SysCallType.MALLOC, {"amount": 500})
              elif r < 0.95:
-                 syscall_handler.handle(pid, SysCallType.FORK, {"name": f"SubAgent_{pid}"})
+                 await syscall_handler.handle(pid, SysCallType.FORK, {"name": f"SubAgent_{pid}"})
              
              # Simulate memory usage
              context_manager.write(kernel.process_table[pid], f"Memory log {random.random()}")

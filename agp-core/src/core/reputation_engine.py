@@ -50,9 +50,9 @@ class ReputationEngine:
             feedback = self._negative_feedback(new_levels.get(hormone, 0.5))
             adjusted_amount = amount * feedback
             
-            if adjusted_amount > 0.01:
+            if abs(adjusted_amount) > 0.01:
                 old_level = new_levels.get(hormone, 0.5)
-                new_level = min(1.0, old_level + adjusted_amount)
+                new_level = max(0.0, min(1.0, old_level + adjusted_amount))
                 new_levels[hormone] = new_level
                 changes[hormone.value] = new_level - old_level
         
@@ -76,8 +76,9 @@ class ReputationEngine:
             difficulty = stimulus.difficulty or strength
             latency_ms = stimulus.latency_ms or 500
             
-            # Cortisol (eustress from success)
-            secretions[Hormone.CORTISOL] = difficulty * 0.4
+            # Mild eustress from success should not accumulate into panic.
+            secretions[Hormone.CORTISOL] = difficulty * 0.02
+            secretions[Hormone.DOPAMINE] = strength * 0.25
             
             # Fast response → adrenaline
             if latency_ms < 100:

@@ -76,7 +76,7 @@ class ArtificialImmuneSystem(nn.Module):
         
         # Behavior encoder
         self.behavior_encoder = nn.Sequential(
-            nn.Linear(512, config.behavior_dim),
+            nn.LazyLinear(config.behavior_dim),
             nn.Tanh()
         )
         

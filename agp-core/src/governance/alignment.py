@@ -193,12 +193,19 @@ class AlignmentVerifier:
     
     def _compute_compliance(self, behaviors: List[BehaviorRecord]) -> float:
         """
-        Compute compliance score based on blocked/violation count.
+        Compute compliance score based on rejected or failed actions.
+
+        Failures are treated as governance violations here because repeated
+        execution failures should reduce alignment before an action is
+        formally blocked.
         """
         if not behaviors:
             return 1.0
         
-        violations = sum(1 for b in behaviors if b.outcome == Outcome.BLOCKED)
+        violations = sum(
+            1 for b in behaviors
+            if b.outcome in (Outcome.BLOCKED, Outcome.FAILURE)
+        )
         total = len(behaviors)
         
         # Violation rate

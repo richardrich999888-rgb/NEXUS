@@ -141,12 +141,12 @@ impl MultiObjectiveController {
         
         let total_error_before = self.total_error();
         
-        // Compute gradients and corrections
+        // Compute gradients and corrections. The gain is capped to avoid
+        // high-priority metrics oscillating across the setpoint.
         let corrections: Vec<(MetricId, f64)> = self.metrics.values()
             .map(|m| {
-                // Gradient of weighted squared error w.r.t. value
-                let gradient = 2.0 * m.weight * m.error();
-                (m.id, -self.learning_rate * gradient)
+                let gain = (2.0 * self.learning_rate * m.weight).clamp(0.0, 1.0);
+                (m.id, -gain * m.error())
             })
             .collect();
         
