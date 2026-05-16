@@ -1,0 +1,27 @@
+[package]
+name = "nexus-benchmarks"
+version = "0.1.0"
+edition = "2021"
+description = "Competitive benchmark suite for NEXUS patent evidence"
+
+[dependencies]
+# NEXUS
+nexus-pcu = { path = "../nexus-pcu" }
+causalux-v2 = { path = "../causalux" }
+
+# Competitors
+redis = "0.25"
+automerge = "0.5"
+
+# Benchmarking
+criterion = { version = "0.5", features = ["html_reports"] }
+
+# Utilities
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { version = "1", features = ["full"] }
+chrono = { workspace = true }
+
+[[bin]]
+name = "competitive-bench"
+path = "src/main.rs"

@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fyntrax-xapp
+  namespace: ricxapp
+  labels:
+    app: fyntrax
+    component: xapp
+    version: v0.1.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fyntrax
+      component: xapp
+  template:
+    metadata:
+      labels:
+        app: fyntrax
+        component: xapp
+        version: v0.1.0
+    spec:
+      serviceAccountName: fyntrax-xapp
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+      - name: fyntrax
+        image: fyntrax:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        - name: metrics
+          containerPort: 9090
+          protocol: TCP
+        env:
+        - name: FYNTRAX_LOG_LEVEL
+          value: "INFO"
+        - name: FYNTRAX_DATA_DIR
+          value: "/data"
+        - name: FYNTRAX_LOG_DIR
+          value: "/logs"
+        - name: ORAN_A1_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: fyntrax-config
+              key: oran.a1.endpoint
+        - name: ORAN_E2_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: fyntrax-config
+              key: oran.e2.endpoint
+        - name: ORAN_O1_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: fyntrax-config
+              key: oran.o1.endpoint
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        - name: logs
+          mountPath: /logs
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+        livenessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import fyntrax; print('alive')"
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import fyntrax; print('ready')"
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      volumes:
+      - name: data
+        emptyDir: {}
+      - name: logs
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: fyntrax-config
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fyntrax-xapp
+  namespace: ricxapp

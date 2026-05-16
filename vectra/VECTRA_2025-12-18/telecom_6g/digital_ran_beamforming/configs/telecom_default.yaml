@@ -1,0 +1,53 @@
+# Enhanced 3GPP-Compliant Configuration
+system:
+  num_antennas: 64
+  num_users: 8
+  carrier_freq: 3500000000.0
+  bandwidth: 100000000.0
+  scenario: "CDL-A"
+  duplex_mode: "TDD"
+
+channel:
+  model: "CDL"
+  num_clusters: 12
+  delay_spread: 0.0000001
+  doppler_freq: 10
+  correlation: "medium"
+  phase_noise: "TCXO"
+
+antenna:
+  panel_dims: [8, 8]
+  element_spacing: 0.5
+  connection_radius: 1.5
+
+neural_csi_encoder:
+  hidden_dims: [512, 256, 128, 64]
+  compression_ratio: 0.1
+  use_position_encoding: true
+
+sparse_beam_mask:
+  sparsity_ratio: 0.3
+  attention_heads: 4
+  hidden_dim: 128
+  num_layers: 3
+
+tensor_train:
+  max_rank: 8
+  tensor_dims: [8, 8]
+  initialization: "tt_svd"
+
+training:
+  batch_size: 32
+  learning_rate: 1e-3
+  num_epochs: 50
+  train_samples: 5000
+  test_samples: 1000
+
+benchmark:
+  num_iterations: 500
+  snr_loss_threshold: 0.02
+  sparsity_tolerance: 0.05
+
+mobility:
+  speed: 3.0
+  t_sample: 0.001

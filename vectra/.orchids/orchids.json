@@ -1,0 +1,7 @@
+{
+  "projectId": "7974426e-59e8-4cce-b03b-dbb5b257c78e",
+  "createdAt": 1765920376000,
+  "startupCommands": [
+    "cd /Users/richardrich/Desktop/VECTRA/vectra && cargo build"
+  ]
+}

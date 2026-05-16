@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fyntrax-config
+  namespace: ricxapp
+  labels:
+    app: fyntrax
+    component: xapp
+data:
+  # O-RAN Interface Endpoints
+  oran.a1.endpoint: "http://ric-platform-a1mediator:10000"
+  oran.e2.endpoint: "http://ric-platform-e2mgr:3800"
+  oran.o1.endpoint: "http://ric-platform-o1mediator:8080"
+  
+  # FYNTRAX Configuration
+  fyntrax.energy.p_deep_sleep: "120"
+  fyntrax.energy.p_light_sleep: "400"
+  fyntrax.energy.p_active: "800"
+  
+  # Lyapunov Control Parameters
+  fyntrax.control.gamma: "0.95"
+  fyntrax.control.delta_max: "0.1"
+  
+  # Entropy Parameters
+  fyntrax.entropy.h_max: "4.0"
+  
+  # VECTRA Compression
+  fyntrax.vectra.enabled: "true"
+  fyntrax.vectra.csi_compression: "true"
+  fyntrax.vectra.signaling_compression: "true"
+  
+  # Logging
+  fyntrax.log.level: "INFO"
+  fyntrax.log.format: "json"

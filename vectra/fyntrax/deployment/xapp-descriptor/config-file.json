@@ -1,0 +1,137 @@
+{
+  "name": "fyntrax",
+  "version": "0.1.0",
+  "description": "Physics-First Entropy-Optimized RAN Control Platform",
+  "controls": {
+    "a1": {
+      "version": "1.0.0",
+      "policyTypes": [
+        {
+          "name": "energy_optimization_policy",
+          "description": "Policy for energy optimization parameters",
+          "policyTypeId": 20001,
+          "createSchema": {
+            "type": "object",
+            "properties": {
+              "p_deep_sleep": {
+                "type": "number",
+                "description": "Deep sleep power in watts",
+                "default": 120
+              },
+              "p_light_sleep": {
+                "type": "number",
+                "description": "Light sleep power in watts",
+                "default": 400
+              },
+              "p_active": {
+                "type": "number",
+                "description": "Active power in watts",
+                "default": 800
+              },
+              "gamma": {
+                "type": "number",
+                "description": "Lyapunov discount factor",
+                "default": 0.95
+              },
+              "delta_max": {
+                "type": "number",
+                "description": "Lyapunov stability threshold",
+                "default": 0.1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "e2": {
+      "version": "1.0.0",
+      "ranFunctions": [
+        {
+          "ranFunctionId": 1,
+          "ranFunctionDefinition": "FYNTRAX Energy Optimization",
+          "ranFunctionRevision": 1,
+          "ranFunctionOID": "1.3.6.1.4.1.53148.1.1.1"
+        }
+      ],
+      "subscriptions": [
+        {
+          "subscriptionId": "energy-metrics",
+          "eventTriggers": [
+            "PERIODIC",
+            "ON_CHANGE"
+          ],
+          "reportingPeriod": 5000
+        }
+      ]
+    },
+    "o1": {
+      "version": "1.0.0",
+      "managedObjects": [
+        {
+          "class": "EnergyOptimization",
+          "attributes": [
+            "totalEnergy",
+            "avgPower",
+            "energySavings",
+            "idleTime"
+          ]
+        },
+        {
+          "class": "NetworkKPIs",
+          "attributes": [
+            "avgLatency",
+            "p99Latency",
+            "throughput",
+            "handoverSuccessRate"
+          ]
+        }
+      ]
+    }
+  },
+  "messaging": {
+    "ports": [
+      {
+        "name": "http",
+        "container": "fyntrax",
+        "port": 8080,
+        "description": "HTTP API"
+      },
+      {
+        "name": "metrics",
+        "container": "fyntrax",
+        "port": 9090,
+        "description": "Prometheus metrics"
+      }
+    ]
+  },
+  "rmr": {
+    "protPort": "tcp:4560",
+    "maxSize": 2072,
+    "numWorkers": 1,
+    "txMessages": [
+      "RIC_SUB_REQ",
+      "RIC_CONTROL_REQ"
+    ],
+    "rxMessages": [
+      "RIC_SUB_RESP",
+      "RIC_INDICATION",
+      "RIC_CONTROL_ACK"
+    ]
+  },
+  "livenessProbe": {
+    "httpGet": {
+      "path": "/health",
+      "port": 8080
+    },
+    "initialDelaySeconds": 30,
+    "periodSeconds": 30
+  },
+  "readinessProbe": {
+    "httpGet": {
+      "path": "/ready",
+      "port": 8080
+    },
+    "initialDelaySeconds": 10,
+    "periodSeconds": 10
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "svd_baseline": {
+    "latency_ms": 0.7950716018676758,
+    "beamforming_gain": 1.2518964475020766,
+    "complexity": "O(min(Nr,Nt)^3)"
+  },
+  "neural_pipeline": {
+    "latency_ms": 24.270671844482422,
+    "sparsity_achieved": 0.703125,
+    "target_sparsity": 0.3
+  },
+  "summary": {
+    "latency_improvement_percent": -2952.6397606792907,
+    "sparsity_achieved_percent": 70.3125,
+    "sparsity_error_percent": 134.375
+  }
+}

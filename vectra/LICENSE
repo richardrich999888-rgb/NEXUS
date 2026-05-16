@@ -1,0 +1,183 @@
+VECTRA PROPRIETARY LICENSE
+
+Copyright © 2025 SYNTRIASS Labs Private Limited. All rights reserved.
+Author/Inventor: Katta Naga Sri Ganesh
+
+================================================================================
+PATENT NOTICE
+================================================================================
+
+This software contains inventions covered by the following pending and granted patents:
+
+- US Provisional Application No. 63/XXX,XXX - "Entropy-Bounded Tensor Algebra (EBTA)"
+- US Provisional Application No. 63/XXX,XXX - "Deterministic Compression with Mathematical Guarantees"  
+- US Provisional Application No. 63/XXX,XXX - "Adaptive Multi-Dimensional Entropy Validation (EBTA-X)"
+- US Provisional Application No. 63/XXX,XXX - "Zero-Knowledge Proof of Lossless Data Compression"
+- US Provisional Application No. 63/XXX,XXX - "Privacy-Preserving Federated Pattern Discovery"
+
+Additional patents pending. Use of this software may require a license agreement.
+Unauthorized use may result in patent infringement litigation.
+
+For patent licensing inquiries: patents@syntriass.com
+
+================================================================================
+LICENSE TERMS
+================================================================================
+
+1. GRANT OF LICENSE
+
+   Subject to the terms and conditions of this License, SYNTRIASS Labs Private
+   Limited ("SYNTRIASS") grants you a limited, non-exclusive, non-transferable,
+   revocable license to use the VECTRA software ("Software").
+
+2. PERMITTED USE
+
+   NON-COMMERCIAL USE: You may use the Software for non-commercial purposes,
+   including research, education, and personal projects, provided you:
+   
+   a) Retain all copyright, patent, and trademark notices
+   b) Do not remove or modify this license
+   c) Acknowledge SYNTRIASS in any publications or presentations using VECTRA
+   d) Register your use at: https://vectra.syntriass.com/register
+
+   COMMERCIAL USE: Commercial use requires a separate commercial license.
+   Contact licensing@syntriass.com for commercial licensing terms.
+
+3. RESTRICTIONS
+
+   You may NOT:
+   
+   a) Reverse engineer, decompile, disassemble, or attempt to derive the 
+      source code, underlying ideas, algorithms, file formats, or non-public
+      APIs of the Software
+   
+   b) Remove, alter, or obscure any proprietary notices (copyright, patent,
+      trademark, license) in the Software
+   
+   c) Create derivative works, modifications, or forks of the Software
+   
+   d) Distribute, sublicense, lease, rent, loan, or otherwise transfer the
+      Software to any third party
+   
+   e) Use the Software for commercial purposes without a commercial license
+   
+   f) Use the Software in any manner that infringes any patents, copyrights,
+      trade secrets, or other proprietary rights of SYNTRIASS
+   
+   g) Use the Software to develop competing compression technologies
+   
+   h) Circumvent any license validation, usage tracking, or technical
+      protection measures in the Software
+
+4. OWNERSHIP AND INTELLECTUAL PROPERTY
+
+   The Software is licensed, not sold. SYNTRIASS retains all right, title,
+   and interest in and to the Software, including all copyrights, patents,
+   trade secrets, trademarks, and other intellectual property rights.
+   
+   This license does not grant you any rights to use SYNTRIASS's trademarks,
+   service marks, or trade names.
+
+5. PATENT ASSERTION
+
+   Use of this Software under this License grants NO patent rights or licenses.
+   SYNTRIASS reserves all patent rights and may assert its patents against
+   any infringement, including use of this Software in violation of this License.
+   
+   If you initiate patent litigation against SYNTRIASS or any entity using
+   VECTRA, this License automatically terminates.
+
+6. CONTRIBUTIONS
+
+   If you submit any contributions (code, documentation, feedback) to SYNTRIASS,
+   you hereby grant SYNTRIASS:
+   
+   a) A perpetual, worldwide, royalty-free, irrevocable license to use,
+      modify, reproduce, and distribute your contributions
+   
+   b) Rights to patent any inventions contained in your contributions
+   
+   c) You represent that you have authority to grant these rights
+   
+   SYNTRIASS retains sole ownership of VECTRA and all contributions become
+   property of SYNTRIASS.
+
+7. TERMINATION
+
+   This License is effective until terminated. Your rights under this License
+   will terminate automatically without notice if you fail to comply with any
+   term of this License.
+   
+   Upon termination:
+   a) You must immediately cease all use of the Software
+   b) Destroy all copies of the Software in your possession
+   c) Certify in writing to SYNTRIASS that you have complied with these terms
+
+8. DISCLAIMER OF WARRANTIES
+
+   THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF
+   ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+   
+   SYNTRIASS DOES NOT WARRANT THAT:
+   a) The Software will meet your requirements
+   b) The Software will be uninterrupted, timely, secure, or error-free
+   c) The results obtained from use of the Software will be accurate or reliable
+   d) Any errors in the Software will be corrected
+
+9. LIMITATION OF LIABILITY
+
+   IN NO EVENT SHALL SYNTRIASS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+   
+   SYNTRIASS's total liability under this License shall not exceed USD $100.
+
+10. EXPORT COMPLIANCE
+
+    You agree to comply with all applicable export and import control laws and
+    regulations. You may not export or re-export the Software except in
+    compliance with applicable laws and regulations.
+
+11. GOVERNING LAW
+
+    This License shall be governed by and construed in accordance with the
+    laws of India, without regard to conflict of law principles.
+    
+    Any disputes arising under this License shall be subject to the exclusive
+    jurisdiction of the courts in Bangalore, India.
+
+12. ENTIRE AGREEMENT
+
+    This License constitutes the entire agreement between you and SYNTRIASS
+    regarding the Software and supersedes all prior or contemporaneous
+    agreements, communications, and understandings.
+
+13. SEVERABILITY
+
+    If any provision of this License is held to be unenforceable, such
+    provision shall be reformed only to the extent necessary to make it
+    enforceable, and the remaining provisions shall remain in full effect.
+
+14. CONTACT INFORMATION
+
+    SYNTRIASS Labs Private Limited
+    Email: licensing@syntriass.com
+    Website: https://syntriass.com
+    Patent Inquiries: patents@syntriass.com
+
+================================================================================
+
+BY USING THIS SOFTWARE, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS LICENSE,
+UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+IF YOU DO NOT AGREE TO THESE TERMS, DO NOT USE THE SOFTWARE.
+
+================================================================================
+
+Last Updated: December 17, 2025
+Version: 2.0

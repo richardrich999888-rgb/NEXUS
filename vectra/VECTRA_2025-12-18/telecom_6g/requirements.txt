@@ -1,0 +1,23 @@
+# VECTRA 6G Integration Dependencies
+
+# VECTRA Python bindings (install from parent directory)
+# cd ../../python && pip install -e .
+
+# Core dependencies
+numpy>=1.21.0
+scipy>=1.7.0
+
+# Optional: PyTorch (for 6G RAN projects)
+# torch>=1.9.0
+
+# Optional: For benchmarks and examples
+tqdm>=4.62.0
+matplotlib>=3.4.0
+
+
+
+
+
+
+
+

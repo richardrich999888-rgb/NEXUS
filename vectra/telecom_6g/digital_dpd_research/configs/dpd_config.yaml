@@ -1,0 +1,44 @@
+# Digital Predistortion Configuration for Massive MIMO
+system:
+  num_antennas: 64
+  num_clusters: 8  # 8 antennas share DPD coefficients
+  carrier_freq: 3.5e9  # 3.5 GHz
+  bandwidth: 100e6  # 100 MHz
+  sample_rate: 122.88e6  # Typical 5G NR rate
+
+pa_model:
+  type: "rapp"  # rapp, saleh, ghorbani
+  smoothness_factor: 3.0
+  saturation_amplitude: 1.0
+  am_pm_conversion: 5.0  # degrees per dB
+
+neural_dpd:
+  memory_depth: 5
+  hidden_layers: [64, 64]
+  activation: "relu"
+  use_beam_conditioning: true
+  quantization_bits: 8
+
+training:
+  batch_size: 256
+  learning_rate: 1e-3
+  num_epochs: 1000
+  train_samples: 100000
+  test_samples: 20000
+  optimizer: "adam"
+  loss_function: "mse"
+
+simulation:
+  modulation: "64qam"
+  ofdm:
+    num_subcarriers: 3300
+    num_symbols: 14
+    cyclic_prefix: 144
+  channel_model: "awgn"
+  snr_db: 30
+
+deployment:
+  model_format: "onnx"
+  quantize: true
+  target_precision: "int8"
+  max_model_size_kb: 10
