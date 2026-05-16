@@ -1,0 +1,26 @@
+[package]
+name = "nexus-agp"
+version = "0.1.0"
+edition = "2021"
+description = "Bridge between AGP (Agent Governance Protocol) and NEXUS infrastructure"
+license = "MIT"
+
+[dependencies]
+# NEXUS dependencies
+nexus-pcu = { path = "../nexus-pcu" }
+causalux-v2 = { path = "../causalux" }
+
+# Crypto
+sha2 = "0.10"
+hex = "0.4"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+bincode = "2.0.0-rc.3"
+
+# Async
+tokio = { version = "1.0", features = ["rt", "sync"] }
+
+[features]
+default = []
+pqc = ["nexus-pcu/pqc"]  # Enable PQC identity binding

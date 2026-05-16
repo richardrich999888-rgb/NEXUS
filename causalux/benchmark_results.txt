@@ -1,0 +1,325 @@
+   Compiling getrandom v0.2.16
+   Compiling rand v0.7.3
+   Compiling rand_core v0.6.4
+   Compiling crypto-common v0.1.7
+   Compiling cipher v0.4.4
+   Compiling universal-hash v0.5.1
+   Compiling digest v0.10.7
+   Compiling aead v0.5.2
+   Compiling polyval v0.6.2
+   Compiling ghash v0.5.1
+   Compiling ctr v0.9.2
+   Compiling aes v0.8.4
+   Compiling hmac v0.12.1
+   Compiling sha2 v0.10.9
+   Compiling hkdf v0.12.4
+   Compiling aes-gcm v0.10.3
+   Compiling ed25519-dalek v1.0.1
+   Compiling causalux-v2 v2.0.0 (/Users/richardrich/Documents/causalux-v2)
+warning: unused import: `OsRng`
+  --> src/envelope.rs:15:27
+   |
+15 |     aead::{Aead, KeyInit, OsRng},
+   |                           ^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `hkdf::Hkdf`
+  --> src/envelope.rs:18:5
+   |
+18 | use hkdf::Hkdf;
+   |     ^^^^^^^^^^
+
+warning: unused import: `zeroize::Zeroize`
+  --> src/envelope.rs:19:5
+   |
+19 | use zeroize::Zeroize;
+   |     ^^^^^^^^^^^^^^^^
+
+warning: unused imports: `debug`, `error`, and `instrument`
+ --> src/observability.rs:5:27
+  |
+5 | use tracing::{info, warn, error, debug, instrument};
+  |                           ^^^^^  ^^^^^  ^^^^^^^^^^
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> src/runtime.rs:6:13
+  |
+6 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `BTreeSet`
+ --> src/runtime.rs:7:33
+  |
+7 | use std::collections::{HashMap, BTreeSet};
+  |                                 ^^^^^^^^
+
+warning: unused imports: `GCounter`, `HierarchicalSync`, `RGAText`, `Snapshot`, `SyncRequest`, `SyncResponse`, and `VersionVector`
+  --> src/runtime.rs:12:26
+   |
+12 |     CausalOp, CausalDAG, VersionVector, Snapshot,
+   |                          ^^^^^^^^^^^^^  ^^^^^^^^
+13 |     HierarchicalSync, AdaptiveSync, ConflictPolicy,
+   |     ^^^^^^^^^^^^^^^^
+14 |     RGAText, GCounter, PNCounter, ORSet, LWWMap, CRDTDocument,
+   |     ^^^^^^^  ^^^^^^^^
+15 |     SyncRequest, SyncResponse,
+   |     ^^^^^^^^^^^  ^^^^^^^^^^^^
+
+warning: unused variable: `request`
+   --> src/runtime.rs:339:13
+    |
+339 |         let request = self.sync.read().unwrap().prepare_request(
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_request`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `operation`
+   --> src/runtime.rs:462:9
+    |
+462 |         operation: &str,
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_operation`
+
+warning: field `batch_size` is never read
+  --> src/sync.rs:84:5
+   |
+81 | pub struct HierarchicalSync {
+   |            ---------------- field in this struct
+...
+84 |     batch_size: usize,
+   |     ^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `idle_timeout` is never read
+   --> src/presence.rs:232:5
+    |
+218 | pub struct PresenceManager {
+    |            --------------- field in this struct
+...
+232 |     idle_timeout: Duration,
+    |     ^^^^^^^^^^^^
+    |
+    = note: `PresenceManager` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+
+warning: field `maps` is never read
+  --> src/runtime.rs:43:5
+   |
+26 | pub struct CausaluxRuntime {
+   |            --------------- field in this struct
+...
+43 |     maps: Arc<RwLock<HashMap<String, LWWMap<String, String>>>>,
+   |     ^^^^
+
+warning: `causalux-v2` (lib) generated 12 warnings (run `cargo fix --lib -p causalux-v2` to apply 7 suggestions)
+    Finished `bench` profile [optimized] target(s) in 3.23s
+     Running benches/performance.rs (target/release/deps/performance-cbd744ee9c0606f0)
+Gnuplot not found, using plotters backend
+Benchmarking document_insert/10
+Benchmarking document_insert/10: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 7.4s, enable flat sampling, or reduce sample count to 50.
+Benchmarking document_insert/10: Collecting 100 samples in estimated 7.4173 s (5050 iterations)
+Benchmarking document_insert/10: Analyzing
+document_insert/10      time:   [165.86 µs 169.93 µs 174.05 µs]
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+Benchmarking document_insert/100
+Benchmarking document_insert/100: Warming up for 3.0000 s
+Benchmarking document_insert/100: Collecting 100 samples in estimated 5.9120 s (400 iterations)
+Benchmarking document_insert/100: Analyzing
+document_insert/100     time:   [1.4564 ms 1.5344 ms 1.6373 ms]
+Found 3 outliers among 100 measurements (3.00%)
+  3 (3.00%) high severe
+Benchmarking document_insert/1000
+Benchmarking document_insert/1000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 9.8s, or reduce sample count to 50.
+Benchmarking document_insert/1000: Collecting 100 samples in estimated 9.7678 s (100 iterations)
+Benchmarking document_insert/1000: Analyzing
+document_insert/1000    time:   [18.129 ms 18.213 ms 18.327 ms]
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+Benchmarking document_insert/10000
+Benchmarking document_insert/10000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 156.7s, or reduce sample count to 10.
+Benchmarking document_insert/10000: Collecting 100 samples in estimated 156.70 s (100 iterations)
+Benchmarking document_insert/10000: Analyzing
+document_insert/10000   time:   [777.65 ms 779.92 ms 782.34 ms]
+Found 8 outliers among 100 measurements (8.00%)
+  6 (6.00%) high mild
+  2 (2.00%) high severe
+
+Benchmarking document_delete/10
+Benchmarking document_delete/10: Warming up for 3.0000 s
+Benchmarking document_delete/10: Collecting 100 samples in estimated 5.3313 s (20k iterations)
+Benchmarking document_delete/10: Analyzing
+document_delete/10      time:   [118.61 µs 119.10 µs 119.77 µs]
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+Benchmarking document_delete/100
+Benchmarking document_delete/100: Warming up for 3.0000 s
+Benchmarking document_delete/100: Collecting 100 samples in estimated 5.0710 s (1900 iterations)
+Benchmarking document_delete/100: Analyzing
+document_delete/100     time:   [1.3526 ms 1.3557 ms 1.3593 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) low mild
+  1 (1.00%) high severe
+Benchmarking document_delete/1000
+Benchmarking document_delete/1000: Warming up for 3.0000 s
+Benchmarking document_delete/1000: Collecting 100 samples in estimated 9.9824 s (200 iterations)
+Benchmarking document_delete/1000: Analyzing
+document_delete/1000    time:   [31.003 ms 31.145 ms 31.338 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high severe
+
+Benchmarking counter_increment/100
+Benchmarking counter_increment/100: Warming up for 3.0000 s
+Benchmarking counter_increment/100: Collecting 100 samples in estimated 5.3532 s (400 iterations)
+Benchmarking counter_increment/100: Analyzing
+counter_increment/100   time:   [1.3463 ms 1.3549 ms 1.3640 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+Benchmarking counter_increment/1000
+Benchmarking counter_increment/1000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 16.1s, or reduce sample count to 30.
+Benchmarking counter_increment/1000: Collecting 100 samples in estimated 16.129 s (100 iterations)
+Benchmarking counter_increment/1000: Analyzing
+counter_increment/1000  time:   [17.078 ms 17.177 ms 17.326 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+Benchmarking counter_increment/10000
+Benchmarking counter_increment/10000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 144.6s, or reduce sample count to 10.
+Benchmarking counter_increment/10000: Collecting 100 samples in estimated 144.64 s (100 iterations)
+Benchmarking counter_increment/10000: Analyzing
+counter_increment/10000 time:   [743.44 ms 745.54 ms 747.87 ms]
+Found 5 outliers among 100 measurements (5.00%)
+  2 (2.00%) high mild
+  3 (3.00%) high severe
+
+Benchmarking counter_concurrent_merge
+Benchmarking counter_concurrent_merge: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 5.9s, or reduce sample count to 80.
+Benchmarking counter_concurrent_merge: Collecting 100 samples in estimated 5.8635 s (100 iterations)
+Benchmarking counter_concurrent_merge: Analyzing
+counter_concurrent_merge
+                        time:   [23.555 ms 24.168 ms 24.653 ms]
+Found 5 outliers among 100 measurements (5.00%)
+  2 (2.00%) low severe
+  1 (1.00%) low mild
+  2 (2.00%) high severe
+
+Benchmarking set_add/100
+Benchmarking set_add/100: Warming up for 3.0000 s
+Benchmarking set_add/100: Collecting 100 samples in estimated 5.5557 s (400 iterations)
+Benchmarking set_add/100: Analyzing
+set_add/100             time:   [1.3752 ms 1.3818 ms 1.3890 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking set_add/1000
+Benchmarking set_add/1000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 16.9s, or reduce sample count to 20.
+Benchmarking set_add/1000: Collecting 100 samples in estimated 16.932 s (100 iterations)
+Benchmarking set_add/1000: Analyzing
+set_add/1000            time:   [17.550 ms 17.630 ms 17.733 ms]
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+Benchmarking set_add/10000
+Benchmarking set_add/10000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 153.4s, or reduce sample count to 10.
+Benchmarking set_add/10000: Collecting 100 samples in estimated 153.38 s (100 iterations)
+Benchmarking set_add/10000: Analyzing
+set_add/10000           time:   [781.14 ms 786.76 ms 793.36 ms]
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+
+Benchmarking set_remove_1000
+Benchmarking set_remove_1000: Warming up for 3.0000 s
+Benchmarking set_remove_1000: Collecting 100 samples in estimated 9.8017 s (200 iterations)
+Benchmarking set_remove_1000: Analyzing
+set_remove_1000         time:   [30.873 ms 31.174 ms 31.523 ms]
+Found 8 outliers among 100 measurements (8.00%)
+  1 (1.00%) high mild
+  7 (7.00%) high severe
+
+Benchmarking sync_100_ops
+Benchmarking sync_100_ops: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 7.0s, enable flat sampling, or reduce sample count to 50.
+Benchmarking sync_100_ops: Collecting 100 samples in estimated 7.0045 s (5050 iterations)
+Benchmarking sync_100_ops: Analyzing
+sync_100_ops            time:   [45.909 µs 46.997 µs 48.373 µs]
+Found 9 outliers among 100 measurements (9.00%)
+  2 (2.00%) high mild
+  7 (7.00%) high severe
+
+Benchmarking sync_1000_ops
+Benchmarking sync_1000_ops: Warming up for 3.0000 s
+Benchmarking sync_1000_ops: Collecting 100 samples in estimated 5.6079 s (300 iterations)
+Benchmarking sync_1000_ops: Analyzing
+sync_1000_ops           time:   [514.66 µs 523.81 µs 537.44 µs]
+Found 6 outliers among 100 measurements (6.00%)
+  5 (5.00%) high mild
+  1 (1.00%) high severe
+
+Benchmarking sync_bidirectional
+Benchmarking sync_bidirectional: Warming up for 3.0000 s
+Benchmarking sync_bidirectional: Collecting 100 samples in estimated 5.1599 s (1500 iterations)
+Benchmarking sync_bidirectional: Analyzing
+sync_bidirectional      time:   [815.82 µs 819.83 µs 824.54 µs]
+Found 3 outliers among 100 measurements (3.00%)
+  1 (1.00%) high mild
+  2 (2.00%) high severe
+
+Benchmarking collaborative_editing/2
+Benchmarking collaborative_editing/2: Warming up for 3.0000 s
+Benchmarking collaborative_editing/2: Collecting 100 samples in estimated 5.3420 s (15k iterations)
+Benchmarking collaborative_editing/2: Analyzing
+collaborative_editing/2 time:   [52.858 µs 57.679 µs 67.296 µs]
+Found 12 outliers among 100 measurements (12.00%)
+  8 (8.00%) high mild
+  4 (4.00%) high severe
+Benchmarking collaborative_editing/5
+Benchmarking collaborative_editing/5: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 6.5s, enable flat sampling, or reduce sample count to 60.
+Benchmarking collaborative_editing/5: Collecting 100 samples in estimated 6.5479 s (5050 iterations)
+Benchmarking collaborative_editing/5: Analyzing
+collaborative_editing/5 time:   [541.17 µs 550.27 µs 563.05 µs]
+Found 6 outliers among 100 measurements (6.00%)
+  1 (1.00%) high mild
+  5 (5.00%) high severe
+Benchmarking collaborative_editing/10
+Benchmarking collaborative_editing/10: Warming up for 3.0000 s
+Benchmarking collaborative_editing/10: Collecting 100 samples in estimated 5.1710 s (1200 iterations)
+Benchmarking collaborative_editing/10: Analyzing
+collaborative_editing/10
+                        time:   [2.7568 ms 2.7681 ms 2.7802 ms]
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+
+Benchmarking memory_10k_ops
+Benchmarking memory_10k_ops: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 37.4s, or reduce sample count to 10.
+Benchmarking memory_10k_ops: Collecting 100 samples in estimated 37.412 s (100 iterations)
+Benchmarking memory_10k_ops: Analyzing
+memory_10k_ops          time:   [375.38 ms 378.58 ms 382.64 ms]
+Found 8 outliers among 100 measurements (8.00%)
+  3 (3.00%) high mild
+  5 (5.00%) high severe
+

@@ -1,0 +1,14 @@
+[package]
+name = "nexus-runtime"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "WASM Execution Runtime for NEXUS"
+
+[dependencies]
+nexus-core = { path = "../nexus-core" }
+
+[lib]
+name = "nexus_runtime"
+path = "src/lib.rs"

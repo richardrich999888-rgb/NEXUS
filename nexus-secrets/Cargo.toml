@@ -1,0 +1,46 @@
+[package]
+name = "nexus-secrets"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Secret management for NEXUS (Vault, AWS Secrets Manager, encrypted storage)"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+async-trait = "0.1"
+
+# Encryption
+aes-gcm = "0.10"
+chacha20poly1305 = "0.10"
+zeroize = { version = "1.7", features = ["zeroize_derive"] }
+sha2 = { workspace = true }
+pbkdf2 = "0.12"
+rand = { workspace = true }
+
+# Optional: Vault integration
+vaultrs = { version = "0.7", optional = true }
+
+# Optional: AWS Secrets Manager
+aws-sdk-secretsmanager = { version = "1", optional = true }
+aws-config = { version = "1", optional = true }
+
+# Optional: Kubernetes Secrets
+k8s-openapi = { version = "0.21", optional = true }
+kube = { version = "0.90", optional = true, features = ["runtime"] }
+
+[features]
+default = []
+vault = ["vaultrs"]
+aws = ["aws-sdk-secretsmanager", "aws-config"]
+k8s = ["k8s-openapi", "kube"]
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tokio-test = "0.4"
+

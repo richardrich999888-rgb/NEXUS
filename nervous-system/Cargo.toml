@@ -1,0 +1,17 @@
+[package]
+name = "nervous-system"
+version = "0.1.0"
+edition = "2021"
+description = "Nervous system coordinator for ASI safety layers"
+authors = ["NEXUS Team"]
+
+[dependencies]
+homeostasis-engine = { path = "../homeostasis-engine" }
+autonomic-system = { path = "../autonomic-system" }
+developmental-gates = { path = "../developmental-gates" }
+multi-asi-immune = { path = "../multi-asi-immune" }
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tracing = "0.1"
+
+[dev-dependencies]

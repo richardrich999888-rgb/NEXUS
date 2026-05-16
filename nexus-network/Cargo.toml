@@ -1,0 +1,39 @@
+[package]
+name = "nexus-network"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Network-Embedded eXecution - P2P layer for NEXUS"
+
+[dependencies]
+nexus-core = { path = "../nexus-core" }
+nexus-pcu = { path = "../nexus-pcu" }
+nexus-sync = { path = "../nexus-sync" }
+nexus-observability = { path = "../nexus-observability" }
+serde.workspace = true
+bincode.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+quinn = "0.10"
+rustls = { version = "0.21", features = ["dangerous_configuration"] }
+rustls-pemfile = "2.0"
+webpki = { package = "rustls-webpki", version = "0.101" }
+rcgen = "0.11"
+parking_lot = "0.12"
+dashmap = "6.0"
+futures = "0.3"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["async_tokio"] }
+futures = "0.3"
+
+[[bench]]
+name = "network_gossip"
+harness = false
+
+[[bench]]
+name = "multi_node"
+harness = false

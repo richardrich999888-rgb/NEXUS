@@ -1,0 +1,27 @@
+[package]
+name = "nexus-server"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "HTTP server for NEXUS benchmarking and deployment"
+
+[dependencies]
+nexus-core = { path = "../nexus-core" }
+nexus-pcu = { path = "../nexus-pcu" }
+nexus-sync = { path = "../nexus-sync" }
+causalux-v2 = { path = "../causalux" }
+
+tokio = { workspace = true, features = ["full"] }
+axum = "0.7"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+hex = { workspace = true }
+
+
+[[bin]]
+name = "nexus-server"
+path = "src/main.rs"

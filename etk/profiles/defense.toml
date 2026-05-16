@@ -1,0 +1,6 @@
+# Defense / national-security profile. Max hardening, air-gap capable.
+crypto_mode = "fips"
+offline_verifier = true
+network_stack = false
+policy_enforcement = "strict"
+air_gap = true

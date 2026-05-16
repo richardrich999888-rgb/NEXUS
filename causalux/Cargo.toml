@@ -1,0 +1,74 @@
+[package]
+name = "causalux-v2"
+version = "3.0.0"
+edition = "2021"
+authors = ["Katta Naga Sri Ganesh <syntriass@example.com>"]
+description = "CAUSALUX v3.0 - Visionary Distributed Execution Fabric with Morgan Economy, Tesla Resonance, and Da Vinci Atom layers"
+license = "Apache-2.0"
+repository = "https://github.com/syntriass/causalux"
+
+[dependencies]
+# Cryptography
+ed25519-dalek = { version = "2.0", features = ["serde"] }
+sha2 = "0.10"
+rand = "0.8"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# Time
+chrono = "0.4"
+
+# Collections
+indexmap = "2.1"
+
+# Compression (for snapshots)
+flate2 = "1.0"
+
+# Production Encryption (AES-GCM)
+aes-gcm = "0.10"
+hkdf = "0.12"  # Key derivation
+zeroize = "1.7"  # Secure memory clearing
+
+# Persistent Storage
+rocksdb = { version = "0.22", optional = true }
+
+# Observability
+tracing = { version = "0.1", optional = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"], optional = true }
+prometheus = { version = "0.13", optional = true }
+
+# Networking
+tokio = { version = "1.35", features = ["full"], optional = true }
+axum = { version = "0.7", optional = true }
+tower = { version = "0.4", optional = true }
+tower-http = { version = "0.5", features = ["trace"], optional = true }
+reqwest = { version = "0.11", features = ["json"], optional = true }
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.4"
+tempfile = "3.8"  # For storage tests
+tokio-test = "0.4"  # For async tests
+
+[features]
+default = ["tracing", "tracing-subscriber", "bft"]
+async = ["tokio", "reqwest"]
+bft = []  # Byzantine Fault Tolerance mode
+storage = ["rocksdb"]  # Persistent storage
+network = ["tokio", "axum", "tower", "tower-http"]  # HTTP API + WebSocket
+transport = ["tokio"]  # P2P WebSocket transport layer
+observability = ["prometheus", "tracing", "tracing-subscriber"]  # Metrics endpoint
+compute = []  # Distributed GPU computing
+economy = []  # Morgan Economy Layer - Token-based metering
+resonance = []  # Tesla Resonance Layer - Smart sync routing
+atom = []  # Da Vinci Atom Layer - Unified primitives
+visionary = ["economy", "resonance", "atom"]  # All v3 visionary layers
+production = ["storage", "network", "transport", "observability", "bft"]  # All production features
+full = ["production", "visionary", "compute"]  # Everything
+
+[[bench]]
+name = "performance"
+harness = false

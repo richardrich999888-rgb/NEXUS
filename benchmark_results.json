@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-01-03T15:48:12.369057+00:00",
+  "results": [
+    {
+      "system": "Redis",
+      "operation": "SET",
+      "iterations": 10000,
+      "total_duration_us": 1879093,
+      "ops_per_second": 5321.716262307356,
+      "avg_latency_us": 187.9093
+    },
+    {
+      "system": "Redis",
+      "operation": "GET",
+      "iterations": 10000,
+      "total_duration_us": 2565068,
+      "ops_per_second": 3898.5314285908235,
+      "avg_latency_us": 256.5068
+    },
+    {
+      "system": "Automerge",
+      "operation": "List Insert",
+      "iterations": 10000,
+      "total_duration_us": 29925,
+      "ops_per_second": 334158.9844908461,
+      "avg_latency_us": 2.9925
+    },
+    {
+      "system": "Automerge",
+      "operation": "Doc Merge",
+      "iterations": 1000,
+      "total_duration_us": 11917,
+      "ops_per_second": 83907.87150650626,
+      "avg_latency_us": 11.917
+    },
+    {
+      "system": "NEXUS",
+      "operation": "USO Create",
+      "iterations": 100000,
+      "total_duration_us": 58382,
+      "ops_per_second": 1712839.5980698557,
+      "avg_latency_us": 0.58382
+    },
+    {
+      "system": "NEXUS",
+      "operation": "Version Vector Merge",
+      "iterations": 1000000,
+      "total_duration_us": 307551,
+      "ops_per_second": 3251490.161192365,
+      "avg_latency_us": 0.307551
+    }
+  ]
+}

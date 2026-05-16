@@ -1,0 +1,49 @@
+[package]
+name = "nexus-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Causal Tensor Algebra - Core primitives for NEXUS distributed computing"
+keywords = ["distributed", "causal", "crdt", "offline", "consistency"]
+categories = ["algorithms", "data-structures", "network-programming"]
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+bincode.workspace = true
+ed25519-dalek.workspace = true
+sha2.workspace = true
+blake3.workspace = true
+rand.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+hex.workspace = true
+tracing.workspace = true
+
+# Additional core dependencies
+dashmap = "5.5"
+parking_lot = "0.12"
+bytes = "1.5"
+tokio = { version = "1", features = ["net"], optional = true }
+shellexpand = "3.1"
+
+[dev-dependencies]
+criterion.workspace = true
+proptest.workspace = true
+tokio = { workspace = true, features = ["test-util"] }
+
+[lib]
+name = "nexus_core"
+path = "src/lib.rs"
+
+[[bench]]
+name = "causal_merge"
+harness = false
+
+[features]
+default = ["std", "migration"]
+std = []
+migration = ["tokio"]

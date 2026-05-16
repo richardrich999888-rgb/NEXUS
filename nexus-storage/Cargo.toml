@@ -1,0 +1,33 @@
+[package]
+name = "nexus-storage"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Causal State Engine - RocksDB-backed storage for NEXUS"
+
+[dependencies]
+nexus-core = { path = "../nexus-core" }
+nexus-pcu = { path = "../nexus-pcu" }
+serde.workspace = true
+serde_json.workspace = true
+bincode.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+rocksdb = "0.22"
+parking_lot = "0.12"
+tokio = { workspace = true, features = ["fs", "io-util"] }
+
+[dev-dependencies]
+criterion.workspace = true
+tempfile.workspace = true
+tokio = { workspace = true, features = ["test-util"] }
+
+[lib]
+name = "nexus_storage"
+path = "src/lib.rs"
+
+[[bench]]
+name = "storage_query"
+harness = false

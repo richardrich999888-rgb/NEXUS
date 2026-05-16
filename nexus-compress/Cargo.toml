@@ -1,0 +1,28 @@
+[package]
+name = "nexus-compress"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "NEXUS Compression Layer - Powered by VECTRA"
+
+[dependencies]
+# VECTRA core (from local path)
+vectra = { path = "../vectra/vectra" }
+
+# NEXUS dependencies
+nexus-pcu = { path = "../nexus-pcu" }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Utilities
+thiserror = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+
+[lib]
+name = "nexus_compress"
+path = "src/lib.rs"

@@ -1,0 +1,6 @@
+# Telecom profile. High availability, audit trail, carrier-grade.
+crypto_mode = "fips"
+offline_verifier = true
+network_stack = true
+policy_enforcement = "strict"
+latency_sensitive = true

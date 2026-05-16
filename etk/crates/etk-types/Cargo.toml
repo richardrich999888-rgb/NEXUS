@@ -1,0 +1,11 @@
+[package]
+name = "etk-types"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "ETK schema lock v1.0 — fixed-size binary types only"
+
+[dependencies]
+hex = "0.4"

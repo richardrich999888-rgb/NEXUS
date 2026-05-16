@@ -1,0 +1,30 @@
+[package]
+name = "telos-protocol"
+version = "0.1.0"
+edition = "2021"
+authors = ["Vanian Technologies"]
+description = "TELOS: Cognitive Accountability Protocol for ASI"
+license = "Proprietary"
+repository = "https://github.com/vanian/nexus"
+
+[dependencies]
+# Core
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+uuid = { version = "1.6", features = ["v4"] }
+hex = "0.4"
+
+# Crypto
+ed25519-dalek = "2.0"
+rand = "0.8"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Async (for validator network)
+tokio = { version = "1.0", features = ["sync"], optional = true }
+
+[dev-dependencies]
+tokio = { version = "1.0", features = ["full", "test-util"] }

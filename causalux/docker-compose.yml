@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  causalux-node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+      - "9091:9090"
+    environment:
+      - RUST_LOG=info
+      - NODE_ID=node1
+      - DATA_DIR=/data
+    volumes:
+      - node1-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+  causalux-node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"
+      - "9092:9090"
+    environment:
+      - RUST_LOG=info
+      - NODE_ID=node2
+      - DATA_DIR=/data
+      - PEER_URL=http://causalux-node1:8080
+    volumes:
+      - node2-data:/data
+    depends_on:
+      - causalux-node1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  node1-data:
+  node2-data:
+  prometheus-data:
+  grafana-data:

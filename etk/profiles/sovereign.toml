@@ -1,0 +1,6 @@
+# Sovereign deployment profile. Same kernel, different policy.
+# Used by build/provenance and deployment tooling; not Cargo.
+crypto_mode = "fips"
+offline_verifier = true
+network_stack = false
+policy_enforcement = "strict"

@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'causalux-node1'
+    static_configs:
+      - targets: ['causalux-node1:9090']
+        labels:
+          node: 'node1'
+
+  - job_name: 'causalux-node2'
+    static_configs:
+      - targets: ['causalux-node2:9090']
+        labels:
+          node: 'node2'

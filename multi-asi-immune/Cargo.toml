@@ -1,0 +1,57 @@
+[package]
+name = "multi-asi-immune"
+version = "0.1.0"
+edition = "2021"
+authors = ["NEXUS Team"]
+description = "Distributed immune protocol for multi-ASI coordination"
+license = "MIT"
+repository = "https://github.com/nexus/multi-asi-immune"
+keywords = ["ai-safety", "distributed-systems", "reputation", "threat-intelligence"]
+categories = ["science", "algorithms", "cryptography"]
+
+[lib]
+name = "multi_asi_immune"
+path = "src/lib.rs"
+
+[dependencies]
+# Cryptography
+ed25519-dalek = { version = "2", features = ["rand_core"] }
+rand = "0.8"
+sha2 = "0.10"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Error handling
+thiserror = "1"
+
+# Tracing
+tracing = "0.1"
+
+# Homeostasis integration
+homeostasis-engine = { path = "../homeostasis-engine" }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
+proptest = "1"
+
+[[test]]
+name = "identity"
+path = "tests/identity_tests.rs"
+
+[[test]]
+name = "reputation"
+path = "tests/reputation_tests.rs"
+
+[[test]]
+name = "threat_propagation"
+path = "tests/threat_propagation_tests.rs"
+
+[[test]]
+name = "defection"
+path = "tests/defection_tests.rs"
+
+[[test]]
+name = "integration"
+path = "tests/integration_tests.rs"

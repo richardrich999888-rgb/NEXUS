@@ -1,0 +1,39 @@
+[package]
+name = "nexus-sync"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "NEXUS Sync Layer - Powered by CAUSALUX"
+
+[dependencies]
+# CAUSALUX core (from local path)
+causalux-v2 = { path = "../causalux" }
+
+# NEXUS dependencies
+nexus-pcu = { path = "../nexus-pcu" }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Cryptography (match workspace version)
+ed25519-dalek = { workspace = true }
+rand = { workspace = true }
+
+# Utilities
+thiserror = { workspace = true }
+chrono = { workspace = true }
+hex = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+criterion = { workspace = true }
+
+[[bench]]
+name = "routing_benefits"
+harness = false
+
+[lib]
+name = "nexus_sync"
+path = "src/lib.rs"

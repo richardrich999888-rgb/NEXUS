@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/etk-types",
+    "crates/etk-core",
+    "crates/etk-cli",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+authors = ["SYNTRIASS"]
+license = "Apache-2.0"
+repository = "https://github.com/syntriass/nexus"
+description = "ETK — Execution Truth Kernel (regulator-grade production foundation)"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+debug = false

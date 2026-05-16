@@ -1,0 +1,15 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "",
+    "tools": [],
+    "component": {
+      "type": "application",
+      "name": "etk-cli",
+      "version": "1.0.0"
+    }
+  },
+  "components": []
+}

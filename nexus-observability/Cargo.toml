@@ -1,0 +1,37 @@
+[package]
+name = "nexus-observability"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Observability layer for NEXUS (metrics, tracing, structured logging)"
+
+[dependencies]
+nexus-pcu = { path = "../nexus-pcu" }
+nexus-core = { path = "../nexus-core" }
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+chrono.workspace = true
+
+# Metrics
+prometheus = { version = "0.13", features = ["process"] }
+
+# Optional: OpenTelemetry support
+opentelemetry = { version = "0.21", optional = true }
+opentelemetry_sdk = { version = "0.21", optional = true }
+opentelemetry-otlp = { version = "0.14", optional = true }
+tracing-opentelemetry = { version = "0.21", optional = true }
+
+[features]
+default = []
+otel = ["opentelemetry", "opentelemetry_sdk", "opentelemetry-otlp", "tracing-opentelemetry"]
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+

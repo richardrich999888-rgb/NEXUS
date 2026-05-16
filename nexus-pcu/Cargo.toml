@@ -1,0 +1,43 @@
+[package]
+name = "nexus-pcu"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Portable Computation Units and Universal State Objects for NEXUS"
+
+[dependencies]
+nexus-core = { path = "../nexus-core", default-features = false, features = ["std"] }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+bincode = { workspace = true }
+
+# Cryptography
+ed25519-dalek = { workspace = true }
+blake3 = { workspace = true }
+rand = { workspace = true }
+
+# Utilities
+thiserror = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+hex = { workspace = true }
+
+# Post-Quantum Cryptography (FIPS 203 & 204)
+# Compatible with rand 0.8 (rand_core 0.6)
+fips203 = { version = "0.4", optional = true }
+fips204 = { version = "0.4", optional = true }
+
+[features]
+default = []
+# PQC feature provides actual ML-DSA/ML-KEM implementation
+pqc = ["fips203", "fips204"]
+
+[dev-dependencies]
+proptest = { workspace = true }
+
+[lib]
+name = "nexus_pcu"
+path = "src/lib.rs"

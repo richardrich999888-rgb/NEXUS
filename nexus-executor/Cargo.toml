@@ -1,0 +1,107 @@
+[package]
+name = "nexus-executor"
+version = "0.1.0"
+edition = "2021"
+authors = ["Katta Naga Sri Ganesh <naga@syntriass.com>"]
+description = "Production-grade WASM executor for NEXUS Portable Computation Units"
+license = "Proprietary"
+repository = "https://github.com/syntriass/nexus"
+
+[lib]
+name = "nexus_executor"
+path = "src/lib.rs"
+
+[[bin]]
+name = "nexus-exec"
+path = "src/main.rs"
+
+[dependencies]
+# NEXUS Core Types
+nexus-pcu = { path = "../nexus-pcu" }
+# Biological execution gate (guard implementation)
+nervous-system = { path = "../nervous-system" }
+developmental-gates = { path = "../developmental-gates" }
+multi-asi-immune = { path = "../multi-asi-immune" }
+
+# WASM Runtime - using wasmtime for production-grade execution
+wasmtime = { version = "25.0", features = ["async", "cranelift", "cache"] }
+wasmtime-wasi = "25.0"
+
+# Cryptography
+blake3 = { workspace = true }
+ed25519-dalek = { version = "2.0", features = ["rand_core", "serde"] } # Match workspace base version
+rand = { workspace = true }
+sha2 = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_bytes = "0.11"
+bincode = { workspace = true }
+
+# Async runtime
+tokio = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Logging and tracing
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Utilities
+bytes = "1.5" # Match workspace
+hex = { workspace = true }
+base64 = "0.22"
+parking_lot = "0.12"
+dashmap = "6.0"
+lru = "0.12"
+rocksdb = "0.22"
+
+# Time handling
+chrono = { workspace = true }
+
+# Observability
+nexus-observability = { path = "../nexus-observability" }
+
+[dev-dependencies]
+proptest = { workspace = true }
+criterion = { workspace = true }
+tempfile = { workspace = true }
+tokio-test = "0.4"
+wat = "1.217"  # WebAssembly text format parser for tests
+futures = "0.3"
+
+[[bench]]
+name = "execution_bench"
+harness = false
+
+[[bench]]
+name = "resource_usage"
+harness = false
+
+[[bench]]
+name = "overhead_breakdown"
+harness = false
+
+[[bench]]
+name = "throughput"
+harness = false
+
+[features]
+default = ["async"]
+async = []
+# Enable TEE attestation support (requires hardware)
+tee-sgx = []
+tee-sev = []
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.bench]
+lto = true
+codegen-units = 1

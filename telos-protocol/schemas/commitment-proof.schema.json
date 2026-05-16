@@ -1,0 +1,141 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://telos.protocol/schemas/commitment-proof.json",
+    "title": "TELOS Commitment Proof",
+    "description": "Cryptographic proof of an irreversible commitment in the TELOS protocol",
+    "type": "object",
+    "required": [
+        "commitmentId",
+        "requestId",
+        "decisionHash",
+        "entropyProof",
+        "authorityChain",
+        "validatorAttestations",
+        "committedAt",
+        "ledgerPosition"
+    ],
+    "properties": {
+        "commitmentId": {
+            "type": "string",
+            "pattern": "^telos:commitment:[a-f0-9]{64}$"
+        },
+        "requestId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+        },
+        "decisionHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+        },
+        "entropyProof": {
+            "$ref": "#/$defs/EntropyProof"
+        },
+        "authorityChain": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1
+        },
+        "validatorAttestations": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/ValidatorAttestation"
+            },
+            "minItems": 1
+        },
+        "committedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "ledgerPosition": {
+            "$ref": "#/$defs/LedgerPosition"
+        }
+    },
+    "$defs": {
+        "EntropyProof": {
+            "type": "object",
+            "required": [
+                "sourceType",
+                "amount",
+                "proof",
+                "generatedAt"
+            ],
+            "properties": {
+                "sourceType": {
+                    "type": "string",
+                    "enum": [
+                        "vdf",
+                        "beacon",
+                        "stake_burn",
+                        "tee_attestation"
+                    ]
+                },
+                "amount": {
+                    "type": "string",
+                    "pattern": "^[0-9]+$"
+                },
+                "proof": {
+                    "type": "object"
+                },
+                "generatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "ValidatorAttestation": {
+            "type": "object",
+            "required": [
+                "validatorId",
+                "attestationType",
+                "attestedAt",
+                "signature"
+            ],
+            "properties": {
+                "validatorId": {
+                    "type": "string"
+                },
+                "attestationType": {
+                    "type": "string",
+                    "enum": [
+                        "approve",
+                        "reject"
+                    ]
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "attestedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "signature": {
+                    "type": "string"
+                }
+            }
+        },
+        "LedgerPosition": {
+            "type": "object",
+            "required": [
+                "blockHeight",
+                "transactionIndex",
+                "merkleRoot"
+            ],
+            "properties": {
+                "blockHeight": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "transactionIndex": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "merkleRoot": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+# Lock compiler version for deterministic builds. Required for regulator-grade reproducibility.
+[toolchain]
+channel = "1.77.0"
+components = ["rustfmt", "clippy"]
+targets = ["x86_64-unknown-linux-gnu"]

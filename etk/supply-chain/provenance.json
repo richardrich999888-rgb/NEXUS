@@ -1,0 +1,8 @@
+{
+  "version": "1.0",
+  "source_commit": "git_hash_here",
+  "compiler_version": "rustc 1.77.0",
+  "build_hash": "sha256_of_binary_here",
+  "profile": "sovereign",
+  "schema_version": "1.0"
+}

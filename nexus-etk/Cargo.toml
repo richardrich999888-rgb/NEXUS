@@ -1,0 +1,18 @@
+[package]
+name = "nexus-etk"
+version = "1.0.0"
+edition = "2021"
+description = "Execution Truth Kernel (ETK) — passive, append-only verifiable execution proof"
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+sha2 = "0.10"
+ed25519-dalek = { version = "2.0", features = ["rand_core"] }
+thiserror = "1.0"
+hex = "0.4"
+
+[dev-dependencies]
+tempfile = "3.8"
+rand = "0.8"
