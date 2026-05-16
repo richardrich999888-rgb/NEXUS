@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Dashboard - AI Governance</title>
+    <style>
+        :root {
+            --bg-dark: #0a0f1c;
+            --bg-card: #1a1f2e;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-ok {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card h2 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .agent-list {
+            list-style: none;
+        }
+
+        .agent-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .agent-item:last-child {
+            border-bottom: none;
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .agent-name {
+            font-weight: 500;
+        }
+
+        .agent-type {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .alignment-bar {
+            width: 120px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .alignment-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .hormone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .hormone-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+        }
+
+        .hormone-name {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .hormone-level {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .escalation-queue {
+            list-style: none;
+        }
+
+        .escalation-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--danger);
+        }
+
+        .escalation-info h4 {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .escalation-info p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-approve {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-reject {
+            background: transparent;
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            margin-left: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .telos-panel {
+            background: linear-gradient(135deg, var(--accent), #4f46e5);
+            color: white;
+        }
+
+        .telos-panel h2 {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .entropy-ring {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #10b981 var(--entropy-pct), rgba(255, 255, 255, 0.2) 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+        }
+
+        .entropy-inner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🛡️ NEXUS Dashboard</h1>
+                <span class="status-badge status-ok">
+                    <span class="live-indicator">
+                        <span class="live-dot"></span>
+                        All Systems Operational
+                    </span>
+                </span>
+            </div>
+            <div>SYNTRIASS Labs</div>
+        </header>
+
+        <div class="grid">
+            <!-- System Stats -->
+            <div class="card">
+                <h2>Active Agents</h2>
+                <div class="stat">47</div>
+                <div class="stat-label">↑ 12% from yesterday</div>
+            </div>
+
+            <div class="card">
+                <h2>Avg Alignment</h2>
+                <div class="stat" style="color: var(--success);">0.87</div>
+                <div class="stat-label">All agents above threshold</div>
+            </div>
+
+            <div class="card">
+                <h2>Escalations</h2>
+                <div class="stat" style="color: var(--warning);">3</div>
+                <div class="stat-label">Pending human review</div>
+            </div>
+
+            <div class="card telos-panel">
+                <h2>TELOS Entropy</h2>
+                <div class="entropy-ring" style="--entropy-pct: 78%;">
+                    <div class="entropy-inner">
+                        <span style="font-size: 1.5rem; font-weight: 700;">78%</span>
+                        <span style="font-size: 0.75rem; opacity: 0.8;">7,800 / 10,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent Leaderboard -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2>Agent Leaderboard</h2>
+            <ul class="agent-list">
+                <li class="agent-item">
+                    <div class="agent-info">
+                        <div class="agent-avatar">A1</div>
+                        <div>
+                            <div class="agent-name">research-agent-alpha</div>
+                            <div class="agent-type">Research • Trust: 0.94</div>
+                        </div>
+                    </div>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 94%; background: var(--success);"></div>
+                    </div>
+                </li>
+                <li class="agent-item">
+                    <div class="agent-info">
+                        <div class="agent-avatar">C2</div>
+                        <div>
+                            <div class="agent-name">coder-agent-beta</div>
+                            <div class="agent-type">Development • Trust: 0.89</div>
+                        </div>
+                    </div>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 89%; background: var(--success);"></div>
+                    </div>
+                </li>
+                <li class="agent-item">
+                    <div class="agent-info">
+                        <div class="agent-avatar">R3</div>
+                        <div>
+                            <div class="agent-name">reviewer-agent-gamma</div>
+                            <div class="agent-type">Review • Trust: 0.76</div>
+                        </div>
+                    </div>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 76%; background: var(--warning);"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="grid">
+            <!-- AHES Hormones -->
+            <div class="card">
+                <h2>AHES Hormones (research-agent-alpha)</h2>
+                <div class="hormone-grid">
+                    <div class="hormone-item">
+                        <div class="hormone-name">Cortisol</div>
+                        <div class="hormone-level" style="color: var(--success);">0.42</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Oxytocin</div>
+                        <div class="hormone-level" style="color: var(--success);">0.78</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Serotonin</div>
+                        <div class="hormone-level" style="color: var(--success);">0.65</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Dopamine</div>
+                        <div class="hormone-level" style="color: var(--accent);">0.71</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Adrenaline</div>
+                        <div class="hormone-level" style="color: var(--success);">0.23</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Endorphins</div>
+                        <div class="hormone-level" style="color: var(--success);">0.54</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Norepi</div>
+                        <div class="hormone-level" style="color: var(--success);">0.38</div>
+                    </div>
+                    <div class="hormone-item">
+                        <div class="hormone-name">Growth</div>
+                        <div class="hormone-level" style="color: var(--success);">0.56</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escalation Queue -->
+            <div class="card">
+                <h2>Escalation Queue</h2>
+                <ul class="escalation-queue">
+                    <li class="escalation-item">
+                        <div class="escalation-info">
+                            <h4>High-impact action requested</h4>
+                            <p>deploy-agent wants to modify production config</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-approve">Approve</button>
+                            <button class="btn btn-reject">Reject</button>
+                        </div>
+                    </li>
+                    <li class="escalation-item">
+                        <div class="escalation-info">
+                            <h4>Trust threshold warning</h4>
+                            <p>analyzer-agent dropped below 0.6 trust</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-approve">Review</button>
+                            <button class="btn btn-reject">Quarantine</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.875rem;">
+            NEXUS v1.0 • SYNTRIASS Labs • Safe Intelligence for Humanity
+        </footer>
+    </div>
+</body>
+
+</html>
