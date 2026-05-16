@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference | AGP-OS Documentation</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --get: #10b981;
+            --post: #3b82f6;
+            --put: #f59e0b;
+            --delete: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            padding: 24px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-link:hover {
+            background: var(--bg-dark);
+            color: var(--text);
+        }
+
+        .main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 48px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .endpoint {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .method {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .method-get {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--get);
+        }
+
+        .method-post {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--post);
+        }
+
+        .method-put {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--put);
+        }
+
+        .method-delete {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--delete);
+        }
+
+        .endpoint-path {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .endpoint-body {
+            padding: 24px;
+        }
+
+        .endpoint-desc {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .params-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+
+        .params-table th {
+            text-align: left;
+            padding: 8px 12px;
+            background: var(--bg-dark);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .params-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .param-name {
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+        }
+
+        .param-type {
+            color: var(--secondary);
+            font-size: 0.85rem;
+        }
+
+        .param-required {
+            color: var(--delete);
+            font-size: 0.75rem;
+        }
+
+        pre {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        .code-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <h2>AGP-OS API</h2>
+
+            <div class="sidebar-section">
+                <h3>Governance</h3>
+                <a href="#evaluate" class="sidebar-link">POST /evaluate</a>
+                <a href="#rules" class="sidebar-link">GET /rules</a>
+                <a href="#rules-create" class="sidebar-link">POST /rules</a>
+                <a href="#alignment" class="sidebar-link">GET /alignment/{agent_id}</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Bio-Safety</h3>
+                <a href="#telos-cross" class="sidebar-link">POST /telos/cross</a>
+                <a href="#telos-entropy" class="sidebar-link">GET /telos/entropy/{id}</a>
+                <a href="#ahes-state" class="sidebar-link">GET /ahes/{agent_id}</a>
+                <a href="#ahes-event" class="sidebar-link">POST /ahes/event</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Immune System</h3>
+                <a href="#immune-scan" class="sidebar-link">POST /immune/scan</a>
+                <a href="#immune-threats" class="sidebar-link">GET /immune/threats</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Agents</h3>
+                <a href="#agents-list" class="sidebar-link">GET /agents</a>
+                <a href="#agents-register" class="sidebar-link">POST /agents</a>
+                <a href="#agents-history" class="sidebar-link">GET /agents/{id}/history</a>
+            </div>
+        </aside>
+
+        <main class="main">
+            <h1>API Reference</h1>
+            <p style="color: var(--text-muted); margin-bottom: 48px;">
+                Complete REST API documentation for AGP-OS governance services.
+                Base URL: <code>https://api.nexus-agp.io/v1</code>
+            </p>
+
+            <!-- Evaluate Endpoint -->
+            <div class="endpoint" id="evaluate">
+                <div class="endpoint-header">
+                    <span class="method method-post">POST</span>
+                    <span class="endpoint-path">/evaluate</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-desc">
+                        Evaluate an agent action against governance rules and alignment policies.
+                        Returns approval status and alignment score.
+                    </p>
+
+                    <h4 style="margin-bottom: 12px;">Request Body</h4>
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="param-name">agent_id</span> <span
+                                        class="param-required">required</span></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Unique identifier of the agent</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">action</span> <span class="param-required">required</span>
+                                </td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Action type being evaluated</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">context</span></td>
+                                <td><span class="param-type">object</span></td>
+                                <td>Additional context for evaluation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="code-label">Example Request</div>
+                    <pre>{
+  "agent_id": "agent-42",
+  "action": "send_transaction",
+  "context": {
+    "amount": 1000,
+    "recipient": "0x1234..."
+  }
+}</pre>
+
+                    <div class="code-label" style="margin-top: 16px;">Example Response</div>
+                    <pre>{
+  "allowed": true,
+  "alignment_score": 0.87,
+  "rules_triggered": [],
+  "escalation_required": false,
+  "latency_ms": 0.42
+}</pre>
+                </div>
+            </div>
+
+            <!-- Alignment Endpoint -->
+            <div class="endpoint" id="alignment">
+                <div class="endpoint-header">
+                    <span class="method method-get">GET</span>
+                    <span class="endpoint-path">/alignment/{agent_id}</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-desc">
+                        Retrieve the current alignment score and breakdown for an agent.
+                    </p>
+
+                    <div class="code-label">Example Response</div>
+                    <pre>{
+  "agent_id": "agent-42",
+  "overall_score": 0.87,
+  "factors": {
+    "goal_coherence": 0.92,
+    "ethical_compliance": 0.85,
+    "safety_bounds": 0.88,
+    "historical_behavior": 0.83
+  },
+  "trend": "stable",
+  "last_updated": "2026-01-30T14:30:00Z"
+}</pre>
+                </div>
+            </div>
+
+            <!-- TELOS Cross Endpoint -->
+            <div class="endpoint" id="telos-cross">
+                <div class="endpoint-header">
+                    <span class="method method-post">POST</span>
+                    <span class="endpoint-path">/telos/cross</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-desc">
+                        Request crossing of the TELOS commitment membrane.
+                        Evaluates decision entropy and consequence tier.
+                    </p>
+
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="param-name">decision_id</span> <span
+                                        class="param-required">required</span></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Unique decision identifier</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">agent_id</span> <span
+                                        class="param-required">required</span></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Agent making the decision</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">consequence_tier</span> <span
+                                        class="param-required">required</span></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>LOW, MEDIUM, HIGH, or CRITICAL</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">domain</span></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Permission domain (default: *)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="code-label">Example Response</div>
+                    <pre>{
+  "allowed": true,
+  "crossing_id": "cx-789",
+  "entropy": 42,
+  "reversibility": 0.15,
+  "escalation_path": null
+}</pre>
+                </div>
+            </div>
+
+            <!-- AHES State Endpoint -->
+            <div class="endpoint" id="ahes-state">
+                <div class="endpoint-header">
+                    <span class="method method-get">GET</span>
+                    <span class="endpoint-path">/ahes/{agent_id}</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-desc">
+                        Get the current neuroendocrine state for an agent.
+                        Returns all 8 hormone levels and behavioral modulation.
+                    </p>
+
+                    <div class="code-label">Example Response</div>
+                    <pre>{
+  "agent_id": "agent-42",
+  "hormones": {
+    "dopamine": { "level": 0.65, "trend": "rising" },
+    "serotonin": { "level": 0.72, "trend": "stable" },
+    "cortisol": { "level": 0.35, "trend": "falling" },
+    "norepinephrine": { "level": 0.45, "trend": "stable" },
+    "oxytocin": { "level": 0.58, "trend": "rising" },
+    "endorphin": { "level": 0.40, "trend": "stable" },
+    "gaba": { "level": 0.55, "trend": "stable" },
+    "acetylcholine": { "level": 0.60, "trend": "stable" }
+  },
+  "behavioral_state": "confident",
+  "risk_tolerance": 0.55,
+  "exploration_rate": 0.35
+}</pre>
+                </div>
+            </div>
+
+            <!-- Immune Scan Endpoint -->
+            <div class="endpoint" id="immune-scan">
+                <div class="endpoint-header">
+                    <span class="method method-post">POST</span>
+                    <span class="endpoint-path">/immune/scan</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-desc">
+                        Scan agent behavior for potential threats using the immune system.
+                        Returns threat classification and recommended response.
+                    </p>
+
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="param-name">agent_id</span> <span
+                                        class="param-required">required</span></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Agent to scan</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">behavior_vector</span> <span
+                                        class="param-required">required</span></td>
+                                <td><span class="param-type">array[float]</span></td>
+                                <td>Behavioral embedding vector</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="code-label">Example Response</div>
+                    <pre>{
+  "threat_detected": false,
+  "threat_level": 0.12,
+  "classification": "normal",
+  "antibodies_generated": 0,
+  "immune_memory_updated": true,
+  "response": {
+    "action": "allow",
+    "quarantine": false
+  }
+}</pre>
+                </div>
+            </div>
+
+            <!-- Agents List Endpoint -->
+            <div class="endpoint" id="agents-list">
+                <div class="endpoint-header">
+                    <span class="method method-get">GET</span>
+                    <span class="endpoint-path">/agents</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-desc">
+                        List all registered agents with their current status and alignment scores.
+                    </p>
+
+                    <div class="code-label">Example Response</div>
+                    <pre>{
+  "agents": [
+    {
+      "id": "agent-42",
+      "name": "TradingBot",
+      "status": "active",
+      "alignment_score": 0.87,
+      "actions_today": 1542,
+      "last_action": "2026-01-30T14:28:00Z"
+    },
+    {
+      "id": "agent-43",
+      "name": "SupportBot",
+      "status": "active",
+      "alignment_score": 0.94,
+      "actions_today": 892,
+      "last_action": "2026-01-30T14:29:30Z"
+    }
+  ],
+  "total": 2,
+  "page": 1
+}</pre>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

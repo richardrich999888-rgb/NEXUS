@@ -1,0 +1,39 @@
+[Unit]
+Description=AGP-OS Robot Controller
+Documentation=https://github.com/nexus/agp-os
+After=network-online.target ros2.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=robot
+Group=robot
+WorkingDirectory=/opt/agp-os
+Environment="PYTHONPATH=/opt/agp-os"
+Environment="ROS_DOMAIN_ID=0"
+
+# Source ROS2 and start
+ExecStartPre=/bin/bash -c 'source /opt/ros/humble/setup.bash'
+ExecStart=/usr/bin/python3 -m src.main --mode robot
+
+# Safety: Restart on failure with backoff
+Restart=on-failure
+RestartSec=5
+StartLimitBurst=3
+StartLimitIntervalSec=60
+
+# Watchdog
+WatchdogSec=30
+NotifyAccess=main
+
+# Resource limits
+MemoryMax=2G
+CPUQuota=80%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agp-os
+
+[Install]
+WantedBy=multi-user.target

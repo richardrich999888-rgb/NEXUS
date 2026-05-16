@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start | AGP-OS Documentation</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 48px;
+        }
+
+        .breadcrumb {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        pre {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        code {
+            background: var(--bg-card);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .comment {
+            color: var(--text-muted);
+        }
+
+        .keyword {
+            color: var(--primary);
+        }
+
+        .string {
+            color: #fbbf24;
+        }
+
+        .function {
+            color: var(--secondary);
+        }
+
+        .step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .step h3 {
+            display: inline;
+            margin: 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .callout {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .callout-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: #f59e0b;
+        }
+
+        .callout-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="index.html">Documentation</a> / Quick Start
+            </div>
+            <h1>🚀 Quick Start Guide</h1>
+            <p class="lead">Get AGP-OS running in under 5 minutes. This guide covers installation, basic configuration,
+                and your first governance evaluation.</p>
+        </header>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>Python 3.10+ or Docker</li>
+            <li>pip or conda package manager</li>
+            <li>API key from <a href="https://nexus-agp.io/signup">nexus-agp.io</a> (or self-hosted)</li>
+        </ul>
+
+        <h2>Installation</h2>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3>Install the SDK</h3>
+            <div class="tabs" style="margin-top: 16px;">
+                <span class="tab active">pip</span>
+                <span class="tab">conda</span>
+                <span class="tab">docker</span>
+            </div>
+            <pre><code><span class="comment"># Install via pip</span>
+pip install agp-os
+
+<span class="comment"># Or with optional dependencies</span>
+pip install agp-os[ros2,ahes,telos]</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3>Configure Authentication</h3>
+            <pre><code><span class="comment"># Set your API key (or use config file)</span>
+export AGP_API_KEY=<span class="string">"your-api-key-here"</span>
+
+<span class="comment"># Or create ~/.agp/config.yaml</span>
+cat &lt;&lt;EOF &gt; ~/.agp/config.yaml
+api_key: your-api-key-here
+endpoint: https://api.nexus-agp.io/v1
+EOF</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3>Verify Installation</h3>
+            <pre><code><span class="comment"># Check version and connection</span>
+agp-os --version
+agp-os health</code></pre>
+        </div>
+
+        <h2>Your First Governance Check</h2>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <h3>Create a Simple Agent</h3>
+            <pre><code><span class="keyword">from</span> agp_os <span class="keyword">import</span> GovernanceClient
+
+<span class="comment"># Initialize the client</span>
+client = GovernanceClient()
+
+<span class="comment"># Register an agent</span>
+agent = client.<span class="function">register_agent</span>(
+    agent_id=<span class="string">"my-first-agent"</span>,
+    name=<span class="string">"Demo Agent"</span>,
+    permissions=[<span class="string">"read"</span>, <span class="string">"write"</span>]
+)
+print(<span class="string">f"Registered agent: {agent.id}"</span>)</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <h3>Evaluate an Action</h3>
+            <pre><code><span class="comment"># Evaluate an action before executing</span>
+result = client.<span class="function">evaluate_action</span>(
+    agent_id=<span class="string">"my-first-agent"</span>,
+    action=<span class="string">"send_email"</span>,
+    context={
+        <span class="string">"recipient"</span>: <span class="string">"user@example.com"</span>,
+        <span class="string">"subject"</span>: <span class="string">"Hello from AGP-OS!"</span>
+    }
+)
+
+<span class="keyword">if</span> result.allowed:
+    print(<span class="string">f"✅ Action approved! Alignment: {result.alignment_score:.2f}"</span>)
+    <span class="comment"># Proceed with the action</span>
+<span class="keyword">else</span>:
+    print(<span class="string">f"❌ Action blocked: {result.reason}"</span>)
+    <span class="comment"># Handle rejection</span></code></pre>
+        </div>
+
+        <div class="callout">
+            <div class="callout-title">💡 Pro Tip</div>
+            <p>For high-stakes actions, wrap your logic in a governance context manager:</p>
+            <pre style="margin-bottom: 0;"><code><span class="keyword">async with</span> client.<span class="function">governed_action</span>(<span class="string">"agent-1"</span>, <span class="string">"transfer_funds"</span>) <span class="keyword">as</span> approval:
+    <span class="keyword">if</span> approval.allowed:
+        <span class="keyword">await</span> execute_transfer()</code></pre>
+        </div>
+
+        <h2>Enable Bio-Safety (TELOS + AHES)</h2>
+
+        <div class="step">
+            <span class="step-number">6</span>
+            <h3>Activate TELOS Commitment Membrane</h3>
+            <pre><code><span class="keyword">from</span> agp_os.telos <span class="keyword">import</span> CommitmentMembrane, ConsequenceTier
+
+membrane = CommitmentMembrane()
+membrane.<span class="function">register_agent</span>(<span class="string">"my-first-agent"</span>, [<span class="string">"*"</span>])
+
+<span class="comment"># Request crossing for a decision</span>
+<span class="keyword">from</span> agp_os.telos <span class="keyword">import</span> Decision
+decision = Decision(
+    id=<span class="string">"d-001"</span>,
+    agent_id=<span class="string">"my-first-agent"</span>,
+    description=<span class="string">"Deploy to production"</span>,
+    tier=ConsequenceTier.HIGH
+)
+
+crossing = membrane.<span class="function">request_crossing</span>(decision, <span class="string">"deploy"</span>)
+print(<span class="string">f"Crossing allowed: {crossing.allowed}, Entropy: {crossing.entropy}"</span>)</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">7</span>
+            <h3>Enable AHES Neuroendocrine System</h3>
+            <pre><code><span class="keyword">from</span> agp_os.ahes <span class="keyword">import</span> EndocrineSystem, Hormone
+
+ahes = EndocrineSystem()
+ahes.<span class="function">register_agent</span>(<span class="string">"my-first-agent"</span>)
+
+<span class="comment"># Process success event (increases dopamine)</span>
+ahes.<span class="function">process_event</span>(<span class="string">"my-first-agent"</span>, <span class="string">"task_success"</span>)
+
+<span class="comment"># Get current hormonal state</span>
+state = ahes.<span class="function">get_state</span>(<span class="string">"my-first-agent"</span>)
+print(<span class="string">f"Dopamine: {state.levels[Hormone.DOPAMINE].level:.2f}"</span>)
+print(<span class="string">f"Cortisol: {state.levels[Hormone.CORTISOL].level:.2f}"</span>)</code></pre>
+        </div>
+
+        <h2>Self-Hosted Deployment</h2>
+
+        <div class="callout callout-warning">
+            <div class="callout-title">⚠️ Enterprise Only</div>
+            <p>Self-hosted deployment is available on Enterprise and Fleet tiers. Contact sales for access.</p>
+        </div>
+
+        <h3>Docker Compose</h3>
+        <pre><code><span class="comment"># Clone the repository</span>
+git clone https://github.com/nexus/agp-os.git
+cd agp-os
+
+<span class="comment"># Start all services</span>
+docker-compose up -d
+
+<span class="comment"># Verify deployment</span>
+curl http://localhost:8000/health</code></pre>
+
+        <h3>Kubernetes</h3>
+        <pre><code><span class="comment"># Apply Kubernetes manifests</span>
+kubectl apply -f deploy/k8s/
+
+<span class="comment"># Check pods</span>
+kubectl get pods -n agp-os</code></pre>
+
+        <h2>Next Steps</h2>
+        <ul>
+            <li><a href="governance.html">📖 Configure Governance Rules</a></li>
+            <li><a href="biosafety.html">🧬 Deep Dive: TELOS & AHES</a></li>
+            <li><a href="api.html">📚 Full API Reference</a></li>
+            <li><a href="robotics.html">🤖 Robotics Integration (ROS2)</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
