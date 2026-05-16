@@ -1,0 +1,31 @@
+# Core dependencies
+gmpy2>=2.1.0
+cryptography>=38.0.0
+pycryptodome>=3.15.0
+argon2-cffi>=21.3.0
+
+# Networking
+requests>=2.28.0
+websockets>=10.0
+zeroconf>=0.38.0
+
+# Utilities
+numpy>=1.21.0
+click>=8.0.0
+rich>=10.0.0
+
+# Production dependencies
+sqlalchemy>=2.0.0
+fastapi>=0.100.0
+uvicorn>=0.23.0
+redis>=4.6.0
+prometheus_client>=0.17.0
+slowapi>=0.1.8
+stripe>=5.0.0
+# coinbase-commerce integration (simulated or via sdk if available)
+# pydantic handled by fastapi
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.18.0
+pytest-cov>=3.0.0

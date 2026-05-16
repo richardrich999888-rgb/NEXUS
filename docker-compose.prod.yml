@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  asim-api:
+    build: .
+    container_name: asim-api-prod
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    networks:
+      - asim-net
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: asim-redis-prod
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - asim-net
+
+  prometheus:
+    image: prom/prometheus
+    container_name: asim-prometheus-prod
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - asim-net
+
+volumes:
+  redis-data:
+
+
+networks:
+  asim-net:
+    driver: bridge

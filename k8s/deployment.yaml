@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aura-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aura-api
+  template:
+    metadata:
+      labels:
+        app: aura-api
+    spec:
+      containers:
+      - name: aura-api
+        image: aura-protocol/api:latest
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: aura-config
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: aura-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: aura-secrets
+              key: redis-url
+        - name: STRIPE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aura-secrets
+              key: stripe-key
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        healthCheck:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 30

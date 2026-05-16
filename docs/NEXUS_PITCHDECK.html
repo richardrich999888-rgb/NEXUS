@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | SYNTRIASS Labs - Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --darker: #020617;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            --gradient-2: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 2rem;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 40px 30px;
+        }
+        
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px 25px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .comparison-table th {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+        
+        .comparison-table th:first-child {
+            color: var(--text-muted);
+        }
+        
+        .comparison-table td {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        .comparison-table td:last-child {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.15) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 30px 40px;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box p {
+            font-size: 1.3rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .market-bar {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        
+        .market-label {
+            width: 100px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .market-bar-fill {
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            font-weight: 600;
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .tam-bar { background: var(--gradient-1); width: 100%; }
+        .sam-bar { background: var(--gradient-2); width: 45%; }
+        .som-bar { background: var(--gradient-3); width: 12%; }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            flex: 1;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 20px auto;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        
+        .timeline-year {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 180px;
+            margin: 0 auto;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            font-size: 1.2rem;
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text);
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .patent-badge {
+            display: inline-block;
+            background: var(--gradient-3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: #fff;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            margin: 3rem 0;
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .inventor-card {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: var(--card-bg);
+            padding: 30px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .inventor-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .inventor-info h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        
+        .inventor-info p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: Title -->
+    <section class="slide">
+        <div class="slide-content">
+            <div class="logo">SYNTRIASS LABS</div>
+            <h1>NEXUS</h1>
+            <p class="tagline">Collapse Cloud Infrastructure from 47 Layers to 1</p>
+            <p style="font-size: 1.4rem; margin-top: 2rem;">A deterministic compute and data orchestration platform<br>designed to eliminate infrastructure inefficiencies.</p>
+            
+            <div class="grid-3" style="margin-top: 4rem;">
+                <div class="card stat-card">
+                    <div class="stat-value">20-50%</div>
+                    <div class="stat-label">Cloud Spend is Wasted</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value"><1ms</div>
+                    <div class="stat-label">Causal Sync Latency</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value">Zero</div>
+                    <div class="stat-label">Central Coordination</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">01 / 12</div>
+    </section>
+
+    <!-- SLIDE 2: Problem -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>The Problem</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 3rem;">Modern cloud infrastructure is fundamentally broken.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="card" style="margin-bottom: 25px;">
+                        <div class="card-icon">💸</div>
+                        <h3>Massive Waste</h3>
+                        <p>Organizations waste 20-50% of their cloud spend on duplicate computation, idle resources, and overprovisioned infrastructure. Global cloud spending hits $800B+ annually.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h3>Excessive Data Movement</h3>
+                        <p>Traditional systems move 100GB datasets to code. Data egress fees compound. Bandwidth becomes the bottleneck.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" style="margin-bottom: 25px;">
+                        <div class="card-icon">📊</div>
+                        <h3>Over-Replication</h3>
+                        <p>Same data replicated 5-10x across caches, databases, queues, and file systems. Each with its own sync semantics.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <h3>Layer Explosion</h3>
+                        <p>47+ infrastructure layers: Kubernetes, service mesh, Kafka, Redis, PostgreSQL, CDN... Each adds latency, cost, and failure modes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">02 / 12</div>
+    </section>
+
+    <!-- SLIDE 3: Solution -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>The NEXUS Solution</h2>
+            <p class="tagline">Move Code to Data. Not Data to Code.</p>
+            
+            <div class="highlight-box">
+                <p>NEXUS is a deterministic compute and data orchestration platform that eliminates duplicate computation, reduces data movement, and unifies state management into a single algebraic substrate.</p>
+            </div>
+            
+            <div class="grid-2" style="margin-top: 3rem;">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Core Innovation</h3>
+                    <ul class="feature-list">
+                        <li><strong>Portable Computation Units (PCU)</strong> — Content-addressed, deterministic execution</li>
+                        <li><strong>Universal State Objects (USO)</strong> — One primitive for DB, cache, queue, file</li>
+                        <li><strong>Causal Synchronization</strong> — Conflict-free merges with Merkle provenance</li>
+                        <li><strong>Code Routing</strong> — Computation travels to where data lives</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Key Invariants</h3>
+                    <ul class="feature-list">
+                        <li><strong>Intrinsic Identity</strong> — Security embedded in computation unit</li>
+                        <li><strong>Causal Integrity</strong> — Every state change carries its history</li>
+                        <li><strong>Lossless Mobility</strong> — Bit-perfect state transfer</li>
+                        <li><strong>Deterministic Convergence</strong> — No central coordination needed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">03 / 12</div>
+    </section>
+
+    <!-- SLIDE 4: How It Works -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>How It Works</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Traditional Stack</th>
+                        <th>NEXUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Model</td>
+                        <td>Data-to-Code (Fetch)</td>
+                        <td>Code-to-Data (Route)</td>
+                    </tr>
+                    <tr>
+                        <td>Logic</td>
+                        <td>Microservices (Centralized)</td>
+                        <td>PCUs (Decentralized)</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>Databases (Coordinated)</td>
+                        <td>USOs (Causal/CRDTs)</td>
+                    </tr>
+                    <tr>
+                        <td>Performance</td>
+                        <td>200ms+ Latency</td>
+                        <td>&lt;1ms Causal Sync</td>
+                    </tr>
+                    <tr>
+                        <td>Identity</td>
+                        <td>External IAM</td>
+                        <td>Intrinsic Ed25519</td>
+                    </tr>
+                    <tr>
+                        <td>Sync</td>
+                        <td>Polling / Webhooks</td>
+                        <td>Gossip + BFT</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-number">04 / 12</div>
+    </section>
+
+    <!-- SLIDE 5: Technology Stack -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Technology Architecture</h2>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">⚛️</div>
+                    <h3>Layer 1: Da Vinci Atom</h3>
+                    <p><strong>Persistence & Compression</strong></p>
+                    <p style="margin-top: 1rem;">VECTRA entropy-bound compression. RocksDB algebraic indexing. Content-addressed storage.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Layer 2: Tesla Resonance</h3>
+                    <p><strong>Sync & Consensus</strong></p>
+                    <p style="margin-top: 1rem;">BFT validator. Epidemic gossip. Causal DAG with Merkle provenance.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Layer 3: Morgan Economy</h3>
+                    <p><strong>Metrics & Cost</strong></p>
+                    <p style="margin-top: 1rem;">Real-time ROI tracking. Token-based metering. Cost optimization engine.</p>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="grid-4">
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <p style="font-weight: 600; color: var(--text);">nexus-pcu</p>
+                    <p style="font-size: 0.9rem;">PCU/USO Primitives</p>
+                </div>
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <p style="font-weight: 600; color: var(--text);">causalux</p>
+                    <p style="font-size: 0.9rem;">Sync Fabric</p>
+                </div>
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <p style="font-weight: 600; color: var(--text);">vectra</p>
+                    <p style="font-size: 0.9rem;">Compression Engine</p>
+                </div>
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <p style="font-weight: 600; color: var(--text);">nexus-telecom</p>
+                    <p style="font-size: 0.9rem;">6G/Edge SDK</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">05 / 12</div>
+    </section>
+
+    <!-- SLIDE 6: Use Cases -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Primary Use Cases</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon">📡</div>
+                    <h3>6G RAN & Edge Telecommunications</h3>
+                    <p style="margin-bottom: 1rem;"><strong>Problem:</strong> 5G/6G requires sub-1ms control loops. Cloud latency is too high.</p>
+                    <p><strong>NEXUS Fix:</strong> Move signal processing PCU directly to edge nodes at the tower. Eliminate core network round-trip.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Collaborative Edge AI</h3>
+                    <p style="margin-bottom: 1rem;"><strong>Problem:</strong> Distributed AI training is bandwidth-heavy.</p>
+                    <p><strong>NEXUS Fix:</strong> Send model weights (PCU) to data nodes. Run local gradients. Sync only weight updates via Causal Tensors.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏗️</div>
+                    <h3>Industrial Zero-Trust (Offline-First)</h3>
+                    <p style="margin-bottom: 1rem;"><strong>Problem:</strong> Factories and mines lose internet. Traditional SaaS fails.</p>
+                    <p><strong>NEXUS Fix:</strong> Full state in USOs at edge. Operations continue offline. Causal DAGs auto-merge on reconnect.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Cloud Cost Elimination</h3>
+                    <p style="margin-bottom: 1rem;"><strong>Problem:</strong> 47-layer stacks (K8s, Kafka, DBs, Redis, CDN).</p>
+                    <p><strong>NEXUS Fix:</strong> Replace with one substrate. No REST overhead. No JSON parsing bottlenecks. Direct binary execution.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">06 / 12</div>
+    </section>
+
+    <!-- SLIDE 7: Market Opportunity -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Market Opportunity</h2>
+            <p style="margin-bottom: 2rem;">Conservative estimates based on publicly reported industry spending (2024)</p>
+            
+            <div style="max-width: 900px;">
+                <div class="market-bar">
+                    <div class="market-label">TAM</div>
+                    <div class="market-bar-fill tam-bar">$75B - $125B (Inefficiency-addressable infrastructure)</div>
+                </div>
+                <div class="market-bar">
+                    <div class="market-label">SAM</div>
+                    <div class="market-bar-fill sam-bar">$30B - $50B (Enterprise, Telecom, Gov)</div>
+                </div>
+                <div class="market-bar">
+                    <div class="market-label">SOM</div>
+                    <div class="market-bar-fill som-bar">$50M - $150M (5-7 year target)</div>
+                </div>
+            </div>
+            
+            <div class="grid-3" style="margin-top: 3rem;">
+                <div class="card stat-card">
+                    <div class="stat-value">$800B+</div>
+                    <div class="stat-label">Global Cloud Spend (2024)</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value">20-50%</div>
+                    <div class="stat-label">Reported Waste Rate</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value">$200B+</div>
+                    <div class="stat-label">Big Data Infrastructure</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">07 / 12</div>
+    </section>
+
+    <!-- SLIDE 8: IP & Defensibility -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Intellectual Property</h2>
+            <p style="margin-bottom: 2rem;">Patent-pending technology with 3 distinct invention families</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <h3 style="color: var(--accent);">Family A</h3>
+                    <p style="font-weight: 600; color: var(--text); margin-bottom: 1rem;">Content-Addressed Computation</p>
+                    <p>Deterministic PCU identity from code + inputs + params + principal. Enables caching, routing, licensing.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="patent-badge">HIGH Defensibility</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--secondary);">Family B</h3>
+                    <p style="font-weight: 600; color: var(--text); margin-bottom: 1rem;">Algebraic Causal Infrastructure</p>
+                    <p>Merkle provenance + vector clocks + algebraic merge. Idempotent, commutative, deterministic.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="patent-badge">HIGH Defensibility</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary);">Family C</h3>
+                    <p style="font-weight: 600; color: var(--text); margin-bottom: 1rem;">Code-Bound Licensing</p>
+                    <p>Cryptographic licenses bound to content hash of code. Cannot be transferred to different code versions.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="patent-badge">MEDIUM Defensibility</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <p style="font-size: 1.1rem;">📋 <strong>Patent Status:</strong> IN202501XXXXX (Pending) | PCT filing planned Month 8-10</p>
+            </div>
+        </div>
+        <div class="slide-number">08 / 12</div>
+    </section>
+
+    <!-- SLIDE 9: Business Model -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Business Model</h2>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">📜</div>
+                    <h3>Platform Licensing</h3>
+                    <p>Enterprise licenses for NEXUS deployment. Per-node or capacity-based pricing. Annual contracts with support.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h3>Professional Services</h3>
+                    <p>Integration consulting. Migration assistance. Custom PCU development. Training programs.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">☁️</div>
+                    <h3>Managed Cloud</h3>
+                    <p>Hosted NEXUS fabric. Usage-based pricing. SLA guarantees. For organizations preferring OpEx model.</p>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="two-col">
+                <div>
+                    <h3>Target Segments</h3>
+                    <ul class="feature-list">
+                        <li>Telecom operators (5G/6G edge)</li>
+                        <li>Government IT systems</li>
+                        <li>Large enterprise (Fortune 1000)</li>
+                        <li>Cloud/data platform providers</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Go-to-Market</h3>
+                    <ul class="feature-list">
+                        <li>Pilot with 2-3 design partners</li>
+                        <li>Reference deployments → case studies</li>
+                        <li>Enterprise sales team (Year 2+)</li>
+                        <li>Partner channel development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">09 / 12</div>
+    </section>
+
+    <!-- SLIDE 10: Roadmap -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Roadmap</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 Q1</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text">Seed funding. Complete pilot platform. Patent provisionals filed.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 Q2-Q3</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text">Design partner pilots. POC with 2-3 enterprises. PCT filing.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 Q4</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text">First paying customers. Case studies. Series A preparation.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text">Scale team. Expand deployments. Geographic expansion.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2027-2030</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text">Market leadership. SOM target: $50M-$150M ARR.</div>
+                </div>
+            </div>
+            
+            <div class="grid-4" style="margin-top: 4rem;">
+                <div class="card stat-card" style="padding: 25px;">
+                    <div class="stat-value" style="font-size: 2rem;">130+</div>
+                    <div class="stat-label">Tests Passing</div>
+                </div>
+                <div class="card stat-card" style="padding: 25px;">
+                    <div class="stat-value" style="font-size: 2rem;">100%</div>
+                    <div class="stat-label">Rust Codebase</div>
+                </div>
+                <div class="card stat-card" style="padding: 25px;">
+                    <div class="stat-value" style="font-size: 2rem;">6</div>
+                    <div class="stat-label">Core Modules</div>
+                </div>
+                <div class="card stat-card" style="padding: 25px;">
+                    <div class="stat-value" style="font-size: 2rem;">3</div>
+                    <div class="stat-label">Patent Families</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 12</div>
+    </section>
+
+    <!-- SLIDE 11: The Ask -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>The Ask</h2>
+            
+            <div class="highlight-box" style="text-align: center; padding: 50px;">
+                <p style="font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">₹20 Lakhs</p>
+                <p style="font-size: 1.3rem;">Startup India Seed Fund</p>
+            </div>
+            
+            <div class="grid-2" style="margin-top: 3rem;">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Use of Funds</h3>
+                    <ul class="feature-list">
+                        <li>Complete pilot platform development</li>
+                        <li>Patent filing (3 provisional, 1 PCT)</li>
+                        <li>Design partner acquisition (2-3)</li>
+                        <li>Infrastructure for pilot deployments</li>
+                        <li>Initial market validation</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Milestones (12 months)</h3>
+                    <ul class="feature-list">
+                        <li>Working pilot with 1+ enterprise</li>
+                        <li>Patent provisionals filed in India</li>
+                        <li>Documented cost savings proof</li>
+                        <li>Series A readiness</li>
+                        <li>2-3 reference customers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 12</div>
+    </section>
+
+    <!-- SLIDE 12: Team & Contact -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Team</h2>
+            
+            <div class="inventor-card" style="max-width: 600px;">
+                <div class="inventor-avatar">KG</div>
+                <div class="inventor-info">
+                    <h4>Katta Naga Sri Ganesh</h4>
+                    <p>Founder & Inventor</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Single-inventor, local-first development<br>Deep expertise in distributed systems</p>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="two-col">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Company</h3>
+                    <p style="font-size: 1.2rem; color: var(--text);"><strong>SYNTRIASS Labs Private Limited</strong></p>
+                    <p>Hyderabad, India</p>
+                    <p style="margin-top: 1rem;">Stage: Pre-revenue, Pilot-ready</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Contact</h3>
+                    <p style="font-size: 1.1rem;">🌐 syntriass.com</p>
+                    <p style="font-size: 1.1rem; margin-top: 0.5rem;">📧 contact@syntriass.com</p>
+                </div>
+            </div>
+            
+            <div class="cta-section" style="margin-top: 3rem;">
+                <p style="font-size: 1.6rem; font-weight: 600; color: var(--text); margin-bottom: 1rem;">Collapse the Cloud. Build the Future.</p>
+                <p style="color: var(--primary); font-size: 1.2rem;">Patent Pending: IN202501XXXXX</p>
+            </div>
+        </div>
+        <div class="slide-number">12 / 12</div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.9rem;">
+        © 2025 SYNTRIASS Labs Private Limited. All rights reserved.<br>
+        Confidential - For Startup India Seed Fund Application
+    </footer>
+</body>
+</html>

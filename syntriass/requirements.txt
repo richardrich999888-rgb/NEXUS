@@ -1,0 +1,24 @@
+# SYNTRIASS Path 6 — Dependencies
+# Real-Time Generative AI Preview Engine
+
+# Core ML Framework
+diffusers>=0.21.0
+transformers>=4.30.0
+torch>=2.0.0
+torchvision>=0.15.0
+accelerate>=0.20.0
+
+# Preview & Streaming
+websockets>=11.0
+aiohttp>=3.8.0
+asyncio-mqtt>=0.13.0
+
+# Frontend
+gradio>=3.40.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# Utilities
+pydantic>=2.0.0
+typing-extensions>=4.5.0
+
