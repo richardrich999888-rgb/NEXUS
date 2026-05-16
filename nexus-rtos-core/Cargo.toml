@@ -1,0 +1,13 @@
+[package]
+name = "nexus-rtos-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "no_std bare-metal scheduling core for governed NEXUS agents"
+
+[lib]
+name = "nexus_rtos_core"
+path = "src/lib.rs"
+
+[dependencies]

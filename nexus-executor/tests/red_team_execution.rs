@@ -2,7 +2,6 @@
 //!
 //! Each test attempts a bypass; PASS = bypass fails (guard holds). FAIL = bypass succeeds (security violation).
 
-use nexus_executor::prelude::*;
 use nexus_executor::{
     PcuExecutor, ExecutorBuilder, NodeId, NoopHost, ExecutionContext,
     NervousSystemGuard, ImmuneGuard, CompositeGuard, ExecutorError,
@@ -126,6 +125,14 @@ impl ExecutionGuard for AllowAllGuard {
     }
 }
 
+/// Test-only guard that always denies.
+struct DenyAllGuard(&'static str);
+impl ExecutionGuard for DenyAllGuard {
+    fn check(&self, _pcu: &PCU, _ctx: &ExecutionContext) -> GuardDecision {
+        GuardDecision::Deny(self.0.to_string())
+    }
+}
+
 /// Guard that records invocation order and optionally denies. Used to verify CompositeGuard order.
 struct OrderRecordingGuard {
     id: usize,
@@ -143,6 +150,73 @@ impl ExecutionGuard for OrderRecordingGuard {
             GuardDecision::Allow
         }
     }
+}
+
+/// Guard must execute before WASM validation so malformed code cannot bypass the choke point.
+#[tokio::test]
+async fn red_team_guard_runs_before_wasm_validation() {
+    let executor = PcuExecutor::new(
+        NodeId::local(),
+        SigningKey::from_bytes(&[1u8; 32]),
+        Arc::new(NoopHost),
+        1000,
+        Some(Arc::new(DenyAllGuard("pre_validation_deny"))),
+    )
+    .unwrap();
+    let malformed = PCU::new(
+        WasmModule::new(vec![0xFF, 0xFF, 0xFF, 0xFF]),
+        vec![],
+        vec![],
+        IdentityContext::anonymous(),
+    );
+
+    let result = executor.execute(&malformed, ExecutionContext::minimal()).await;
+    assert!(result.is_err(), "Malformed WASM must be blocked by guard first");
+    let err = result.unwrap_err();
+    assert!(matches!(err, ExecutorError::ExecutionBlocked { .. }));
+    if let ExecutorError::ExecutionBlocked { reason } = err {
+        assert_eq!(reason, "pre_validation_deny");
+    }
+}
+
+/// Guard sees mission context before execution and can deny using request-level risk inputs.
+#[tokio::test]
+async fn red_team_guard_receives_request_context() {
+    let seen = Arc::new(std::sync::Mutex::new(None::<(Option<String>, Option<f64>)>));
+
+    struct ContextRecordingGuard {
+        seen: Arc<std::sync::Mutex<Option<(Option<String>, Option<f64>)>>>,
+    }
+
+    impl ExecutionGuard for ContextRecordingGuard {
+        fn check(&self, _pcu: &PCU, ctx: &ExecutionContext) -> GuardDecision {
+            *self.seen.lock().unwrap() = Some((ctx.request_id.clone(), ctx.biological_risk));
+            GuardDecision::Deny("context_recorded".to_string())
+        }
+    }
+
+    let executor = PcuExecutor::new(
+        NodeId::local(),
+        SigningKey::from_bytes(&[1u8; 32]),
+        Arc::new(NoopHost),
+        1000,
+        Some(Arc::new(ContextRecordingGuard {
+            seen: Arc::clone(&seen),
+        })),
+    )
+    .unwrap();
+
+    let pcu = minimal_pcu();
+    let context = ExecutionContext::minimal()
+        .with_request_id("mission-request-17")
+        .with_biological_risk(0.87);
+
+    let result = executor.execute(&pcu, context).await;
+    assert!(matches!(result.unwrap_err(), ExecutorError::ExecutionBlocked { .. }));
+
+    let recorded = seen.lock().unwrap().clone().expect("guard should have observed context");
+    assert_eq!(recorded.0.as_deref(), Some("mission-request-17"));
+    assert_eq!(recorded.1, Some(0.87));
 }
 
 /// CompositeGuard order invariance: guards execute in declared order; first Deny terminates; later guards not evaluated.

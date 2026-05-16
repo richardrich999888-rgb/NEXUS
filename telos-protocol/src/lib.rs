@@ -69,6 +69,8 @@ pub mod merkle;
 pub mod ledger;
 pub mod vdf;
 pub mod network;
+#[cfg(feature = "python")]
+mod python;
 
 pub use membrane::{CommitmentMembrane, Decision, CrossingResult};
 pub use entropy::{EntropyMeter, ConsequenceTier, EntropyProof};

@@ -10,9 +10,9 @@
 // - Defense-in-depth: either signature validating is sufficient
 // - Backward compatible: classical-only clients can still verify
 //
-// NOTE: Full PQC implementation pending ml-dsa/ml-kem stabilization.
-// Currently provides classical-only with PQC-ready types.
-// When `--features pqc` is enabled, PQC fields are reserved but not populated.
+// NOTE: Default builds remain classical-only for compatibility and build speed.
+// When `--features pqc` is enabled, ML-DSA-65 keys/signatures are generated
+// and carried alongside Ed25519 signatures.
 
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -23,8 +23,6 @@ use ed25519_dalek::{Signature as Ed25519Signature, Signer, SigningKey, Verifier,
 use fips204::ml_dsa_65;
 #[cfg(feature = "pqc")]
 use fips204::traits::{SerDes, Signer as PqcSigner, Verifier as PqcVerifier};
-#[cfg(feature = "pqc")]
-use rand::RngCore;
 
 /// PQC-related errors
 #[derive(Debug, Error)]
@@ -59,15 +57,14 @@ pub type PqcResult<T> = Result<T, PqcError>;
 ///
 /// # Current Status
 /// 
-/// Full PQC support pending ml-dsa crate stabilization (requires rand_core 0.9).
-/// Currently only classical signatures are computed.
+/// Default builds compute only classical signatures. Builds with `--features pqc`
+/// compute both Ed25519 and ML-DSA-65 signatures.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct HybridSignature {
     /// Classical Ed25519 signature (64 bytes)
     pub classical: Vec<u8>,
 
     /// Post-quantum ML-DSA-65 signature (~3,293 bytes)
-    /// Reserved for future PQC implementation
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pqc: Option<Vec<u8>>,
 
@@ -88,8 +85,7 @@ impl HybridSignature {
         }
     }
 
-    /// Create a hybrid signature with both classical and PQC
-    /// Reserved for future PQC implementation
+    /// Create a hybrid signature with both classical and PQC components.
     pub fn hybrid(classical: &Ed25519Signature, pqc: &[u8]) -> Self {
         Self {
             classical: classical.to_bytes().to_vec(),
@@ -150,6 +146,8 @@ impl HybridSignature {
                 return pk.verify(message, &sig_arr, &[]);
             }
         }
+        #[cfg(not(feature = "pqc"))]
+        let _ = (message, public_key);
         false
     }
 
@@ -183,8 +181,8 @@ impl HybridSignature {
 ///
 /// # Current Status
 /// 
-/// Full PQC support pending ml-dsa crate stabilization.
-/// Currently only classical keys are generated.
+/// Default builds generate only classical keys. Builds with `--features pqc`
+/// generate both Ed25519 and ML-DSA-65 keys.
 pub struct HybridKeyPair {
     /// Classical Ed25519 signing key
     pub classical: SigningKey,
@@ -203,8 +201,7 @@ pub struct HybridKeyPair {
 }
 
 impl HybridKeyPair {
-    /// Generate a new hybrid keypair
-    /// Currently generates classical-only; PQC coming soon
+    /// Generate a new keypair.
     pub fn generate() -> PqcResult<Self> {
         use rand::RngCore;
 
@@ -262,8 +259,7 @@ impl HybridKeyPair {
         None
     }
 
-    /// Sign a message with hybrid signature
-    /// Currently produces classical-only signature
+    /// Sign a message.
     pub fn sign(&self, message: &[u8]) -> HybridSignature {
         let classical_sig = self.classical.sign(message);
         
@@ -299,7 +295,6 @@ pub struct PublicKeyBundle {
     pub classical: Vec<u8>,
 
     /// Post-quantum ML-DSA public key (~1,952 bytes for ML-DSA-65)
-    /// Reserved for future PQC implementation
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pqc: Option<Vec<u8>>,
 
@@ -320,7 +315,7 @@ impl PublicKeyBundle {
         }
     }
 
-    /// Create hybrid bundle (for future use)
+    /// Create hybrid bundle.
     pub fn hybrid(classical: &VerifyingKey, pqc: Vec<u8>) -> Self {
         Self {
             classical: classical.to_bytes().to_vec(),
@@ -448,5 +443,31 @@ mod tests {
         assert_eq!(signature.size(), 64 + 3309); // Classical + ML-DSA-65
         #[cfg(not(feature = "pqc"))]
         assert_eq!(signature.size(), 64); // Classical only
+    }
+
+    #[cfg(feature = "pqc")]
+    #[test]
+    fn test_pqc_component_verifies_when_classical_component_is_tampered() {
+        let kp = HybridKeyPair::generate().expect("Keypair generation failed");
+        let message = b"PQC defense-in-depth test";
+        let mut signature = kp.sign(message);
+        let pqc_public_key = kp.pqc_public_key().expect("PQC public key should exist");
+        let bundle = PublicKeyBundle::hybrid(&kp.classical_verifying_key(), pqc_public_key);
+
+        assert!(signature.is_hybrid());
+        assert!(bundle.verify(message, &signature));
+
+        signature.classical[0] ^= 0xAA;
+        assert!(
+            bundle.verify(message, &signature),
+            "PQC verification should still pass after classical signature tampering"
+        );
+
+        let pqc = signature.pqc.as_mut().expect("PQC signature should exist");
+        pqc[0] ^= 0x55;
+        assert!(
+            !bundle.verify(message, &signature),
+            "Verification must fail once both signature components are invalid"
+        );
     }
 }

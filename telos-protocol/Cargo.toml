@@ -7,6 +7,10 @@ description = "TELOS: Cognitive Accountability Protocol for ASI"
 license = "Proprietary"
 repository = "https://github.com/vanian/nexus"
 
+[lib]
+name = "telos_protocol"
+crate-type = ["rlib", "cdylib"]
+
 [dependencies]
 # Core
 thiserror = "1.0"
@@ -25,6 +29,15 @@ chrono = { version = "0.4", features = ["serde"] }
 
 # Async (for validator network)
 tokio = { version = "1.0", features = ["sync"], optional = true }
+
+# Python FFI (enabled explicitly with --features python)
+pyo3 = { version = "0.21", optional = true, features = ["abi3-py38"] }
+
+[features]
+default = []
+tokio = ["dep:tokio"]
+python = ["dep:pyo3", "pyo3/extension-module"]
+vdf = []
 
 [dev-dependencies]
 tokio = { version = "1.0", features = ["full", "test-util"] }

@@ -21,6 +21,7 @@ members = [
     "autonomic-system",
     "developmental-gates",
     "nervous-system",
+    "nexus-rtos-core",
     "telos-protocol",
 ]
 resolver = "2"

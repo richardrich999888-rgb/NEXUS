@@ -1,0 +1,13 @@
+[build-system]
+requires = ["maturin>=1.5,<2"]
+build-backend = "maturin"
+
+[project]
+name = "telos-protocol"
+version = "0.1.0"
+description = "Python bindings for the NEXUS TELOS protocol"
+requires-python = ">=3.8"
+
+[tool.maturin]
+features = ["python"]
+module-name = "_telos_protocol"
