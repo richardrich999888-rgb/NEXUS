@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import datetime as dt
+import fnmatch
 import json
 import os
 import re
@@ -217,10 +218,18 @@ RULES: tuple[PatternRule, ...] = (
         "Classical crypto library",
         "medium",
         re.compile(
-            r"\b(openssl|ring|rsa|p256|p384|ecdsa|ed25519-dalek|jsonwebtoken|pyjwt|cryptography|paramiko|ssh2)\b",
+            r"\b(openssl|rsa|p256|p384|ecdsa|ed25519-dalek|jsonwebtoken|pyjwt|cryptography|paramiko|ssh2)\b",
             re.IGNORECASE,
         ),
         "Review dependency usage and verify whether a PQC migration path exists.",
+    ),
+    PatternRule(
+        "ring-crypto-library",
+        "dependency",
+        "ring crypto library",
+        "medium",
+        re.compile(r"(?:\bname\s*=\s*[\"']ring[\"']|[\"']ring(?:\s+\d[^\"']*)?[\"']|\bring\s*=)", re.IGNORECASE),
+        "Review ring usage and verify whether a PQC migration path exists.",
     ),
     PatternRule(
         "pqc-library-reference",
@@ -258,9 +267,20 @@ def is_probably_text(path: Path) -> bool:
     return False
 
 
-def iter_files(root: Path, excluded_dirs: set[str], include_hidden: bool) -> Iterable[Path]:
+def matches_excluded_glob(path: Path, root: Path, excluded_globs: Sequence[str]) -> bool:
+    relative = safe_relative(path, root).replace(os.sep, "/")
+    return any(fnmatch.fnmatch(relative, pattern) for pattern in excluded_globs)
+
+
+def iter_files(
+    root: Path,
+    excluded_dirs: set[str],
+    include_hidden: bool,
+    excluded_globs: Sequence[str] = (),
+) -> Iterable[Path]:
     if root.is_file():
-        yield root
+        if not matches_excluded_glob(root, root.parent, excluded_globs):
+            yield root
         return
 
     for dirpath, dirnames, filenames in os.walk(root):
@@ -273,6 +293,8 @@ def iter_files(root: Path, excluded_dirs: set[str], include_hidden: bool) -> Ite
         for filename in filenames:
             path = current / filename
             if not include_hidden and any(part.startswith(".") for part in path.relative_to(root).parts):
+                continue
+            if matches_excluded_glob(path, root, excluded_globs):
                 continue
             yield path
 
@@ -345,6 +367,7 @@ def scan_path(
     max_file_size: int = 1_000_000,
     include_hidden: bool = False,
     excluded_dirs: set[str] | None = None,
+    excluded_globs: Sequence[str] = (),
 ) -> ScanReport:
     root = root.resolve()
     excluded = set(DEFAULT_EXCLUDED_DIRS if excluded_dirs is None else excluded_dirs)
@@ -352,7 +375,7 @@ def scan_path(
     files_scanned = 0
     files_skipped = 0
 
-    for path in iter_files(root, excluded, include_hidden):
+    for path in iter_files(root, excluded, include_hidden, excluded_globs):
         data_finding = datastore_finding(path, root)
         if data_finding:
             findings.append(data_finding)
@@ -490,6 +513,12 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         default=1_000_000,
         help="Maximum text file size to scan in bytes.",
     )
+    parser.add_argument(
+        "--exclude-glob",
+        action="append",
+        default=[],
+        help="Exclude files matching a path glob relative to the scan root. May be provided multiple times.",
+    )
     return parser.parse_args(argv)
 
 
@@ -504,6 +533,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         root,
         max_file_size=args.max_file_size,
         include_hidden=args.include_hidden,
+        excluded_globs=args.exclude_glob,
     )
     data = report_to_dict(report)
 

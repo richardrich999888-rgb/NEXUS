@@ -45,6 +45,34 @@ class CbomScannerTests(unittest.TestCase):
 
             self.assertEqual(report.findings, [])
 
+    def test_exclude_glob_omits_matching_paths(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            fixtures = root / "fixtures"
+            fixtures.mkdir()
+            (fixtures / "leaked.pem").write_text("-----BEGIN RSA PRIVATE KEY-----\n", encoding="utf-8")
+            (root / "app.py").write_text('JWT_ALG = "RS256"\n', encoding="utf-8")
+
+            report = cbom_scan.scan_path(root, excluded_globs=["fixtures/**"])
+            locations = {finding.path for finding in report.findings}
+            rule_ids = {finding.rule_id for finding in report.findings}
+
+            self.assertNotIn("fixtures/leaked.pem", locations)
+            self.assertNotIn("pem-rsa-private-key", rule_ids)
+            self.assertIn("jwt-rsa-algorithm", rule_ids)
+
+    def test_ring_dependency_rule_does_not_flag_ui_text(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "style.css").write_text(".focus-visible { box-shadow: ring; }\n", encoding="utf-8")
+            (root / "Cargo.lock").write_text('name = "ring"\nversion = "0.17.14"\n', encoding="utf-8")
+
+            report = cbom_scan.scan_path(root)
+            ring_findings = [finding for finding in report.findings if finding.rule_id == "ring-crypto-library"]
+
+            self.assertEqual(len(ring_findings), 1)
+            self.assertEqual(ring_findings[0].path, "Cargo.lock")
+
     def test_cli_writes_json_and_markdown(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
