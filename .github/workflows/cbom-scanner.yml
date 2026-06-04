@@ -1,0 +1,33 @@
+name: CBOM Scanner
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cbom-scanner.yml"
+      - "tools/cbom_scanner/**"
+      - "tests/test_cbom_scanner.py"
+      - "docs/SYNTRIASS_CBOM_SCANNER.md"
+  pull_request:
+    paths:
+      - ".github/workflows/cbom-scanner.yml"
+      - "tools/cbom_scanner/**"
+      - "tests/test_cbom_scanner.py"
+      - "docs/SYNTRIASS_CBOM_SCANNER.md"
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: CBOM scanner unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run unit tests
+        run: python -m unittest tests/test_cbom_scanner.py
+      - name: Generate sample report
+        run: |
+          python tools/cbom_scanner/cbom_scan.py . \
+            --json /tmp/syntriass-cbom.json \
+            --markdown /tmp/syntriass-cbom.md

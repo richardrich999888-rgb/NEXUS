@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AURA Trust Evidence Screenshot</div>
+    <h1>ETK Finalize and Sign</h1>
+    <div class="subtitle">Finalization signs the proof over canonical signing bytes.</div>
+    <div class="body"><pre>  88          if ev.execution_id != prev.execution_id {
+  89              return Err(ChainError::ExecutionIdMismatch);
+  90          }
+  91          if ev.policy_ref != prev.policy_ref {
+  92              return Err(ChainError::PolicyRefMismatch);
+  93          }
+  94          if ev.jurisdiction_code != prev.jurisdiction_code {
+  95              return Err(ChainError::JurisdictionMismatch);
+  96          }
+  97          if ev.previous_event_hash.0 != prev.event_id.0 {
+  98              return Err(ChainError::HashChainBroken);
+  99          }
+ 100  
+ 101          self.events.push(ev.clone());
+ 102          Ok(self.events.last().unwrap())
+ 103      }
+ 104  
+ 105      /// Finalize chain and produce ExecutionProof_v1. Signs with verifier key.
+ 106      pub fn finalize(&amp;self, signing_key: &amp;SigningKey) -&gt; Result&lt;ExecutionProofV1, ChainError&gt; {
+ 107          let genesis = self.events.first().ok_or(ChainError::GenesisNotFirst)?;
+ 108          if !is_genesis(genesis) {
+ 109              return Err(ChainError::GenesisNotFirst);
+ 110          }
+ 111  
+ 112          let last = self.events.last().unwrap();
+ 113          let start_timestamp = genesis.timestamp_utc;
+ 114          let end_timestamp = last.timestamp_utc;
+ 115  
+ 116          let mut proof = ExecutionProofV1 {
+ 117              execution_id: genesis.execution_id,
+ 118              event_chain_root: last.event_id,
+ 119              start_timestamp,
+ 120              end_timestamp,
+ 121              policy_ref: genesis.policy_ref,
+ 122              jurisdiction_code: genesis.jurisdiction_code,
+ 123              verifier_signature: [0u8; 64],
+ 124          };</pre></div>
+  </div>
+</body>
+</html>

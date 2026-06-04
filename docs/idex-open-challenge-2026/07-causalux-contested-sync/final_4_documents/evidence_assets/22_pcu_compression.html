@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>PCU Compression Path</h1>
+    <div class="subtitle">VECTRA compression wraps PCU input data, keeps hashes and statistics, and supports decompression.</div>
+    <div class="body"><pre>   9  /// Compressed PCU - a PCU with VECTRA-compressed data
+  10  #[derive(Clone, Debug, Serialize, Deserialize)]
+  11  pub struct CompressedPCU {
+  12      /// Original PCU ID (preserved for routing)
+  13      pub pcu_id: ContentHash,
+  14      
+  15      /// Compressed inputs (VECTRA artifacts)
+  16      pub compressed_inputs: Vec&lt;CompressedData&gt;,
+  17      
+  18      /// Compressed parameters
+  19      pub compressed_params: Option&lt;CompressedData&gt;,
+  20      
+  21      /// Original code hash (WASM not compressed - already optimized)
+  22      pub code_hash: ContentHash,
+  23      
+  24      /// Compression stats
+  25      pub stats: CompressionStats,
+  26  }
+  27  
+  28  /// Compressed data wrapper
+  29  #[derive(Clone, Debug, Serialize, Deserialize)]
+  30  pub struct CompressedData {
+  31      /// Original content hash
+  32      pub original_hash: ContentHash,
+  33      
+  34      /// Original size in bytes
+  35      pub original_size: usize,
+  36      
+  37      /// Compressed artifact bytes
+  38      pub artifact_bytes: Vec&lt;u8&gt;,
+  39      
+  40      /// Compressed size
+  41      pub compressed_size: usize,
+  42      
+  43      /// Whether compression was applied (false = pass-through)
+  44      pub was_compressed: bool,
+  45  }
+  46  
+  47  /// Compression statistics
+  48  #[derive(Clone, Debug, Default, Serialize, Deserialize)]
+  49  pub struct CompressionStats {
+  50      /// Total original bytes
+  51      pub original_bytes: usize,
+  52      
+  53      /// Total compressed bytes
+  54      pub compressed_bytes: usize,
+  55      
+  56      /// Number of inputs compressed
+  57      pub inputs_compressed: usize,
+  58      
+  59      /// Number of inputs passed through
+  60      pub inputs_passthrough: usize,
+  61  }
+  62  
+  63  impl CompressionStats {
+  64      /// Calculate compression ratio
+  65      pub fn ratio(&amp;self) -&gt; f64 {
+  66          if self.compressed_bytes == 0 {
+  67              1.0
+  68          } else {
+  69              self.original_bytes as f64 / self.compressed_bytes as f64
+  70          }
+  71      }
+  72      
+  73      /// Calculate space savings percentage
+  74      pub fn savings_percent(&amp;self) -&gt; f64 {
+  75          if self.original_bytes == 0 {
+  76              0.0
+  77          } else {
+  78              100.0 * (1.0 - (self.compressed_bytes as f64 / self.original_bytes as f64))
+  79          }
+  80      }
+  81  }
+
+  83  /// Compress a single data block
+  84  pub fn compress_data(data: &amp;[u8]) -&gt; CompressedData {
+  85      let original_hash = ContentHash::compute(data);
+  86      let original_size = data.len();
+  87      
+  88      // Create VECTRA Payload from bytes
+  89      let payload = Payload::new(data.to_vec());
+  90      
+  91      match vectra_encode(payload) {
+  92          EncodeResult::Encoded(artifact) =&gt; {
+  93              let artifact_bytes = artifact.to_bytes();
+  94              let compressed_size = artifact_bytes.len();
+  95              
+  96              CompressedData {
+  97                  original_hash,
+  98                  original_size,
+  99                  artifact_bytes,
+ 100                  compressed_size,
+ 101                  was_compressed: true,
+ 102              }
+ 103          }
+ 104          EncodeResult::PassThrough(original_payload) =&gt; {
+ 105              // PassThrough returns the original Payload, extract bytes
+ 106              let original_bytes = original_payload.as_bytes().to_vec();
+ 107              CompressedData {
+ 108                  original_hash,
+ 109                  original_size,
+ 110                  artifact_bytes: original_bytes,
+ 111                  compressed_size: original_size,
+ 112                  was_compressed: false,
+ 113              }
+ 114          }
+ 115      }
+ 116  }
+ 117  
+ 118  /// Decompress a data block
+ 119  pub fn decompress_data(compressed: &amp;CompressedData) -&gt; VectraResult&lt;Vec&lt;u8&gt;&gt; {
+ 120      if !compressed.was_compressed {
+ 121          return Ok(compressed.artifact_bytes.clone());
+ 122      }
+ 123      
+ 124      let artifact = Artifact::from_bytes(&amp;compressed.artifact_bytes)?;
+ 125      let payload = vectra_decode(&amp;artifact)?;
+ 126      Ok(payload.as_bytes().to_vec())
+ 127  }
+ 128  
+ 129  /// Compress PCU inputs and parameters
+ 130  pub fn compress_pcu(pcu: &amp;PCU, input_data: &amp;[Vec&lt;u8&gt;]) -&gt; CompressedPCU {
+ 131      let mut stats = CompressionStats::default();
+ 132      let mut compressed_inputs = Vec::new();
+ 133      
+ 134      for data in input_data {
+ 135          let compressed = compress_data(data);
+ 136          
+ 137          stats.original_bytes += compressed.original_size;
+ 138          stats.compressed_bytes += compressed.compressed_size;
+ 139          
+ 140          if compressed.was_compressed {
+ 141              stats.inputs_compressed += 1;
+ 142          } else {
+ 143              stats.inputs_passthrough += 1;
+ 144          }
+ 145          
+ 146          compressed_inputs.push(compressed);
+ 147      }
+ 148      
+ 149      // Compress parameters if present
+ 150      let compressed_params = if !pcu.parameters.is_empty() {
+ 151          let params = compress_data(&amp;pcu.parameters);
+ 152          stats.original_bytes += params.original_size;
+ 153          stats.compressed_bytes += params.compressed_size;
+ 154          Some(params)
+ 155      } else {
+ 156          None
+ 157      };
+ 158      
+ 159      CompressedPCU {
+ 160          pcu_id: pcu.id,
+ 161          compressed_inputs,
+ 162          compressed_params,
+ 163          code_hash: pcu.code.hash,
+ 164          stats,
+ 165      }
+ 166  }
+ 167  
+ 168  /// Decompress all PCU data
+ 169  pub fn decompress_pcu(compressed: &amp;CompressedPCU) -&gt; VectraResult&lt;Vec&lt;Vec&lt;u8&gt;&gt;&gt; {
+ 170      let mut inputs = Vec::new();
+ 171      
+ 172      for comp_data in &amp;compressed.compressed_inputs {
+ 173          inputs.push(decompress_data(comp_data)?);
+ 174      }
+ 175      
+ 176      Ok(inputs)
+ 177  }</pre></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-4 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-4</h1>
+    <div class="subtitle">Supporting evidence and screenshots checklist</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-4</h1>
+<p>Supporting evidence and screenshots checklist</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Supporting Evidence and Screenshots</h1>
+<h2>Company Identification Details</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Legal Entity Name</td><td>Syntriass Labs Private Limited</td></tr><tr><td>CIN</td><td>U62011AP2025PTC120239</td></tr><tr><td>PAN</td><td>ABQCS7152R</td></tr><tr><td>TAN</td><td>VPNS31351F</td></tr><tr><td>Registered Office</td><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td></tr><tr><td>Contact Email</td><td>kattanaga5555@gmail.com</td></tr><tr><td>Contact Phone</td><td>+91 88864 68060</td></tr><tr><td>GitHub Repository</td><td>https://github.com/richardrich999888-rgb/NEXUS</td></tr><tr><td>Submission Date</td><td>17 May 2026</td></tr></tbody></table>
+<h2>1. Applicant Resume Format</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Applicant</td><td>K. Naga Sri Ganesh</td></tr><tr><td>Role</td><td>Founder / Inventor</td></tr><tr><td>Company</td><td>Syntriass Labs Private Limited</td></tr><tr><td>Relevant Focus</td><td>Governed autonomy, execution control, autonomous systems security, cryptographic audit, defence proposal development</td></tr><tr><td>Current Project</td><td>NEXUS governed-autonomy stack</td></tr><tr><td>Problem 1 Product</td><td>NEXUS Guard: governed execution layer for unauthorized autonomous action prevention</td></tr></tbody></table>
+<h3>Relevant Experience</h3>
+<ul>
+<li>Development of NEXUS execution-control, governance, proof, audit, and safety components.</li>
+<li>Design of pre-execution guard interfaces for autonomous software systems.</li>
+<li>Preparation of defence-focused evidence packages for iDEX-style evaluation.</li>
+<li>Software prototype validation using Rust and Python test suites.</li>
+</ul>
+<h2>2. Prototype Evidence List</h2>
+<table><thead><tr><th>Evidence Item</th><th>Current Status</th><th>Notes</th></tr></thead><tbody><tr><td>NEXUS Guard concept package</td><td>Prepared</td><td>Located under <code>docs/idex-open-challenge-2026/01-nexus-guard/</code>.</td></tr><tr><td>ExecutionGuard source path</td><td>Available</td><td><code>nexus-executor/src/guard.rs</code>.</td></tr><tr><td>Composite guard source path</td><td>Available</td><td><code>nexus-executor/src/guards/composite.rs</code>.</td></tr><tr><td>Executor source path</td><td>Available</td><td><code>nexus-executor/src/executor.rs</code>.</td></tr><tr><td>Red-team execution test</td><td>Available</td><td><code>cargo test -p nexus-executor --test red_team_execution -- --nocapture</code>.</td></tr><tr><td>Shared test report</td><td>Available</td><td><code>docs/IDEX_PRE_SUBMISSION_TEST_REPORT.md</code>.</td></tr><tr><td>Defence capability audit</td><td>Available</td><td><code>docs/DEFENCE_CAPABILITY_AUDIT.md</code>.</td></tr><tr><td>iDEX package evidence file</td><td>Available</td><td><code>docs/idex-open-challenge-2026/01-nexus-guard/evidence.md</code>.</td></tr><tr><td>GitHub repository</td><td>Available</td><td><code>https://github.com/richardrich999888-rgb/NEXUS</code>.</td></tr></tbody></table>
+<h2>2A. Official Problem Alignment Evidence</h2>
+<table><thead><tr><th>Evidence Item</th><th>Reviewer Use</th><th>Location / Source</th></tr></thead><tbody><tr><td>Open Challenge fit</td><td>Confirms the proposal is submitted as a standalone applicant-defined prototype rather than a duplicate named problem statement response.</td><td>iDEX Open Challenge route; local package under <code>docs/idex-open-challenge-2026/01-nexus-guard/</code>.</td></tr><tr><td>ADITI 4 adjacency</td><td>Shows why autonomous-platform problem areas need execution authorization and auditability.</td><td>Alignment summarized in Annexure 1 and Annexure 2; PS24 boundary stated explicitly.</td></tr><tr><td>DISC 14 adjacency</td><td>Shows relevance to autonomy/UAS and multi-agent command paths where protected action calls need policy checks.</td><td>Alignment summarized in Annexure 1 and Annexure 2; technical evidence in <code>nexus-executor/</code>.</td></tr><tr><td>PS24 non-duplication</td><td>Helps reviewers separate this Open Challenge product from the already submitted ADITI PS24 space-domain application.</td><td>This package is scoped to governed execution control, not space-domain training, surveillance, or operations.</td></tr></tbody></table>
+<h2>3. Architecture Screenshots List</h2>
+<p>Screenshots generated for this Annexure from the local repository and current test output:</p>
+<table><thead><tr><th>Screenshot</th><th>Purpose</th></tr></thead><tbody><tr><td>ExecutionGuard interface</td><td>Shows mandatory guard contract before protected execution.</td></tr><tr><td>Composite first-deny-wins flow</td><td>Shows that any guard denial blocks execution.</td></tr><tr><td>Red-team test output</td><td>Shows unauthorized execution denial tests.</td></tr><tr><td>ETK audit evidence flow diagram</td><td>Shows allowed execution evidence generation.</td></tr><tr><td>TELOS consequence-budget trace</td><td>Shows consequence accounting for high-impact actions.</td></tr><tr><td>NEXUS Guard dashboard mock/screen</td><td>Shows blocked actions, reason codes, and audit review.</td></tr></tbody></table>
+<h2>4. Demo Evidence List</h2>
+<table><thead><tr><th>Demo Step</th><th>Evidence To Capture</th></tr></thead><tbody><tr><td>Start NEXUS Guard demo runtime</td><td>Terminal output or dashboard screenshot showing runtime ready.</td></tr><tr><td>Submit unauthorized protected action</td><td>Request payload and policy context.</td></tr><tr><td>Show guard denial</td><td>Denial reason, guard name, and blocked execution status.</td></tr><tr><td>Verify no success proof/cache</td><td>Output showing no success artifact for denied path.</td></tr><tr><td>Submit authorized protected action</td><td>Request payload with valid authority and policy context.</td></tr><tr><td>Show allowed execution</td><td>Execution result and ETK-compatible audit record.</td></tr><tr><td>Show TELOS consequence update</td><td>Consequence tier and remaining budget trace.</td></tr><tr><td>Export evidence packet</td><td>Audit or replay file generated for evaluator review.</td></tr></tbody></table>
+<h2>5. Technical Validation Material</h2>
+<h3>Required Pre-Submission Test Command</h3>
+<pre data-lang="bash"><code>cargo test -p nexus-executor --test red_team_execution -- --nocapture</code></pre>
+<h3>Recorded Pre-Submission Evidence</h3>
+<p>The shared test report records NEXUS execution red-team validation as passing at software-subsystem level. The command should be rerun immediately before portal upload and the latest output should be added to this Annexure as screenshot or terminal capture.</p>
+<h3>Validation Scope</h3>
+<table><thead><tr><th>Validation Area</th><th>Status</th></tr></thead><tbody><tr><td>Unauthorized execution denial</td><td>Software test evidence available</td></tr><tr><td>No success proof/cache on denied path</td><td>Software test evidence available</td></tr><tr><td>Allowed execution audit evidence</td><td>Prototype evidence path available</td></tr><tr><td>TELOS consequence accounting</td><td>Supporting module evidence available</td></tr><tr><td>Hardware-in-loop validation</td><td>Proposed work, not claimed completed</td></tr><tr><td>Field deployment</td><td>Not claimed</td></tr></tbody></table>
+<h2>6. Future Deployment Scope</h2>
+<table><thead><tr><th>Phase</th><th>Scope</th></tr></thead><tbody><tr><td>Lab Evaluation</td><td>Run red-team denial demos against simulated autonomous actions and tool calls.</td></tr><tr><td>Integration Pilot</td><td>Wrap selected mission software, agent tool router, or robot command path with NEXUS Guard.</td></tr><tr><td>Edge / On-Premise Trial</td><td>Deploy local guard runtime, policy bundle, and audit store without external cloud dependency.</td></tr><tr><td>Hardware-in-Loop Validation</td><td>Connect to target robotic or cyber-physical testbed and measure latency, denial reliability, and evidence integrity.</td></tr><tr><td>Operational Hardening</td><td>Add service-specific policy packs, secure key custody, monitoring, and evaluator-approved deployment procedures.</td></tr></tbody></table>
+<h2>7. Readiness and Caveats</h2>
+<ul>
+<li>Current readiness should be stated as software subsystem TRL 3-4.</li>
+<li>No physical military hardware validation is claimed in the current package.</li>
+<li>No operational deployment claim is made.</li>
+<li>Human approval, command policy, and service-specific safety rules must be integrated before operational use.</li>
+<li>Latency, resilience, and hardware-in-loop testing are part of the proposed iDEX work.</li>
+</ul>
+<h2>8. Evidence Checklist Before Portal Upload</h2>
+<table><thead><tr><th>Item</th><th>Status</th></tr></thead><tbody><tr><td>Insert final contact and signatory details</td><td>Pending final review</td></tr><tr><td>Rerun red-team execution test</td><td>Pending final pre-upload run</td></tr><tr><td>Capture screenshots of source paths and test output</td><td>Pending</td></tr><tr><td>Export Annexure files to PDF under portal size limits</td><td>Pending</td></tr><tr><td>Add dashboard/demo screenshots if available</td><td>Pending</td></tr><tr><td>Conduct legal/export-control/security review</td><td>Pending</td></tr><tr><td>Confirm portal challenge title and category</td><td>Pending</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 5 - Evidence Register Overview</h2>
+<p>This Annexure is structured to mirror the AIRON evidence-packet format by reserving page-level slots for source evidence, test evidence, demo evidence, screenshots, validation plans, and readiness caveats.</p>
+<p>Evidence categories:</p>
+<ul>
+<li>Source code screenshots.</li>
+<li>Test command screenshots.</li>
+<li>Terminal output screenshots.</li>
+<li>Runtime demo screenshots.</li>
+<li>Audit export screenshots.</li>
+<li>Deployment and API screenshots.</li>
+<li>Readiness and caveat statements.</li>
+</ul>
+<p>Status: repository reference screenshot embedded; final portal pass should confirm the link is still accessible.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/01_github_repository.jpg" alt="GitHub repository reference for evaluator source traceability" /><figcaption>GitHub repository reference for evaluator source traceability</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 6 - ExecutionGuard Interface</h2>
+<p>Evidence source: <code>nexus-executor/src/guard.rs</code></p>
+<p>Purpose: show the frozen guard contract used for pre-execution authorization.</p>
+<p>Expected capture:</p>
+<ul>
+<li><code>ExecutionGuard</code> trait.</li>
+<li><code>check(&amp;self, pcu: &amp;PCU, ctx: &amp;ExecutionContext)</code>.</li>
+<li><code>GuardDecision</code> return path.</li>
+<li>File path visible in editor or terminal.</li>
+</ul>
+<p>Status: source evidence available; screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/03_execution_guard_interface.jpg" alt="ExecutionGuard source interface screenshot" /><figcaption>ExecutionGuard source interface screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 7 - Composite First-Deny-Wins Guard</h2>
+<p>Evidence source: <code>nexus-executor/src/guards/composite.rs</code></p>
+<p>Purpose: show that layered guards block execution when any guard returns Deny.</p>
+<p>Expected capture:</p>
+<ul>
+<li>Guard iteration.</li>
+<li><code>GuardDecision::Allow</code> continuation.</li>
+<li><code>GuardDecision::Deny(reason)</code> early return.</li>
+<li>File path visible.</li>
+</ul>
+<p>Status: source evidence available; screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/04_composite_first_deny_wins.jpg" alt="Composite guard first-deny-wins source screenshot" /><figcaption>Composite guard first-deny-wins source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 8 - Execution Engine Path</h2>
+<p>Evidence source: <code>nexus-executor/src/executor.rs</code></p>
+<p>Purpose: show where guarded execution connects to the execution engine.</p>
+<p>Expected capture:</p>
+<ul>
+<li>Request intake.</li>
+<li>Guard check before execution.</li>
+<li>Execution or denial branch.</li>
+<li>Proof/cache behavior if visible in source.</li>
+</ul>
+<p>Status: source evidence available; screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/05_executor_guard_gate.jpg" alt="Executor guard gate source screenshot" /><figcaption>Executor guard gate source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 9 - Red-Team Test File</h2>
+<p>Evidence source: <code>nexus-executor/tests/red_team_execution.rs</code></p>
+<p>Purpose: show that explicit bypass/denial-path tests exist.</p>
+<p>Expected capture:</p>
+<ul>
+<li>Test names.</li>
+<li>Unauthorized execution cases.</li>
+<li>Denied path expectations.</li>
+<li>No proof/cache expectation if present.</li>
+</ul>
+<p>Status: test source available; screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/06_no_cache_after_block_test.jpg" alt="No-cache-after-block red-team source screenshot" /><figcaption>No-cache-after-block red-team source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 10 - Red-Team Test Command</h2>
+<p>Required command before portal upload:</p>
+<pre data-lang="bash"><code>cargo test -p nexus-executor --test red_team_execution -- --nocapture</code></pre>
+<p>Expected capture:</p>
+<ul>
+<li>Command visible in terminal.</li>
+<li>Passing test count.</li>
+<li>Any denial-path diagnostic output.</li>
+<li>Timestamped terminal or saved log.</li>
+</ul>
+<p>Current status: rerun completed on 17 May 2026; screenshot embedded below.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/02_red_team_test_output.jpg" alt="Fresh red-team execution test output screenshot" /><figcaption>Fresh red-team execution test output screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 11 - Red-Team Test Output</h2>
+<p>Screenshot to insert after rerun: terminal output from the red-team execution command.</p>
+<p>Acceptance evidence:</p>
+<ul>
+<li>Tests pass.</li>
+<li>Unauthorized execution is denied.</li>
+<li>Denied path does not create a success proof.</li>
+<li>Denied path does not create a success cache artifact.</li>
+</ul>
+<p>Status: rerun completed on 17 May 2026; screenshot embedded below.</p>
+<p>Final rerun completed on 17 May 2026. Result: 10 passed, 0 failed.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/02_red_team_test_output.jpg" alt="Fresh red-team execution test output screenshot" /><figcaption>Fresh red-team execution test output screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 12 - ETK Audit Evidence Path</h2>
+<p>Purpose: show the offline audit verification path used by the Execution Truth Kernel (ETK).</p>
+<p>Status: source evidence embedded. This page supports the claim that allowed execution evidence can be verified locally from proof, event, policy, and public-key artifacts.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/07_etk_offline_verifier.jpg" alt="ETK offline verifier source screenshot" /><figcaption>ETK offline verifier source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 13 - TELOS Consequence Accounting</h2>
+<p>Purpose: show the consequence-tier and entropy-budget mechanism proposed for high-impact action friction.</p>
+<p>Status: source evidence embedded. The evidence is software-level only; operational tuning and hardware validation remain proposed iDEX work.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/08_telos_entropy_accounting.jpg" alt="TELOS consequence accounting screenshot" /><figcaption>TELOS consequence accounting screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 14 - Guarded Request Schema</h2>
+<p>Purpose: show the execution context available to the guard decision: inputs, identity, resource limits, request ID, and risk metadata.</p>
+<p>Status: source evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/09_guarded_request_schema.jpg" alt="Guarded request context screenshot" /><figcaption>Guarded request context screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 15 - Denial Reason Codes</h2>
+<p>Purpose: show that denial, identity failure, proof failure, and cache failure are typed program outcomes rather than silent failures.</p>
+<p>Status: source evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/10_denial_reason_codes.jpg" alt="Typed denial and proof error screenshot" /><figcaption>Typed denial and proof error screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 16 - No Success Proof On Deny</h2>
+<p>Purpose: show that blocked execution returns an error path instead of a successful execution response/proof path.</p>
+<p>Status: integration-test evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/11_no_success_proof_on_deny.jpg" alt="No success proof on denied execution test screenshot" /><figcaption>No success proof on denied execution test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 17 - No Cache Artifact On Deny</h2>
+<p>Purpose: show that a denied request does not create a cache artifact that could later be served as a successful result.</p>
+<p>Status: red-team test evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/12_no_cache_artifact_on_deny.jpg" alt="No cache artifact on denied execution test screenshot" /><figcaption>No cache artifact on denied execution test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 18 - Allowed Execution Audit Record</h2>
+<p>Purpose: show the contrast between denied and allowed paths: only the successful branch generates a proof, writes cache, and returns <code>ExecutionResponse</code>.</p>
+<p>Status: source evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/13_allowed_execution_audit_record.jpg" alt="Allowed execution proof and cache path screenshot" /><figcaption>Allowed execution proof and cache path screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 19 - Unauthorized Action Demo</h2>
+<p>Purpose: show repeated unauthorized execution attempts remain blocked under the guard.</p>
+<p>Status: red-team source evidence embedded; terminal output for the full test run is included on Evidence Page 10.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/14_unauthorized_action_demo.jpg" alt="Unauthorized action flood denial screenshot" /><figcaption>Unauthorized action flood denial screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 20 - Authorized Action Demo</h2>
+<p>Purpose: show baseline execution with a signed identity when no guard constraint is installed, and clarify why production must use the guarded builder.</p>
+<p>Status: red-team baseline evidence embedded. This page is a control case, not a claim that unguarded operation is acceptable for deployment.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/15_authorized_action_demo.jpg" alt="Authorized baseline execution screenshot" /><figcaption>Authorized baseline execution screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 21 - Replay Attempt Demo</h2>
+<p>Purpose: show current adversarial replay/cache behavior coverage and document the remaining work for nonce-level replay rejection.</p>
+<p>Status: adversarial source evidence embedded; nonce replay hardening remains part of the iDEX prototype plan.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/16_replay_attempt_demo.jpg" alt="Replay and cache behavior test screenshot" /><figcaption>Replay and cache behavior test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 22 - Policy Bypass Demo</h2>
+<p>Purpose: show that malformed or adversarial execution payloads cannot bypass the guard by failing later validation.</p>
+<p>Status: red-team source evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/17_policy_bypass_demo.jpg" alt="Malformed WASM bypass attempt screenshot" /><figcaption>Malformed WASM bypass attempt screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 23 - Consequence Budget Demo</h2>
+<p>Purpose: show the concrete <code>spend()</code> path used for consequence-aware budget gating.</p>
+<p>Status: source evidence embedded; mission-specific consequence thresholds are proposed for iDEX prototype calibration.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/18_consequence_budget_demo.jpg" alt="Consequence budget spend path screenshot" /><figcaption>Consequence budget spend path screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 24 - Console Summary View</h2>
+<p>Purpose: provide an evaluator-facing summary card of the current software evidence state.</p>
+<p>Status: generated from current repository/test evidence. A full web dashboard is not claimed in this phase.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/19_console_summary_view.jpg" alt="NEXUS Guard evidence console summary screenshot" /><figcaption>NEXUS Guard evidence console summary screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 25 - Audit Export File</h2>
+<p>Purpose: show the execution proof schema for allowed executions: PCU hash, input hashes, output hash, identity hash, executor node, timestamp, resource use, and attestation.</p>
+<p>Status: source evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/20_execution_proof_schema.jpg" alt="Execution proof schema screenshot" /><figcaption>Execution proof schema screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 26 - Offline Review Workflow</h2>
+<p>Purpose: show that review can be performed locally using ETK CLI artifacts and regulator-grade build checks.</p>
+<p>Status: documentation evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/21_offline_review_workflow.jpg" alt="Offline review workflow screenshot" /><figcaption>Offline review workflow screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 27 - Deployment Artifact</h2>
+<p>Purpose: show the executor deployment profile and hardware-attestation feature flags.</p>
+<p>Status: source evidence embedded. SGX/SEV/TrustZone use remains a prototype integration step, not a field-validated claim.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/22_deployment_profile.jpg" alt="Executor deployment profile screenshot" /><figcaption>Executor deployment profile screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 28 - API Contract</h2>
+<p>Purpose: show the code-level integration contract exported to applications and robotics/simulation adapters.</p>
+<p>Status: source evidence embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/23_api_contract.jpg" alt="Protected execution API contract screenshot" /><figcaption>Protected execution API contract screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 29 - Reviewer Repository Map</h2>
+<p>Public repository:</p>
+<ul>
+<li><code>https://github.com/richardrich999888-rgb/NEXUS</code></li>
+</ul>
+<p>Primary proposal package location inside the repository:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/</code></li>
+</ul>
+<p>Primary source modules for this application:</p>
+<ul>
+<li><code>nexus-executor/src/guard.rs</code> - frozen pre-execution guard interface.</li>
+<li><code>nexus-executor/src/guards/composite.rs</code> - first-deny-wins guard composition.</li>
+<li><code>nexus-executor/src/executor.rs</code> - guard-before-cache-before-execution path.</li>
+<li><code>nexus-executor/src/types.rs</code> - guarded request context and execution response types.</li>
+<li><code>nexus-executor/src/error.rs</code> - typed denial, proof, identity, and cache errors.</li>
+<li><code>nexus-executor/src/proof.rs</code> - execution proof and node attestation schema.</li>
+</ul>
+<p>How to review quickly:</p>
+<ol>
+<li>Open the GitHub repository.</li>
+<li>Navigate to the file paths above.</li>
+<li>Compare the code with Evidence Pages 6-28.</li>
+<li>Run the test command on Evidence Page 10.</li>
+</ol>
+<div class="page-break"></div>
+<h2>Evidence Page 30 - Claim To File Location Map</h2>
+<p>This page maps the main NEXUS Guard claims to exact repository evidence.</p>
+<table><thead><tr><th>Claim</th><th>Repository location</th><th>Evidence page</th></tr></thead><tbody><tr><td>Guard interface exists</td><td><code>nexus-executor/src/guard.rs</code></td><td>Page 6</td></tr><tr><td>First-deny-wins is implemented</td><td><code>nexus-executor/src/guards/composite.rs</code></td><td>Page 7</td></tr><tr><td>Guard runs before cache/execution</td><td><code>nexus-executor/src/executor.rs</code></td><td>Page 8</td></tr><tr><td>Red-team denial tests exist</td><td><code>nexus-executor/tests/red_team_execution.rs</code></td><td>Pages 9-11</td></tr><tr><td>No cache after deny</td><td><code>nexus-executor/tests/red_team_execution.rs</code></td><td>Page 17</td></tr><tr><td>No success proof on deny</td><td><code>nexus-executor/tests/integration_tests.rs</code></td><td>Page 16</td></tr><tr><td>Allowed path creates proof/cache</td><td><code>nexus-executor/src/executor.rs</code></td><td>Page 18</td></tr><tr><td>ETK offline review path exists</td><td><code>etk/crates/etk-cli/src/main.rs</code>, <code>etk/README.md</code></td><td>Pages 12, 26</td></tr><tr><td>TELOS consequence budget exists</td><td><code>agp-core/src/telos/membrane.py</code></td><td>Pages 13, 23</td></tr><tr><td>Proof schema exists</td><td><code>nexus-executor/src/proof.rs</code></td><td>Page 25</td></tr></tbody></table>
+<p>Reviewer note: these are software-subsystem evidence locations, not field deployment evidence.</p>
+<div class="page-break"></div>
+<h2>Evidence Page 31 - Test And Command Locations</h2>
+<p>Primary executed test command:</p>
+<pre data-lang="bash"><code>cargo test -p nexus-executor --test red_team_execution -- --nocapture</code></pre>
+<p>Test file locations:</p>
+<ul>
+<li><code>nexus-executor/tests/red_team_execution.rs</code></li>
+<li><code>nexus-executor/tests/integration_tests.rs</code></li>
+<li><code>nexus-executor/tests/adversarial.rs</code></li>
+</ul>
+<p>Recorded output artifact:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/nexus_guard_red_team_test_output.txt</code></li>
+</ul>
+<p>Current recorded result:</p>
+<ul>
+<li><code>10 passed; 0 failed</code></li>
+<li>Fresh local run date: <code>17 May 2026</code></li>
+</ul>
+<p>Additional relevant test commands for later iDEX prototype stages:</p>
+<ul>
+<li><code>cargo test -p nexus-executor --test integration_tests</code></li>
+<li><code>cargo test -p nexus-executor --test adversarial</code></li>
+<li><code>cargo test -p telos-protocol</code></li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 32 - Generated Artifact Locations</h2>
+<p>Final PDF artifacts:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/01_SYNTRIASS_NEXUS_Guard_Annexure_1_Applicant_Details_and_Solution_Summary.pdf</code></li>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/02_SYNTRIASS_NEXUS_Guard_Annexure_2_Technical_Architecture.pdf</code></li>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/03_SYNTRIASS_NEXUS_Guard_Annexure_3_Advantages_and_Competencies.pdf</code></li>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/04_SYNTRIASS_NEXUS_Guard_Annexure_4_Supporting_Evidence_and_Screenshots.pdf</code></li>
+</ul>
+<p>Word artifacts:</p>
+<ul>
+<li>Same directory as above, with <code>.docx</code> extension.</li>
+</ul>
+<p>Evidence screenshot folder:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/</code></li>
+</ul>
+<p>Build scripts:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/generate_nexus_guard_evidence_screenshots.mjs</code></li>
+<li><code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/build_syntriass_letterhead_problem1.mjs</code></li>
+</ul>
+<p>File-size status:</p>
+<ul>
+<li>Annexure 4 PDF: under 5 MB after compressed evidence embedding.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 33 - Screenshot Artifact Index</h2>
+<p>Screenshot artifacts embedded in this Annexure:</p>
+<ul>
+<li><code>evidence_assets/01_github_repository.jpg</code> - public repository link.</li>
+<li><code>evidence_assets/02_red_team_test_output.jpg</code> - red-team test output.</li>
+<li><code>evidence_assets/03_execution_guard_interface.jpg</code> - guard trait.</li>
+<li><code>evidence_assets/04_composite_first_deny_wins.jpg</code> - composite deny path.</li>
+<li><code>evidence_assets/05_executor_guard_gate.jpg</code> - executor guard gate.</li>
+<li><code>evidence_assets/06_no_cache_after_block_test.jpg</code> - no cache after block.</li>
+<li><code>evidence_assets/07_etk_offline_verifier.jpg</code> - ETK CLI verifier.</li>
+<li><code>evidence_assets/08_telos_entropy_accounting.jpg</code> - consequence tiers.</li>
+<li><code>evidence_assets/09_guarded_request_schema.jpg</code> - request context.</li>
+<li><code>evidence_assets/10_denial_reason_codes.jpg</code> - typed errors.</li>
+<li><code>evidence_assets/11_no_success_proof_on_deny.jpg</code> - no proof on denied path.</li>
+<li><code>evidence_assets/12_no_cache_artifact_on_deny.jpg</code> - denied path cache check.</li>
+<li><code>evidence_assets/13_allowed_execution_audit_record.jpg</code> - allowed proof/cache branch.</li>
+<li><code>evidence_assets/14_unauthorized_action_demo.jpg</code> - unauthorized flood denial.</li>
+<li><code>evidence_assets/15_authorized_action_demo.jpg</code> - baseline signed execution.</li>
+<li><code>evidence_assets/16_replay_attempt_demo.jpg</code> - replay/cache behavior.</li>
+<li><code>evidence_assets/17_policy_bypass_demo.jpg</code> - malformed WASM bypass denial.</li>
+<li><code>evidence_assets/18_consequence_budget_demo.jpg</code> - budget spend path.</li>
+<li><code>evidence_assets/19_console_summary_view.jpg</code> - evidence summary.</li>
+<li><code>evidence_assets/20_execution_proof_schema.jpg</code> - proof schema.</li>
+<li><code>evidence_assets/21_offline_review_workflow.jpg</code> - ETK review workflow.</li>
+<li><code>evidence_assets/22_deployment_profile.jpg</code> - deployment/attestation profile.</li>
+<li><code>evidence_assets/23_api_contract.jpg</code> - library API contract.</li>
+</ul>
+<p>All screenshots are generated artifacts, not hand-edited screenshots.</p>
+<div class="page-break"></div>
+<h2>Evidence Page 34 - Threat Model To Evidence Map</h2>
+<p>Threat-driven review map:</p>
+<ul>
+<li>Unauthorized execution: <code>red_team_flood_requests_all_blocked</code>, Evidence Page 19.</li>
+<li>Unguarded baseline risk: <code>red_team_no_guard_baseline_succeeds</code>, Evidence Page 20.</li>
+<li>Cache-after-deny risk: <code>red_team_no_cache_after_block</code>, Evidence Page 17.</li>
+<li>First-deny-wins bypass: <code>red_team_composite_first_deny_wins</code>, Evidence Page 7.</li>
+<li>Malformed payload bypass: <code>red_team_guard_runs_before_wasm_validation</code>, Evidence Page 22.</li>
+<li>Request-context manipulation: <code>red_team_guard_receives_request_context</code>, <code>nexus-executor/src/types.rs</code>.</li>
+<li>Proof forgery risk: <code>nexus-executor/src/proof.rs</code>, Evidence Page 25.</li>
+<li>Offline audit tampering risk: <code>etk/crates/etk-cli/src/main.rs</code>, Evidence Page 12.</li>
+</ul>
+<p>Prototype-stage gaps still to validate:</p>
+<ul>
+<li>Hardware-in-loop command denial.</li>
+<li>Mission-specific replay nonce enforcement.</li>
+<li>Latency under robotics/cyber-physical workloads.</li>
+<li>Key custody and rotation procedure.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 35 - Prototype Work Package Locations</h2>
+<p>The following repository locations anchor the proposed iDEX prototype work:</p>
+<ul>
+<li>Guarded execution kernel: <code>nexus-executor/</code></li>
+<li>PCU identity/proof primitives: <code>nexus-pcu/</code></li>
+<li>Offline audit verifier: <code>etk/</code></li>
+<li>Consequence membrane: <code>agp-core/src/telos/</code></li>
+<li>Robotics/OS future adapter area: <code>agp-core/src/os/</code></li>
+<li>ROS2 test area: <code>agp-core/tests/test_ros2.py</code></li>
+<li>RTOS test area: <code>agp-core/tests/test_rtos.py</code></li>
+<li>Resource controller test area: <code>agp-core/tests/test_resources.py</code></li>
+<li>Production deployment references: <code>nexus-executor/Cargo.toml</code>, <code>docker-compose.prod.yml</code>, <code>k8s/</code></li>
+</ul>
+<p>Planned validation outputs during iDEX:</p>
+<ol>
+<li>Hardware-in-loop denial report.</li>
+<li>Latency characterization report.</li>
+<li>Replay/nonce hardening test report.</li>
+<li>Guarded ROS2 or API adapter demo.</li>
+<li>ETK-compatible audit export bundle.</li>
+</ol>
+<div class="page-break"></div>
+<h2>Evidence Page 36 - Panel Review Checklist</h2>
+<p>Suggested reviewer checklist:</p>
+<ul>
+<li>Confirm GitHub repository link on Evidence Page 5.</li>
+<li>Open <code>nexus-executor/src/guard.rs</code> and verify the <code>ExecutionGuard</code> trait.</li>
+<li>Open <code>nexus-executor/src/guards/composite.rs</code> and verify first-deny-wins logic.</li>
+<li>Open <code>nexus-executor/src/executor.rs</code> and verify guard check occurs before cache lookup and execution.</li>
+<li>Open <code>nexus-executor/tests/red_team_execution.rs</code> and inspect the bypass tests.</li>
+<li>Run <code>cargo test -p nexus-executor --test red_team_execution -- --nocapture</code>.</li>
+<li>Compare the terminal result with <code>evidence_assets/nexus_guard_red_team_test_output.txt</code>.</li>
+<li>Open <code>nexus-executor/src/proof.rs</code> and verify allowed execution proof fields.</li>
+<li>Open <code>etk/README.md</code> and verify offline audit workflow.</li>
+</ul>
+<p>Final upload checks completed for this document:</p>
+<ul>
+<li>Annexure 4 page count: <code>37</code>.</li>
+<li>Annexure 4 PDF size: under <code>5 MB</code>.</li>
+<li>All evidence pages after page 11 contain either embedded source/test evidence or reviewer-navigation material.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 37 - Declaration, Caveats, And Repository Coordinates</h2>
+<p>Declaration:</p>
+<p>NEXUS Guard is submitted as a software-subsystem prototype for governed autonomous execution evaluation.</p>
+<p>Repository coordinates:</p>
+<ul>
+<li>Public repository: <code>https://github.com/richardrich999888-rgb/NEXUS</code></li>
+<li>Proposal folder: <code>docs/idex-open-challenge-2026/01-nexus-guard/</code></li>
+<li>Final documents: <code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/</code></li>
+<li>Evidence assets: <code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/</code></li>
+<li>Test output: <code>docs/idex-open-challenge-2026/01-nexus-guard/final_4_documents/evidence_assets/nexus_guard_red_team_test_output.txt</code></li>
+</ul>
+<p>Caveats:</p>
+<ul>
+<li>No physical military hardware validation is claimed.</li>
+<li>No field deployment is claimed.</li>
+<li>No autonomous operational authority is requested.</li>
+<li>Human approval, command policy, and service-specific safety rules must be integrated before operational use.</li>
+<li>Software evidence supports prototype review and iDEX-funded validation planning.</li>
+</ul>
+  </main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 //! Integration tests.
 
-use multi_asi_immune::node::state::{AsiNode, NodeConfig, ProcessResult, PeerStatus};
+use multi_asi_immune::node::state::{AsiNode, NodeConfig, ProcessResult};
 use multi_asi_immune::protocol::message::ProtocolMessage;
 use multi_asi_immune::threat::pattern::{ThreatPattern, ThreatCategory};
 

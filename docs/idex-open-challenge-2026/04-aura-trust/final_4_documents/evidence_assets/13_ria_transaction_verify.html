@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AURA Trust Evidence Screenshot</div>
+    <h1>AURA RIA Transaction Verification</h1>
+    <div class="subtitle">Core reconstructs message, recomputes signature value, checks timestamp, and updates invariant.</div>
+    <div class="body"><pre> 312      def create_transaction(self,
+ 313                            sender_id: bytes,
+ 314                            receiver_id: bytes,
+ 315                            amount: int,
+ 316                            nonce: Optional[int] = None) -&gt; AuraSignature:
+ 317          &quot;&quot;&quot;Create a new transaction with ψ(x) signature&quot;&quot;&quot;
+ 318          if nonce is None:
+ 319              nonce = self._rng.randint(0, 2**64 - 1)
+ 320          
+ 321          timestamp = int(time.time())
+ 322          
+ 323          # Create message
+ 324          message = (
+ 325              sender_id + 
+ 326              receiver_id + 
+ 327              amount.to_bytes(32, 'big') + 
+ 328              timestamp.to_bytes(8, 'big') + 
+ 329              nonce.to_bytes(8, 'big')
+ 330          )
+ 331          
+ 332          # Hash message
+ 333          h = int.from_bytes(hashlib.sha3_256(message).digest(), 'big')
+ 334          
+ 335          # Compute ψ(x)
+ 336          psi_value = self.psi(h)
+ 337          
+ 338          return AuraSignature(
+ 339              psi=psi_value,
+ 340              timestamp=timestamp,
+ 341              sender_id=sender_id,
+ 342              receiver_id=receiver_id,
+ 343              amount=amount,
+ 344              nonce=nonce
+ 345          )
+ 346      
+ 347      def verify_transaction(self,
+ 348                            signature: AuraSignature,
+ 349                            current_E: Optional[int] = None) -&gt; Tuple[bool, int]:
+ 350          &quot;&quot;&quot;
+ 351          Verify transaction and update invariant E
+ 352          
+ 353          Returns:
+ 354              (is_valid, new_E)
+ 355          &quot;&quot;&quot;
+ 356          self.stats['verifications'] += 1
+ 357          
+ 358          # Reconstruct message
+ 359          message = (
+ 360              signature.sender_id + 
+ 361              signature.receiver_id + 
+ 362              signature.amount.to_bytes(32, 'big') + 
+ 363              signature.timestamp.to_bytes(8, 'big') + 
+ 364              signature.nonce.to_bytes(8, 'big')
+ 365          )
+ 366          
+ 367          # Compute hash
+ 368          h = int.from_bytes(hashlib.sha3_256(message).digest(), 'big')
+ 369          
+ 370          # Compute expected ψ(x)
+ 371          expected_psi = self.psi(h)
+ 372          
+ 373          # Verify signature matches
+ 374          is_valid = (signature.psi == expected_psi)
+ 375          
+ 376          # Check timestamp (within 2 hours)
+ 377          current_time = time.time()
+ 378          time_valid = abs(current_time - signature.timestamp) &lt; 7200  # 2 hours
+ 379          
+ 380          is_valid = is_valid and time_valid
+ 381          
+ 382          if is_valid:
+ 383              # Update invariant E
+ 384              if current_E is None:
+ 385                  current_E = int(self.E)
+ 386              
+ 387              new_E = (mpz(current_E) * expected_psi) % self.p
+ 388              self.E = new_E
+ 389              self.E_history.append(int(new_E))
+ 390              
+ 391              # Keep only last 1000 history entries
+ 392              if len(self.E_history) &gt; 1000:
+ 393                  self.E_history = self.E_history[-1000:]
+ 394              
+ 395              return True, int(new_E)
+ 396          
+ 397          return False, int(current_E) if current_E else int(self.E)</pre></div>
+  </div>
+</body>
+</html>

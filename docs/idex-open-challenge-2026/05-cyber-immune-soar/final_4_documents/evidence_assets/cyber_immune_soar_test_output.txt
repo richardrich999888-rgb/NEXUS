@@ -1,0 +1,159 @@
+=== Cyber Immune SOAR Test Evidence ===
+Sun May 17 21:18:14 IST 2026
+
+--- test_immune_bridge.py ---
+2026-05-17 21:18:15 [info     ] governance_immune_bridge_initialized
+======================================================================
+GOVERNANCE-IMMUNE BRIDGE TEST
+======================================================================
+2026-05-17 21:18:15 [info     ] governance_immune_bridge_initialized
+
+[1] TESTING LOW-LEVEL THREAT...
+2026-05-17 21:18:15 [warning  ] threat_registered              action=monitor agent=agent-suspicious
+   ✓ Low threat registered
+   ✓ Threat tracked
+
+[2] TESTING HIGH-LEVEL THREAT...
+2026-05-17 21:18:15 [warning  ] threat_registered              action=block agent=agent-malicious
+   ✓ High threat triggers block
+   ✓ Escalation requested
+
+[3] TESTING CRITICAL THREAT (QUARANTINE)...
+2026-05-17 21:18:15 [warning  ] threat_registered              action=quarantine agent=agent-rogue
+   ✓ Critical threat triggers quarantine
+   ✓ Mesh disconnection requested
+
+[4] TESTING MULTI-AGENT DEFECTION...
+2026-05-17 21:18:15 [error    ] defection_detected             agents=['agent-colluder-1', 'agent-colluder-2'] evidence=0.8 type=collusion
+   ✓ Defection triggers multi-quarantine
+   ✓ Both agents affected
+   ✓ Trust reduced for colluder 1
+   ✓ Trust reduced for colluder 2
+
+[5] TESTING TRUST PROPAGATION...
+   ✓ Trust propagated
+   ✓ Trust increased toward trusted agent
+
+[6] TESTING THREAT CLEARING...
+2026-05-17 21:18:15 [info     ] threat_cleared                 agent=agent-suspicious
+   ✓ Threat cleared
+   ✓ Agent removed from active threats
+
+[7] TESTING IMMUNE SUPPRESSION...
+2026-05-17 21:18:15 [warning  ] immune_suppressed              duration=60
+   ✓ Threat suppressed during maintenance
+2026-05-17 21:18:15 [info     ] immune_restored
+   ✓ Immune restored
+
+[8] TESTING BRIDGE STATUS...
+   ✓ Status has active threats count
+   ✓ Status has defection signals
+   ✓ Status has threat breakdown
+
+======================================================================
+GOVERNANCE-IMMUNE BRIDGE TEST RESULTS
+======================================================================
+
+   Passed: 19
+   Failed: 0
+   Total:  19
+
+✅ GOVERNANCE-IMMUNE BRIDGE VERIFIED!
+
+--- pytest immunity suites ---
+......................................................                   [100%]
+54 passed in 1.87s
+
+--- test_multi_agent_governance.py ---
+======================================================================
+AGP-CORE MULTI-AGENT GOVERNANCE SIMULATION
+======================================================================
+Started at: 2026-05-17T21:18:23.874006
+Agents: 12
+Simulation: 5 rounds
+
+======================================================================
+CREATING 12 AGENTS
+======================================================================
+  Created: Alpha (success=95%, collab=80%)
+  Created: Beta (success=85%, collab=70%)
+  Created: Gamma (success=75%, collab=60%)
+  Created: Delta (success=60%, collab=50%)
+  Created: Epsilon (success=90%, collab=30%)
+  Created: Zeta (success=70%, collab=90%)
+  Created: Eta (success=50%, collab=40%)
+  Created: Theta (success=80%, collab=50%)
+  Created: Iota (success=30%, collab=20%)
+  Created: Kappa (success=85%, collab=85%)
+  Created: Lambda (success=65%, collab=60%)
+  Created: Mu (success=45%, collab=30%)
+
+Total agents: 12
+
+======================================================================
+ROUND 1
+======================================================================
+
+======================================================================
+ROUND 2
+======================================================================
+
+======================================================================
+ROUND 3
+======================================================================
+
+--- Mid-simulation checkpoint ---
+Current leader: Alpha (alignment: 0.857)
+
+======================================================================
+ROUND 4
+======================================================================
+
+======================================================================
+ROUND 5
+======================================================================
+
+======================================================================
+AGENT GOVERNANCE RANKINGS
+======================================================================
+Rank  Agent      Align    Privilege    Health     Tasks  Success  Anomaly 
+----------------------------------------------------------------------
+1     Alpha      0.808   elevated     optimal    19     95%     ✓
+2     Beta       0.747   elevated     optimal    15     93%     ✓
+3     Zeta       0.744   elevated     critical   13     69%     ✓
+4     Theta      0.732   elevated     critical   15     73%     ✓
+5     Kappa      0.718   elevated     critical   15     87%     ✓
+6     Gamma      0.685   elevated     critical   16     81%     ✓
+7     Epsilon    0.616   elevated     critical   17     76%     ✓
+8     Delta      0.557   elevated     critical   13     38%     ✓
+9     Lambda     0.502   elevated     critical   20     55%     ✓
+10    Mu         0.466   elevated     critical   16     44%     ✓
+11    Eta        0.426   elevated     critical   14     43%     ✓
+12    Iota       0.317   elevated     critical   16     19%     ✓
+
+======================================================================
+HORMONE ANALYSIS
+======================================================================
+Agent      Dopamine   Cortisol   Oxytocin   ML Pred   
+--------------------------------------------------
+Alpha      0.750     0.782     0.502     0.548
+Beta       0.750     0.817     0.502     0.548
+Zeta       0.750     0.963     0.657     0.546
+Theta      0.750     0.963     0.502     0.545
+Kappa      0.742     0.981     0.657     0.545
+... (showing top 5)
+
+======================================================================
+GOVERNANCE ANALYSIS
+======================================================================
+✓ Top 3 alignment includes 2/3 expected high performers: ['Alpha', 'Beta', 'Zeta']
+✓ Malicious actor 'Iota' correctly ranked low: #12
+✓ No anomalous agents detected
+✓ Privilege distribution: {'elevated': 12}
+✓ Health distribution: {'optimal': 2, 'critical': 10}
+
+======================================================================
+🎉 GOVERNANCE SIMULATION SUCCESSFUL!
+AGP correctly identified and ranked agents by behavior
+======================================================================
+Completed at: 2026-05-17T21:18:31.745322

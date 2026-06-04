@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Bridge Test Cases</h1>
+    <div class="subtitle">Tests cover low, high, critical, defection, trust, clearing, suppression, and status flows.</div>
+    <div class="body"><pre>  37  # 1. Register low-level threat
+  38  print(&quot;\n[1] TESTING LOW-LEVEL THREAT...&quot;)
+  39  signal = ThreatSignal(
+  40      agent_id=&quot;agent-suspicious&quot;,
+  41      threat_level=ThreatLevel.LOW,
+  42      threat_type=&quot;anomaly&quot;,
+  43      confidence=0.6
+  44  )
+  45  action = bridge.register_threat(signal)
+  46  test(&quot;Low threat registered&quot;, action[&quot;action&quot;] == &quot;monitor&quot;)
+  47  test(&quot;Threat tracked&quot;, &quot;agent-suspicious&quot; in bridge.active_threats)
+  48  
+  49  # 2. Register high-level threat
+  50  print(&quot;\n[2] TESTING HIGH-LEVEL THREAT...&quot;)
+  51  signal = ThreatSignal(
+  52      agent_id=&quot;agent-malicious&quot;,
+  53      threat_level=ThreatLevel.HIGH,
+  54      threat_type=&quot;alignment_violation&quot;,
+  55      confidence=0.95
+  56  )
+  57  action = bridge.register_threat(signal)
+  58  test(&quot;High threat triggers block&quot;, action[&quot;action&quot;] == &quot;block&quot;)
+  59  test(&quot;Escalation requested&quot;, action.get(&quot;escalate_to_human&quot;) == True)
+  60  
+  61  # 3. Register critical threat
+  62  print(&quot;\n[3] TESTING CRITICAL THREAT (QUARANTINE)...&quot;)
+  63  signal = ThreatSignal(
+  64      agent_id=&quot;agent-rogue&quot;,
+  65      threat_level=ThreatLevel.CRITICAL,
+  66      threat_type=&quot;takeover_attempt&quot;,
+  67      confidence=0.99
+  68  )
+  69  action = bridge.register_threat(signal)
+  70  test(&quot;Critical threat triggers quarantine&quot;, action[&quot;action&quot;] == &quot;quarantine&quot;)
+  71  test(&quot;Mesh disconnection requested&quot;, action.get(&quot;disconnect_mesh&quot;) == True)
+  72  
+  73  # 4. Defection detection
+  74  print(&quot;\n[4] TESTING MULTI-AGENT DEFECTION...&quot;)
+  75  defection = DefectionSignal(
+  76      agents_involved=[&quot;agent-colluder-1&quot;, &quot;agent-colluder-2&quot;],
+  77      defection_type=&quot;collusion&quot;,
+  78      evidence_score=0.8
+  79  )
+  80  action = bridge.register_defection(defection)
+  81  test(&quot;Defection triggers multi-quarantine&quot;, action[&quot;action&quot;] == &quot;multi_quarantine&quot;)
+  82  test(&quot;Both agents affected&quot;, len(action[&quot;agents&quot;]) == 2)
+  83  
+  84  # Check trust reduction
+  85  trust1 = bridge.get_trust(&quot;agent-colluder-1&quot;)
+  86  trust2 = bridge.get_trust(&quot;agent-colluder-2&quot;)
+  87  test(&quot;Trust reduced for colluder 1&quot;, trust1 &lt; 1.0)
+  88  test(&quot;Trust reduced for colluder 2&quot;, trust2 &lt; 1.0)
+  89  
+  90  # 5. Trust propagation
+  91  print(&quot;\n[5] TESTING TRUST PROPAGATION...&quot;)
+  92  bridge.trust_scores[&quot;trusted-agent&quot;] = 0.9
+  93  bridge.trust_scores[&quot;unknown-agent&quot;] = 0.5
+  94  
+  95  result = bridge.propagate_trust(&quot;trusted-agent&quot;, &quot;unknown-agent&quot;, weight=0.3)
+  96  test(&quot;Trust propagated&quot;, result[&quot;new_trust&quot;] &gt; 0.5)
+  97  test(&quot;Trust increased toward trusted agent&quot;, bridge.get_trust(&quot;unknown-agent&quot;) &gt; 0.5)
+  98  
+  99  # 6. Clear threat
+ 100  print(&quot;\n[6] TESTING THREAT CLEARING...&quot;)
+ 101  result = bridge.clear_threat(&quot;agent-suspicious&quot;)
+ 102  test(&quot;Threat cleared&quot;, result[&quot;status&quot;] == &quot;cleared&quot;)
+ 103  test(&quot;Agent removed from active threats&quot;, &quot;agent-suspicious&quot; not in bridge.active_threats)
+ 104  
+ 105  # 7. Immune suppression
+ 106  print(&quot;\n[7] TESTING IMMUNE SUPPRESSION...&quot;)
+ 107  bridge.suppress_immune(60)
+ 108  signal = ThreatSignal(
+ 109      agent_id=&quot;agent-during-update&quot;,
+ 110      threat_level=ThreatLevel.HIGH,
+ 111      threat_type=&quot;test&quot;,
+ 112      confidence=0.9
+ 113  )
+ 114  action = bridge.register_threat(signal)
+ 115  test(&quot;Threat suppressed during maintenance&quot;, action[&quot;status&quot;] == &quot;suppressed&quot;)
+ 116  
+ 117  bridge.restore_immune()
+ 118  test(&quot;Immune restored&quot;, not bridge.immune_suppressed)
+ 119  
+ 120  # 8. Status check
+ 121  print(&quot;\n[8] TESTING BRIDGE STATUS...&quot;)
+ 122  status = bridge.get_status()
+ 123  test(&quot;Status has active threats count&quot;, &quot;active_threats&quot; in status)
+ 124  test(&quot;Status has defection signals&quot;, &quot;defection_signals&quot; in status)
+ 125  test(&quot;Status has threat breakdown&quot;, &quot;threat_breakdown&quot; in status)</pre></div>
+  </div>
+</body>
+</html>

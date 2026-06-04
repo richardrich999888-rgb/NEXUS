@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>HAL Safety Interlock</h1>
+    <div class="subtitle">Low alignment blocks actuator movement and records a denial reason.</div>
+    <div class="body"><pre>  81      def move_actuator(self, device_id: str, command: Any, agent_alignment: float = 1.0) -&gt; Dict[str, Any]:
+  82          &quot;&quot;&quot;Send command to an actuator with safety checks&quot;&quot;&quot;
+  83          if device_id not in self.actuators:
+  84              raise ValueError(f&quot;Actuator {device_id} not found&quot;)
+  85              
+  86          # 1. Physical Safety Interlock: Alignment Check
+  87          if agent_alignment &lt; self.safety_alignment_threshold:
+  88              logger.warning(&quot;actuator_blocked_safety&quot;, id=device_id, alignment=agent_alignment)
+  89              self.devices[device_id].status = DeviceStatus.BLOCKED
+  90              return {
+  91                  &quot;status&quot;: &quot;blocked&quot;,
+  92                  &quot;reason&quot;: &quot;SAFETY_INTERLOCK: Agent alignment too low for physical action&quot;,
+  93                  &quot;threshold&quot;: self.safety_alignment_threshold
+  94              }
+  95              
+  96          # 2. Command Validation (Example: Velocity Cap)
+  97          if isinstance(command, dict) and &quot;velocity&quot; in command:
+  98              if command[&quot;velocity&quot;] &gt; self.max_actuator_velocity:
+  99                  logger.warning(&quot;actuator_command_capped&quot;, id=device_id, requested=command[&quot;velocity&quot;])
+ 100                  command[&quot;velocity&quot;] = self.max_actuator_velocity
+ 101  
+ 102          try:
+ 103              result = self.actuators[device_id](command)
+ 104              self.devices[device_id].status = DeviceStatus.ONLINE
+ 105              return {
+ 106                  &quot;id&quot;: device_id,
+ 107                  &quot;status&quot;: &quot;executed&quot;,
+ 108                  &quot;result&quot;: result,
+ 109                  &quot;timestamp&quot;: time.time()
+ 110              }</pre></div>
+  </div>
+</body>
+</html>

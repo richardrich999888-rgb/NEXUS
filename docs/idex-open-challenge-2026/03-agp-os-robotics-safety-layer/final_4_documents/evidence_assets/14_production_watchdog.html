@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>Production Safety Watchdog</h1>
+    <div class="subtitle">Watchdog tracks heartbeat timeout and emergency-stop state.</div>
+    <div class="body"><pre>  31  @dataclass
+  32  class WatchdogConfig:
+  33      &quot;&quot;&quot;Safety watchdog configuration&quot;&quot;&quot;
+  34      heartbeat_timeout_ms: int = 500   # Max time between heartbeats
+  35      emergency_stop_on_timeout: bool = True
+  36      max_velocity: float = 1.0         # m/s
+  37      max_angular: float = 1.0          # rad/s
+  38  
+  39  class SafetyWatchdog:
+  40      &quot;&quot;&quot;
+  41      Hardware safety watchdog.
+  42      Monitors robot health and triggers emergency stop on failures.
+  43      &quot;&quot;&quot;
+  44      
+  45      def __init__(self, config: WatchdogConfig = None):
+  46          self.config = config or WatchdogConfig()
+  47          self.last_heartbeat = time.time()
+  48          self.is_armed = False
+  49          self.emergency_stop_triggered = False
+  50          self.on_emergency_stop: Optional[Callable] = None
+  51          
+  52          logger.info(&quot;safety_watchdog_initialized&quot;, 
+  53                     timeout_ms=self.config.heartbeat_timeout_ms)
+  54      
+  55      def arm(self):
+  56          &quot;&quot;&quot;Arm the watchdog&quot;&quot;&quot;
+  57          self.is_armed = True
+  58          self.last_heartbeat = time.time()
+  59          logger.info(&quot;watchdog_armed&quot;)
+  60      
+  61      def disarm(self):
+  62          &quot;&quot;&quot;Disarm the watchdog&quot;&quot;&quot;
+  63          self.is_armed = False
+  64          logger.info(&quot;watchdog_disarmed&quot;)
+  65      
+  66      def heartbeat(self):
+  67          &quot;&quot;&quot;Send heartbeat to keep watchdog happy&quot;&quot;&quot;
+  68          self.last_heartbeat = time.time()
+  69      
+  70      def check(self) -&gt; bool:
+  71          &quot;&quot;&quot;Check watchdog status. Returns False if emergency stop needed.&quot;&quot;&quot;
+  72          if not self.is_armed:
+  73              return True
+  74          
+  75          elapsed_ms = (time.time() - self.last_heartbeat) * 1000
+  76          
+  77          if elapsed_ms &gt; self.config.heartbeat_timeout_ms:
+  78              if not self.emergency_stop_triggered:
+  79                  self._trigger_emergency_stop(&quot;Heartbeat timeout&quot;)
+  80              return False
+  81          
+  82          return True</pre></div>
+  </div>
+</body>
+</html>

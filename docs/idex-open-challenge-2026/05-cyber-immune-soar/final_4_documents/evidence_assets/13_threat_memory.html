@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Threat Memory Training</h1>
+    <div class="subtitle">Known threat vectors are stored and later matched by cosine similarity.</div>
+    <div class="body"><pre> 337      def train_on_threat(
+ 338          self,
+ 339          threat_vector: List[float],
+ 340          threat_label: str
+ 341      ) -&gt; None:
+ 342          &quot;&quot;&quot;Train the immune system on a known threat.&quot;&quot;&quot;
+ 343          self.known_threats[threat_label] = self._normalize_behavior_values(threat_vector)
+ 344          log.info(&quot;threat_learned&quot;, label=threat_label)
+ 345  
+ 346      def _normalize_behavior_values(self, behavior_vector: List[float], size: int = 512) -&gt; List[float]:
+ 347          &quot;&quot;&quot;Pad or truncate behavior vectors for the internal base model.&quot;&quot;&quot;
+ 348          values = [float(v) for v in behavior_vector]
+ 349          if len(values) &gt;= size:
+ 350              return values[:size]
+ 351          return values + [0.0] * (size - len(values))
+ 352  
+ 353      def _known_threat_similarity(self, behavior: List[float]) -&gt; float:
+ 354          &quot;&quot;&quot;Return best cosine similarity against stored threat exemplars.&quot;&quot;&quot;
+ 355          if not self.known_threats:
+ 356              return 0.0
+ 357  
+ 358          def cosine(a: List[float], b: List[float]) -&gt; float:
+ 359              dot = sum(x * y for x, y in zip(a, b))
+ 360              norm_a = math.sqrt(sum(x * x for x in a))
+ 361              norm_b = math.sqrt(sum(y * y for y in b))
+ 362              if norm_a == 0.0 or norm_b == 0.0:
+ 363                  return 0.0
+ 364              return max(0.0, min(1.0, dot / (norm_a * norm_b)))
+ 365  
+ 366          return max(cosine(behavior, threat) for threat in self.known_threats.values())
+ 367  
+ 368  
+ 369  # Convenience function for quick setup
+ 370  def create_immune_system(
+ 371      with_ahes: bool = True,
+ 372      with_telos: bool = True
+ 373  ) -&gt; UnifiedImmuneSystem:
+ 374      &quot;&quot;&quot;Create a fully configured unified immune system.&quot;&quot;&quot;
+ 375      return UnifiedImmuneSystem(
+ 376          enable_ahes=with_ahes,
+ 377          enable_telos=with_telos,
+ 378          auto_enforce=True
+ 379      )</pre></div>
+  </div>
+</body>
+</html>

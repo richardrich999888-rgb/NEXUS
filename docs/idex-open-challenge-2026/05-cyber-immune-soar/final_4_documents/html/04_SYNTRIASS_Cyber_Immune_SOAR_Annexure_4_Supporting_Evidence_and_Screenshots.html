@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-4 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-4</h1>
+    <div class="subtitle">Supporting evidence and screenshots checklist</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-4</h1>
+<p>Supporting evidence, screenshots, repository locations, and artifact map</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Supporting Evidence and Screenshots</h1>
+<h2>Company Identification Details</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Legal Entity Name</td><td>Syntriass Labs Private Limited</td></tr><tr><td>CIN</td><td>U62011AP2025PTC120239</td></tr><tr><td>PAN</td><td>ABQCS7152R</td></tr><tr><td>TAN</td><td>VPNS31351F</td></tr><tr><td>Registered Office</td><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td></tr><tr><td>Contact Email</td><td>kattanaga5555@gmail.com</td></tr><tr><td>Contact Phone</td><td>+91 88864 68060</td></tr><tr><td>GitHub Repository</td><td><code>https://github.com/richardrich999888-rgb/NEXUS</code></td></tr><tr><td>Submission Date</td><td>17 May 2026</td></tr></tbody></table>
+<h2>1. Applicant Resume Format</h2>
+<p>Applicant: K. Naga Sri Ganesh Company: Syntriass Labs Private Limited Role: Founder / Inventor Relevant focus: governed autonomy, immune cyber defence, multi-agent trust, anomaly scoring, auditability, and defence-oriented response assurance.</p>
+<h2>2. Prototype Evidence List</h2>
+<table><thead><tr><th>Evidence Item</th><th>Repository / Artifact Location</th></tr></thead><tbody><tr><td>Governance-immune bridge</td><td><code>agp-core/src/immunity/governance_bridge.py</code></td></tr><tr><td>Artificial immune system</td><td><code>agp-core/src/immunity/immune_system.py</code></td></tr><tr><td>Unified immune system</td><td><code>agp-core/src/immunity/unified.py</code></td></tr><tr><td>Governance anomaly detector</td><td><code>agp-core/src/governance/anomaly.py</code></td></tr><tr><td>Bridge test</td><td><code>agp-core/tests/test_immune_bridge.py</code></td></tr><tr><td>Immune pytest suites</td><td><code>agp-core/tests/immunity/test_immune_system.py</code>, <code>agp-core/tests/immunity/test_unified_immune.py</code></td></tr><tr><td>Multi-agent governance simulation</td><td><code>agp-core/tests/test_multi_agent_governance.py</code></td></tr><tr><td>Fresh test output</td><td><code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/cyber_immune_soar_test_output.txt</code></td></tr><tr><td>Evidence screenshots</td><td><code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/</code></td></tr><tr><td>Final documents</td><td><code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/</code></td></tr></tbody></table>
+<h2>2A. Official Problem Alignment Evidence</h2>
+<table><thead><tr><th>Evidence Item</th><th>Reviewer Use</th><th>Location / Source</th></tr></thead><tbody><tr><td>Open Challenge fit</td><td>Confirms the proposal is a standalone governed cyber-response prototype.</td><td>iDEX Open Challenge route; local package under <code>docs/idex-open-challenge-2026/05-cyber-immune-soar/</code>.</td></tr><tr><td>DISC 14 cyber adjacency</td><td>Shows relevance to network monitoring, secure information exchange, and cyber deception problem areas.</td><td>Alignment summarized in Annexure 1 and Annexure 2; technical evidence in <code>agp-core/src/immunity/</code>.</td></tr><tr><td>ADITI 4 EW / OSINT adjacency</td><td>Shows relevance to high-volume event analysis and policy-limited response in contested or intelligence-support settings.</td><td>Alignment summarized in Annexure 1 and Annexure 2; simulation evidence in <code>agp-core/tests/</code>.</td></tr><tr><td>PS24 non-duplication</td><td>Helps reviewers separate this Open Challenge product from the already submitted ADITI PS24 space-domain application.</td><td>This package is scoped to cyber event response and containment simulation, not space-domain training, surveillance, or operations.</td></tr></tbody></table>
+<h2>3. Validation Scope</h2>
+<p>Current validation is software-subsystem validation. The evidence supports immune bridge response behavior, immune component tests, and multi-agent governance simulation. It does not claim live SOC deployment, endpoint quarantine authority, classified network integration, operational cyber response approval, or field certification.</p>
+<div class="page-break"></div>
+<h2>4. Test Commands and Recorded Results</h2>
+<p>Primary commands:</p>
+<pre data-lang="bash"><code>agp-core/.venv/bin/python agp-core/tests/test_immune_bridge.py
+agp-core/.venv/bin/python -m pytest agp-core/tests/immunity/test_immune_system.py agp-core/tests/immunity/test_unified_immune.py -q
+agp-core/.venv/bin/python agp-core/tests/test_multi_agent_governance.py</code></pre>
+<p>Fresh local results:</p>
+<ul>
+<li>Governance-immune bridge: 19 passed, 0 failed.</li>
+<li>Immune pytest suites: 54 passed, 0 failed.</li>
+<li>Multi-agent governance simulation: completed successfully.</li>
+<li>Run date: 17 May 2026.</li>
+</ul>
+<p>Tested behaviors:</p>
+<ul>
+<li>LOW threat maps to monitor and tracking.</li>
+<li>HIGH threat maps to block and human escalation.</li>
+<li>CRITICAL threat maps to quarantine and mesh disconnect.</li>
+<li>Multi-agent defection maps to multi_quarantine and trust reduction.</li>
+<li>Trust propagation, threat clearing, immune suppression, and status reporting.</li>
+<li>Unified immune scan, known threat training, governance action mapping, and multi-agent ranking.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 5 - Public Repository Reference</h2>
+<p>Purpose: give panel reviewers a direct path to inspect the source repository.</p>
+<p>Status: GitHub repository reference embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/01_github_repository.jpg" alt="GitHub repository reference for Cyber Immune SOAR" /><figcaption>GitHub repository reference for Cyber Immune SOAR</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 6 - Fresh Test Output</h2>
+<p>Purpose: show that immune bridge, immune component suites, and multi-agent governance simulation were run locally before proposal packaging.</p>
+<p>Status: test output screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/02_test_output.jpg" alt="Cyber Immune SOAR test output screenshot" /><figcaption>Cyber Immune SOAR test output screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 7 - Threat Signal Schema</h2>
+<p>Evidence source: <code>agp-core/src/immunity/governance_bridge.py</code></p>
+<p>Purpose: show ThreatSignal and DefectionSignal fields used by the response flow.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/03_threat_signal_schema.jpg" alt="Threat signal schema screenshot" /><figcaption>Threat signal schema screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 8 - Governance-Immune Bridge State</h2>
+<p>Evidence source: <code>agp-core/src/immunity/governance_bridge.py</code></p>
+<p>Purpose: show active threats, permissions, defection signals, trust scores, and callbacks.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/04_bridge_state.jpg" alt="Governance immune bridge state screenshot" /><figcaption>Governance immune bridge state screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 9 - Threat Action Mapping</h2>
+<p>Evidence source: <code>agp-core/src/immunity/governance_bridge.py</code></p>
+<p>Purpose: show mapping from NONE, LOW, MEDIUM, HIGH, and CRITICAL to response classes.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/05_threat_action_mapping.jpg" alt="Threat action mapping screenshot" /><figcaption>Threat action mapping screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 10 - Defection Response</h2>
+<p>Evidence source: <code>agp-core/src/immunity/governance_bridge.py</code></p>
+<p>Purpose: show multi-agent defection handling, trust reduction, and multi_quarantine action.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/06_defection_response.jpg" alt="Defection response screenshot" /><figcaption>Defection response screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 11 - Trust, Suppression, and Status Controls</h2>
+<p>Evidence source: <code>agp-core/src/immunity/governance_bridge.py</code></p>
+<p>Purpose: show trust propagation, direct quarantine helper, restriction helper, suppression, restoration, and status reporting.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/07_trust_status_controls.jpg" alt="Trust status controls screenshot" /><figcaption>Trust status controls screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 12 - Artificial Immune System Configuration</h2>
+<p>Evidence source: <code>agp-core/src/immunity/immune_system.py</code></p>
+<p>Purpose: show AIS configuration for innate, adaptive, memory, T-cell, and optional swarm mode.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/08_immune_system_config.jpg" alt="Artificial immune system config screenshot" /><figcaption>Artificial immune system config screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 13 - Immune Forward Scan</h2>
+<p>Evidence source: <code>agp-core/src/immunity/immune_system.py</code></p>
+<p>Purpose: show runtime scan diagnostics for threat type, severity, memory hit, and response time.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/09_immune_forward_scan.jpg" alt="Immune forward scan screenshot" /><figcaption>Immune forward scan screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 14 - Unified Immune Architecture</h2>
+<p>Evidence source: <code>agp-core/src/immunity/unified.py</code></p>
+<p>Purpose: show integration of innate, adaptive, immune memory, governance bridge, AHES, and TELOS.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/10_unified_immune_architecture.jpg" alt="Unified immune architecture screenshot" /><figcaption>Unified immune architecture screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 15 - Unified Scan Flow</h2>
+<p>Evidence source: <code>agp-core/src/immunity/unified.py</code></p>
+<p>Purpose: show behavior-vector normalization, AIS scan, score calculation, severity classification, and governance routing.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/11_unified_scan_flow.jpg" alt="Unified scan flow screenshot" /><figcaption>Unified scan flow screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 16 - Unified Governance Mapping</h2>
+<p>Evidence source: <code>agp-core/src/immunity/unified.py</code></p>
+<p>Purpose: show severity translated into ThreatSignal and returned as warn, escalate, restrict, or quarantine.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/12_unified_action_mapping.jpg" alt="Unified governance mapping screenshot" /><figcaption>Unified governance mapping screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 17 - Threat Memory Training</h2>
+<p>Evidence source: <code>agp-core/src/immunity/unified.py</code></p>
+<p>Purpose: show known threat vector storage and similarity matching for later scans.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/13_threat_memory.jpg" alt="Threat memory screenshot" /><figcaption>Threat memory screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 18 - Governance Anomaly Taxonomy</h2>
+<p>Evidence source: <code>agp-core/src/governance/anomaly.py</code></p>
+<p>Purpose: show anomaly classes: drift, sudden shift, category shift, frequency spike, and high-risk pattern.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/14_anomaly_taxonomy.jpg" alt="Governance anomaly taxonomy screenshot" /><figcaption>Governance anomaly taxonomy screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 19 - Anomaly Detection Flow</h2>
+<p>Evidence source: <code>agp-core/src/governance/anomaly.py</code></p>
+<p>Purpose: show baseline/recent behavior retrieval and typed alert emission.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/15_anomaly_detection_flow.jpg" alt="Anomaly detection flow screenshot" /><figcaption>Anomaly detection flow screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 20 - Behavioral Drift Detector</h2>
+<p>Evidence source: <code>agp-core/src/governance/anomaly.py</code></p>
+<p>Purpose: show recent embedding comparison against baseline and severity conversion.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/16_drift_detector.jpg" alt="Behavioral drift detector screenshot" /><figcaption>Behavioral drift detector screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 21 - Bridge Test Cases</h2>
+<p>Evidence source: <code>agp-core/tests/test_immune_bridge.py</code></p>
+<p>Purpose: show tests for low, high, critical, defection, trust, clearing, suppression, and status flows.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/17_bridge_test_cases.jpg" alt="Bridge test cases screenshot" /><figcaption>Bridge test cases screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 22 - Bridge Test Summary</h2>
+<p>Evidence source: <code>agp-core/tests/test_immune_bridge.py</code></p>
+<p>Purpose: show pass/fail summary gate and verified output condition.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/18_bridge_test_summary.jpg" alt="Bridge test summary screenshot" /><figcaption>Bridge test summary screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 23 - Unified Immune Tests</h2>
+<p>Evidence source: <code>agp-core/tests/immunity/test_unified_immune.py</code></p>
+<p>Purpose: show tests for initialization, registration, behavior scan, threat detection, and memory update.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/19_unified_immune_tests.jpg" alt="Unified immune tests screenshot" /><figcaption>Unified immune tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 24 - Full Integration Test</h2>
+<p>Evidence source: <code>agp-core/tests/immunity/test_unified_immune.py</code></p>
+<p>Purpose: show all-components integration test with multiple agents, threat training, scans, and status.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/20_unified_integration_tests.jpg" alt="Unified integration tests screenshot" /><figcaption>Unified integration tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 25 - AIS Unit Tests</h2>
+<p>Evidence source: <code>agp-core/tests/immunity/test_immune_system.py</code></p>
+<p>Purpose: show antibody creation, binding, neutralization, cloning, fitness, and pool behavior tests.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/21_immune_system_tests.jpg" alt="AIS unit tests screenshot" /><figcaption>AIS unit tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 26 - Multi-Agent Governance Simulation</h2>
+<p>Evidence source: <code>agp-core/tests/test_multi_agent_governance.py</code></p>
+<p>Purpose: show 12 behavior profiles across task success, collaboration, risk, and ethics signals.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/22_multi_agent_simulation.jpg" alt="Multi agent simulation screenshot" /><figcaption>Multi agent simulation screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 27 - Governance Result Gate</h2>
+<p>Evidence source: <code>agp-core/tests/test_multi_agent_governance.py</code></p>
+<p>Purpose: show simulation succeeds only when high performers rank high and the high-risk actor ranks low.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/23_governance_result_gate.jpg" alt="Governance result gate screenshot" /><figcaption>Governance result gate screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 28 - Reviewer Repository Map</h2>
+<p>Purpose: give panel reviewers a direct navigation map.</p>
+<table><thead><tr><th>Review Area</th><th>Path</th></tr></thead><tbody><tr><td>Final proposal package</td><td><code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/</code></td></tr><tr><td>Screenshot assets</td><td><code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/</code></td></tr><tr><td>Governance-immune bridge</td><td><code>agp-core/src/immunity/governance_bridge.py</code></td></tr><tr><td>Artificial immune system</td><td><code>agp-core/src/immunity/immune_system.py</code></td></tr><tr><td>Unified immune system</td><td><code>agp-core/src/immunity/unified.py</code></td></tr><tr><td>Governance anomaly detector</td><td><code>agp-core/src/governance/anomaly.py</code></td></tr><tr><td>AGP immune tests</td><td><code>agp-core/tests/immunity/</code></td></tr><tr><td>Multi-agent governance simulation</td><td><code>agp-core/tests/test_multi_agent_governance.py</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 29 - Claim-to-File Location Map</h2>
+<table><thead><tr><th>Proposal Claim</th><th>Source Evidence</th></tr></thead><tbody><tr><td>Threat signal schema exists</td><td><code>governance_bridge.py</code>, <code>ThreatSignal</code></td></tr><tr><td>Defection signal schema exists</td><td><code>governance_bridge.py</code>, <code>DefectionSignal</code></td></tr><tr><td>LOW threat maps to monitor</td><td><code>GovernanceImmuneBridge._determine_action()</code></td></tr><tr><td>MEDIUM threat maps to throttle</td><td><code>GovernanceImmuneBridge._determine_action()</code></td></tr><tr><td>HIGH threat maps to block and escalation</td><td><code>GovernanceImmuneBridge._determine_action()</code></td></tr><tr><td>CRITICAL threat maps to quarantine</td><td><code>GovernanceImmuneBridge._determine_action()</code></td></tr><tr><td>Multi-agent defection reduces trust</td><td><code>GovernanceImmuneBridge.register_defection()</code></td></tr><tr><td>Unified immune scan exists</td><td><code>UnifiedImmuneSystem.scan_behavior()</code></td></tr><tr><td>Known threat memory exists</td><td><code>UnifiedImmuneSystem.train_on_threat()</code> and <code>_known_threat_similarity()</code></td></tr><tr><td>Multi-agent ranking simulation exists</td><td><code>test_multi_agent_governance.py</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 30 - Test and Command Locations</h2>
+<table><thead><tr><th>Test Area</th><th>Command / File</th></tr></thead><tbody><tr><td>Governance-immune bridge</td><td><code>agp-core/.venv/bin/python agp-core/tests/test_immune_bridge.py</code></td></tr><tr><td>Immune pytest suites</td><td><code>agp-core/.venv/bin/python -m pytest agp-core/tests/immunity/test_immune_system.py agp-core/tests/immunity/test_unified_immune.py -q</code></td></tr><tr><td>Multi-agent governance simulation</td><td><code>agp-core/.venv/bin/python agp-core/tests/test_multi_agent_governance.py</code></td></tr><tr><td>Combined output artifact</td><td><code>evidence_assets/cyber_immune_soar_test_output.txt</code></td></tr><tr><td>Evidence screenshot generator</td><td><code>generate_cyber_immune_soar_evidence_screenshots.mjs</code></td></tr><tr><td>PDF builder</td><td><code>build_syntriass_letterhead_problem5.mjs</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 31 - Generated Artifact Locations</h2>
+<table><thead><tr><th>Artifact Type</th><th>Location</th></tr></thead><tbody><tr><td>Annexure 1 PDF</td><td><code>01_SYNTRIASS_Cyber_Immune_SOAR_Annexure_1_Applicant_Details_and_Solution_Summary.pdf</code></td></tr><tr><td>Annexure 2 PDF</td><td><code>02_SYNTRIASS_Cyber_Immune_SOAR_Annexure_2_Technical_Architecture.pdf</code></td></tr><tr><td>Annexure 3 PDF</td><td><code>03_SYNTRIASS_Cyber_Immune_SOAR_Annexure_3_Advantages_and_Competencies.pdf</code></td></tr><tr><td>Annexure 4 PDF</td><td><code>04_SYNTRIASS_Cyber_Immune_SOAR_Annexure_4_Supporting_Evidence_and_Screenshots.pdf</code></td></tr><tr><td>DOCX files</td><td>Same directory, matching <code>.docx</code> names.</td></tr><tr><td>Rendered HTML</td><td><code>final_4_documents/html/</code></td></tr><tr><td>Evidence screenshots</td><td><code>final_4_documents/evidence_assets/*.jpg</code></td></tr><tr><td>Test output</td><td><code>final_4_documents/evidence_assets/cyber_immune_soar_test_output.txt</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 32 - Screenshot Artifact Index</h2>
+<table><thead><tr><th>Screenshot</th><th>File</th></tr></thead><tbody><tr><td>GitHub repository</td><td><code>evidence_assets/01_github_repository.jpg</code></td></tr><tr><td>Fresh test output</td><td><code>evidence_assets/02_test_output.jpg</code></td></tr><tr><td>Threat and defection schema</td><td><code>evidence_assets/03_threat_signal_schema.jpg</code></td></tr><tr><td>Bridge state</td><td><code>evidence_assets/04_bridge_state.jpg</code></td></tr><tr><td>Threat action mapping</td><td><code>evidence_assets/05_threat_action_mapping.jpg</code></td></tr><tr><td>Defection response</td><td><code>evidence_assets/06_defection_response.jpg</code></td></tr><tr><td>Trust/status controls</td><td><code>evidence_assets/07_trust_status_controls.jpg</code></td></tr><tr><td>Immune system screenshots</td><td><code>evidence_assets/08_immune_system_config.jpg</code> through <code>13_threat_memory.jpg</code></td></tr><tr><td>Anomaly screenshots</td><td><code>evidence_assets/14_anomaly_taxonomy.jpg</code> through <code>16_drift_detector.jpg</code></td></tr><tr><td>Test screenshots</td><td><code>evidence_assets/17_bridge_test_cases.jpg</code> through <code>23_governance_result_gate.jpg</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 33 - Defence Problem to Evidence Map</h2>
+<table><thead><tr><th>Defence Problem</th><th>Cyber Immune SOAR Control</th><th>Evidence</th></tr></thead><tbody><tr><td>Alert overload</td><td>Severity and confidence signal engine</td><td>Evidence pages 7-9, 12-15.</td></tr><tr><td>Unsafe automated response</td><td>Governance bridge response mapping</td><td>Evidence pages 8-11, 16.</td></tr><tr><td>Compromised service or agent</td><td>ThreatSignal and quarantine paths</td><td>Evidence pages 7, 9, 21-22.</td></tr><tr><td>Coordinated compromise</td><td>DefectionSignal and multi_quarantine</td><td>Evidence pages 7, 10, 21.</td></tr><tr><td>Weak threat memory</td><td>Known threat vector storage and similarity matching</td><td>Evidence page 17.</td></tr><tr><td>Poor after-action review</td><td>Status, output, artifact map, and test evidence</td><td>Evidence pages 6, 28-32, 35-37.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 34 - Prototype Work Package Locations</h2>
+<table><thead><tr><th>Work Package</th><th>Existing Starting Point</th></tr></thead><tbody><tr><td>Threat signal schema</td><td><code>governance_bridge.py</code>, <code>ThreatSignal</code></td></tr><tr><td>Defection signal schema</td><td><code>governance_bridge.py</code>, <code>DefectionSignal</code></td></tr><tr><td>Response mapping</td><td><code>GovernanceImmuneBridge._determine_action()</code></td></tr><tr><td>Trust update</td><td><code>GovernanceImmuneBridge.register_defection()</code></td></tr><tr><td>Status reporting</td><td><code>GovernanceImmuneBridge.get_status()</code></td></tr><tr><td>Unified scan</td><td><code>UnifiedImmuneSystem.scan_behavior()</code></td></tr><tr><td>Known threat memory</td><td><code>UnifiedImmuneSystem.train_on_threat()</code></td></tr><tr><td>Anomaly detector</td><td><code>AnomalyDetector.detect_anomalies()</code></td></tr><tr><td>Simulation harness</td><td><code>test_multi_agent_governance.py</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 35 - Panel Review Checklist</h2>
+<table><thead><tr><th>Reviewer Question</th><th>Where To Check</th></tr></thead><tbody><tr><td>Were tests actually run?</td><td>Evidence page 6 and output file <code>cyber_immune_soar_test_output.txt</code>.</td></tr><tr><td>Is there real bridge behavior?</td><td>Evidence pages 7-11 and <code>test_immune_bridge.py</code>.</td></tr><tr><td>Does this replace a live SOC?</td><td>No. It is a simulation-first prototype. Caveats on pages 1, 4, and 36.</td></tr><tr><td>Does it perform real endpoint quarantine today?</td><td>No. Current quarantine is a governed simulation action.</td></tr><tr><td>Does it handle multi-agent collusion?</td><td>DefectionSignal path and bridge test evidence on pages 7, 10, and 21.</td></tr><tr><td>Is the GitHub repository identified?</td><td>Evidence page 5 and repository coordinate page 37.</td></tr><tr><td>Are artifact locations included?</td><td>Evidence pages 28-32.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 36 - Readiness Statement and Caveats</h2>
+<table><thead><tr><th>Area</th><th>Position</th></tr></thead><tbody><tr><td>Software subsystem readiness</td><td>Current evidence supports software subsystem TRL 3-4.</td></tr><tr><td>Bridge behavior</td><td>Script test reports 19 passed and 0 failed.</td></tr><tr><td>Immune components</td><td>Pytest immune suites report 54 passed.</td></tr><tr><td>Multi-agent governance</td><td>Simulation completes successfully.</td></tr><tr><td>Live SOC deployment</td><td>Not claimed. Requires adapters, policy approval, safety testing, and operator workflow validation.</td></tr><tr><td>Endpoint quarantine</td><td>Not claimed as operational enforcement. Current quarantine is a bounded simulation action.</td></tr><tr><td>Classified network use</td><td>Not claimed. Accreditation, audit retention, access control, and network authority remain required.</td></tr><tr><td>False-positive handling</td><td>Requires evaluator datasets, red-team simulation, thresholds, and human override policy.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 37 - Declaration and Repository Coordinates</h2>
+<p>Declaration:</p>
+<p>Cyber Immune SOAR is submitted as a software-subsystem prototype for governed cyber defence response evaluation.</p>
+<p>Repository coordinates:</p>
+<ul>
+<li>Public repository: <code>https://github.com/richardrich999888-rgb/NEXUS</code></li>
+<li>Proposal folder: <code>docs/idex-open-challenge-2026/05-cyber-immune-soar/</code></li>
+<li>Final documents: <code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/</code></li>
+<li>Evidence assets: <code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/</code></li>
+<li>Test output: <code>docs/idex-open-challenge-2026/05-cyber-immune-soar/final_4_documents/evidence_assets/cyber_immune_soar_test_output.txt</code></li>
+<li>Bridge source: <code>agp-core/src/immunity/governance_bridge.py</code></li>
+<li>Unified immune source: <code>agp-core/src/immunity/unified.py</code></li>
+<li>Simulation source: <code>agp-core/tests/test_multi_agent_governance.py</code></li>
+</ul>
+<p>Submission caveat:</p>
+<ul>
+<li>The package is prepared for prototype review and iDEX-funded validation planning.</li>
+<li>No live cyber operation authority, classified-network deployment, endpoint-quarantine certification, or operational SOC replacement is claimed.</li>
+<li>SIEM/SOAR adapters, endpoint controls, signed audit storage, evaluator datasets, and response-authority approvals remain required for operational use.</li>
+</ul>
+  </main>
+</body>
+</html>

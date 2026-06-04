@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>Resource Controller Test Scenario</h1>
+    <div class="subtitle">Test proves within-quota grants and over-quota denials.</div>
+    <div class="body"><pre>  28          print(f&quot;   ✗ {name}&quot;)
+  29          results[&quot;failed&quot;] += 1
+  30  
+  31  # 1. Register agents with quotas
+  32  print(&quot;\n[1] REGISTERING AGENTS WITH QUOTAS...&quot;)
+  33  resource_controller.register_agent(&quot;agent-big&quot;, ResourceQuota(
+  34      memory_mb_max=1024.0,
+  35      tokens_max=50000
+  36  ))
+  37  resource_controller.register_agent(&quot;agent-small&quot;, ResourceQuota(
+  38      memory_mb_max=256.0,
+  39      tokens_max=10000
+  40  ))
+  41  test(&quot;Two agents registered&quot;, len(resource_controller.quotas) == 2)
+  42  
+  43  # 2. Request memory (within quota)
+  44  print(&quot;\n[2] TESTING MEMORY ALLOCATION (WITHIN QUOTA)...&quot;)
+  45  result = resource_controller.request_resource(&quot;agent-big&quot;, ResourceType.MEMORY_MB, 500.0)
+  46  test(&quot;Memory granted within quota&quot;, result.get(&quot;status&quot;) == &quot;granted&quot;)
+  47  
+  48  usage = resource_controller.get_usage(&quot;agent-big&quot;)
+  49  test(&quot;Usage tracking correct&quot;, usage[&quot;memory&quot;][&quot;used&quot;] == 500.0)
+  50  
+  51  # 3. Request memory (exceed quota)
+  52  print(&quot;\n[3] TESTING MEMORY ALLOCATION (EXCEED QUOTA)...&quot;)
+  53  result = resource_controller.request_resource(&quot;agent-big&quot;, ResourceType.MEMORY_MB, 600.0)
+  54  test(&quot;Memory denied when exceeding quota&quot;, result.get(&quot;status&quot;) == &quot;denied&quot;)
+  55  test(&quot;Denial reason is correct&quot;, &quot;quota exceeded&quot; in result.get(&quot;reason&quot;, &quot;&quot;).lower())
+  56  
+  57  # 4. Request tokens
+  58  print(&quot;\n[4] TESTING TOKEN ALLOCATION...&quot;)
+  59  result = resource_controller.request_resource(&quot;agent-small&quot;, ResourceType.TOKENS, 5000)
+  60  test(&quot;Tokens granted&quot;, result.get(&quot;status&quot;) == &quot;granted&quot;)
+  61  
+  62  result = resource_controller.request_resource(&quot;agent-small&quot;, ResourceType.TOKENS, 6000)
+  63  test(&quot;Tokens denied when exceeding quota&quot;, result.get(&quot;status&quot;) == &quot;denied&quot;)
+  64  
+  65  # 5. Priority update (governance integration)
+  66  print(&quot;\n[5] TESTING PRIORITY UPDATE (GOVERNANCE)...&quot;)
+  67  resource_controller.set_priority(&quot;agent-big&quot;, 0.9)
+  68  usage = resource_controller.get_usage(&quot;agent-big&quot;)
+  69  test(&quot;Priority updated to 0.9&quot;, usage[&quot;priority&quot;] == 0.9)
+  70  
+  71  # 6. System-wide status
+  72  print(&quot;\n[6] TESTING SYSTEM STATUS...&quot;)
+  73  status = resource_controller.get_system_status()
+  74  test(&quot;System memory tracked&quot;, status[&quot;memory&quot;][&quot;used&quot;] == 500.0)
+  75  test(&quot;Both agents registered&quot;, status[&quot;agents_registered&quot;] == 2)
+  76  
+  77  # 7. Release resource
+  78  print(&quot;\n[7] TESTING RESOURCE RELEASE...&quot;)
+  79  resource_controller.release_resource(&quot;agent-big&quot;, ResourceType.MEMORY_MB, 200.0)
+  80  usage = resource_controller.get_usage(&quot;agent-big&quot;)
+  81  test(&quot;Memory released correctly&quot;, usage[&quot;memory&quot;][&quot;used&quot;] == 300.0)
+  82  
+  83  status = resource_controller.get_system_status()
+  84  test(&quot;System memory updated after release&quot;, status[&quot;memory&quot;][&quot;used&quot;] == 300.0)
+  85  
+  86  # Summary
+  87  print(&quot;\n&quot; + &quot;=&quot; * 70)
+  88  print(&quot;RESOURCE CONTROLLER TEST RESULTS&quot;)
+  89  print(&quot;=&quot; * 70)</pre></div>
+  </div>
+</body>
+</html>

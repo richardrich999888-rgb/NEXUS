@@ -413,6 +413,10 @@ impl AsiNode {
     }
     
     fn process_accusation(&mut self, acc: AccusationMessage, sender_key: &PublicIdentity) -> ProcessResult {
+        if sender_key.id != acc.accuser {
+            return ProcessResult::Invalid("Accusation sender does not match accuser identity".into());
+        }
+
         // Get accuser's reputation
         let accuser_rep = self.reputation.get_direct(
             self.identity.id,

@@ -9,12 +9,10 @@
 //! Copyright (c) 2025 SYNTRIASS Labs Private Limited
 //! Inventor: Katta Naga Sri Ganesh
 
-use proptest::prelude::*;
-
 /// Replay test for CausalTensor merge operations
 #[cfg(test)]
 mod causal_tensor_replay {
-    use nexus_core::causal::{CausalTensor, VectorClock, CausalId};
+    use nexus_core::causal::{CausalTensor, VectorClock};
     use nexus_core::crypto::generate_signing_key;
 
     /// Test: Merge operation is deterministic when replayed

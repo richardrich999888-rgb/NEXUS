@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>NEXUS Sync Engine</h1>
+    <div class="subtitle">The sync engine wraps CAUSALUX DAG with USO registry, signed operations, sync deltas, and remote merge.</div>
+    <div class="body"><pre>  11  /// NEXUS Sync Engine - manages synchronized state across nodes
+  12  /// 
+  13  /// Wraps CAUSALUX CausalDAG with NEXUS-specific adaptations:
+  14  /// - Uses ContentHash for operation IDs
+  15  /// - Integrates with USO for state management
+  16  /// - Provides PCU-aware sync protocols
+  17  pub struct NexusSyncEngine {
+  18      /// Underlying CAUSALUX DAG
+  19      dag: CausalDAG,
+  20      
+  21      /// Node ID
+  22      node_id: String,
+  23      
+  24      /// Keypair for signing operations
+  25      keypair: Option&lt;SigningKey&gt;,
+  26      
+  27      /// USO registry - tracked USOs by their ID
+  28      uso_registry: HashMap&lt;ContentHash, USO&gt;,
+  29  }
+  30  
+  31  impl NexusSyncEngine {
+  32      /// Create new sync engine
+  33      pub fn new(node_id: impl Into&lt;String&gt;, conflict_policy: ConflictPolicy) -&gt; Self {
+  34          let node_id = node_id.into();
+  35          let dag = CausalDAG::new(
+  36              node_id.clone(),
+  37              10_000, // Snapshot every 10K ops
+  38              conflict_policy,
+  39          );
+  40          
+  41          NexusSyncEngine {
+  42              dag,
+  43              node_id,
+  44              keypair: None,
+  45              uso_registry: HashMap::new(),
+  46          }
+  47      }
+  48  
+  49      /// Set keypair for signing operations
+  50      pub fn with_keypair(mut self, keypair: SigningKey) -&gt; Self {
+  51          self.keypair = Some(keypair);
+  52          self
+  53      }
+  54  
+  55      /// Get current version vector
+  56      pub fn version_vector(&amp;self) -&gt; &amp;VersionVector {
+  57          self.dag.get_version_vector()
+  58      }
+  59  
+  60      /// Get operation count
+  61      pub fn operation_count(&amp;self) -&gt; usize {
+  62          self.dag.operation_count()
+  63      }
+  64  
+  65      /// Register a USO for sync tracking
+  66      pub fn register_uso(&amp;mut self, uso: USO) {
+  67          self.uso_registry.insert(uso.id, uso);
+  68      }
+  69  
+  70      /// Get a tracked USO
+  71      pub fn get_uso(&amp;self, id: &amp;ContentHash) -&gt; Option&lt;&amp;USO&gt; {
+  72          self.uso_registry.get(id)
+  73      }
+  74  
+  75      /// Update a USO and create sync operation
+  76      pub fn update_uso(
+  77          &amp;mut self,
+  78          uso_id: &amp;ContentHash,
+  79          new_data: Vec&lt;u8&gt;,
+  80          principal: PrincipalId,
+  81      ) -&gt; Result&lt;ContentHash, SyncError&gt; {
+  82          let uso = self.uso_registry.get_mut(uso_id)
+  83              .ok_or(SyncError::UsoNotFound)?;
+  84          
+  85          uso.update(new_data.clone(), principal, &amp;self.node_id);
+  86          
+  87          // Create causal operation for sync
+  88          if let Some(ref keypair) = self.keypair {
+  89              let version = uso.history.vector_clock.get(&amp;self.node_id).copied().unwrap_or(0);
+  90              let mut vv = VersionVector::new();
+  91              for _ in 0..version {
+  92                  vv.increment(&amp;self.node_id);
+  93              }
+  94              
+  95              let op = CausalOp::new(
+  96                  &quot;uso_update&quot;.to_string(),
+  97                  serde_json::json!({
+  98                      &quot;uso_id&quot;: hex::encode(uso_id.as_bytes()),
+  99                      &quot;data_hash&quot;: hex::encode(uso.id.as_bytes()),
+ 100                  }),
+ 101                  std::collections::BTreeSet::new(),
+ 102                  vv,
+ 103                  self.node_id.clone(),
+ 104                  keypair,
+ 105              );
+ 106              
+ 107              self.dag.insert(op).map_err(|e| SyncError::DagError(e.to_string()))?;
+ 108          }
+ 109          
+ 110          Ok(uso.id)
+ 111      }
+ 112  
+ 113      /// Get operations since a version vector (for sync)
+ 114      pub fn get_operations_since(&amp;self, since_lamport: u64) -&gt; Vec&lt;&amp;CausalOp&gt; {
+ 115          self.dag.get_operations_after(since_lamport)
+ 116      }
+ 117  
+ 118      /// Merge remote operations into local DAG
+ 119      pub fn merge_remote(&amp;mut self, ops: Vec&lt;CausalOp&gt;) -&gt; Result&lt;usize, SyncError&gt; {
+ 120          let mut merged = 0;
+ 121          for op in ops {
+ 122              match self.dag.insert(op) {
+ 123                  Ok(_) =&gt; merged += 1,
+ 124                  Err(e) =&gt; {
+ 125                      // Log but continue - some ops may conflict
+ 126                      eprintln!(&quot;Merge warning: {}&quot;, e);
+ 127                  }
+ 128              }
+ 129          }
+ 130          Ok(merged)
+ 131      }
+ 132  
+ 133      /// Get sync delta for a peer
+ 134      pub fn get_sync_delta(&amp;self, peer_vv: &amp;VersionVector) -&gt; SyncDelta {
+ 135          let local_vv = self.version_vector();
+ 136          
+ 137          // Find common point
+ 138          let mut min_lamport = u64::MAX;
+ 139          for (node, count) in &amp;peer_vv.versions {
+ 140              let local_count = local_vv.get(node);
+ 141              if local_count &gt; *count {
+ 142                  min_lamport = min_lamport.min(*count);
+ 143              }
+ 144          }
+ 145          
+ 146          let ops = if min_lamport == u64::MAX {
+ 147              vec![]
+ 148          } else {
+ 149              self.get_operations_since(min_lamport)
+ 150                  .into_iter()
+ 151                  .cloned()
+ 152                  .collect()
+ 153          };
+ 154          
+ 155          SyncDelta {
+ 156              from_version: peer_vv.clone(),
+ 157              to_version: local_vv.clone(),
+ 158              operations: ops,
+ 159          }
+ 160      }</pre></div>
+  </div>
+</body>
+</html>

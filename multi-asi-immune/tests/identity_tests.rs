@@ -1,6 +1,6 @@
 //! Identity tests.
 
-use multi_asi_immune::identity::keypair::{AsiIdentity, AsiId};
+use multi_asi_immune::identity::keypair::AsiIdentity;
 
 #[test]
 fn test_identity_generation() {

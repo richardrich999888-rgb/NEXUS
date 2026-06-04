@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Sync Engine Tests</h1>
+    <div class="subtitle">Library tests cover engine creation, USO registration, and USO update with signed causal operation creation.</div>
+    <div class="body"><pre> 191  #[cfg(test)]
+ 192  mod tests {
+ 193      use super::*;
+ 194      use rand::rngs::OsRng;
+ 195  
+ 196      fn create_test_keypair() -&gt; SigningKey {
+ 197          let mut rng = OsRng;
+ 198          let mut bytes = [0u8; 32];
+ 199          rand::RngCore::fill_bytes(&amp;mut rng, &amp;mut bytes);
+ 200          SigningKey::from_bytes(&amp;bytes)
+ 201      }
+ 202  
+ 203      #[test]
+ 204      fn test_sync_engine_creation() {
+ 205          let engine = NexusSyncEngine::new(&quot;node1&quot;, ConflictPolicy::LastWriterWins);
+ 206          assert_eq!(engine.operation_count(), 0);
+ 207      }
+ 208  
+ 209      #[test]
+ 210      fn test_uso_registration() {
+ 211          let mut engine = NexusSyncEngine::new(&quot;node1&quot;, ConflictPolicy::LastWriterWins);
+ 212          let uso = USO::new(b&quot;test data&quot;.to_vec(), PrincipalId::generate());
+ 213          
+ 214          let uso_id = uso.id;
+ 215          engine.register_uso(uso);
+ 216          
+ 217          assert!(engine.get_uso(&amp;uso_id).is_some());
+ 218      }
+ 219  
+ 220      #[test]
+ 221      fn test_uso_update_with_keypair() {
+ 222          let keypair = create_test_keypair();
+ 223          let mut engine = NexusSyncEngine::new(&quot;node1&quot;, ConflictPolicy::LastWriterWins)
+ 224              .with_keypair(keypair);
+ 225          
+ 226          let principal = PrincipalId::generate();
+ 227          let uso = USO::new(b&quot;initial&quot;.to_vec(), principal);
+ 228          let uso_id = uso.id;
+ 229          
+ 230          engine.register_uso(uso);
+ 231          
+ 232          let new_id = engine.update_uso(&amp;uso_id, b&quot;updated&quot;.to_vec(), principal);
+ 233          assert!(new_id.is_ok());
+ 234          
+ 235          // Should have created an operation
+ 236          assert_eq!(engine.operation_count(), 1);
+ 237      }</pre></div>
+  </div>
+</body>
+</html>

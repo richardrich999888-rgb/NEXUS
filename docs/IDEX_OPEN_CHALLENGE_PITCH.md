@@ -10,7 +10,7 @@
 
 # THE PITCH: ONE SENTENCE
 
-> **"A bio-inspired operating system for governing autonomous military AI agents — ensuring no rogue drone, swarm, or battlefield AI can defect, collude, or disobey orders, even under adversarial electronic warfare conditions."**
+> **"A governed-autonomy infrastructure layer for resilient military robots, swarms, and AI agents — enforcing authorization, bounded execution, auditability, and degraded-mode coordination under adversarial conditions."**
 
 ---
 
@@ -20,9 +20,9 @@ iDEX evaluates on three criteria:
 
 | Criterion | Our Score | Why |
 |-----------|-----------|-----|
-| **Military Relevance** | ★★★★★ | Directly solves autonomous weapons governance — India's #1 AI defence gap |
-| **Innovation** | ★★★★★ | Zero prior art on bio-inspired AI immune systems (globally) |
-| **Indian Origin** | ★★★★★ | 100% indigenous, single Indian inventor, no foreign dependencies |
+| **Military Relevance** | ★★★★★ | Addresses governed autonomy, swarm resilience, and accountable robotic execution |
+| **Innovation** | ★★★★★ | Unifies execution guards, immune-style swarm integrity, TELOS consequence accounting, and AGP-OS |
+| **Indian Origin** | ★★★★★ | Sovereign architecture developed in India |
 
 ---
 
@@ -32,18 +32,18 @@ iDEX evaluates on three criteria:
 
 | NEXUS Component | Defence Application | iDEX Category |
 |-----------------|---------------------|---------------|
-| **Execution Guards** | No drone/robot fires without multi-layer approval | Autonomous Systems |
+| **Execution Guards** | No high-consequence actuation without multi-layer approval | Autonomous Systems |
 | **TELOS Membrane** | Chain-of-command accountability for AI decisions | AI/ML |
 | **Multi-ASI Immune System** | Detect rogue/hacked drones in a swarm | Cybersecurity |
 | **AHES Endocrine System** | Stress regulation for autonomous vehicles under EW | Autonomous Systems |
-| **Developmental Gates** | Staged capability unlock (training → live fire) | Smart Weapon Systems |
+| **Developmental Gates** | Staged capability unlock from simulation to supervised operation | Smart Weapon Systems |
 | **Homeostasis Engine** | Keep autonomous systems within safe operating bounds | Navigation Systems |
 | **AGP-OS (BioKernel)** | Real-time OS for governed robotic agents | Robotics |
 | **ROS2 Bridge** | Direct integration with military ROS2 robots | Robotics |
 | **HAL (Hardware Abstraction)** | Sensor/actuator safety interlocks | Electro-Optical Systems |
 | **Post-Quantum Crypto** | Quantum-resistant identity for military AI | Cryptography |
 | **Mesh Coordination** | Multi-agent battlefield coordination | Communication Systems |
-| **Causal Infrastructure** | Unforgeable battle logs / mission provenance | Sensor Technology |
+| **Causal Infrastructure** | Tamper-evident mission provenance | Sensor Technology |
 
 ---
 
@@ -57,7 +57,7 @@ iDEX evaluates on three criteria:
 ### Problem Statement (Self-Proposed)
 India is deploying autonomous drone swarms (DISC-14 has multiple swarm challenges). A critical unsolved problem: **How do you detect when one or more drones in a 200-unit swarm has been compromised by electronic warfare, hacked, or gone rogue — and neutralize it before it turns on friendly forces?**
 
-No existing system solves this. Current approaches rely on:
+Current approaches often rely on:
 - Central command (single point of failure)
 - Heartbeat monitoring (trivially spoofable)
 - GPS geofencing (jammed in contested environments)
@@ -78,13 +78,13 @@ A **bio-inspired immune system** where every drone in the swarm acts as both a d
 - **No single point of failure** — works even if command link is jammed
 - **Autonomous response** — microsecond threat detection vs. human reaction time
 - **Adaptive** — learns new threats in the field without patching
-- **Unforgeable identity** — quantum-resistant signatures prevent spoofing
+- **Cryptographically bound identity** — signatures reduce spoofing risk when keys remain protected
 
 ### TRL (Technology Readiness Level)
 | Level | Status | Evidence |
 |-------|--------|----------|
-| TRL 1-3 (Research) | ✅ Complete | 7,000+ lines Rust+Python, zero-prior-art research |
-| TRL 4 (Lab Demo) | ✅ Complete | 68 Rust tests + 22 Python modules all passing |
+| TRL 1-3 (Research) | ✅ Complete | Software architecture, source implementation, and subsystem tests |
+| TRL 4 (Lab Demo) | ⚠️ Subsystem-level only | Rust/Python tests pass for software components; no physical swarm validation yet |
 | TRL 5 (Prototype) | 🔨 Proposed | iDEX grant funds this → hardware drone swarm demo |
 | TRL 6 (Field Test) | 📋 Planned | Indian Army/Navy collaboration |
 
@@ -101,28 +101,28 @@ A **bio-inspired immune system** where every drone in the swarm acts as both a d
 
 ---
 
-## PITCH B: "TELOS-Guard" — Accountable AI for Lethal Autonomous Weapons
+## PITCH B: "TELOS-Guard" — Accountable AI for High-Consequence Autonomous Decisions
 **Best fit for: AI/ML + Smart Weapon Systems**
 
 ### Problem Statement
-India is developing AI-enabled weapon systems (DISC-14: AI-enabled gun area recce, autonomous targeting). International humanitarian law requires **meaningful human control** over lethal decisions. But:
+India is developing AI-enabled defence systems, including robotic reconnaissance, targeting assistance, and supervised autonomy. High-consequence decisions require meaningful human control, authorization evidence, and post-mission accountability. But:
 - AI operates at machine speed (milliseconds)
 - Human operators cannot review every decision
 - Current logging is fakeable and non-cryptographic
 
 ### Our Solution: TELOS + Execution Guards
-A **commitment membrane** that makes every lethal AI decision:
+A **commitment membrane** that makes every high-consequence AI decision:
 
 1. **Cost entropy** — the AI cannot cheaply explore all options; it must commit
-2. **Pass through execution guards** — no weapon fires without multi-layer approval
-3. **Record cryptographically** — every decision in unforgeable Merkle ledger
-4. **Require human attestation** — CRITICAL tier decisions (lethal force) require human-in-the-loop via VDF (Verifiable Delay Function) that cannot be bypassed
+2. **Pass through execution guards** — no high-consequence actuation without multi-layer approval
+3. **Record cryptographically** — every decision in a tamper-evident Merkle ledger
+4. **Require human attestation** — CRITICAL tier decisions require human-in-the-loop authorization before execution
 
 ### Military Advantage
-- **Meets LAWS compliance** — meaningful human control, cryptographic proof
+- **Supports LAWS compliance review** — meaningful human control and cryptographic audit evidence
 - **0.074ms governance latency** — doesn't slow down combat operations
-- **Unforgeable mission logs** — every AI decision provably recorded for post-mission review
-- **Staged capability** — weapon AI starts in "training mode," graduates to "live fire" only after demonstrated safety
+- **Tamper-evident mission logs** — every AI decision is hash-linked for post-mission review
+- **Staged capability** — autonomy starts in simulation/training mode and unlocks only after demonstrated safety
 
 ---
 
@@ -182,23 +182,23 @@ If the Open Challenge allows a broader proposal, pitch all three as one integrat
 This combines:
 1. **AGP-OS** as the base operating system
 2. **BioShield (Immune System)** for swarm defence
-3. **TELOS-Guard** for lethal decision accountability
+3. **TELOS-Guard** for high-consequence decision accountability
 
-Framed as: *"India's first complete indigenous AI governance stack for military autonomous systems — from operating system to immune defence to accountability."*
+Framed as: *"A sovereign governed-autonomy stack for military robotic systems — from operating system to immune defence to accountability."*
 
 ---
 
 # KEY SLIDES FOR THE iDEX PROPOSAL
 
-1. **Problem:** Autonomous military AI can go rogue, get hacked, or defect. No existing solution.
+1. **Problem:** Autonomous military AI can go rogue, get hacked, or defect; current assurance tools are fragmented.
 2. **Solution:** Bio-inspired immune system + accountability membrane + governed OS.
-3. **Innovation:** Zero prior art globally. 1.4M lines of code. 17,000+ tests. All indigenous.
+3. **Innovation:** Integrated execution guards, swarm immune response, TELOS consequence accounting, and AGP-OS in one sovereign stack.
 4. **Military Use Case:** Drone swarm defence, LAWS compliance, multi-robot coordination.
-5. **TRL:** 4 (lab validated). Grant takes us to TRL 5-6.
+5. **TRL:** Software subsystem TRL 3-4; grant funds hardware-in-loop and swarm validation toward TRL 5.
 6. **Team:** Single inventor with demonstrated ability to build 1.4M LOC codebase.
 7. **IP:** 9 patentable inventions, $8.6M–$97.8M US patent portfolio value.
 8. **Budget:** ₹1.5 Crore for 12-month prototype.
-9. **Impact:** India becomes the world leader in military AI governance.
+9. **Impact:** India gains sovereign capability in governed autonomous systems infrastructure.
 10. **Dual Use:** Same technology applies to civilian AI (LLMs, agents, autonomous vehicles).
 
 ---
@@ -212,7 +212,7 @@ Framed as: *"India's first complete indigenous AI governance stack for military 
 | Technology is indigenous | ✅ 100% built in India |
 | No foreign dependencies | ✅ All Rust/Python, no foreign licensed IP |
 | Dual-use technology | ✅ Military + civilian AI governance |
-| Prototype exists | ✅ TRL 4 demonstrated |
+| Prototype exists | ⚠️ Software subsystem TRL 3-4 demonstrated; hardware TRL 5 requires iDEX-funded validation |
 
 ---
 

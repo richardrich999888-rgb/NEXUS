@@ -1,0 +1,80 @@
+name: iDEX Three Pitch Sanity
+
+on:
+  push:
+    paths:
+      - ".github/workflows/idex-three-pitches.yml"
+      - "nexus-executor/**"
+      - "multi-asi-immune/**"
+      - "nexus-pcu/**"
+      - "agp-core/src/immunity/**"
+      - "agp-core/src/governance/**"
+      - "agp-core/tests/test_immune_bridge.py"
+      - "agp-core/tests/immunity/**"
+      - "docs/idex-open-challenge-2026/**"
+  pull_request:
+    paths:
+      - ".github/workflows/idex-three-pitches.yml"
+      - "nexus-executor/**"
+      - "multi-asi-immune/**"
+      - "nexus-pcu/**"
+      - "agp-core/src/immunity/**"
+      - "agp-core/src/governance/**"
+      - "agp-core/tests/test_immune_bridge.py"
+      - "agp-core/tests/immunity/**"
+      - "docs/idex-open-challenge-2026/**"
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  nexus-guard:
+    name: NEXUS Guard execution tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build nexus-executor
+        run: cargo check -p nexus-executor --all-targets
+      - name: Run red-team execution tests
+        run: cargo test -p nexus-executor --test red_team_execution -- --nocapture
+
+  bioshield-swarm:
+    name: BioShield Swarm immune tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build multi-asi-immune
+        run: cargo check -p multi-asi-immune --all-targets
+      - name: Run swarm immune tests
+        run: cargo test -p multi-asi-immune --lib --tests -- --nocapture
+
+  pqc-identity:
+    name: PQC defence identity path
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build PQC feature path
+        run: cargo check -p nexus-pcu --features pqc --all-targets
+      - name: Run PQC tests
+        run: cargo test -p nexus-pcu --features pqc pqc -- --nocapture
+
+  cyber-immune-soar:
+    name: Cyber Immune SOAR tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install immune test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r agp-core/requirements_immunity.txt
+      - name: Run governance immune bridge
+        run: python agp-core/tests/test_immune_bridge.py
+      - name: Run immune pytest suites
+        run: python -m pytest agp-core/tests/immunity/test_immune_system.py agp-core/tests/immunity/test_unified_immune.py -q

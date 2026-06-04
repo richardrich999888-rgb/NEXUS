@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Causal DAG Insert Path</h1>
+    <div class="subtitle">The DAG checks idempotence, dependencies, conflicts, version-vector merge, state application, and snapshot triggers.</div>
+    <div class="body"><pre>  38  /// Causal DAG v2.0 with integrated snapshot management and conflict resolution.
+  39  pub struct CausalDAG {
+  40      /// Operations by ID
+  41      operations: BTreeMap&lt;String, CausalOp&gt;,
+  42      
+  43      /// Reverse dependency index (op_id -&gt; dependent op_ids)
+  44      dependents: BTreeMap&lt;String, BTreeSet&lt;String&gt;&gt;,
+  45      
+  46      /// Root operations (no dependencies)
+  47      roots: BTreeSet&lt;String&gt;,
+  48      
+  49      /// Snapshot manager for GC
+  50      snapshot_manager: SnapshotManager,
+  51      
+  52      /// Conflict resolver
+  53      conflict_resolver: ConflictResolver,
+  54      
+  55      /// This node's ID
+  56      node_id: String,
+  57      
+  58      /// Current version vector
+  59      version_vector: VersionVector,
+  60      
+  61      /// Application state (simplified - would be actual CRDT state in production)
+  62      state: serde_json::Value,
+  63  }
+  64  
+  65  impl CausalDAG {
+  66      /// Create a new Causal DAG
+  67      /// 
+  68      /// # Arguments
+  69      /// 
+  70      /// * `node_id` - Unique identifier for this node
+  71      /// * `snapshot_interval` - Operations per snapshot (default: 10,000)
+  72      /// * `conflict_policy` - Default conflict resolution policy
+  73      pub fn new(
+  74          node_id: String,
+  75          snapshot_interval: usize,
+  76          conflict_policy: ConflictPolicy,
+  77      ) -&gt; Self {
+  78          Self {
+  79              operations: BTreeMap::new(),
+  80              dependents: BTreeMap::new(),
+  81              roots: BTreeSet::new(),
+  82              snapshot_manager: SnapshotManager::new(100, snapshot_interval),
+  83              conflict_resolver: ConflictResolver::new(conflict_policy),
+  84              node_id,
+  85              version_vector: VersionVector::new(),
+  86              state: serde_json::json!({}),
+  87          }
+  88      }
+  89  
+  90      /// Insert an operation into the DAG
+  91      pub fn insert(&amp;mut self, op: CausalOp) -&gt; Result&lt;(), DagError&gt; {
+  92          // 1. Idempotence check
+  93          if self.operations.contains_key(&amp;op.id) {
+  94              return Ok(());
+  95          }
+  96  
+  97          // 2. Validate dependencies exist
+  98          for dep_id in &amp;op.dependencies {
+  99              if !self.operations.contains_key(dep_id) {
+ 100                  return Err(DagError::MissingDependency(dep_id.clone()));
+ 101              }
+ 102          }
+ 103  
+ 104          // 3. Check for conflicts with existing operations
+ 105          let mut merged_results = Vec::new();
+ 106          for existing_op in self.operations.values() {
+ 107              if op.conflicts_with(existing_op) {
+ 108                  match self.conflict_resolver.resolve(&amp;op, existing_op) {
+ 109                      ConflictResolution::NoConflict =&gt; {}
+ 110                      ConflictResolution::Winner(winner_id) =&gt; {
+ 111                          if winner_id != op.id {
+ 112                              return Err(DagError::ConflictRejected { winner_id });
+ 113                          }
+ 114                      }
+ 115                      ConflictResolution::Manual { option_a, option_b } =&gt; {
+ 116                          return Err(DagError::ManualResolutionRequired {
+ 117                              op_a: option_a.id,
+ 118                              op_b: option_b.id,
+ 119                          });
+ 120                      }
+ 121                      ConflictResolution::Merged { result } =&gt; {
+ 122                          merged_results.push(result.clone());
+ 123                      }
+ 124                  }
+ 125              }
+ 126          }
+ 127          
+ 128          // Apply merged results after iteration
+ 129          for result in merged_results {
+ 130              self.apply_merged_result(&amp;op, result);
+ 131          }
+ 132  
+ 133          // 4. Update reverse dependency index
+ 134          for dep_id in &amp;op.dependencies {
+ 135              self.dependents
+ 136                  .entry(dep_id.clone())
+ 137                  .or_insert_with(BTreeSet::new)
+ 138                  .insert(op.id.clone());
+ 139          }
+ 140  
+ 141          // 5. Track roots
+ 142          if op.dependencies.is_empty() {
+ 143              self.roots.insert(op.id.clone());
+ 144          }
+ 145  
+ 146          // 6. Merge version vectors
+ 147          self.version_vector = self.version_vector.merge(&amp;op.version_vector);
+ 148  
+ 149          // 7. Apply operation to state
+ 150          self.apply_operation(&amp;op);
+ 151  
+ 152          // 8. Insert operation
+ 153          self.operations.insert(op.id.clone(), op);
+ 154  
+ 155          // 9. Update snapshot manager
+ 156          self.snapshot_manager.increment_operation_count();
+ 157  
+ 158          // 10. Check if we should snapshot
+ 159          if self.snapshot_manager.should_snapshot() {
+ 160              self.create_snapshot();
+ 161          }
+ 162  
+ 163          // 11. Garbage collect old operations
+ 164          self.garbage_collect();
+ 165  
+ 166          Ok(())
+ 167      }</pre></div>
+  </div>
+</body>
+</html>

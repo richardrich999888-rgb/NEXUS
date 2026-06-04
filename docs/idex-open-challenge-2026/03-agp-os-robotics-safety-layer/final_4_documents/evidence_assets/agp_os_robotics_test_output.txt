@@ -1,0 +1,287 @@
+COMMAND: agp-core/.venv/bin/python agp-core/tests/test_rtos.py
+2026-05-17 12:52:28 [info     ] telos_membrane_initialized
+2026-05-17 12:52:33 [info     ] database_initialized           path=/tmp/agp-os/kernel.db
+2026-05-17 12:52:33 [info     ] prometheus_metrics_initialized
+2026-05-17 12:52:33 [info     ] kernel_initialized             version=1.0.0-prod
+2026-05-17 12:52:33 [info     ] robotic_hal_initialized
+2026-05-17 12:52:33 [info     ] behavioral_rag_initialized
+2026-05-17 12:52:33 [info     ] rule_added                     name='Low Alignment Block' rule_id=alignment_block
+2026-05-17 12:52:33 [info     ] rule_added                     name='Low Alignment Warning' rule_id=alignment_warn
+2026-05-17 12:52:33 [info     ] rule_added                     name='High Frequency Rate Limit' rule_id=rate_limit
+2026-05-17 12:52:33 [info     ] rule_added                     name='High Token Usage Audit' rule_id=token_audit
+2026-05-17 12:52:33 [info     ] rule_added                     name='High Failure Rate Block' rule_id=failure_block
+2026-05-17 12:52:33 [info     ] rule_added                     name='Blocked Action Escalation' rule_id=blocked_escalate
+2026-05-17 12:52:33 [info     ] governance_rules_initialized   count=6
+2026-05-17 12:52:33 [info     ] alignment_verifier_initialized impact_weighted=True
+2026-05-17 12:52:33 [info     ] anomaly_detector_initialized   baseline_window=50 drift_threshold=0.5
+2026-05-17 12:52:33 [info     ] protocol_enforcer_initialized  anomaly_detection=True
+2026-05-17 12:52:33 [info     ] shell_started
+2026-05-17 12:52:33 [info     ] rt_scheduler_initialized       max_concurrent=4
+======================================================================
+REAL-TIME SCHEDULER TEST
+======================================================================
+
+[1] SUBMITTING TASKS (REVERSE ORDER)...
+2026-05-17 12:52:33 [debug    ] task_submitted                 id=bg-1 priority=LOW
+2026-05-17 12:52:33 [debug    ] task_submitted                 id=gov-1 priority=NORMAL
+2026-05-17 12:52:33 [debug    ] task_submitted                 id=sensor-1 priority=HIGH
+2026-05-17 12:52:33 [debug    ] task_submitted                 id=motor-1 priority=CRITICAL
+   ✓ 4 tasks queued
+
+[2] EXECUTING TASKS...
+      Executed: motor-1 (CRITICAL)
+      Executed: sensor-1 (HIGH)
+      Executed: gov-1 (NORMAL)
+      Executed: bg-1 (LOW)
+
+[3] VERIFYING PRIORITY ORDER...
+   Execution order: ['MOTOR_STOP', 'SENSOR_READ', 'GOVERNANCE', 'BACKGROUND']
+   ✓ MOTOR_STOP executed first (CRITICAL)
+   ✓ SENSOR_READ executed second (HIGH)
+   ✓ GOVERNANCE executed third (NORMAL)
+   ✓ BACKGROUND executed last (LOW)
+
+[4] TESTING DEADLINE MISS DETECTION...
+2026-05-17 12:52:33 [debug    ] task_submitted                 id=overdue-1 priority=NORMAL
+2026-05-17 12:52:33 [debug    ] deadline_boost_applied         tasks=['overdue-1']
+2026-05-17 12:52:33 [warning  ] deadline_missed                id=overdue-1 overdue_ms=100.0669002532959
+   ✓ Deadline miss detected
+
+[5] TESTING STATISTICS...
+   ✓ Completed count tracked
+   ✓ Queue breakdown available
+
+======================================================================
+REAL-TIME SCHEDULER TEST RESULTS
+======================================================================
+
+   Passed: 8
+   Failed: 0
+   Total:  8
+
+✅ REAL-TIME SCHEDULER VERIFIED!
+
+COMMAND: agp-core/.venv/bin/python agp-core/tests/test_ros2.py
+2026-05-17 12:52:35 [info     ] telos_membrane_initialized
+2026-05-17 12:52:38 [info     ] database_initialized           path=/tmp/agp-os/kernel.db
+2026-05-17 12:52:38 [info     ] prometheus_metrics_initialized
+2026-05-17 12:52:38 [info     ] kernel_initialized             version=1.0.0-prod
+2026-05-17 12:52:38 [info     ] robotic_hal_initialized
+2026-05-17 12:52:38 [info     ] behavioral_rag_initialized
+2026-05-17 12:52:38 [info     ] rule_added                     name='Low Alignment Block' rule_id=alignment_block
+2026-05-17 12:52:38 [info     ] rule_added                     name='Low Alignment Warning' rule_id=alignment_warn
+2026-05-17 12:52:38 [info     ] rule_added                     name='High Frequency Rate Limit' rule_id=rate_limit
+2026-05-17 12:52:38 [info     ] rule_added                     name='High Token Usage Audit' rule_id=token_audit
+2026-05-17 12:52:38 [info     ] rule_added                     name='High Failure Rate Block' rule_id=failure_block
+2026-05-17 12:52:38 [info     ] rule_added                     name='Blocked Action Escalation' rule_id=blocked_escalate
+2026-05-17 12:52:38 [info     ] governance_rules_initialized   count=6
+2026-05-17 12:52:38 [info     ] alignment_verifier_initialized impact_weighted=True
+2026-05-17 12:52:38 [info     ] anomaly_detector_initialized   baseline_window=50 drift_threshold=0.5
+2026-05-17 12:52:38 [info     ] protocol_enforcer_initialized  anomaly_detection=True
+2026-05-17 12:52:38 [info     ] shell_started
+2026-05-17 12:52:38 [info     ] ros2_bridge_initialized        simulation=True
+======================================================================
+ROS2/GAZEBO BRIDGE TEST
+======================================================================
+
+[1] SPAWNING ROBOTS...
+2026-05-17 12:52:38 [info     ] publisher_created              topic=turtlebot_1/cmd_vel type=geometry_msgs/Twist
+2026-05-17 12:52:38 [info     ] subscription_created           topic=turtlebot_1/odom type=nav_msgs/Odometry
+2026-05-17 12:52:38 [info     ] subscription_created           topic=turtlebot_1/scan type=sensor_msgs/LaserScan
+2026-05-17 12:52:38 [info     ] robot_spawned                  agent=agent-turtle id=turtlebot_1 name=TurtleBot3
+   ✓ Robot spawned
+   ✓ 3 topics created
+
+[2] VERIFYING TOPICS...
+   ✓ Topics registered
+   ✓ Robot registered
+   ✓ Has publishers
+   ✓ Has subscribers
+
+[3] PUBLISHING VELOCITY COMMAND...
+   ✓ Command published
+   ✓ Robot position updated
+   Position: x=0.0500, y=0.0000
+
+[4] SIMULATING SENSOR DATA...
+   ✓ Sensor data simulated
+   ✓ Sensor data stored
+
+[5] LINKING AGENT TO ROBOT...
+2026-05-17 12:52:38 [info     ] agent_linked                   agent=agent-governed-turtle robot=turtlebot_1
+   ✓ Agent linked
+   ✓ Agent ID updated
+
+[6] SPAWNING SECOND ROBOT...
+2026-05-17 12:52:38 [info     ] publisher_created              topic=drone_1/cmd_vel type=geometry_msgs/Twist
+2026-05-17 12:52:38 [info     ] subscription_created           topic=drone_1/odom type=nav_msgs/Odometry
+2026-05-17 12:52:38 [info     ] subscription_created           topic=drone_1/scan type=sensor_msgs/LaserScan
+2026-05-17 12:52:38 [info     ] robot_spawned                  agent=None id=drone_1 name=QuadCopter
+   ✓ Second robot spawned
+   ✓ 2 robots total
+   ✓ 6 topics total
+
+[7] TESTING HAL INTEGRATION...
+2026-05-17 12:52:38 [info     ] sensor_registered              id=ros_lidar_turtlebot name='ROS2 LIDAR (TurtleBot)'
+   ✓ ROS sensor accessible via HAL
+
+======================================================================
+ROS2/GAZEBO BRIDGE TEST RESULTS
+======================================================================
+
+   Passed: 16
+   Failed: 0
+   Total:  16
+
+✅ ROS2/GAZEBO BRIDGE VERIFIED!
+
+COMMAND: agp-core/.venv/bin/python agp-core/tests/test_resources.py
+2026-05-17 12:52:40 [info     ] telos_membrane_initialized
+2026-05-17 12:52:43 [info     ] database_initialized           path=/tmp/agp-os/kernel.db
+2026-05-17 12:52:43 [info     ] prometheus_metrics_initialized
+2026-05-17 12:52:43 [info     ] kernel_initialized             version=1.0.0-prod
+2026-05-17 12:52:43 [info     ] robotic_hal_initialized
+2026-05-17 12:52:43 [info     ] behavioral_rag_initialized
+2026-05-17 12:52:43 [info     ] rule_added                     name='Low Alignment Block' rule_id=alignment_block
+2026-05-17 12:52:43 [info     ] rule_added                     name='Low Alignment Warning' rule_id=alignment_warn
+2026-05-17 12:52:43 [info     ] rule_added                     name='High Frequency Rate Limit' rule_id=rate_limit
+2026-05-17 12:52:43 [info     ] rule_added                     name='High Token Usage Audit' rule_id=token_audit
+2026-05-17 12:52:43 [info     ] rule_added                     name='High Failure Rate Block' rule_id=failure_block
+2026-05-17 12:52:43 [info     ] rule_added                     name='Blocked Action Escalation' rule_id=blocked_escalate
+2026-05-17 12:52:43 [info     ] governance_rules_initialized   count=6
+2026-05-17 12:52:43 [info     ] alignment_verifier_initialized impact_weighted=True
+2026-05-17 12:52:43 [info     ] anomaly_detector_initialized   baseline_window=50 drift_threshold=0.5
+2026-05-17 12:52:43 [info     ] protocol_enforcer_initialized  anomaly_detection=True
+2026-05-17 12:52:43 [info     ] shell_started
+2026-05-17 12:52:43 [info     ] resource_controller_initialized
+======================================================================
+RESOURCE CONTROLLER TEST
+======================================================================
+
+[1] REGISTERING AGENTS WITH QUOTAS...
+2026-05-17 12:52:43 [info     ] agent_quota_set                agent_id=agent-big memory=1024.0 tokens=50000
+2026-05-17 12:52:43 [info     ] agent_quota_set                agent_id=agent-small memory=256.0 tokens=10000
+   ✓ Two agents registered
+
+[2] TESTING MEMORY ALLOCATION (WITHIN QUOTA)...
+   ✓ Memory granted within quota
+   ✓ Usage tracking correct
+
+[3] TESTING MEMORY ALLOCATION (EXCEED QUOTA)...
+2026-05-17 12:52:43 [warning  ] resource_denied                current=500.0 max=1024.0 reason='Memory quota exceeded'
+   ✓ Memory denied when exceeding quota
+   ✓ Denial reason is correct
+
+[4] TESTING TOKEN ALLOCATION...
+   ✓ Tokens granted
+2026-05-17 12:52:43 [warning  ] resource_denied                current=5000 max=10000 reason='Token quota exceeded'
+   ✓ Tokens denied when exceeding quota
+
+[5] TESTING PRIORITY UPDATE (GOVERNANCE)...
+2026-05-17 12:52:43 [info     ] priority_updated               agent_id=agent-big priority=0.9
+   ✓ Priority updated to 0.9
+
+[6] TESTING SYSTEM STATUS...
+   ✓ System memory tracked
+   ✓ Both agents registered
+
+[7] TESTING RESOURCE RELEASE...
+   ✓ Memory released correctly
+   ✓ System memory updated after release
+
+======================================================================
+RESOURCE CONTROLLER TEST RESULTS
+======================================================================
+
+   Passed: 12
+   Failed: 0
+   Total:  12
+
+✅ RESOURCE CONTROLLER VERIFIED!
+
+COMMAND: agp-core/.venv/bin/python agp-core/tests/test_production.py
+2026-05-17 12:52:45 [info     ] telos_membrane_initialized
+2026-05-17 12:52:48 [info     ] database_initialized           path=/tmp/agp-os/kernel.db
+2026-05-17 12:52:48 [info     ] prometheus_metrics_initialized
+2026-05-17 12:52:48 [info     ] kernel_initialized             version=1.0.0-prod
+2026-05-17 12:52:48 [info     ] robotic_hal_initialized
+2026-05-17 12:52:48 [info     ] behavioral_rag_initialized
+2026-05-17 12:52:48 [info     ] rule_added                     name='Low Alignment Block' rule_id=alignment_block
+2026-05-17 12:52:48 [info     ] rule_added                     name='Low Alignment Warning' rule_id=alignment_warn
+2026-05-17 12:52:48 [info     ] rule_added                     name='High Frequency Rate Limit' rule_id=rate_limit
+2026-05-17 12:52:48 [info     ] rule_added                     name='High Token Usage Audit' rule_id=token_audit
+2026-05-17 12:52:48 [info     ] rule_added                     name='High Failure Rate Block' rule_id=failure_block
+2026-05-17 12:52:48 [info     ] rule_added                     name='Blocked Action Escalation' rule_id=blocked_escalate
+2026-05-17 12:52:48 [info     ] governance_rules_initialized   count=6
+2026-05-17 12:52:48 [info     ] alignment_verifier_initialized impact_weighted=True
+2026-05-17 12:52:48 [info     ] anomaly_detector_initialized   baseline_window=50 drift_threshold=0.5
+2026-05-17 12:52:48 [info     ] protocol_enforcer_initialized  anomaly_detection=True
+2026-05-17 12:52:48 [info     ] shell_started
+2026-05-17 12:52:48 [warning  ] rclpy_not_available            msg='Running in simulation-only mode'
+2026-05-17 12:52:48 [info     ] safety_watchdog_initialized    timeout_ms=500
+2026-05-17 12:52:48 [info     ] ros2_bridge_initialized        simulation=True
+2026-05-17 12:52:48 [info     ] production_adapter_initialized simulation=True
+======================================================================
+PRODUCTION ROS2 ADAPTER TEST
+======================================================================
+
+[1] TESTING SAFETY WATCHDOG...
+2026-05-17 12:52:48 [info     ] safety_watchdog_initialized    timeout_ms=100
+   ✓ Watchdog initialized
+   ✓ Watchdog not armed initially
+2026-05-17 12:52:48 [info     ] watchdog_armed
+   ✓ Watchdog armed
+   ✓ Watchdog check passes
+
+[2] TESTING VELOCITY VALIDATION...
+   ✓ Normal velocity not capped
+2026-05-17 12:52:48 [warning  ] velocity_capped                angular=0.5 linear=1.0
+   ✓ Excessive velocity capped
+   ✓ Linear capped to max
+   ✓ Angular capped to max
+
+[3] TESTING HEARTBEAT TIMEOUT...
+   ✓ Watchdog OK under timeout
+2026-05-17 12:52:48 [error    ] emergency_stop_triggered       reason='Heartbeat timeout'
+   ✓ Watchdog triggers on timeout
+   ✓ Emergency stop triggered
+2026-05-17 12:52:48 [info     ] watchdog_reset
+   ✓ Watchdog reset
+
+[4] TESTING PRODUCTION ADAPTER...
+   ✓ Adapter initialized
+   ✓ Simulation mode (no rclpy)
+
+[5] TESTING CONNECTION...
+   ✓ Connection successful
+   ✓ Mode determined
+   ✓ Adapter connected
+
+[6] TESTING VELOCITY PUBLISHING...
+2026-05-17 12:52:48 [info     ] publisher_created              topic=test_robot/cmd_vel type=geometry_msgs/Twist
+2026-05-17 12:52:48 [info     ] subscription_created           topic=test_robot/odom type=nav_msgs/Odometry
+2026-05-17 12:52:48 [info     ] subscription_created           topic=test_robot/scan type=sensor_msgs/LaserScan
+2026-05-17 12:52:48 [info     ] robot_spawned                  agent=None id=test_robot name=TestBot
+2026-05-17 12:52:48 [info     ] publisher_created              topic=test_robot/cmd_vel type=geometry_msgs/Twist
+   ✓ Velocity published
+
+[7] TESTING EMERGENCY STOP...
+2026-05-17 12:52:48 [warning  ] emergency_stop_commanded       topic=test_robot/cmd_vel
+   ✓ Emergency stop sent
+
+[8] VERIFYING DEPLOYMENT FILES...
+   ✓ Dockerfile.ros2 exists
+   ✓ entrypoint.sh exists
+   ✓ systemd service exists
+2026-05-17 12:52:48 [info     ] watchdog_disarmed
+2026-05-17 12:52:48 [info     ] ros2_disconnected
+
+======================================================================
+PRODUCTION ROS2 ADAPTER TEST RESULTS
+======================================================================
+
+   Passed: 22
+   Failed: 0
+   Total:  22
+
+✅ PRODUCTION ADAPTER VERIFIED!

@@ -267,7 +267,7 @@ Every AI decision crosses a commitment membrane that enforces consequences:
 
 Entropy budget: **10,000 max**, refills at **100/minute**. A rogue AI cannot spam high-consequence decisions — it runs out of entropy.
 
-Every crossing is recorded in a **Merkle ledger** — cryptographically unforgeable.
+Every crossing is recorded in a **Merkle ledger** — cryptographically anchored and tamper-evident.
 
 ---
 

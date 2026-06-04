@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-3 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-3</h1>
+    <div class="subtitle">Advantages, capabilities, and competencies</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-3</h1>
+<p>Advantages, competencies, and benefits</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Advantages and Competencies</h1>
+<h2>1. Defence Benefits</h2>
+<table><thead><tr><th>Benefit</th><th>Defence Value</th></tr></thead><tbody><tr><td>Transition-safe identity</td><td>Allows classical and PQC verification paths to coexist during migration.</td></tr><tr><td>Compatibility preservation</td><td>Ed25519 path remains usable for current systems.</td></tr><tr><td>PQC readiness path</td><td>ML-DSA-65 path is available under the explicit <code>pqc</code> feature.</td></tr><tr><td>Policy-visible fallback</td><td>Verifier can record whether classical, PQC, or both paths succeeded.</td></tr><tr><td>Proof identity binding</td><td>PCU identity and NodeAttestation provide integration points for proof packets.</td></tr><tr><td>Tamper evidence</td><td>Feature-gated test exercises behavior when classical and PQC components are modified.</td></tr><tr><td>Conservative deployment path</td><td>Prototype does not claim certified cryptographic accreditation.</td></tr></tbody></table>
+<h2>2. Technical Advantages</h2>
+<p>PQC Defence Identity is strongest as a migration and verification layer, not as a claim of immediate operational cryptographic certification. It focuses on the defence question: how can long-life systems start carrying post-quantum identity evidence without breaking current verification and audit workflows.</p>
+<table><thead><tr><th>Technical Advantage</th><th>Evidence</th></tr></thead><tbody><tr><td>Hybrid signature type exists</td><td><code>HybridSignature</code> in <code>nexus-pcu/src/pqc.rs</code>.</td></tr><tr><td>Hybrid keypair path exists</td><td><code>HybridKeyPair::generate()</code> and <code>sign()</code>.</td></tr><tr><td>Public-key bundle exists</td><td><code>PublicKeyBundle</code> supports classical and optional PQC key material.</td></tr><tr><td>PQC feature tests pass</td><td><code>cargo test -p nexus-pcu --features pqc pqc -- --nocapture</code> reports 7/7.</td></tr><tr><td>Reviewer traceability</td><td>Annexure 4 includes screenshots, source paths, output logs, and artifact maps.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>3. Product and Commercial Potential</h2>
+<table><thead><tr><th>Market Segment</th><th>Potential Productization Path</th></tr></thead><tbody><tr><td>Defence device identity</td><td>Hybrid key bundles for agents, sensors, gateways, and robotic nodes.</td></tr><tr><td>Secure proof packets</td><td>Hybrid-signed execution proofs and mission data verification records.</td></tr><tr><td>C2 modernization</td><td>Migration envelope for command systems that need a phased cryptographic transition.</td></tr><tr><td>Critical infrastructure</td><td>Dual-use hybrid identity for grid, maritime, disaster response, and industrial telemetry.</td></tr><tr><td>Cyber ranges and testbeds</td><td>PQC migration and downgrade-scenario testing environment.</td></tr></tbody></table>
+<h2>4. Team Competencies</h2>
+<table><thead><tr><th>Competency</th><th>Repository Evidence</th></tr></thead><tbody><tr><td>Hybrid cryptographic engineering</td><td><code>nexus-pcu/src/pqc.rs</code> and feature-gated tests.</td></tr><tr><td>Capability-based identity</td><td><code>nexus-pcu/src/identity.rs</code>.</td></tr><tr><td>Proof-carrying computation</td><td><code>nexus-pcu/src/pcu.rs</code> and <code>nexus-pcu/src/proof.rs</code>.</td></tr><tr><td>Classical crypto baseline</td><td><code>nexus-pcu/src/crypto.rs</code>.</td></tr><tr><td>Evidence packaging</td><td>Annexure 4 includes source screenshots, test output, repo links, and artifact maps.</td></tr></tbody></table>
+<h2>5. Why iDEX Support Is Required</h2>
+<p>The remaining work is transition hardening: evaluator-approved cryptographic profile, key lifecycle, revocation bundles, downgrade policy, packet/proof integration, HSM or secure element adapter, audit export, sample device identities, and red-team migration scenarios.</p>
+<h2>6. Readiness Caveat</h2>
+<p>The current package should be evaluated as a software-subsystem prototype. It does not claim certified cryptographic module status, operational key authority approval, HSM-backed deployment, secure element provisioning, or network-wide PQC enforcement. Those are proposed milestones under the 12-month iDEX work plan.</p>
+  </main>
+</body>
+</html>

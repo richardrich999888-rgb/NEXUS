@@ -25,6 +25,8 @@ wheels/
 venv/
 ENV/
 env/
+.venv/
+agp-core/.venv/
 
 # IDEs
 .vscode/
@@ -43,9 +45,15 @@ env/
 .pytest_cache/
 .coverage
 htmlcov/
+target/
+**/target/
+dump.rdb
 
 # AURA specific
 aura_mvp.db
 aura_verifier.db
 aura_billing.db
 aura_mvp_report.json
+
+# Generated proposal exports
+docs/idex-open-challenge-2026/**/*.pdf

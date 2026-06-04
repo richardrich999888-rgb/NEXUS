@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>USO Sync Policy and Causal History</h1>
+    <div class="subtitle">Universal State Objects carry sync policy, access policy, vector-clock history, and operation log.</div>
+    <div class="body"><pre>  79  /// Synchronization policy for USO
+  80  #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+  81  pub enum SyncPolicy {
+  82      /// Sync everywhere immediately (global consistency)
+  83      Global {
+  84          /// Maximum acceptable replication latency
+  85          max_latency_ms: u32,
+  86      },
+  87      
+  88      /// Sync to specific regions only
+  89      Regional {
+  90          regions: Vec&lt;Region&gt;,
+  91      },
+  92      
+  93      /// Sync on-demand (pull-based, lazy)
+  94      OnDemand,
+  95      
+  96      /// Local-only (single node, no sync)
+  97      Local,
+  98  }
+  99  
+ 100  impl Default for SyncPolicy {
+ 101      fn default() -&gt; Self {
+ 102          SyncPolicy::OnDemand
+ 103      }
+ 104  }
+ 105  
+ 106  impl SyncPolicy {
+ 107      /// Quick global sync (100ms latency target)
+ 108      pub fn global_fast() -&gt; Self {
+ 109          SyncPolicy::Global { max_latency_ms: 100 }
+ 110      }
+ 111  
+ 112      /// Relaxed global sync (1s latency target)
+ 113      pub fn global_relaxed() -&gt; Self {
+ 114          SyncPolicy::Global { max_latency_ms: 1000 }
+ 115      }
+ 116  
+ 117      /// Check if this policy requires immediate sync
+ 118      pub fn requires_immediate(&amp;self) -&gt; bool {
+ 119          matches!(self, SyncPolicy::Global { max_latency_ms } if *max_latency_ms &lt; 500)
+ 120      }
+ 121  }
+ 122  
+ 123  // ============================================================================
+ 124  // ACCESS POLICY - Who can read/write this USO
+ 125  // ============================================================================
+ 126  
+ 127  /// Access control for USO
+ 128  #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+ 129  pub struct AccessPolicy {
+ 130      /// Owner (full control)
+ 131      pub owner: PrincipalId,
+ 132      
+ 133      /// Principals with read access
+ 134      pub readers: Vec&lt;PrincipalId&gt;,
+ 135      
+ 136      /// Principals with write access
+ 137      pub writers: Vec&lt;PrincipalId&gt;,
+ 138      
+ 139      /// Public read access
+ 140      pub public_read: bool,
+ 141      
+ 142      /// Public write access (dangerous!)
+ 143      pub public_write: bool,
+ 144  }
+ 145  
+ 146  impl AccessPolicy {
+ 147      /// Create with single owner
+ 148      pub fn owner_only(owner: PrincipalId) -&gt; Self {
+ 149          AccessPolicy {
+ 150              owner,
+ 151              readers: Vec::new(),
+ 152              writers: Vec::new(),
+ 153              public_read: false,
+ 154              public_write: false,
+ 155          }
+ 156      }
+ 157  
+ 158      /// Create public read-only
+ 159      pub fn public_readonly(owner: PrincipalId) -&gt; Self {
+ 160          AccessPolicy {
+ 161              owner,
+ 162              readers: Vec::new(),
+ 163              writers: Vec::new(),
+ 164              public_read: true,
+ 165              public_write: false,
+ 166          }
+ 167      }
+ 168  
+ 169      /// Check if principal can read
+ 170      pub fn can_read(&amp;self, principal: &amp;PrincipalId) -&gt; bool {
+ 171          self.public_read || 
+ 172          *principal == self.owner ||
+ 173          self.readers.contains(principal) ||
+ 174          self.writers.contains(principal)
+ 175      }
+ 176  
+ 177      /// Check if principal can write
+ 178      pub fn can_write(&amp;self, principal: &amp;PrincipalId) -&gt; bool {
+ 179          self.public_write ||
+ 180          *principal == self.owner ||
+ 181          self.writers.contains(principal)
+ 182      }
+ 183  }
+
+ 225  /// Causal history for USO (enables CRDT-style merge)
+ 226  #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+ 227  pub struct CausalHistory {
+ 228      /// Vector clock for causality tracking
+ 229      pub vector_clock: HashMap&lt;String, u64&gt;,
+ 230      
+ 231      /// Operation log
+ 232      pub operations: Vec&lt;HistoryEntry&gt;,
+ 233      
+ 234      /// Parent states this was derived from
+ 235      pub parents: Vec&lt;ContentHash&gt;,
+ 236  }
+ 237  
+ 238  impl CausalHistory {
+ 239      /// Create new empty history
+ 240      pub fn new() -&gt; Self {
+ 241          CausalHistory {
+ 242              vector_clock: HashMap::new(),
+ 243              operations: Vec::new(),
+ 244              parents: Vec::new(),
+ 245          }
+ 246      }
+ 247  
+ 248      /// Create genesis history
+ 249      pub fn genesis() -&gt; Self {
+ 250          CausalHistory::new()
+ 251      }
+ 252  
+ 253      /// Tick the vector clock for a node
+ 254      pub fn tick(&amp;mut self, node_id: &amp;str) -&gt; u64 {
+ 255          let counter = self.vector_clock.entry(node_id.to_string()).or_insert(0);
+ 256          *counter += 1;
+ 257          *counter
+ 258      }
+ 259  
+ 260      /// Get current Lamport timestamp
+ 261      pub fn lamport(&amp;self) -&gt; u64 {
+ 262          self.vector_clock.values().copied().max().unwrap_or(0)
+ 263      }
+ 264  
+ 265      /// Add operation to history
+ 266      pub fn add_operation(&amp;mut self, operation: Operation, principal: PrincipalId, node_id: &amp;str) {
+ 267          let lamport = self.tick(node_id);
+ 268          self.operations.push(HistoryEntry {
+ 269              operation,
+ 270              principal,
+ 271              lamport,
+ 272              timestamp: crate::now(),
+ 273          });
+ 274      }
+ 275  
+ 276      /// Merge with another history (CRDT-style)
+ 277      pub fn merge(&amp;mut self, other: &amp;CausalHistory) {
+ 278          // Merge vector clocks (take max)
+ 279          for (node, &amp;counter) in &amp;other.vector_clock {
+ 280              let entry = self.vector_clock.entry(node.clone()).or_insert(0);
+ 281              *entry = (*entry).max(counter);
+ 282          }
+ 283  
+ 284          // Merge operations (by Lamport + dedup)
+ 285          for op in &amp;other.operations {
+ 286              if !self.operations.iter().any(|o| o.lamport == op.lamport &amp;&amp; o.principal == op.principal) {
+ 287                  self.operations.push(op.clone());
+ 288              }
+ 289          }
+ 290  
+ 291          // Sort by Lamport for deterministic order
+ 292          self.operations.sort_by_key(|o| o.lamport);
+ 293      }
+ 294  
+ 295      /// Check if this history happens-before another
+ 296      pub fn happens_before(&amp;self, other: &amp;CausalHistory) -&gt; bool {
+ 297          // Self happens before other if all our clocks &lt;= other's and at least one &lt;
+ 298          let mut at_least_one_less = false;
+ 299          
+ 300          for (node, &amp;counter) in &amp;self.vector_clock {
+ 301              let other_counter = other.vector_clock.get(node).copied().unwrap_or(0);
+ 302              if counter &gt; other_counter {
+ 303                  return false;
+ 304              }
+ 305              if counter &lt; other_counter {
+ 306                  at_least_one_less = true;
+ 307              }
+ 308          }
+ 309          
+ 310          at_least_one_less
+ 311      }
+ 312  }</pre></div>
+  </div>
+</body>
+</html>

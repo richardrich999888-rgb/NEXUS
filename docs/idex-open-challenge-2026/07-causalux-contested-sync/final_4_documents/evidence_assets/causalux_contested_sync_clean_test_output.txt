@@ -1,0 +1,816 @@
+--- cargo test -p causalux-v2 --lib --tests -- --nocapture ---
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: unused import: `OsRng`
+  --> causalux/src/envelope.rs:15:27
+   |
+15 |     aead::{Aead, KeyInit, OsRng},
+   |                           ^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `hkdf::Hkdf`
+  --> causalux/src/envelope.rs:18:5
+   |
+18 | use hkdf::Hkdf;
+   |     ^^^^^^^^^^
+
+warning: unused import: `zeroize::Zeroize`
+  --> causalux/src/envelope.rs:19:5
+   |
+19 | use zeroize::Zeroize;
+   |     ^^^^^^^^^^^^^^^^
+
+warning: unused imports: `debug`, `error`, and `instrument`
+ --> causalux/src/observability.rs:5:27
+  |
+5 | use tracing::{info, warn, error, debug, instrument};
+  |                           ^^^^^  ^^^^^  ^^^^^^^^^^
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> causalux/src/runtime.rs:6:13
+  |
+6 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `BTreeSet`
+ --> causalux/src/runtime.rs:7:33
+  |
+7 | use std::collections::{HashMap, BTreeSet};
+  |                                 ^^^^^^^^
+
+warning: unused imports: `GCounter`, `HierarchicalSync`, `RGAText`, `Snapshot`, `SyncRequest`, `SyncResponse`, and `VersionVector`
+  --> causalux/src/runtime.rs:12:26
+   |
+12 |     CausalOp, CausalDAG, VersionVector, Snapshot,
+   |                          ^^^^^^^^^^^^^  ^^^^^^^^
+13 |     HierarchicalSync, AdaptiveSync, ConflictPolicy,
+   |     ^^^^^^^^^^^^^^^^
+14 |     RGAText, GCounter, PNCounter, ORSet, LWWMap, CRDTDocument,
+   |     ^^^^^^^  ^^^^^^^^
+15 |     SyncRequest, SyncResponse,
+   |     ^^^^^^^^^^^  ^^^^^^^^^^^^
+
+warning: unused import: `crate::BFTValidator`
+  --> causalux/src/runtime.rs:19:5
+   |
+19 | use crate::BFTValidator;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `request`
+   --> causalux/src/runtime.rs:341:13
+    |
+341 |         let request = self.sync.read().unwrap().prepare_request(
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_request`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `operation`
+   --> causalux/src/runtime.rs:464:9
+    |
+464 |         operation: &str,
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_operation`
+
+warning: field `batch_size` is never read
+  --> causalux/src/sync.rs:84:5
+   |
+81 | pub struct HierarchicalSync {
+   |            ---------------- field in this struct
+...
+84 |     batch_size: usize,
+   |     ^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `idle_timeout` is never read
+   --> causalux/src/presence.rs:232:5
+    |
+218 | pub struct PresenceManager {
+    |            --------------- field in this struct
+...
+232 |     idle_timeout: Duration,
+    |     ^^^^^^^^^^^^
+    |
+    = note: `PresenceManager` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+
+warning: field `maps` is never read
+  --> causalux/src/runtime.rs:43:5
+   |
+26 | pub struct CausaluxRuntime {
+   |            --------------- field in this struct
+...
+43 |     maps: Arc<RwLock<HashMap<String, LWWMap<String, String>>>>,
+   |     ^^^^
+
+warning: `causalux-v2` (lib) generated 13 warnings (run `cargo fix --lib -p causalux-v2` to apply 8 suggestions)
+warning: unused import: `Signer`
+ --> causalux/tests/integration_test.rs:3:33
+  |
+3 | use ed25519_dalek::{SigningKey, Signer};
+  |                                 ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `bob_op`
+  --> causalux/tests/integration_test.rs:49:9
+   |
+49 |     let bob_op = CausalOp::new(
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_bob_op`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::version_vector::VersionVector`
+   --> causalux/src/bft.rs:298:9
+    |
+298 |     use crate::version_vector::VersionVector;
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `causalux-v2` (test "integration_test") generated 2 warnings (run `cargo fix --test "integration_test"` to apply 1 suggestion)
+warning: `causalux-v2` (lib test) generated 14 warnings (13 duplicates) (run `cargo fix --lib -p causalux-v2 --tests` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (target/debug/deps/causalux_v2-316d382bd3b4b83e)
+
+running 59 tests
+test bft::tests::test_disabled_bft ... ok
+test bft::tests::test_insufficient_validators ... ok
+test bft::tests::test_bft_creation ... ok
+test content_address::tests::test_address_id ... ok
+test content_address::tests::test_content_address_creation ... ok
+test content_address::tests::test_content_verification ... ok
+test bft::tests::test_validator_signature ... ok
+test content_address::tests::test_same_content_same_hash ... ok
+test causal_op::tests::test_causally_ordered_operations ... ok
+test content_address::tests::test_special_addresses ... ok
+test causal_op::tests::test_conflict_detection ... ok
+test conflict::tests::test_no_conflict ... ok
+test crdt::tests::test_gcounter ... ok
+test crdt::tests::test_pncounter ... ok
+test crdt::tests::test_crdt_document ... ok
+test crdt::tests::test_rga_basic ... ok
+test crdt::tests::test_rga_concurrent_inserts ... ok
+test crdt::tests::test_orset_add_wins ... ok
+test dag::tests::test_dag_creation ... ok
+test conflict::tests::test_semantic_merge_counter ... ok
+test causal_op::tests::test_create_and_verify ... ok
+test dag::tests::test_causal_ordering ... ok
+test envelope::tests::test_key_derivation ... ok
+test dag::tests::test_insert_operation ... ok
+test dag::tests::test_increment_operation ... ok
+test envelope::tests::test_key_revocation ... ok
+test dag::tests::test_missing_dependency ... ok
+test dag::tests::test_idempotent_insert ... ok
+test observability::tests::test_audit_log_entry ... ok
+test observability::tests::test_health_status ... ok
+test presence::tests::test_cursor_movement ... ok
+test presence::tests::test_presence_lifecycle ... ok
+test presence::tests::test_selection ... ok
+test presence::tests::test_presence_merge ... ok
+test envelope::tests::test_seal_unseal ... ok
+test envelope::tests::test_wrong_key ... ok
+✅ Alice's doc: {"collaborators":[],"content":"Alice was here. Bob was here. ","id":"shared","metadata":{},"title":"Shared Doc","version":2}
+✅ Bob's doc: {"collaborators":[],"content":"Alice was here. Bob was here. ","id":"shared","metadata":{},"title":"Shared Doc","version":2}
+test runtime::tests::test_e2e_collaborative_editing ... ok
+test dag::tests::test_snapshot_creation ... ok
+✅ Synced 2 operations in 28.25µs
+test snapshot::tests::test_compression ... ok
+test runtime::tests::test_e2e_document_creation_and_sync ... ok
+test snapshot::tests::test_find_common_snapshot ... ok
+test snapshot::tests::test_snapshot_creation ... ok
+test snapshot::tests::test_snapshot_manager ... ok
+📦 Archived snapshot: snap_c11ab67b4625ba6523e (27 bytes)
+📦 Archived snapshot: snap_22b48597d3667c16401 (27 bytes)
+test sync::tests::test_savings_calculation ... ok
+test snapshot::tests::test_snapshot_eviction ... ok
+test sync::tests::test_sync_strategy_selection ... ok
+test version_vector::tests::test_conflict_detection ... ok
+test version_vector::tests::test_happens_before ... ok
+✅ Set contents after merge: ["ce0cc3ae3197ef033f890770f041ebaffa003e717dd174612047a76527abfe28", "909fbc0d44fed096ddc1320287987111bb67e422a6c6c8dadbe6848518a91639", "aab13121aec6015551fa601482360f15f9c3371d4cb43da948a44cb9d3ca2abe"]
+test version_vector::tests::test_increment ... ok
+test runtime::tests::test_e2e_set_operations ... ok
+test version_vector::tests::test_merge ... ok
+test version_vector::tests::test_total_operations ... ok
+✅ Metrics tracked: RuntimeMetrics { operations_executed: 4, operations_synced: 0, conflicts_resolved: 0, bft_validations: 0, snapshots_created: 0, total_sync_bytes: 0, cache_hits: 0, cache_misses: 0 }
+test runtime::tests::test_e2e_metrics_tracking ... ok
+test presence::tests::test_cursor_merge ... ok
+test crdt::tests::test_lww_map ... ok
+✅ Distributed counter converged to: 250
+test runtime::tests::test_e2e_distributed_counter ... ok
+test conflict::tests::test_manual_resolution ... ok
+test conflict::tests::test_lww_resolution ... ok
+test conflict::tests::test_priority_resolution ... ok
+
+test result: ok. 59 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+     Running tests/integration_test.rs (target/debug/deps/integration_test-2cd5aea6f61d085c)
+
+running 1 test
+Alice op validated!
+Bob synced op from Alice: f05c3894c6fe520da4d58f5f7bb04c4697e334ef696c1b304a6f4da6dd7c1f3d
+Converged Text: HelloWorld
+test test_e2e_collaborative_editing ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+--- cargo test -p nexus-sync --lib -- --nocapture ---
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: field `calculator` is never read
+   --> nexus-core/src/cost_optimizer.rs:383:5
+    |
+382 | pub struct WorkloadOptimizer {
+    |            ----------------- field in this struct
+383 |     calculator: CostCalculator,
+    |     ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `nexus-core` (lib) generated 1 warning
+warning: unused import: `WasmModule`
+  --> nexus-pcu/src/invariants.rs:32:27
+   |
+32 |     use crate::pcu::{PCU, WasmModule};
+   |                           ^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::identity::IdentityContext`
+  --> nexus-pcu/src/invariants.rs:33:9
+   |
+33 |     use crate::identity::IdentityContext;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `nexus-pcu` (lib) generated 2 warnings (run `cargo fix --lib -p nexus-pcu` to apply 2 suggestions)
+warning: unused import: `OsRng`
+  --> causalux/src/envelope.rs:15:27
+   |
+15 |     aead::{Aead, KeyInit, OsRng},
+   |                           ^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `hkdf::Hkdf`
+  --> causalux/src/envelope.rs:18:5
+   |
+18 | use hkdf::Hkdf;
+   |     ^^^^^^^^^^
+
+warning: unused import: `zeroize::Zeroize`
+  --> causalux/src/envelope.rs:19:5
+   |
+19 | use zeroize::Zeroize;
+   |     ^^^^^^^^^^^^^^^^
+
+warning: unused imports: `debug`, `error`, and `instrument`
+ --> causalux/src/observability.rs:5:27
+  |
+5 | use tracing::{info, warn, error, debug, instrument};
+  |                           ^^^^^  ^^^^^  ^^^^^^^^^^
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> causalux/src/runtime.rs:6:13
+  |
+6 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `BTreeSet`
+ --> causalux/src/runtime.rs:7:33
+  |
+7 | use std::collections::{HashMap, BTreeSet};
+  |                                 ^^^^^^^^
+
+warning: unused imports: `GCounter`, `HierarchicalSync`, `RGAText`, `Snapshot`, `SyncRequest`, `SyncResponse`, and `VersionVector`
+  --> causalux/src/runtime.rs:12:26
+   |
+12 |     CausalOp, CausalDAG, VersionVector, Snapshot,
+   |                          ^^^^^^^^^^^^^  ^^^^^^^^
+13 |     HierarchicalSync, AdaptiveSync, ConflictPolicy,
+   |     ^^^^^^^^^^^^^^^^
+14 |     RGAText, GCounter, PNCounter, ORSet, LWWMap, CRDTDocument,
+   |     ^^^^^^^  ^^^^^^^^
+15 |     SyncRequest, SyncResponse,
+   |     ^^^^^^^^^^^  ^^^^^^^^^^^^
+
+warning: unused import: `crate::BFTValidator`
+  --> causalux/src/runtime.rs:19:5
+   |
+19 | use crate::BFTValidator;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `request`
+   --> causalux/src/runtime.rs:341:13
+    |
+341 |         let request = self.sync.read().unwrap().prepare_request(
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_request`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `operation`
+   --> causalux/src/runtime.rs:464:9
+    |
+464 |         operation: &str,
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_operation`
+
+warning: field `batch_size` is never read
+  --> causalux/src/sync.rs:84:5
+   |
+81 | pub struct HierarchicalSync {
+   |            ---------------- field in this struct
+...
+84 |     batch_size: usize,
+   |     ^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `idle_timeout` is never read
+   --> causalux/src/presence.rs:232:5
+    |
+218 | pub struct PresenceManager {
+    |            --------------- field in this struct
+...
+232 |     idle_timeout: Duration,
+    |     ^^^^^^^^^^^^
+    |
+    = note: `PresenceManager` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+
+warning: field `maps` is never read
+  --> causalux/src/runtime.rs:43:5
+   |
+26 | pub struct CausaluxRuntime {
+   |            --------------- field in this struct
+...
+43 |     maps: Arc<RwLock<HashMap<String, LWWMap<String, String>>>>,
+   |     ^^^^
+
+warning: `causalux-v2` (lib) generated 13 warnings (run `cargo fix --lib -p causalux-v2` to apply 8 suggestions)
+warning: field `node_id` is never read
+  --> nexus-sync/src/crdt_uso.rs:43:5
+   |
+32 | pub struct CrdtUSO {
+   |            ------- field in this struct
+...
+43 |     node_id: String,
+   |     ^^^^^^^
+   |
+   = note: `CrdtUSO` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `nexus-sync` (lib test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (target/debug/deps/nexus_sync-606c39a518a0bd04)
+
+running 10 tests
+test adapters::tests::test_hash_computation ... ok
+test adapters::tests::test_hex_roundtrip ... ok
+test sync_engine::tests::test_uso_registration ... ok
+test crdt_uso::tests::test_pn_counter_uso ... ok
+test crdt_uso::tests::test_counter_uso ... ok
+test sync_engine::tests::test_sync_engine_creation ... ok
+test crdt_uso::tests::test_text_uso ... ok
+test crdt_uso::tests::test_counter_merge ... ok
+test crdt_uso::tests::test_set_uso ... ok
+test sync_engine::tests::test_uso_update_with_keypair ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+--- cargo test -p nexus-pcu uso -- --nocapture ---
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: field `calculator` is never read
+   --> nexus-core/src/cost_optimizer.rs:383:5
+    |
+382 | pub struct WorkloadOptimizer {
+    |            ----------------- field in this struct
+383 |     calculator: CostCalculator,
+    |     ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `nexus-core` (lib) generated 1 warning
+warning: unused import: `WasmModule`
+  --> nexus-pcu/src/invariants.rs:32:27
+   |
+32 |     use crate::pcu::{PCU, WasmModule};
+   |                           ^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::identity::IdentityContext`
+  --> nexus-pcu/src/invariants.rs:33:9
+   |
+33 |     use crate::identity::IdentityContext;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `nexus-pcu` (lib) generated 2 warnings (run `cargo fix --lib -p nexus-pcu` to apply 2 suggestions)
+warning: unused import: `proptest::prelude::*`
+  --> nexus-pcu/tests/replay_tests.rs:12:5
+   |
+12 | use proptest::prelude::*;
+   |     ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `CausalId`
+  --> nexus-pcu/tests/replay_tests.rs:17:57
+   |
+17 |     use nexus_core::causal::{CausalTensor, VectorClock, CausalId};
+   |                                                         ^^^^^^^^
+
+warning: `nexus-pcu` (test "replay_tests") generated 2 warnings (run `cargo fix --test "replay_tests"` to apply 2 suggestions)
+warning: `nexus-pcu` (lib test) generated 2 warnings (2 duplicates)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (target/debug/deps/nexus_pcu-4780176a4329c4af)
+
+running 10 tests
+test uso::tests::test_sync_policy ... ok
+test uso::tests::test_uso_creation ... ok
+test uso::tests::test_uso_update ... ok
+test uso::tests::test_uso_public_read ... ok
+test uso::tests::test_causal_history_happens_before ... ok
+test uso::tests::test_uso_access_control ... ok
+test uso::tests::test_uso_merge ... ok
+test invariants::invariant_tests::test_uso_invariants_valid_uso ... ok
+test uso::tests::test_uso_serialization ... ok
+test invariants::invariant_tests::prop_uso_merge_deterministic ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.03s
+
+     Running tests/chaos_tests.rs (target/debug/deps/chaos_tests-cc81a451ce8e767e)
+
+running 2 tests
+test chaos_tests::chaos_concurrent_uso_merge ... ok
+test chaos_tests::chaos_uso_state_recovery ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+
+     Running tests/fuzz_tests.rs (target/debug/deps/fuzz_tests-88214b57321d745a)
+
+running 3 tests
+proptest: FileFailurePersistence::SourceParallel set, but failed to find lib.rs or main.rs
+proptest: FileFailurePersistence::SourceParallel set, but failed to find lib.rs or main.rs
+proptest: FileFailurePersistence::SourceParallel set, but failed to find lib.rs or main.rs
+test fuzz_uso_id_invariant ... ok
+test fuzz_uso_merge_deterministic ... ok
+test fuzz_uso_creation_no_panic ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 1.42s
+
+     Running tests/property_tests.rs (target/debug/deps/property_tests-57dfeb9ec591641c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/replay_tests.rs (target/debug/deps/replay_tests-ba137e4492f830fb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s
+
+
+--- cargo test -p nexus-compress -- --nocapture ---
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: field `calculator` is never read
+   --> nexus-core/src/cost_optimizer.rs:383:5
+    |
+382 | pub struct WorkloadOptimizer {
+    |            ----------------- field in this struct
+383 |     calculator: CostCalculator,
+    |     ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: vectra@0.1.0: Build watermark: SYNTRIASS_VECTRA_c97bd915bd6d07b8_9fa1d69_1779034906_1.91.1
+warning: `nexus-core` (lib) generated 1 warning
+warning: unused import: `crate::error::EncodeError`
+  --> vectra/vectra/src/ebta_x.rs:27:5
+   |
+27 | use crate::error::EncodeError;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `ResidualSegment`
+  --> vectra/vectra/src/ebta_x.rs:28:39
+   |
+28 | use crate::types::{Payload, Residual, ResidualSegment, H_MAX};
+   |                                       ^^^^^^^^^^^^^^^
+
+warning: unused import: `ByteRange`
+  --> vectra/vectra/src/spe.rs:31:5
+   |
+31 |     ByteRange, PredictorParameters, PredictorState, SemanticType, VariablePart, VariableSegment,
+   |     ^^^^^^^^^
+
+warning: unused variable: `bytes`
+   --> vectra/vectra/src/decompose.rs:291:5
+    |
+291 |     bytes: &[u8],
+    |     ^^^^^ help: if this is intentional, prefix it with an underscore: `_bytes`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/decompose.rs:24:5
+   |
+24 |     pub structure: Structure,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: the lint level is defined here
+  --> vectra/vectra/src/lib.rs:84:9
+   |
+84 | #![warn(missing_docs)]
+   |         ^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/decompose.rs:25:5
+   |
+25 |     pub variable: VariablePart,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/decode.rs:90:5
+   |
+90 |     pub total_bytes: usize,
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/decode.rs:91:5
+   |
+91 |     pub structure_bytes: usize,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/decode.rs:92:5
+   |
+92 |     pub variable_bytes: usize,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:18:27
+   |
+18 |     DecompositionFailed { reason: String },
+   |                           ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:22:25
+   |
+22 |     FeeEncodingFailed { reason: String },
+   |                         ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:26:27
+   |
+26 |     SpePredictionFailed { reason: String },
+   |                           ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:30:28
+   |
+30 |     EbtaValidationFailed { entropy: f64, max: f64 },
+   |                            ^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:30:42
+   |
+30 |     EbtaValidationFailed { entropy: f64, max: f64 },
+   |                                          ^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:34:34
+   |
+34 |     ArtifactConstructionFailed { reason: String },
+   |                                  ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:42:20
+   |
+42 |     DecodeFailed { reason: String },
+   |                    ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:46:23
+   |
+46 |     IntegrityFailed { reason: String },
+   |                       ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:50:20
+   |
+50 |     InvalidInput { reason: String },
+   |                    ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:54:21
+   |
+54 |     InternalError { reason: String },
+   |                     ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:72:12
+   |
+72 |     Ebta { entropy: f64, max: f64 },
+   |            ^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/error.rs:72:26
+   |
+72 |     Ebta { entropy: f64, max: f64 },
+   |                          ^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/error.rs:106:23
+    |
+106 |     VersionMismatch { expected: u64, found: u64 },
+    |                       ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/error.rs:106:38
+    |
+106 |     VersionMismatch { expected: u64, found: u64 },
+    |                                      ^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/fee.rs:25:5
+   |
+25 |     pub generator: Generator,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/fee.rs:26:5
+   |
+26 |     pub mappings: MappingSet,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:149:5
+    |
+149 |     pub start: usize,
+    |     ^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:150:5
+    |
+150 |     pub end: usize,
+    |     ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:242:5
+    |
+242 |     pub mappings: Vec<Mapping>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:264:5
+    |
+264 |     pub timestamp_delta: i64,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:267:5
+    |
+267 |     pub metric_variance: i64,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a variant
+   --> vectra/vectra/src/types.rs:364:5
+    |
+364 |     DeserializationFailed { reason: String },
+    |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:364:29
+    |
+364 |     DeserializationFailed { reason: String },
+    |                             ^^^^^^^^^^^^^^
+
+warning: missing documentation for a variant
+   --> vectra/vectra/src/types.rs:365:5
+    |
+365 |     IntegrityCheckFailed,
+    |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a variant
+   --> vectra/vectra/src/types.rs:366:5
+    |
+366 |     VersionMismatch { expected: u64, found: u64 },
+    |     ^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:366:23
+    |
+366 |     VersionMismatch { expected: u64, found: u64 },
+    |                       ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> vectra/vectra/src/types.rs:366:38
+    |
+366 |     VersionMismatch { expected: u64, found: u64 },
+    |                                      ^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/licensing.rs:79:24
+   |
+79 |     HardwareMismatch { expected: String, found: String },
+   |                        ^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/licensing.rs:79:42
+   |
+79 |     HardwareMismatch { expected: String, found: String },
+   |                                          ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/licensing.rs:82:15
+   |
+82 |     Expired { expired_at: u64, current_time: u64 },
+   |               ^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> vectra/vectra/src/licensing.rs:82:32
+   |
+82 |     Expired { expired_at: u64, current_time: u64 },
+   |                                ^^^^^^^^^^^^^^^^^
+
+warning: unused import: `WasmModule`
+  --> nexus-pcu/src/invariants.rs:32:27
+   |
+32 |     use crate::pcu::{PCU, WasmModule};
+   |                           ^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::identity::IdentityContext`
+  --> nexus-pcu/src/invariants.rs:33:9
+   |
+33 |     use crate::identity::IdentityContext;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `vectra` (lib) generated 40 warnings (run `cargo fix --lib -p vectra` to apply 3 suggestions)
+warning: `nexus-pcu` (lib) generated 2 warnings (run `cargo fix --lib -p nexus-pcu` to apply 2 suggestions)
+warning: unused import: `PrincipalId`
+ --> nexus-compress/src/uso_compress.rs:5:35
+  |
+5 | use nexus_pcu::{USO, ContentHash, PrincipalId, SyncPolicy, AccessPolicy};
+  |                                   ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `Artifact`, `EncodeResult`, `vectra_decode`, and `vectra_encode`
+ --> nexus-compress/src/uso_compress.rs:6:14
+  |
+6 | use vectra::{vectra_encode, vectra_decode, EncodeResult, Artifact, VectraResult};
+  |              ^^^^^^^^^^^^^  ^^^^^^^^^^^^^  ^^^^^^^^^^^^  ^^^^^^^^
+
+warning: `nexus-compress` (lib) generated 2 warnings (run `cargo fix --lib -p nexus-compress` to apply 2 suggestions)
+warning: unused imports: `Artifact`, `EncodeResult`, `vectra_decode`, and `vectra_encode`
+ --> nexus-compress/src/uso_compress.rs:6:14
+  |
+6 | use vectra::{vectra_encode, vectra_decode, EncodeResult, Artifact, VectraResult};
+  |              ^^^^^^^^^^^^^  ^^^^^^^^^^^^^  ^^^^^^^^^^^^  ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `nexus-compress` (lib test) generated 1 warning (run `cargo fix --lib -p nexus-compress --tests` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/nexus_compress-463881d72a6012e7)
+VECTRA Build Info:
+  Build ID: c97bd915bd6d07b8
+  Git Commit: 9fa1d69
+  Build Time: 1779034906
+  Rust Version: 1.91.1
+  Watermark: SYNTRIASS_VECTRA_c97bd915bd6d07b8_9fa1d69_1779034906_1.91.1
+
+running 5 tests
+test pcu_compress::tests::test_compression_stats ... ok
+test uso_compress::tests::test_uso_compression ... ok
+test uso_compress::tests::test_batch_compression ... ok
+test pcu_compress::tests::test_compress_structured_data ... ok
+test pcu_compress::tests::test_compress_data_passthrough ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests nexus_compress
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

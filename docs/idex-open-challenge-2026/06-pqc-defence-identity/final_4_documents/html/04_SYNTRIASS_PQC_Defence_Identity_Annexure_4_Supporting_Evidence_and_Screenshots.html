@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-4 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-4</h1>
+    <div class="subtitle">Supporting evidence and screenshots checklist</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-4</h1>
+<p>Supporting evidence, screenshots, repository locations, and artifact map</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Supporting Evidence and Screenshots</h1>
+<h2>Company Identification Details</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Legal Entity Name</td><td>Syntriass Labs Private Limited</td></tr><tr><td>CIN</td><td>U62011AP2025PTC120239</td></tr><tr><td>PAN</td><td>ABQCS7152R</td></tr><tr><td>TAN</td><td>VPNS31351F</td></tr><tr><td>Registered Office</td><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td></tr><tr><td>Contact Email</td><td>kattanaga5555@gmail.com</td></tr><tr><td>Contact Phone</td><td>+91 88864 68060</td></tr><tr><td>GitHub Repository</td><td><code>https://github.com/richardrich999888-rgb/NEXUS</code></td></tr><tr><td>Submission Date</td><td>17 May 2026</td></tr></tbody></table>
+<h2>1. Applicant Resume Format</h2>
+<p>Applicant: K. Naga Sri Ganesh Company: Syntriass Labs Private Limited Role: Founder / Inventor Relevant focus: governed autonomy, proof-carrying computation, hybrid cryptographic identity, PCU identity binding, post-quantum transition planning, and defence-oriented audit evidence.</p>
+<h2>2. Prototype Evidence List</h2>
+<table><thead><tr><th>Evidence Item</th><th>Repository / Artifact Location</th></tr></thead><tbody><tr><td>PQC module</td><td><code>nexus-pcu/src/pqc.rs</code></td></tr><tr><td>Cargo PQC feature gate</td><td><code>nexus-pcu/Cargo.toml</code></td></tr><tr><td>PCU public exports</td><td><code>nexus-pcu/src/lib.rs</code></td></tr><tr><td>Capability identity</td><td><code>nexus-pcu/src/identity.rs</code></td></tr><tr><td>PCU identity binding</td><td><code>nexus-pcu/src/pcu.rs</code></td></tr><tr><td>Execution proof attestation</td><td><code>nexus-pcu/src/proof.rs</code></td></tr><tr><td>Classical crypto utilities</td><td><code>nexus-pcu/src/crypto.rs</code></td></tr><tr><td>Fresh test output</td><td><code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/pqc_defence_identity_test_output.txt</code></td></tr><tr><td>Evidence screenshots</td><td><code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/</code></td></tr><tr><td>Final documents</td><td><code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/</code></td></tr></tbody></table>
+<h2>3. Validation Scope</h2>
+<p>Current validation is software-subsystem validation. The evidence supports feature-gated PQC tests, hybrid signature structures, public-key bundle verification, and PCU identity/proof integration points. It does not claim certified cryptographic module status, HSM integration, secure element provisioning, defence key authority approval, or network-wide PQC enforcement.</p>
+<div class="page-break"></div>
+<h2>4. Test Commands and Recorded Results</h2>
+<p>Primary command:</p>
+<pre data-lang="bash"><code>cargo test -p nexus-pcu --features pqc pqc -- --nocapture</code></pre>
+<p>Fresh local results:</p>
+<ul>
+<li>NEXUS PCU PQC feature tests: 7 passed, 0 failed.</li>
+<li>Filtered lib tests: 37 filtered out because the command selected tests containing <code>pqc</code>.</li>
+<li>Filtered integration binaries: chaos, fuzz, property, and replay selected 0 tests under the <code>pqc</code> filter.</li>
+<li>Run date: 17 May 2026.</li>
+</ul>
+<p>Tested behaviors:</p>
+<ul>
+<li>Hybrid keypair generation.</li>
+<li>Classical signing and verification.</li>
+<li>Hybrid signature serialization.</li>
+<li>Public key bundle verification.</li>
+<li>Classical-only mode.</li>
+<li>Signature size under PQC feature.</li>
+<li>PQC component verification after classical component tampering.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 5 - Public Repository Reference</h2>
+<p>Purpose: give panel reviewers a direct path to inspect the source repository.</p>
+<p>Status: GitHub repository reference embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/01_github_repository.jpg" alt="GitHub repository reference for PQC Defence Identity" /><figcaption>GitHub repository reference for PQC Defence Identity</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 6 - Fresh Test Output</h2>
+<p>Purpose: show that the feature-gated <code>nexus-pcu</code> PQC tests were run locally before proposal packaging.</p>
+<p>Status: test output screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/02_test_output.jpg" alt="PQC Defence Identity test output screenshot" /><figcaption>PQC Defence Identity test output screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 7 - PQC Feature Gate</h2>
+<p>Evidence source: <code>nexus-pcu/Cargo.toml</code></p>
+<p>Purpose: show optional <code>fips203</code> and <code>fips204</code> dependencies and the <code>pqc</code> feature gate.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/03_feature_gate.jpg" alt="PQC feature gate screenshot" /><figcaption>PQC feature gate screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 8 - Public PCU Exports</h2>
+<p>Evidence source: <code>nexus-pcu/src/lib.rs</code></p>
+<p>Purpose: show exported HybridSignature, HybridKeyPair, PublicKeyBundle, IdentityContext, and ExecutionProof primitives.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/04_lib_exports.jpg" alt="Public PCU exports screenshot" /><figcaption>Public PCU exports screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 9 - Hybrid Signature Structure</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show Ed25519, optional ML-DSA, and version fields in the signature container.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/05_hybrid_signature_struct.jpg" alt="Hybrid signature structure screenshot" /><figcaption>Hybrid signature structure screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 10 - Classical and Hybrid Constructors</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show classical-only and hybrid signature constructors plus helper methods.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/06_signature_constructors.jpg" alt="Signature constructors screenshot" /><figcaption>Signature constructors screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 11 - Classical Signature Verification</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show Ed25519 length check, signature reconstruction, and verification.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/07_classical_verification.jpg" alt="Classical verification screenshot" /><figcaption>Classical verification screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 12 - ML-DSA Verification Path</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show feature-gated ML-DSA public key and signature verification path.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/08_pqc_verification.jpg" alt="PQC verification screenshot" /><figcaption>PQC verification screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 13 - Hybrid Verification Policy</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show combined classical/PQC verification policy in the transition implementation.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/09_hybrid_verification.jpg" alt="Hybrid verification screenshot" /><figcaption>Hybrid verification screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 14 - Hybrid Keypair Structure</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show Ed25519 plus feature-gated ML-DSA key material.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/10_hybrid_keypair_struct.jpg" alt="Hybrid keypair structure screenshot" /><figcaption>Hybrid keypair structure screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 15 - Key Generation</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show Ed25519 generation and ML-DSA-65 generation when feature is enabled.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/11_key_generation.jpg" alt="Key generation screenshot" /><figcaption>Key generation screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 16 - Signing Path</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show Ed25519 signing plus optional ML-DSA signing.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/12_signing_path.jpg" alt="Signing path screenshot" /><figcaption>Signing path screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 17 - Public Key Bundle</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show classical and optional PQC key bundle used by verifiers.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/13_public_key_bundle.jpg" alt="Public key bundle screenshot" /><figcaption>Public key bundle screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 18 - Keypair and Classical Verification Tests</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show tests for keypair generation and classical signature verification.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/14_keypair_classical_tests.jpg" alt="Keypair and classical tests screenshot" /><figcaption>Keypair and classical tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 19 - Serialization and Bundle Tests</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show tests for signature serialization and public-key bundle verification.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/15_serialization_bundle_tests.jpg" alt="Serialization and bundle tests screenshot" /><figcaption>Serialization and bundle tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 20 - Classical-Only and Size Tests</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show tests for classical-only behavior and feature-gated signature size.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/16_classical_size_tests.jpg" alt="Classical only and size tests screenshot" /><figcaption>Classical only and size tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 21 - PQC Tamper Fallback Test</h2>
+<p>Evidence source: <code>nexus-pcu/src/pqc.rs</code></p>
+<p>Purpose: show feature-gated test where PQC verification remains valid after classical signature tampering, then fails when both components are invalid.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/17_pqc_tamper_fallback_test.jpg" alt="PQC tamper fallback test screenshot" /><figcaption>PQC tamper fallback test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 22 - Principal and Capability Model</h2>
+<p>Evidence source: <code>nexus-pcu/src/identity.rs</code></p>
+<p>Purpose: show identity primitives for principal IDs, capabilities, constraints, and permission checks.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/18_principal_capabilities.jpg" alt="Principal and capabilities screenshot" /><figcaption>Principal and capabilities screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 23 - Delegation Chain Verification</h2>
+<p>Evidence source: <code>nexus-pcu/src/identity.rs</code></p>
+<p>Purpose: show expiry, continuity, signature verification, and canonical signing data for delegation links.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/19_delegation_chain.jpg" alt="Delegation chain screenshot" /><figcaption>Delegation chain screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 24 - Embedded Identity Context</h2>
+<p>Evidence source: <code>nexus-pcu/src/identity.rs</code></p>
+<p>Purpose: show PCU identity context with principal, capabilities, delegation, expiry, signature, and permission check.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/20_identity_context.jpg" alt="Identity context screenshot" /><figcaption>Identity context screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 25 - PCU Identity Binding</h2>
+<p>Evidence source: <code>nexus-pcu/src/pcu.rs</code></p>
+<p>Purpose: show PCU structure embedding identity context and execution constraints.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/21_pcu_identity_binding.jpg" alt="PCU identity binding screenshot" /><figcaption>PCU identity binding screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 26 - Execution Attestation</h2>
+<p>Evidence source: <code>nexus-pcu/src/proof.rs</code></p>
+<p>Purpose: show node attestation signing and verification over proof content.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/22_execution_attestation.jpg" alt="Execution attestation screenshot" /><figcaption>Execution attestation screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 27 - Classical Crypto Utilities</h2>
+<p>Evidence source: <code>nexus-pcu/src/crypto.rs</code></p>
+<p>Purpose: show current Ed25519 key generation, signing, and verification utility path.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/23_crypto_utilities.jpg" alt="Classical crypto utilities screenshot" /><figcaption>Classical crypto utilities screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 28 - Reviewer Repository Map</h2>
+<p>Purpose: give panel reviewers a direct navigation map.</p>
+<table><thead><tr><th>Review Area</th><th>Path</th></tr></thead><tbody><tr><td>Final proposal package</td><td><code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/</code></td></tr><tr><td>Screenshot assets</td><td><code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/</code></td></tr><tr><td>PQC module</td><td><code>nexus-pcu/src/pqc.rs</code></td></tr><tr><td>Cargo feature gate</td><td><code>nexus-pcu/Cargo.toml</code></td></tr><tr><td>Identity context</td><td><code>nexus-pcu/src/identity.rs</code></td></tr><tr><td>PCU structure</td><td><code>nexus-pcu/src/pcu.rs</code></td></tr><tr><td>Execution proof</td><td><code>nexus-pcu/src/proof.rs</code></td></tr><tr><td>Classical crypto utilities</td><td><code>nexus-pcu/src/crypto.rs</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 29 - Claim-to-File Location Map</h2>
+<table><thead><tr><th>Proposal Claim</th><th>Source Evidence</th></tr></thead><tbody><tr><td>Hybrid signature structure exists</td><td><code>nexus-pcu/src/pqc.rs</code>, <code>HybridSignature</code></td></tr><tr><td>PQC feature gate exists</td><td><code>nexus-pcu/Cargo.toml</code>, <code>[features] pqc</code></td></tr><tr><td>Hybrid keypair generation exists</td><td><code>HybridKeyPair::generate()</code></td></tr><tr><td>ML-DSA signing path exists under feature</td><td><code>HybridKeyPair::sign()</code></td></tr><tr><td>Classical verification exists</td><td><code>HybridSignature::verify_classical()</code></td></tr><tr><td>ML-DSA verification path exists under feature</td><td><code>HybridSignature::verify_pqc()</code></td></tr><tr><td>Public-key bundle exists</td><td><code>PublicKeyBundle</code></td></tr><tr><td>PCU identity binding exists</td><td><code>PCU.identity</code> and <code>IdentityContext</code></td></tr><tr><td>Execution attestation exists</td><td><code>NodeAttestation</code> and <code>ExecutionProof</code></td></tr><tr><td>PQC tamper behavior is tested</td><td><code>test_pqc_component_verifies_when_classical_component_is_tampered()</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 30 - Test and Command Locations</h2>
+<table><thead><tr><th>Test Area</th><th>Command / File</th></tr></thead><tbody><tr><td>PQC feature tests</td><td><code>cargo test -p nexus-pcu --features pqc pqc -- --nocapture</code></td></tr><tr><td>Test implementation</td><td><code>nexus-pcu/src/pqc.rs</code>, test module</td></tr><tr><td>Combined output artifact</td><td><code>evidence_assets/pqc_defence_identity_test_output.txt</code></td></tr><tr><td>Evidence screenshot generator</td><td><code>generate_pqc_defence_identity_evidence_screenshots.mjs</code></td></tr><tr><td>PDF builder</td><td><code>build_syntriass_letterhead_problem6.mjs</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 31 - Generated Artifact Locations</h2>
+<table><thead><tr><th>Artifact Type</th><th>Location</th></tr></thead><tbody><tr><td>Annexure 1 PDF</td><td><code>01_SYNTRIASS_PQC_Defence_Identity_Annexure_1_Applicant_Details_and_Solution_Summary.pdf</code></td></tr><tr><td>Annexure 2 PDF</td><td><code>02_SYNTRIASS_PQC_Defence_Identity_Annexure_2_Technical_Architecture.pdf</code></td></tr><tr><td>Annexure 3 PDF</td><td><code>03_SYNTRIASS_PQC_Defence_Identity_Annexure_3_Advantages_and_Competencies.pdf</code></td></tr><tr><td>Annexure 4 PDF</td><td><code>04_SYNTRIASS_PQC_Defence_Identity_Annexure_4_Supporting_Evidence_and_Screenshots.pdf</code></td></tr><tr><td>DOCX files</td><td>Same directory, matching <code>.docx</code> names.</td></tr><tr><td>Rendered HTML</td><td><code>final_4_documents/html/</code></td></tr><tr><td>Evidence screenshots</td><td><code>final_4_documents/evidence_assets/*.jpg</code></td></tr><tr><td>Test output</td><td><code>final_4_documents/evidence_assets/pqc_defence_identity_test_output.txt</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 32 - Screenshot Artifact Index</h2>
+<table><thead><tr><th>Screenshot</th><th>File</th></tr></thead><tbody><tr><td>GitHub repository</td><td><code>evidence_assets/01_github_repository.jpg</code></td></tr><tr><td>Fresh test output</td><td><code>evidence_assets/02_test_output.jpg</code></td></tr><tr><td>Feature gate and exports</td><td><code>evidence_assets/03_feature_gate.jpg</code>, <code>04_lib_exports.jpg</code></td></tr><tr><td>Hybrid signature screenshots</td><td><code>evidence_assets/05_hybrid_signature_struct.jpg</code> through <code>09_hybrid_verification.jpg</code></td></tr><tr><td>Hybrid keypair screenshots</td><td><code>evidence_assets/10_hybrid_keypair_struct.jpg</code> through <code>13_public_key_bundle.jpg</code></td></tr><tr><td>PQC tests</td><td><code>evidence_assets/14_keypair_classical_tests.jpg</code> through <code>17_pqc_tamper_fallback_test.jpg</code></td></tr><tr><td>Identity/proof integration</td><td><code>evidence_assets/18_principal_capabilities.jpg</code> through <code>23_crypto_utilities.jpg</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 33 - Defence Problem to Evidence Map</h2>
+<table><thead><tr><th>Defence Problem</th><th>PQC Defence Identity Control</th><th>Evidence</th></tr></thead><tbody><tr><td>Classical-only identity risk</td><td>Hybrid signature envelope</td><td>Evidence pages 9-13.</td></tr><tr><td>Migration disruption</td><td>Public-key bundle with classical and optional PQC material</td><td>Evidence page 17.</td></tr><tr><td>Signature tamper scenario</td><td>Feature-gated tamper fallback test</td><td>Evidence page 21.</td></tr><tr><td>Identity/proof binding</td><td>PCU IdentityContext and NodeAttestation</td><td>Evidence pages 22-26.</td></tr><tr><td>Current compatibility</td><td>Ed25519 crypto utilities and classical verification tests</td><td>Evidence pages 11, 18, 27.</td></tr><tr><td>Readiness transparency</td><td>Feature gate, test output, and caveats</td><td>Evidence pages 6-7, 35-37.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 34 - Prototype Work Package Locations</h2>
+<table><thead><tr><th>Work Package</th><th>Existing Starting Point</th></tr></thead><tbody><tr><td>Hybrid signature envelope</td><td><code>HybridSignature</code> in <code>nexus-pcu/src/pqc.rs</code></td></tr><tr><td>Hybrid keypair</td><td><code>HybridKeyPair</code> in <code>nexus-pcu/src/pqc.rs</code></td></tr><tr><td>Public-key bundle</td><td><code>PublicKeyBundle</code> in <code>nexus-pcu/src/pqc.rs</code></td></tr><tr><td>Feature-gated ML-DSA</td><td><code>verify_pqc()</code> and <code>HybridKeyPair::generate()</code></td></tr><tr><td>Identity integration</td><td><code>IdentityContext</code> in <code>nexus-pcu/src/identity.rs</code></td></tr><tr><td>Proof integration</td><td><code>ExecutionProof</code> and <code>NodeAttestation</code> in <code>nexus-pcu/src/proof.rs</code></td></tr><tr><td>Current classical path</td><td><code>nexus-pcu/src/crypto.rs</code></td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 35 - Panel Review Checklist</h2>
+<table><thead><tr><th>Reviewer Question</th><th>Where To Check</th></tr></thead><tbody><tr><td>Were PQC tests actually run?</td><td>Evidence page 6 and output file <code>pqc_defence_identity_test_output.txt</code>.</td></tr><tr><td>Is PQC active by default?</td><td>No. It is feature-gated through <code>--features pqc</code>; see pages 7 and 36.</td></tr><tr><td>Is this certified cryptography?</td><td>No. It is prototype evidence and transition planning.</td></tr><tr><td>Does the code support hybrid key material?</td><td>Evidence pages 9-17.</td></tr><tr><td>Does it bind identity to PCU/proof?</td><td>Evidence pages 22-26.</td></tr><tr><td>Is the GitHub repository identified?</td><td>Evidence page 5 and repository coordinate page 37.</td></tr><tr><td>Are artifact locations included?</td><td>Evidence pages 28-32.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 36 - Readiness Statement and Caveats</h2>
+<table><thead><tr><th>Area</th><th>Position</th></tr></thead><tbody><tr><td>Software subsystem readiness</td><td>Current evidence supports software subsystem TRL 3-4.</td></tr><tr><td>PQC feature tests</td><td><code>nexus-pcu</code> reports 7 passed and 0 failed under <code>--features pqc</code>.</td></tr><tr><td>Default build</td><td>Classical-only by default for compatibility and build speed.</td></tr><tr><td>PQC enforcement</td><td>Not yet network-wide or packet-wide by default.</td></tr><tr><td>Cryptographic accreditation</td><td>Not claimed. Requires evaluator-approved profile and certification path.</td></tr><tr><td>Key lifecycle</td><td>Provisioning, revocation, rotation, and compromise response remain iDEX work.</td></tr><tr><td>HSM/secure element</td><td>Not integrated in current evidence.</td></tr><tr><td>Operational use</td><td>Defence key authority, policy approval, and deployment hardening remain required.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>Evidence Page 37 - Declaration and Repository Coordinates</h2>
+<p>Declaration:</p>
+<p>PQC Defence Identity is submitted as a software-subsystem prototype for hybrid classical and post-quantum defence identity evaluation.</p>
+<p>Repository coordinates:</p>
+<ul>
+<li>Public repository: <code>https://github.com/richardrich999888-rgb/NEXUS</code></li>
+<li>Proposal folder: <code>docs/idex-open-challenge-2026/06-pqc-defence-identity/</code></li>
+<li>Final documents: <code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/</code></li>
+<li>Evidence assets: <code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/</code></li>
+<li>Test output: <code>docs/idex-open-challenge-2026/06-pqc-defence-identity/final_4_documents/evidence_assets/pqc_defence_identity_test_output.txt</code></li>
+<li>PQC source: <code>nexus-pcu/src/pqc.rs</code></li>
+<li>Identity source: <code>nexus-pcu/src/identity.rs</code></li>
+<li>Proof source: <code>nexus-pcu/src/proof.rs</code></li>
+</ul>
+<p>Submission caveat:</p>
+<ul>
+<li>The package is prepared for prototype review and iDEX-funded validation planning.</li>
+<li>No certified cryptographic module status, operational key authority approval, HSM-backed deployment, secure element provisioning, or network-wide PQC enforcement is claimed.</li>
+<li>Cryptographic profile approval, lifecycle policy, hardware key protection, audit retention, and field integration remain required for operational use.</li>
+</ul>
+  </main>
+</body>
+</html>

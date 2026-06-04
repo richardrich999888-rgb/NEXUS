@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Immune Forward Scan</h1>
+    <div class="subtitle">Runtime scan records threat type, severity, innate/adaptive activation, memory hit, and response time.</div>
+    <div class="body"><pre> 123      def forward(
+ 124          self,
+ 125          x: torch.Tensor,
+ 126          enable_immunity: bool = True,
+ 127          return_diagnostics: bool = False
+ 128      ) -&gt; Tuple[torch.Tensor, Optional[Dict]]:
+ 129          &quot;&quot;&quot;Forward pass with immune monitoring.&quot;&quot;&quot;
+ 130          start_time = time.time()
+ 131          
+ 132          # Get base model output
+ 133          with torch.no_grad():
+ 134              if hasattr(self.base_model, 'forward_with_hidden'):
+ 135                  hidden, output = self.base_model.forward_with_hidden(x)
+ 136              else:
+ 137                  output = self.base_model(x)
+ 138                  hidden = output
+ 139          
+ 140          diagnostics = {
+ 141              'threat_detected': False,
+ 142              'threat_type': None,
+ 143              'threat_severity': 0.0,
+ 144              'innate_triggered': False,
+ 145              'adaptive_triggered': False,
+ 146              'memory_hit': False,
+ 147              'response_time_ms': 0.0
+ 148          }
+ 149          
+ 150          if not enable_immunity:
+ 151              return (output, diagnostics) if return_diagnostics else (output, None)
+ 152          
+ 153          # Encode behavior
+ 154          if hidden.dim() == 3:
+ 155              behavior = self.behavior_encoder(hidden.mean(dim=1))
+ 156          else:
+ 157              behavior = self.behavior_encoder(hidden)
+ 158          
+ 159          # Layer 1: Innate scan
+ 160          if self.innate is not None:
+ 161              safe_behavior, threats, alert = self.innate(behavior)
+ 162              
+ 163              if threats:
+ 164                  diagnostics['threat_detected'] = True
+ 165                  diagnostics['innate_triggered'] = True
+ 166                  
+ 167                  max_type = max(threats, key=threats.get)
+ 168                  max_severity = threats[max_type]
+ 169                  diagnostics['threat_type'] = max_type
+ 170                  diagnostics['threat_severity'] = max_severity
+ 171                  
+ 172                  behavior = safe_behavior
+ 173                  
+ 174                  # Layer 2: Adaptive response
+ 175                  if alert and self.adaptive is not None:
+ 176                      threat = Threat(
+ 177                          behavior=behavior,
+ 178                          threat_type=max_type,
+ 179                          severity=max_severity,
+ 180                          timestamp=self.timestamp,
+ 181                          context={'innate_threats': threats},
+ 182                          source='innate'
+ 183                      )
+ 184                      
+ 185                      safe_behavior, info = self.adaptive.respond(threat)
+ 186                      diagnostics['adaptive_triggered'] = True
+ 187                      diagnostics['memory_hit'] = info['memory_hit']
+ 188                      
+ 189                      behavior = safe_behavior
+ 190                      self.threat_history.append(threat)
+ 191                      self.alert_count += 1
+ 192                      self.neutralization_count += 1
+ 193                  
+ 194                  output = output * 0.95  # Safety dampening
+ 195          
+ 196          self.timestamp += 1
+ 197          diagnostics['response_time_ms'] = (time.time() - start_time) * 1000
+ 198          self.response_times.append(diagnostics['response_time_ms'])
+ 199          
+ 200          return (output, diagnostics) if return_diagnostics else (output, None)</pre></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Snapshots and Compression</h1>
+    <div class="subtitle">Snapshots carry Merkle root, version vector, operation count, compressed size, and common-snapshot negotiation.</div>
+    <div class="body"><pre>  13  /// A point-in-time snapshot of the system state.
+  14  /// 
+  15  /// Snapshots enable:
+  16  /// - Constant memory footprint (via garbage collection)
+  17  /// - Fast sync after long partitions (download snapshot, not full history)
+  18  /// - Efficient state reconstruction
+  19  #[derive(Clone, Debug, Serialize, Deserialize)]
+  20  pub struct Snapshot {
+  21      /// Unique snapshot ID
+  22      pub id: String,
+  23      
+  24      /// Complete state at this point (serialized)
+  25      pub state: serde_json::Value,
+  26      
+  27      /// Merkle root of all operations up to this snapshot
+  28      pub merkle_root: String,
+  29      
+  30      /// Version vector at snapshot time
+  31      pub version_vector: VersionVector,
+  32      
+  33      /// Unix timestamp when created
+  34      pub timestamp: u64,
+  35      
+  36      /// Number of operations included
+  37      pub operation_count: u64,
+  38      
+  39      /// Compressed size in bytes
+  40      pub compressed_size: usize,
+  41  }
+  42  
+  43  impl Snapshot {
+  44      /// Create a new snapshot
+  45      pub fn new(
+  46          state: serde_json::Value,
+  47          merkle_root: String,
+  48          version_vector: VersionVector,
+  49          operation_count: u64,
+  50      ) -&gt; Self {
+  51          let serialized = serde_json::to_string(&amp;state).unwrap();
+  52          let compressed = Self::compress_state(&amp;serialized);
+  53          let compressed_size = compressed.len();
+  54  
+  55          // Generate unique ID from content hash
+  56          let id = Self::generate_id(&amp;merkle_root, operation_count);
+  57  
+  58          Self {
+  59              id,
+  60              state,
+  61              merkle_root,
+  62              version_vector,
+  63              timestamp: SystemTime::now()
+  64                  .duration_since(UNIX_EPOCH)
+  65                  .unwrap()
+  66                  .as_secs(),
+  67              operation_count,
+  68              compressed_size,
+  69          }
+  70      }
+  71  
+  72      /// Compress state for storage/transfer
+  73      pub fn compress_state(state: &amp;str) -&gt; Vec&lt;u8&gt; {
+  74          let mut encoder = GzEncoder::new(Vec::new(), Compression::best());
+  75          encoder.write_all(state.as_bytes()).unwrap();
+  76          encoder.finish().unwrap()
+  77      }
+  78  
+  79      /// Decompress state
+  80      pub fn decompress_state(compressed: &amp;[u8]) -&gt; String {
+  81          let mut decoder = GzDecoder::new(compressed);
+  82          let mut decompressed = String::new();
+  83          decoder.read_to_string(&amp;mut decompressed).unwrap();
+  84          decompressed
+  85      }
+  86  
+  87      /// Get compressed bytes for transfer
+  88      pub fn to_compressed_bytes(&amp;self) -&gt; Vec&lt;u8&gt; {
+  89          let json = serde_json::to_string(&amp;self.state).unwrap();
+  90          Self::compress_state(&amp;json)
+  91      }
+  92  
+  93      /// Generate snapshot ID from content
+  94      fn generate_id(merkle_root: &amp;str, operation_count: u64) -&gt; String {
+  95          let mut hasher = Sha256::new();
+  96          hasher.update(merkle_root.as_bytes());
+  97          hasher.update(operation_count.to_le_bytes());
+  98          format!(&quot;snap_{:x}&quot;, hasher.finalize())[..24].to_string()
+  99      }
+ 100  }
+
+ 206      /// Find most recent common snapshot with a peer
+ 207      pub fn find_common_snapshot(&amp;self, peer_snapshot_ids: &amp;[String]) -&gt; Option&lt;&amp;Snapshot&gt; {
+ 208          // Iterate from most recent to oldest
+ 209          for snapshot in self.snapshots.iter().rev() {
+ 210              if peer_snapshot_ids.contains(&amp;snapshot.id) {
+ 211                  return Some(snapshot);
+ 212              }
+ 213          }
+ 214          None
+ 215      }
+ 216  
+ 217      /// Get memory footprint estimate
+ 218      pub fn memory_footprint(&amp;self) -&gt; usize {
+ 219          self.snapshots.iter().map(|s| s.compressed_size).sum()
+ 220      }
+ 221  
+ 222      /// Get total operations count
+ 223      pub fn total_operations(&amp;self) -&gt; u64 {
+ 224          self.total_operations
+ 225      }
+ 226  
+ 227      /// Get snapshot count
+ 228      pub fn snapshot_count(&amp;self) -&gt; usize {
+ 229          self.snapshots.len()
+ 230      }
+ 231  }
+ 232  
+ 233  #[cfg(test)]
+ 234  mod tests {
+ 235      use super::*;
+ 236  
+ 237      #[test]
+ 238      fn test_snapshot_creation() {
+ 239          let vv = VersionVector::new();
+ 240          let snapshot = Snapshot::new(
+ 241              serde_json::json!({&quot;counter&quot;: 42}),
+ 242              &quot;merkle_root_123&quot;.to_string(),
+ 243              vv,
+ 244              1000,
+ 245          );
+ 246  
+ 247          assert!(!snapshot.id.is_empty());
+ 248          assert!(snapshot.compressed_size &gt; 0);
+ 249          assert_eq!(snapshot.operation_count, 1000);
+ 250      }
+ 251  
+ 252      #[test]
+ 253      fn test_compression() {
+ 254          let original = r#&quot;{&quot;key&quot;: &quot;value&quot;, &quot;nested&quot;: {&quot;a&quot;: 1, &quot;b&quot;: 2}}&quot;#;
+ 255          let compressed = Snapshot::compress_state(original);
+ 256          let decompressed = Snapshot::decompress_state(&amp;compressed);
+ 257  
+ 258          assert_eq!(original, decompressed);
+ 259          // Compression should reduce size for larger inputs
+ 260      }
+ 261  
+ 262      #[test]
+ 263      fn test_snapshot_manager() {
+ 264          let mut manager = SnapshotManager::new(5, 100);
+ 265  
+ 266          // Simulate 100 operations
+ 267          for _ in 0..100 {
+ 268              manager.increment_operation_count();
+ 269          }
+ 270  
+ 271          assert!(manager.should_snapshot());
+ 272  
+ 273          // Create snapshot
+ 274          manager.create_snapshot(
+ 275              serde_json::json!({&quot;state&quot;: &quot;test&quot;}),
+ 276              &quot;merkle_123&quot;.to_string(),
+ 277              VersionVector::new(),
+ 278          );
+ 279  
+ 280          assert_eq!(manager.snapshot_count(), 1);
+ 281      }
+ 282  
+ 283      #[test]
+ 284      fn test_snapshot_eviction() {
+ 285          let mut manager = SnapshotManager::new(3, 100);
+ 286  
+ 287          // Create 5 snapshots (should evict 2)
+ 288          for i in 0..5 {
+ 289              for _ in 0..100 {
+ 290                  manager.increment_operation_count();
+ 291              }
+ 292              manager.create_snapshot(
+ 293                  serde_json::json!({&quot;i&quot;: i}),
+ 294                  format!(&quot;merkle_{}&quot;, i),
+ 295                  VersionVector::new(),
+ 296              );
+ 297          }
+ 298  
+ 299          assert_eq!(manager.snapshot_count(), 3);
+ 300          assert_eq!(manager.archived_ids.len(), 2);
+ 301      }
+ 302  
+ 303      #[test]
+ 304      fn test_find_common_snapshot() {
+ 305          let mut manager = SnapshotManager::new(10, 100);
+ 306  
+ 307          for i in 0..3 {
+ 308              for _ in 0..100 {
+ 309                  manager.increment_operation_count();
+ 310              }
+ 311              manager.create_snapshot(
+ 312                  serde_json::json!({}),
+ 313                  format!(&quot;merkle_{}&quot;, i),
+ 314                  VersionVector::new(),
+ 315              );
+ 316          }
+ 317  
+ 318          let snapshot_ids = manager.get_snapshot_ids();
+ 319          let peer_has = vec![snapshot_ids[0].clone(), snapshot_ids[1].clone()];
+ 320  
+ 321          let common = manager.find_common_snapshot(&amp;peer_has);
+ 322          assert!(common.is_some());
+ 323          assert_eq!(common.unwrap().id, snapshot_ids[1]);
+ 324      }</pre></div>
+  </div>
+</body>
+</html>

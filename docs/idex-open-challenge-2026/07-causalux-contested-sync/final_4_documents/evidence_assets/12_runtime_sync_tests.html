@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Runtime Disconnected Merge Tests</h1>
+    <div class="subtitle">Software tests simulate document creation, collaborative editing, distributed counter, and set synchronization.</div>
+    <div class="body"><pre> 559      #[test]
+ 560      fn test_e2e_document_creation_and_sync() {
+ 561          // Create two nodes
+ 562          let node1 = CausaluxRuntime::new(RuntimeConfig {
+ 563              node_id: &quot;alice&quot;.to_string(),
+ 564              ..Default::default()
+ 565          });
+ 566  
+ 567          let node2 = CausaluxRuntime::new(RuntimeConfig {
+ 568              node_id: &quot;bob&quot;.to_string(),
+ 569              ..Default::default()
+ 570          });
+ 571  
+ 572          // Alice creates document
+ 573          node1.create_document(&quot;doc1&quot;.to_string(), &quot;My Document&quot;.to_string()).unwrap();
+ 574          node1.insert_text(&quot;doc1&quot;, 0, &quot;Hello World&quot;).unwrap();
+ 575  
+ 576          // Bob creates different document
+ 577          node2.create_document(&quot;doc2&quot;.to_string(), &quot;Bob's Document&quot;.to_string()).unwrap();
+ 578          node2.insert_text(&quot;doc2&quot;, 0, &quot;Greetings&quot;).unwrap();
+ 579  
+ 580          // Sync
+ 581          let result = node1.sync_with_node(&amp;node2).unwrap();
+ 582          println!(&quot;✅ Synced {} operations in {:?}&quot;, result.operations_synced, result.duration);
+ 583  
+ 584          // Both should have both documents now
+ 585          assert!(node1.get_document(&quot;doc1&quot;).is_ok());
+ 586          assert!(node1.get_document(&quot;doc2&quot;).is_ok());
+ 587      }
+ 588  
+ 589      #[test]
+ 590      fn test_e2e_collaborative_editing() {
+ 591          let alice = CausaluxRuntime::new(RuntimeConfig {
+ 592              node_id: &quot;alice&quot;.to_string(),
+ 593              ..Default::default()
+ 594          });
+ 595  
+ 596          let bob = CausaluxRuntime::new(RuntimeConfig {
+ 597              node_id: &quot;bob&quot;.to_string(),
+ 598              ..Default::default()
+ 599          });
+ 600  
+ 601          // Both create same document (simulating offline)
+ 602          alice.create_document(&quot;shared&quot;.to_string(), &quot;Shared Doc&quot;.to_string()).unwrap();
+ 603          bob.create_document(&quot;shared&quot;.to_string(), &quot;Shared Doc&quot;.to_string()).unwrap();
+ 604  
+ 605          // Both edit concurrently (offline)
+ 606          alice.insert_text(&quot;shared&quot;, 0, &quot;Alice was here. &quot;).unwrap();
+ 607          bob.insert_text(&quot;shared&quot;, 0, &quot;Bob was here. &quot;).unwrap();
+ 608  
+ 609          // Sync everyone
+ 610          alice.sync_with_node(&amp;bob).unwrap();
+ 611          bob.sync_with_node(&amp;alice).unwrap();
+ 612  
+ 613          // Both should have same content after merge
+ 614          let doc_alice = alice.get_document(&quot;shared&quot;).unwrap();
+ 615          let doc_bob = bob.get_document(&quot;shared&quot;).unwrap();
+ 616  
+ 617          println!(&quot;✅ Alice's doc: {}&quot;, doc_alice);
+ 618          println!(&quot;✅ Bob's doc: {}&quot;, doc_bob);
+ 619      }
+ 620  
+ 621      #[test]
+ 622      fn test_e2e_distributed_counter() {
+ 623          let node1 = CausaluxRuntime::new(RuntimeConfig {
+ 624              node_id: &quot;counter1&quot;.to_string(),
+ 625              ..Default::default()
+ 626          });
+ 627  
+ 628          let node2 = CausaluxRuntime::new(RuntimeConfig {
+ 629              node_id: &quot;counter2&quot;.to_string(),
+ 630              ..Default::default()
+ 631          });
+ 632  
+ 633          // Both increment same counter (offline)
+ 634          for _ in 0..100 {
+ 635              node1.increment_counter(&quot;upvotes&quot;, 1).unwrap();
+ 636          }
+ 637  
+ 638          for _ in 0..150 {
+ 639              node2.increment_counter(&quot;upvotes&quot;, 1).unwrap();
+ 640          }
+ 641  
+ 642          // Sync
+ 643          node1.sync_with_node(&amp;node2).unwrap();
+ 644          node2.sync_with_node(&amp;node1).unwrap();
+ 645  
+ 646          // Both should have same total
+ 647          let count1 = node1.get_counter(&quot;upvotes&quot;).unwrap();
+ 648          let count2 = node2.get_counter(&quot;upvotes&quot;).unwrap();
+ 649  
+ 650          assert_eq!(count1, count2);
+ 651          println!(&quot;✅ Distributed counter converged to: {}&quot;, count1);
+ 652      }
+ 653  
+ 654      #[test]
+ 655      fn test_e2e_set_operations() {
+ 656          let node1 = CausaluxRuntime::new(RuntimeConfig::default());
+ 657          let node2 = CausaluxRuntime::new(RuntimeConfig::default());
+ 658  
+ 659          // Node1 adds items
+ 660          node1.add_to_set(&quot;cart&quot;, &quot;iPhone&quot;.to_string()).unwrap();
+ 661          node1.add_to_set(&quot;cart&quot;, &quot;AirPods&quot;.to_string()).unwrap();
+ 662  
+ 663          // Node2 adds items
+ 664          node2.add_to_set(&quot;cart&quot;, &quot;MacBook&quot;.to_string()).unwrap();
+ 665          node2.add_to_set(&quot;cart&quot;, &quot;iPhone&quot;.to_string()).unwrap();
+ 666  
+ 667          // Sync
+ 668          node1.sync_with_node(&amp;node2).unwrap();
+ 669          node2.sync_with_node(&amp;node1).unwrap();
+ 670  
+ 671          // Check set contents
+ 672          let set1 = node1.get_set(&quot;cart&quot;).unwrap();
+ 673          let set2 = node2.get_set(&quot;cart&quot;).unwrap();
+ 674  
+ 675          println!(&quot;✅ Set contents after merge: {:?}&quot;, set1);
+ 676          
+ 677          // Both should have same elements
+ 678          assert_eq!(set1.len(), set2.len());
+ 679      }</pre></div>
+  </div>
+</body>
+</html>

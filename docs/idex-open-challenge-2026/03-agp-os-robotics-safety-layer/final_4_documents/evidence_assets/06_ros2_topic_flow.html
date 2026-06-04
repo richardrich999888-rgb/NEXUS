@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>ROS2 Topic Publish Flow</h1>
+    <div class="subtitle">Commands publish through named topics and simulation flow updates robot state.</div>
+    <div class="body"><pre>  72      def create_publisher(self, topic_name: str, msg_type: ROSMessageType) -&gt; str:
+  73          &quot;&quot;&quot;Create a ROS2 publisher&quot;&quot;&quot;
+  74          self.topics[topic_name] = ROSTopic(
+  75              name=topic_name,
+  76              msg_type=msg_type,
+  77              is_publisher=True
+  78          )
+  79          logger.info(&quot;publisher_created&quot;, topic=topic_name, type=msg_type.value)
+  80          return topic_name
+  81      
+  82      def create_subscription(self, topic_name: str, msg_type: ROSMessageType, 
+  83                             callback: Callable) -&gt; str:
+  84          &quot;&quot;&quot;Create a ROS2 subscription&quot;&quot;&quot;
+  85          self.topics[topic_name] = ROSTopic(
+  86              name=topic_name,
+  87              msg_type=msg_type,
+  88              is_publisher=False,
+  89              callback=callback
+  90          )
+  91          logger.info(&quot;subscription_created&quot;, topic=topic_name, type=msg_type.value)
+  92          return topic_name
+  93      
+  94      def publish(self, topic_name: str, message: Dict) -&gt; Dict:
+  95          &quot;&quot;&quot;Publish a message to a topic&quot;&quot;&quot;
+  96          if topic_name not in self.topics:
+  97              return {&quot;status&quot;: &quot;error&quot;, &quot;reason&quot;: &quot;Topic not found&quot;}
+  98          
+  99          topic = self.topics[topic_name]
+ 100          if not topic.is_publisher:
+ 101              return {&quot;status&quot;: &quot;error&quot;, &quot;reason&quot;: &quot;Not a publisher&quot;}
+ 102          
+ 103          topic.last_value = message
+ 104          topic.publish_count += 1
+ 105          
+ 106          # In simulation, process the message immediately
+ 107          if self.simulation_mode:
+ 108              self._process_simulated_message(topic_name, message)
+ 109          
+ 110          return {&quot;status&quot;: &quot;published&quot;, &quot;topic&quot;: topic_name, &quot;count&quot;: topic.publish_count}</pre></div>
+  </div>
+</body>
+</html>

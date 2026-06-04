@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>DAG Ordering and Dependency Tests</h1>
+    <div class="subtitle">Tests cover insert, causal ordering, and missing dependency rejection.</div>
+    <div class="body"><pre> 336      #[test]
+ 337      fn test_dag_creation() {
+ 338          let dag = CausalDAG::new(
+ 339              &quot;node1&quot;.to_string(),
+ 340              100,
+ 341              ConflictPolicy::LastWriterWins,
+ 342          );
+ 343  
+ 344          assert_eq!(dag.operation_count(), 0);
+ 345          assert_eq!(dag.node_id(), &quot;node1&quot;);
+ 346      }
+ 347  
+ 348      #[test]
+ 349      fn test_insert_operation() {
+ 350          let keypair = create_test_keypair();
+ 351          let mut dag = CausalDAG::new(
+ 352              &quot;node1&quot;.to_string(),
+ 353              100,
+ 354              ConflictPolicy::LastWriterWins,
+ 355          );
+ 356  
+ 357          let mut vv = VersionVector::new();
+ 358          vv.increment(&quot;node1&quot;);
+ 359  
+ 360          let op = CausalOp::new(
+ 361              &quot;set&quot;.to_string(),
+ 362              serde_json::json!({&quot;key&quot;: &quot;counter&quot;, &quot;value&quot;: 42}),
+ 363              BTreeSet::new(),
+ 364              vv,
+ 365              &quot;node1&quot;.to_string(),
+ 366              &amp;keypair,
+ 367          );
+ 368  
+ 369          dag.insert(op.clone()).unwrap();
+ 370  
+ 371          assert_eq!(dag.operation_count(), 1);
+ 372          assert!(dag.get_operation(&amp;op.id).is_some());
+ 373          assert_eq!(dag.get_state()[&quot;counter&quot;], serde_json::json!(42));
+ 374      }
+ 375  
+ 376      #[test]
+ 377      fn test_causal_ordering() {
+ 378          let keypair = create_test_keypair();
+ 379          let mut dag = CausalDAG::new(
+ 380              &quot;node1&quot;.to_string(),
+ 381              100,
+ 382              ConflictPolicy::LastWriterWins,
+ 383          );
+ 384  
+ 385          let mut vv1 = VersionVector::new();
+ 386          vv1.increment(&quot;node1&quot;);
+ 387  
+ 388          let op1 = CausalOp::new(
+ 389              &quot;op1&quot;.to_string(),
+ 390              serde_json::json!({}),
+ 391              BTreeSet::new(),
+ 392              vv1.clone(),
+ 393              &quot;node1&quot;.to_string(),
+ 394              &amp;keypair,
+ 395          );
+ 396  
+ 397          dag.insert(op1.clone()).unwrap();
+ 398  
+ 399          let mut vv2 = vv1.clone();
+ 400          vv2.increment(&quot;node1&quot;);
+ 401  
+ 402          let mut deps = BTreeSet::new();
+ 403          deps.insert(op1.id.clone());
+ 404  
+ 405          let op2 = CausalOp::new(
+ 406              &quot;op2&quot;.to_string(),
+ 407              serde_json::json!({}),
+ 408              deps,
+ 409              vv2,
+ 410              &quot;node1&quot;.to_string(),
+ 411              &amp;keypair,
+ 412          );
+ 413  
+ 414          dag.insert(op2.clone()).unwrap();
+ 415  
+ 416          let order = dag.causal_order();
+ 417          assert_eq!(order.len(), 2);
+ 418          assert_eq!(order[0], op1.id);
+ 419          assert_eq!(order[1], op2.id);
+ 420      }
+ 421  
+ 422      #[test]
+ 423      fn test_missing_dependency() {
+ 424          let keypair = create_test_keypair();
+ 425          let mut dag = CausalDAG::new(
+ 426              &quot;node1&quot;.to_string(),
+ 427              100,
+ 428              ConflictPolicy::LastWriterWins,
+ 429          );
+ 430  
+ 431          let mut vv = VersionVector::new();
+ 432          vv.increment(&quot;node1&quot;);
+ 433  
+ 434          let mut deps = BTreeSet::new();
+ 435          deps.insert(&quot;nonexistent&quot;.to_string());
+ 436  
+ 437          let op = CausalOp::new(
+ 438              &quot;test&quot;.to_string(),
+ 439              serde_json::json!({}),
+ 440              deps,
+ 441              vv,
+ 442              &quot;node1&quot;.to_string(),
+ 443              &amp;keypair,
+ 444          );
+ 445  
+ 446          match dag.insert(op) {
+ 447              Err(DagError::MissingDependency(id)) =&gt; {
+ 448                  assert_eq!(id, &quot;nonexistent&quot;);
+ 449              }
+ 450              _ =&gt; panic!(&quot;Expected missing dependency error&quot;),
+ 451          }
+ 452      }</pre></div>
+  </div>
+</body>
+</html>

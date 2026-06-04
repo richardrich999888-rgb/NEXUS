@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>USO Merge and Serialization Tests</h1>
+    <div class="subtitle">Tests cover update, merge, serialization, sync policy, and happens-before logic.</div>
+    <div class="body"><pre> 391      /// Update data (creates new version)
+ 392      pub fn update(&amp;mut self, data: Vec&lt;u8&gt;, principal: PrincipalId, node_id: &amp;str) {
+ 393          self.data = data.clone();
+ 394          self.id = ContentHash::compute(&amp;self.data);
+ 395          self.modified_at = crate::now();
+ 396          self.history.add_operation(Operation::Set { value: data }, principal, node_id);
+ 397      }
+ 398  
+ 399      /// Merge with another USO (CRDT-style)
+ 400      pub fn merge(&amp;mut self, other: &amp;USO) {
+ 401          // Merge histories
+ 402          self.history.merge(&amp;other.history);
+ 403          
+ 404          // Take newer data (by modified_at)
+ 405          if other.modified_at &gt; self.modified_at {
+ 406              self.data = other.data.clone();
+ 407              self.id = other.id;
+ 408              self.modified_at = other.modified_at;
+ 409          }
+ 410          
+ 411          // Add parent reference
+ 412          if !self.history.parents.contains(&amp;other.id) {
+ 413              self.history.parents.push(other.id);
+ 414          }
+ 415      }
+ 416  
+ 417      /// Check if principal can read
+ 418      pub fn can_read(&amp;self, principal: &amp;PrincipalId) -&gt; bool {
+ 419          self.access.can_read(principal)
+ 420      }
+ 421  
+ 422      /// Check if principal can write
+ 423      pub fn can_write(&amp;self, principal: &amp;PrincipalId) -&gt; bool {
+ 424          self.access.can_write(principal)
+ 425      }
+ 426  
+ 427      /// Get data size
+ 428      pub fn size(&amp;self) -&gt; usize {
+ 429          self.data.len()
+ 430      }
+ 431  
+ 432      /// Serialize to bytes
+ 433      ///
+ 434      /// # Errors
+ 435      ///
+ 436      /// Returns error if serialization fails
+ 437      pub fn to_bytes(&amp;self) -&gt; Result&lt;Vec&lt;u8&gt;, bincode::Error&gt; {
+ 438          bincode::serialize(self)
+ 439      }
+ 440  
+ 441      /// Deserialize from bytes
+ 442      pub fn from_bytes(bytes: &amp;[u8]) -&gt; Result&lt;Self, bincode::Error&gt; {
+ 443          bincode::deserialize(bytes)
+ 444      }
+ 445  }
+
+ 483      #[test]
+ 484      fn test_uso_update() {
+ 485          let owner = PrincipalId::generate();
+ 486          let mut uso = USO::new(b&quot;v1&quot;.to_vec(), owner);
+ 487          let old_id = uso.id;
+ 488          
+ 489          uso.update(b&quot;v2&quot;.to_vec(), owner, &quot;node1&quot;);
+ 490          
+ 491          assert_ne!(uso.id, old_id);
+ 492          assert_eq!(uso.data, b&quot;v2&quot;);
+ 493          assert_eq!(uso.history.operations.len(), 1);
+ 494      }
+ 495  
+ 496      #[test]
+ 497      fn test_uso_merge() {
+ 498          let owner = PrincipalId::generate();
+ 499          
+ 500          let mut uso1 = USO::new(b&quot;base&quot;.to_vec(), owner);
+ 501          uso1.update(b&quot;v1&quot;.to_vec(), owner, &quot;node1&quot;);
+ 502          
+ 503          let mut uso2 = USO::new(b&quot;base&quot;.to_vec(), owner);
+ 504          uso2.update(b&quot;v2&quot;.to_vec(), owner, &quot;node2&quot;);
+ 505          
+ 506          uso1.merge(&amp;uso2);
+ 507          
+ 508          // Should have operations from both nodes
+ 509          assert!(uso1.history.vector_clock.contains_key(&quot;node1&quot;));
+ 510          assert!(uso1.history.vector_clock.contains_key(&quot;node2&quot;));
+ 511      }
+ 512  
+ 513      #[test]
+ 514      fn test_uso_serialization() {
+ 515          let owner = PrincipalId::generate();
+ 516          let uso = USO::new(b&quot;test&quot;.to_vec(), owner)
+ 517              .with_sync(SyncPolicy::global_fast());
+ 518          
+ 519          let bytes = uso.to_bytes().unwrap();
+ 520          let restored = USO::from_bytes(&amp;bytes).unwrap();
+ 521          
+ 522          assert_eq!(uso.id, restored.id);
+ 523          assert_eq!(uso.data, restored.data);
+ 524      }
+ 525  
+ 526      #[test]
+ 527      fn test_sync_policy() {
+ 528          let global = SyncPolicy::global_fast();
+ 529          let local = SyncPolicy::Local;
+ 530          
+ 531          assert!(global.requires_immediate());
+ 532          assert!(!local.requires_immediate());
+ 533      }
+ 534  
+ 535      #[test]
+ 536      fn test_causal_history_happens_before() {
+ 537          let mut h1 = CausalHistory::new();
+ 538          h1.tick(&quot;node1&quot;);
+ 539          
+ 540          let mut h2 = h1.clone();
+ 541          h2.tick(&quot;node1&quot;);
+ 542          h2.tick(&quot;node2&quot;);
+ 543          
+ 544          assert!(h1.happens_before(&amp;h2));
+ 545          assert!(!h2.happens_before(&amp;h1));</pre></div>
+  </div>
+</body>
+</html>

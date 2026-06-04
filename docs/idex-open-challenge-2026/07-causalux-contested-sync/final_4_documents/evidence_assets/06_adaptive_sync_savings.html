@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Adaptive Sync and Bandwidth Savings</h1>
+    <div class="subtitle">Strategy selection changes for long partitions, and tests check savings calculation.</div>
+    <div class="body"><pre> 220      fn estimate_size(&amp;self, ops: &amp;[CausalOp]) -&gt; usize {
+ 221          let json_size: usize = ops
+ 222              .iter()
+ 223              .map(|op| serde_json::to_string(op).unwrap().len())
+ 224              .sum();
+ 225          
+ 226          if self.compression_enabled {
+ 227              json_size / 5  // ~80% compression with gzip
+ 228          } else {
+ 229              json_size
+ 230          }
+ 231      }
+ 232  
+ 233      fn estimate_snapshot_size(&amp;self, snapshot: Option&lt;&amp;Snapshot&gt;) -&gt; usize {
+ 234          snapshot.map(|s| s.compressed_size).unwrap_or(0)
+ 235      }
+ 236  
+ 237      /// Calculate bandwidth savings
+ 238      pub fn calculate_savings(&amp;self, stats: &amp;SyncStats, total_operations: usize) -&gt; SyncSavings {
+ 239          let full_replication_size = total_operations * 500;
+ 240          let hierarchical_size = stats.total_bytes;
+ 241          
+ 242          let bandwidth_saved = full_replication_size.saturating_sub(hierarchical_size);
+ 243          let savings_percent = if full_replication_size &gt; 0 {
+ 244              (bandwidth_saved as f64 / full_replication_size as f64) * 100.0
+ 245          } else {
+ 246              0.0
+ 247          };
+ 248  
+ 249          SyncSavings {
+ 250              full_replication_bytes: full_replication_size,
+ 251              hierarchical_bytes: hierarchical_size,
+ 252              bytes_saved: bandwidth_saved,
+ 253              savings_percent,
+ 254          }
+ 255      }
+ 256  
+ 257      /// Get snapshot count
+ 258      pub fn snapshot_count(&amp;self) -&gt; usize {
+ 259          self.local_snapshots.len()
+ 260      }
+ 261  
+ 262      /// Get operation count
+ 263      pub fn operation_count(&amp;self) -&gt; usize {
+ 264          self.local_operations.len()
+ 265      }
+ 266  }
+ 267  
+ 268  /// Adaptive sync chooses strategy based on partition duration
+ 269  pub struct AdaptiveSync {
+ 270      hierarchical: HierarchicalSync,
+ 271      partition_threshold: Duration,
+ 272  }
+ 273  
+ 274  impl AdaptiveSync {
+ 275      pub fn new(batch_size: usize, partition_threshold: Duration) -&gt; Self {
+ 276          Self {
+ 277              hierarchical: HierarchicalSync::new(batch_size, true),
+ 278              partition_threshold,
+ 279          }
+ 280      }
+ 281  
+ 282      /// Choose sync strategy based on partition duration
+ 283      pub fn sync_strategy(&amp;self, last_sync: Instant) -&gt; SyncStrategy {
+ 284          if last_sync.elapsed() &gt; self.partition_threshold {
+ 285              SyncStrategy::Hierarchical
+ 286          } else {
+ 287              SyncStrategy::MerkleDiff
+ 288          }
+ 289      }
+
+ 321  #[cfg(test)]
+ 322  mod tests {
+ 323      use super::*;
+ 324  
+ 325      #[test]
+ 326      fn test_sync_strategy_selection() {
+ 327          let sync = AdaptiveSync::new(1000, Duration::from_secs(3600));
+ 328  
+ 329          // Short partition
+ 330          let recent = Instant::now() - Duration::from_secs(60);
+ 331          assert_eq!(sync.sync_strategy(recent), SyncStrategy::MerkleDiff);
+ 332  
+ 333          // Long partition
+ 334          let old = Instant::now() - Duration::from_secs(7200);
+ 335          assert_eq!(sync.sync_strategy(old), SyncStrategy::Hierarchical);
+ 336      }
+ 337  
+ 338      #[test]
+ 339      fn test_savings_calculation() {
+ 340          let sync = HierarchicalSync::new(1000, true);
+ 341          
+ 342          let stats = SyncStats {
+ 343              snapshot_downloaded: true,
+ 344              snapshot_size_bytes: 50_000_000,
+ 345              operations_applied: 1000,
+ 346              operations_size_bytes: 5_000_000,
+ 347              total_bytes: 55_000_000,
+ 348              sync_duration: Duration::from_secs(60),
+ 349          };
+ 350  
+ 351          let savings = sync.calculate_savings(&amp;stats, 2_500_000);
+ 352          assert!(savings.savings_percent &gt; 95.0);
+ 353      }</pre></div>
+  </div>
+</body>
+</html>

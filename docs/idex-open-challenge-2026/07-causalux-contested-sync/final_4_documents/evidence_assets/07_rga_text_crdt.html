@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>RGA Text CRDT</h1>
+    <div class="subtitle">Replicated growable array text state supports remote inserts and deterministic ordering.</div>
+    <div class="body"><pre>  13  /// Unique identifier for a character in the RGA
+  14  #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Hash, PartialOrd, Ord)]
+  15  pub struct CharacterId {
+  16      pub timestamp: u64,
+  17      pub node_id: String,
+  18      pub sequence: u64,
+  19  }
+  20  
+  21  impl CharacterId {
+  22      pub fn new(timestamp: u64, node_id: String, sequence: u64) -&gt; Self {
+  23          Self { timestamp, node_id, sequence }
+  24      }
+  25  }
+  26  
+  27  /// A character in the RGA with tombstone for deletions
+  28  #[derive(Clone, Debug, Serialize, Deserialize)]
+  29  pub struct RGACharacter {
+  30      pub id: CharacterId,
+  31      pub value: char,
+  32      pub deleted: bool,
+  33      pub inserted_after: Option&lt;CharacterId&gt;,
+  34  }
+  35  
+  36  /// RGA (Replicated Growable Array) CRDT for text
+  37  #[derive(Clone, Debug, Serialize, Deserialize)]
+  38  pub struct RGAText {
+  39      pub characters: BTreeMap&lt;CharacterId, RGACharacter&gt;,
+  40      order: Vec&lt;CharacterId&gt;,
+  41      node_id: String,
+  42      sequence_counter: u64,
+  43  }
+  44  
+  45  impl RGAText {
+  46      pub fn new(node_id: String) -&gt; Self {
+  47          Self {
+  48              characters: BTreeMap::new(),
+  49              order: Vec::new(),
+  50              node_id,
+  51              sequence_counter: 0,
+  52          }
+  53      }
+  54  
+  55      /// Insert a character at a position
+  56      pub fn insert(&amp;mut self, position: usize, character: char) -&gt; CharacterId {
+  57          let timestamp = Self::current_timestamp();
+  58          self.sequence_counter += 1;
+  59          
+  60          let id = CharacterId::new(timestamp, self.node_id.clone(), self.sequence_counter);
+  61          
+  62          let inserted_after = if position &gt; 0 &amp;&amp; !self.order.is_empty() {
+  63              self.order.get(position - 1).cloned()
+  64          } else {
+  65              None
+  66          };
+  67  
+  68          let char_obj = RGACharacter {
+  69              id: id.clone(),
+  70              value: character,
+  71              deleted: false,
+  72              inserted_after,
+  73          };
+  74  
+  75          self.characters.insert(id.clone(), char_obj);
+  76          let insert_pos = position.min(self.order.len());
+  77          self.order.insert(insert_pos, id.clone());
+  78  
+  79          id
+  80      }
+  81  
+  82      /// Delete a character at a position
+  83      pub fn delete(&amp;mut self, position: usize) -&gt; Option&lt;CharacterId&gt; {
+  84          if position &gt;= self.order.len() {
+  85              return None;
+  86          }
+  87  
+  88          let id = self.order[position].clone();
+  89          
+  90          if let Some(char_obj) = self.characters.get_mut(&amp;id) {
+  91              char_obj.deleted = true;
+  92          }
+  93  
+  94          self.order.remove(position);
+  95          Some(id)
+  96      }
+  97  
+  98      /// Insert a character received from another node
+  99      pub fn insert_remote(&amp;mut self, char_obj: RGACharacter) {
+ 100          let id = char_obj.id.clone();
+ 101  
+ 102          if self.characters.contains_key(&amp;id) {
+ 103              return; // Already have this character
+ 104          }
+ 105  
+ 106          let position = if let Some(after_id) = &amp;char_obj.inserted_after {
+ 107              self.order.iter().position(|cid| cid == after_id)
+ 108                  .map(|pos| pos + 1)
+ 109                  .unwrap_or(0)
+ 110          } else {
+ 111              0
+ 112          };
+ 113  
+ 114          // Handle concurrent insertions - deterministic ordering
+ 115          let mut insert_pos = position;
+ 116          while insert_pos &lt; self.order.len() {
+ 117              let existing_id = &amp;self.order[insert_pos];
+ 118              if &amp;id &lt; existing_id {
+ 119                  break;
+ 120              }
+ 121              insert_pos += 1;
+ 122          }
+ 123  
+ 124          self.characters.insert(id.clone(), char_obj);
+ 125          self.order.insert(insert_pos, id);
+ 126      }</pre></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>USO Compression Path</h1>
+    <div class="subtitle">Compressed USO packets retain access policy, sync policy, lamport timestamp, ratio, and batch statistics.</div>
+    <div class="body"><pre>  10  /// Compressed USO - a Universal State Object with VECTRA compression
+  11  #[derive(Clone, Debug, Serialize, Deserialize)]
+  12  pub struct CompressedUSO {
+  13      /// Original USO ID
+  14      pub uso_id: ContentHash,
+  15      
+  16      /// Compressed data
+  17      pub compressed_data: CompressedData,
+  18      
+  19      /// Access policy (not compressed - small metadata)
+  20      pub access: AccessPolicy,
+  21      
+  22      /// Sync policy
+  23      pub sync: SyncPolicy,
+  24      
+  25      /// Original lamport timestamp
+  26      pub lamport: u64,
+  27  }
+  28  
+  29  impl CompressedUSO {
+  30      /// Create compressed USO from regular USO
+  31      pub fn from_uso(uso: &amp;USO) -&gt; Self {
+  32          let compressed_data = compress_data(&amp;uso.data);
+  33          
+  34          CompressedUSO {
+  35              uso_id: uso.id,
+  36              compressed_data,
+  37              access: uso.access.clone(),
+  38              sync: uso.sync.clone(),
+  39              lamport: uso.history.lamport(),
+  40          }
+  41      }
+  42      
+  43      /// Decompress to get original data
+  44      pub fn decompress_data(&amp;self) -&gt; VectraResult&lt;Vec&lt;u8&gt;&gt; {
+  45          decompress_data(&amp;self.compressed_data)
+  46      }
+  47      
+  48      /// Get compression ratio
+  49      pub fn compression_ratio(&amp;self) -&gt; f64 {
+  50          if self.compressed_data.compressed_size == 0 {
+  51              1.0
+  52          } else {
+  53              self.compressed_data.original_size as f64 / 
+  54              self.compressed_data.compressed_size as f64
+  55          }
+  56      }
+  57      
+  58      /// Check if data was actually compressed
+  59      pub fn is_compressed(&amp;self) -&gt; bool {
+  60          self.compressed_data.was_compressed
+  61      }
+  62      
+  63      /// Get space savings in bytes
+  64      pub fn bytes_saved(&amp;self) -&gt; usize {
+  65          if self.compressed_data.was_compressed {
+  66              self.compressed_data.original_size - self.compressed_data.compressed_size
+  67          } else {
+  68              0
+  69          }
+  70      }
+  71  }
+  72  
+  73  /// Compress multiple USOs for batch transmission
+  74  pub fn compress_uso_batch(usos: &amp;[USO]) -&gt; Vec&lt;CompressedUSO&gt; {
+  75      usos.iter().map(CompressedUSO::from_uso).collect()
+  76  }
+  77  
+  78  /// Get total compression stats for a batch
+  79  pub fn batch_compression_stats(compressed: &amp;[CompressedUSO]) -&gt; BatchStats {
+  80      let mut stats = BatchStats::default();
+  81      
+  82      for uso in compressed {
+  83          stats.total_count += 1;
+  84          stats.original_bytes += uso.compressed_data.original_size;
+  85          stats.compressed_bytes += uso.compressed_data.compressed_size;
+  86          
+  87          if uso.is_compressed() {
+  88              stats.compressed_count += 1;
+  89          }
+  90      }
+  91      
+  92      stats
+  93  }
+  94  
+  95  /// Batch compression statistics
+  96  #[derive(Clone, Debug, Default, Serialize, Deserialize)]
+  97  pub struct BatchStats {
+  98      pub total_count: usize,
+  99      pub compressed_count: usize,
+ 100      pub original_bytes: usize,
+ 101      pub compressed_bytes: usize,
+ 102  }
+ 103  
+ 104  impl BatchStats {
+ 105      pub fn ratio(&amp;self) -&gt; f64 {
+ 106          if self.compressed_bytes == 0 {
+ 107              1.0
+ 108          } else {
+ 109              self.original_bytes as f64 / self.compressed_bytes as f64
+ 110          }
+ 111      }
+ 112      
+ 113      pub fn savings_percent(&amp;self) -&gt; f64 {
+ 114          if self.original_bytes == 0 {
+ 115              0.0
+ 116          } else {
+ 117              100.0 * (1.0 - (self.compressed_bytes as f64 / self.original_bytes as f64))
+ 118          }
+ 119      }
+ 120  }
+
+ 122  #[cfg(test)]
+ 123  mod tests {
+ 124      use super::*;
+ 125  
+ 126      #[test]
+ 127      fn test_uso_compression() {
+ 128          let owner = PrincipalId::generate();
+ 129          let data = br#&quot;{&quot;key&quot;: &quot;value&quot;, &quot;nested&quot;: {&quot;a&quot;: 1, &quot;b&quot;: 2}}&quot;#.to_vec();
+ 130          let uso = USO::new(data.clone(), owner);
+ 131          
+ 132          let compressed = CompressedUSO::from_uso(&amp;uso);
+ 133          
+ 134          // Should be lossless
+ 135          let decompressed = compressed.decompress_data().unwrap();
+ 136          assert_eq!(data, decompressed);
+ 137      }
+ 138  
+ 139      #[test]
+ 140      fn test_batch_compression() {
+ 141          let owner = PrincipalId::generate();
+ 142          
+ 143          let usos: Vec&lt;USO&gt; = (0..5).map(|i| {
+ 144              USO::new(format!(r#&quot;{{&quot;id&quot;: {}, &quot;data&quot;: &quot;test&quot;}}&quot;#, i).into_bytes(), owner)
+ 145          }).collect();
+ 146          
+ 147          let compressed = compress_uso_batch(&amp;usos);
+ 148          let stats = batch_compression_stats(&amp;compressed);
+ 149          
+ 150          assert_eq!(stats.total_count, 5);
+ 151      }</pre></div>
+  </div>
+</body>
+</html>

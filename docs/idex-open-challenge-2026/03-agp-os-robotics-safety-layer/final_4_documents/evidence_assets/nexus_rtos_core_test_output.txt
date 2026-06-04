@@ -1,0 +1,33 @@
+COMMAND: cargo test -p nexus-rtos-core -- --nocapture
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.22s
+     Running unittests src/lib.rs (target/debug/deps/nexus_rtos_core-f26fd9f37bc6cbb9)
+
+running 4 tests
+test tests::earliest_deadline_wins_within_same_priority ... ok
+test tests::capacity_and_duplicate_ids_are_rejected ... ok
+test tests::critical_task_runs_before_lower_priority_tasks ... ok
+test tests::missed_deadline_is_counted_when_task_is_popped_late ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests nexus_rtos_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+COMMAND: cargo check -p nexus-rtos-core --target wasm32-unknown-unknown
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s

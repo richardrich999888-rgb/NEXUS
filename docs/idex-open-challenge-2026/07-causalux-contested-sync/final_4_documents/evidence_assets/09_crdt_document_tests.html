@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>CRDT Convergence Tests</h1>
+    <div class="subtitle">Tests exercise concurrent inserts, counter merge, set behavior, map merge, and document convergence.</div>
+    <div class="body"><pre> 525      #[test]
+ 526      fn test_rga_basic() {
+ 527          let mut doc = RGAText::new(&quot;node1&quot;.to_string());
+ 528          doc.insert(0, 'H');
+ 529          doc.insert(1, 'i');
+ 530          
+ 531          assert_eq!(doc.to_string(), &quot;Hi&quot;);
+ 532      }
+ 533  
+ 534      #[test]
+ 535      fn test_rga_concurrent_inserts() {
+ 536          let mut doc1 = RGAText::new(&quot;node1&quot;.to_string());
+ 537          let mut doc2 = RGAText::new(&quot;node2&quot;.to_string());
+ 538  
+ 539          doc1.insert(0, 'A');
+ 540          doc2.insert(0, 'B');
+ 541  
+ 542          // Merge
+ 543          for char_obj in doc2.get_all_characters() {
+ 544              doc1.insert_remote(char_obj);
+ 545          }
+ 546          for char_obj in doc1.get_all_characters() {
+ 547              doc2.insert_remote(char_obj.clone());
+ 548          }
+ 549  
+ 550          // Both should converge
+ 551          assert_eq!(doc1.to_string(), doc2.to_string());
+ 552      }
+ 553  
+ 554      #[test]
+ 555      fn test_gcounter() {
+ 556          let mut c1 = GCounter::new(&quot;node1&quot;.to_string());
+ 557          let mut c2 = GCounter::new(&quot;node2&quot;.to_string());
+ 558  
+ 559          c1.increment(5);
+ 560          c2.increment(3);
+ 561  
+ 562          c1.merge(&amp;c2);
+ 563          assert_eq!(c1.value(), 8);
+ 564      }
+ 565  
+ 566      #[test]
+ 567      fn test_pncounter() {
+ 568          let mut counter = PNCounter::new(&quot;node1&quot;.to_string());
+ 569          counter.increment(10);
+ 570          counter.decrement(3);
+ 571          
+ 572          assert_eq!(counter.value(), 7);
+ 573      }
+ 574  
+ 575      #[test]
+ 576      fn test_orset_add_wins() {
+ 577          let mut set1 = ORSet::&lt;String&gt;::new(&quot;node1&quot;.to_string());
+ 578          let mut set2 = ORSet::&lt;String&gt;::new(&quot;node2&quot;.to_string());
+ 579  
+ 580          set1.add(&quot;apple&quot;.to_string());
+ 581          set2.add(&quot;apple&quot;.to_string());
+ 582          set2.remove(&amp;&quot;apple&quot;.to_string());
+ 583  
+ 584          set1.merge(&amp;set2);
+ 585  
+ 586          // Add wins!
+ 587          assert!(set1.contains(&amp;&quot;apple&quot;.to_string()));
+ 588      }
+ 589  
+ 590      #[test]
+ 591      fn test_lww_map() {
+ 592          let mut map1 = LWWMap::&lt;String, i32&gt;::new(&quot;node1&quot;.to_string());
+ 593          map1.insert(&quot;key&quot;.to_string(), 10);
+ 594          
+ 595          std::thread::sleep(std::time::Duration::from_millis(10));
+ 596          
+ 597          let mut map2 = LWWMap::&lt;String, i32&gt;::new(&quot;node2&quot;.to_string());
+ 598          map2.insert(&quot;key&quot;.to_string(), 20);
+ 599  
+ 600          map1.merge(&amp;map2);
+ 601          assert_eq!(map1.get(&amp;&quot;key&quot;.to_string()), Some(&amp;20));
+ 602      }
+ 603  
+ 604      #[test]
+ 605      fn test_crdt_document() {
+ 606          let mut doc1 = CRDTDocument::new(&quot;doc&quot;.to_string(), &quot;alice&quot;.to_string());
+ 607          let mut doc2 = CRDTDocument::new(&quot;doc&quot;.to_string(), &quot;bob&quot;.to_string());
+ 608  
+ 609          doc1.set_title(&quot;Hello&quot;.to_string());
+ 610          doc1.insert_text(0, &quot;World&quot;);
+ 611  
+ 612          doc2.set_title(&quot;Hi&quot;.to_string());
+ 613          doc2.insert_text(0, &quot;There&quot;);
+ 614  
+ 615          doc1.merge(&amp;doc2);
+ 616          doc2.merge(&amp;doc1);
+ 617  
+ 618          // Should converge
+ 619          assert_eq!(doc1.content.to_string(), doc2.content.to_string());
+ 620      }</pre></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body {
+      position: relative;
+      z-index: 2;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note {
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .repo .note strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">BioShield Swarm Evidence Screenshot</div>
+    <h1>Signed Threat Reports</h1>
+    <div class="subtitle">Threat reports bind pattern, reporter, confidence, timestamp, and signature.</div>
+    <div class="body"><pre>  10  /// A signed threat report from an ASI.
+  11  #[derive(Debug, Clone)]
+  12  pub struct SignedThreatReport {
+  13      /// The threat pattern being reported.
+  14      pub pattern: ThreatPattern,
+  15      /// ID of the reporting ASI.
+  16      pub reporter: AsiId,
+  17      /// Confidence in this threat [0, 1].
+  18      pub confidence: f64,
+  19      /// Monotonic timestamp.
+  20      pub timestamp: u64,
+  21      /// Cryptographic signature over (pattern, reporter, confidence, timestamp).
+  22      pub signature: Signature,
+  23  }
+  24  
+  25  impl SignedThreatReport {
+  26      /// Creates and signs a new threat report.
+  27      pub fn new(
+  28          identity: &amp;AsiIdentity,
+  29          pattern: ThreatPattern,
+  30          confidence: f64,
+  31          timestamp: u64,
+  32      ) -&gt; Self {
+  33          let confidence = confidence.clamp(0.0, 1.0);
+  34          let signature = Self::sign_report(identity, &amp;pattern, confidence, timestamp);
+  35          
+  36          Self {
+  37              pattern,
+  38              reporter: identity.id,
+  39              confidence,
+  40              timestamp,
+  41              signature,
+  42          }
+  43      }
+  44      
+  45      fn sign_report(
+  46          identity: &amp;AsiIdentity,
+  47          pattern: &amp;ThreatPattern,
+  48          confidence: f64,
+  49          timestamp: u64,
+  50      ) -&gt; Signature {
+  51          let message = Self::build_message(pattern, identity.id, confidence, timestamp);
+  52          identity.sign(&amp;message)
+  53      }
+  54      
+  55      fn build_message(
+  56          pattern: &amp;ThreatPattern,
+  57          reporter: AsiId,
+  58          confidence: f64,
+  59          timestamp: u64,
+  60      ) -&gt; Vec&lt;u8&gt; {
+  61          let mut hasher = Sha256::new();
+  62          hasher.update(b&quot;THREAT_REPORT_V1:&quot;);
+  63          hasher.update(&amp;pattern.pattern_hash);
+  64          hasher.update(&amp;[pattern.category as u8]);
+  65          hasher.update(&amp;pattern.severity.to_le_bytes());
+  66          hasher.update(&amp;reporter.0);
+  67          hasher.update(&amp;confidence.to_le_bytes());
+  68          hasher.update(&amp;timestamp.to_le_bytes());
+  69          hasher.finalize().to_vec()
+  70      }
+  71      
+  72      /// Verifies the signature on this report.
+  73      pub fn verify(&amp;self, public_identity: &amp;PublicIdentity) -&gt; bool {
+  74          if public_identity.id != self.reporter {
+  75              return false;
+  76          }
+  77          
+  78          let message = Self::build_message(
+  79              &amp;self.pattern,
+  80              self.reporter,
+  81              self.confidence,
+  82              self.timestamp,
+  83          );
+  84          
+  85          public_identity.verify(&amp;message, &amp;self.signature)
+  86      }
+  87      
+  88      /// Computes unique identifier for deduplication.
+  89      pub fn report_id(&amp;self) -&gt; [u8; 32] {
+  90          let mut hasher = Sha256::new();
+  91          hasher.update(&amp;self.reporter.0);
+  92          hasher.update(&amp;self.pattern.pattern_hash);
+  93          hasher.update(&amp;self.timestamp.to_le_bytes());
+  94          
+  95          let hash = hasher.finalize();
+  96          let mut id = [0u8; 32];
+  97          id.copy_from_slice(&amp;hash);
+  98          id
+  99      }
+ 100      
+ 101      /// Returns the effective severity (pattern severity * confidence).
+ 102      pub fn effective_severity(&amp;self) -&gt; f64 {
+ 103          self.pattern.effective_severity() * self.confidence
+ 104      }</pre></div>
+  </div>
+</body>
+</html>

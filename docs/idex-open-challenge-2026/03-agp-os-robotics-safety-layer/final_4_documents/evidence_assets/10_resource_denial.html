@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>Resource Grant and Denial Path</h1>
+    <div class="subtitle">Requests over quota return explicit denial rather than silent execution.</div>
+    <div class="body"><pre>  75      def request_resource(self, agent_id: str, resource: ResourceType, amount: float) -&gt; Dict:
+  76          &quot;&quot;&quot;Request resource allocation, returns approval or denial&quot;&quot;&quot;
+  77          if agent_id not in self.quotas:
+  78              return {&quot;status&quot;: &quot;error&quot;, &quot;reason&quot;: &quot;Agent not registered&quot;}
+  79          
+  80          quota = self.quotas[agent_id]
+  81          usage = self.usage[agent_id]
+  82          
+  83          # Check for period reset (tokens reset daily)
+  84          self._check_period_reset(usage)
+  85          
+  86          # Evaluate based on resource type
+  87          if resource == ResourceType.CPU_CYCLES:
+  88              if usage.cpu_cycles + amount &gt; quota.cpu_cycles_max:
+  89                  return self._deny(&quot;CPU quota exceeded&quot;, usage.cpu_cycles, quota.cpu_cycles_max)
+  90              usage.cpu_cycles += int(amount)
+  91              
+  92          elif resource == ResourceType.MEMORY_MB:
+  93              # Check both agent quota and global system limit
+  94              if usage.memory_mb + amount &gt; quota.memory_mb_max:
+  95                  return self._deny(&quot;Memory quota exceeded&quot;, usage.memory_mb, quota.memory_mb_max)
+  96              if self.system_memory_used + amount &gt; self.system_memory_mb:
+  97                  return self._deny(&quot;System memory exhausted&quot;, self.system_memory_used, self.system_memory_mb)
+  98              usage.memory_mb += amount
+  99              self.system_memory_used += amount
+ 100              
+ 101          elif resource == ResourceType.TOKENS:
+ 102              if usage.tokens_used + amount &gt; quota.tokens_max:
+ 103                  return self._deny(&quot;Token quota exceeded&quot;, usage.tokens_used, quota.tokens_max)
+ 104              usage.tokens_used += int(amount)
+ 105              
+ 106          elif resource == ResourceType.IO_OPS:
+ 107              if usage.io_ops + amount &gt; quota.io_ops_max:
+ 108                  return self._deny(&quot;I/O quota exceeded&quot;, usage.io_ops, quota.io_ops_max)
+ 109              usage.io_ops += int(amount)
+ 110          
+ 111          return {&quot;status&quot;: &quot;granted&quot;, &quot;resource&quot;: resource.value, &quot;amount&quot;: amount}</pre></div>
+  </div>
+</body>
+</html>

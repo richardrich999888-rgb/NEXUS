@@ -1,0 +1,484 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-4 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-4</h1>
+    <div class="subtitle">Supporting evidence and screenshots checklist</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-4</h1>
+<p>Supporting evidence, screenshots, repository locations, and artifact map</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Supporting Evidence and Screenshots</h1>
+<h2>Company Identification Details</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Legal Entity Name</td><td>Syntriass Labs Private Limited</td></tr><tr><td>CIN</td><td>U62011AP2025PTC120239</td></tr><tr><td>PAN</td><td>ABQCS7152R</td></tr><tr><td>TAN</td><td>VPNS31351F</td></tr><tr><td>Registered Office</td><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td></tr><tr><td>Contact Email</td><td>kattanaga5555@gmail.com</td></tr><tr><td>Contact Phone</td><td>+91 88864 68060</td></tr><tr><td>GitHub Repository</td><td><code>https://github.com/richardrich999888-rgb/NEXUS</code></td></tr><tr><td>Submission Date</td><td>17 May 2026</td></tr></tbody></table>
+<h2>1. Applicant Resume Format</h2>
+<p>Applicant: K. Naga Sri Ganesh Company: Syntriass Labs Private Limited Role: Founder / Inventor Relevant focus: governed autonomy, multi-agent immune systems, execution assurance, reputation systems, and defence-oriented autonomy validation.</p>
+<h2>2. Prototype Evidence List</h2>
+<table><thead><tr><th>Evidence Item</th><th>Repository / Artifact Location</th></tr></thead><tbody><tr><td>Source module</td><td><code>multi-asi-immune/src/</code></td></tr><tr><td>Test suite</td><td><code>multi-asi-immune/tests/</code></td></tr><tr><td>Fresh test output</td><td><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/bioshield_swarm_test_output.txt</code></td></tr><tr><td>Evidence screenshots</td><td><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/</code></td></tr><tr><td>Final documents</td><td><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/</code></td></tr></tbody></table>
+<h2>2A. Official Problem Alignment Evidence</h2>
+<table><thead><tr><th>Evidence Item</th><th>Reviewer Use</th><th>Location / Source</th></tr></thead><tbody><tr><td>Open Challenge fit</td><td>Confirms the proposal is a standalone compromised-node and swarm-integrity prototype.</td><td>iDEX Open Challenge route; local package under <code>docs/idex-open-challenge-2026/02-bioshield-swarm/</code>.</td></tr><tr><td>ADITI 4 adjacency</td><td>Shows why counter-UAS and autonomous-platform problem areas need spoofing, compromise, and participant-trust checks.</td><td>Alignment summarized in Annexure 1 and Annexure 2; PS24 boundary stated explicitly.</td></tr><tr><td>DISC 14 adjacency</td><td>Shows relevance to drone management, C-UAS, and multi-agent UAS problem areas.</td><td>Alignment summarized in Annexure 1 and Annexure 2; technical evidence in <code>multi-asi-immune/</code>.</td></tr><tr><td>PS24 non-duplication</td><td>Helps reviewers separate this Open Challenge product from the already submitted ADITI PS24 space-domain application.</td><td>This package is scoped to swarm participant trust, not space-domain training, surveillance, or operations.</td></tr></tbody></table>
+<h2>3. Validation Scope</h2>
+<p>Current validation is software-subsystem validation. The evidence supports Rust module correctness and simulation-level behavior for identity, reputation, defection, threat memory, and threat propagation. It does not claim physical drone testing, tactical radio testing, EW range validation, or operational deployment.</p>
+<div class="page-break"></div>
+<h2>4. Test Command and Recorded Result</h2>
+<p>Primary command:</p>
+<pre data-lang="bash"><code>cargo test -p multi-asi-immune -- --nocapture</code></pre>
+<p>Fresh local result:</p>
+<ul>
+<li>68 Rust tests passed.</li>
+<li>0 failed.</li>
+<li>1 doc-test ignored.</li>
+<li>Run date: 17 May 2026.</li>
+</ul>
+<p>Test categories:</p>
+<ul>
+<li>Library unit tests.</li>
+<li>Defection tests.</li>
+<li>Identity tests.</li>
+<li>Integration tests.</li>
+<li>Reputation tests.</li>
+<li>Threat propagation tests.</li>
+</ul>
+<h2>5. Evidence Checklist</h2>
+<ul>
+<li>Source screenshots embedded.</li>
+<li>Test output screenshot embedded.</li>
+<li>GitHub repository link embedded.</li>
+<li>File locations and artifact locations listed.</li>
+<li>Claims phrased as software-subsystem evidence, not field qualification.</li>
+<li>Hardware-in-loop validation listed as proposed work.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 5 - Public Repository Reference</h2>
+<p>Purpose: give panel reviewers a direct path to inspect the source repository.</p>
+<p>Status: GitHub repository reference embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/01_github_repository.jpg" alt="GitHub repository reference for BioShield Swarm" /><figcaption>GitHub repository reference for BioShield Swarm</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 6 - Fresh Test Output</h2>
+<p>Purpose: show that the BioShield Swarm Rust test suite was run locally before proposal packaging.</p>
+<p>Status: test output screenshot embedded.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/02_test_output.jpg" alt="BioShield Swarm test output screenshot" /><figcaption>BioShield Swarm test output screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 7 - Threat Categories</h2>
+<p>Evidence source: <code>multi-asi-immune/src/threat/pattern.rs</code></p>
+<p>Purpose: show the implemented threat categories and severity model.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/03_threat_categories.jpg" alt="Threat categories and severity source screenshot" /><figcaption>Threat categories and severity source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 8 - Defection Types</h2>
+<p>Evidence source: <code>multi-asi-immune/src/enforcement/defection.rs</code></p>
+<p>Purpose: show the observable defection categories used for rogue-node scoring.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/04_defection_types.jpg" alt="Defection types source screenshot" /><figcaption>Defection types source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 9 - Isolation Logic</h2>
+<p>Evidence source: <code>multi-asi-immune/src/enforcement/defection.rs</code></p>
+<p>Purpose: show cumulative severity and isolation threshold logic.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/05_isolation_logic.jpg" alt="Cumulative isolation logic screenshot" /><figcaption>Cumulative isolation logic screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 10 - Identity Sign and Verify</h2>
+<p>Evidence source: <code>multi-asi-immune/src/identity/keypair.rs</code></p>
+<p>Purpose: show identity generation, public identity, signing, and signature verification.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/06_identity_sign_verify.jpg" alt="Cryptographic identity path screenshot" /><figcaption>Cryptographic identity path screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 11 - Reputation Decay</h2>
+<p>Evidence source: <code>multi-asi-immune/src/reputation/score.rs</code></p>
+<p>Purpose: show bounded, decaying reputation and suspicious-node detection.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/07_reputation_decay.jpg" alt="Reputation decay and bounds screenshot" /><figcaption>Reputation decay and bounds screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 12 - Threat Memory</h2>
+<p>Evidence source: <code>multi-asi-immune/src/threat/memory.rs</code></p>
+<p>Purpose: show duplicate rejection, reporter reputation filtering, confidence aggregation, and new-threat storage.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/08_threat_memory_add.jpg" alt="Threat memory source screenshot" /><figcaption>Threat memory source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 13 - Signed Threat Report</h2>
+<p>Evidence source: <code>multi-asi-immune/src/threat/signature.rs</code></p>
+<p>Purpose: show signed reports binding pattern, reporter, confidence, timestamp, and signature.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/09_signed_threat_report.jpg" alt="Signed threat report source screenshot" /><figcaption>Signed threat report source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 14 - Node Execution Gate</h2>
+<p>Evidence source: <code>multi-asi-immune/src/node/state.rs</code></p>
+<p>Purpose: show that isolated or low-reputation principals can be denied by node policy.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/10_node_execution_gate.jpg" alt="Node execution gate screenshot" /><figcaption>Node execution gate screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 15 - Threat Gossip Path</h2>
+<p>Evidence source: <code>multi-asi-immune/src/node/state.rs</code></p>
+<p>Purpose: show verified threat reports being stored and broadcast to peers.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/11_threat_gossip.jpg" alt="Threat gossip source screenshot" /><figcaption>Threat gossip source screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 16 - Swarm Protocol Messages</h2>
+<p>Evidence source: <code>multi-asi-immune/src/protocol/message.rs</code></p>
+<p>Purpose: show handshake, threat report, heartbeat, attestation, constraint, and accusation message types.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/12_protocol_messages.jpg" alt="Swarm protocol messages screenshot" /><figcaption>Swarm protocol messages screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 17 - Constraint Actions</h2>
+<p>Evidence source: <code>multi-asi-immune/src/protocol/message.rs</code></p>
+<p>Purpose: show graded response actions including reduce cooperation, increase caution, broadcast warning, and isolate.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/13_constraint_actions.jpg" alt="Constraint actions screenshot" /><figcaption>Constraint actions screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 18 - Network Health Assessment</h2>
+<p>Evidence source: <code>multi-asi-immune/src/node/state.rs</code></p>
+<p>Purpose: show active, suspicious, isolated, active-threat, and active-constraint summary fields.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/14_network_health.jpg" alt="Network health assessment screenshot" /><figcaption>Network health assessment screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 19 - Homeostatic Safety Constraints</h2>
+<p>Evidence source: <code>multi-asi-immune/src/integration/homeostasis_bridge.rs</code></p>
+<p>Purpose: show safety constraints derived from stress, caution, urgency, wellbeing, and cooperation state.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/15_homeostasis_bridge.jpg" alt="Homeostatic safety constraints screenshot" /><figcaption>Homeostatic safety constraints screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 20 - Threat Propagation Test</h2>
+<p>Evidence source: <code>multi-asi-immune/tests/integration_tests.rs</code></p>
+<p>Purpose: show that threat reporting propagates through peer processing and gossip.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/16_integration_threat_propagation.jpg" alt="Integration threat propagation test screenshot" /><figcaption>Integration threat propagation test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 21 - Full Protocol Flow Test</h2>
+<p>Evidence source: <code>multi-asi-immune/tests/integration_tests.rs</code></p>
+<p>Purpose: show a three-node flow for coordinated-attack reporting and propagation.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/17_full_protocol_flow.jpg" alt="Full protocol flow test screenshot" /><figcaption>Full protocol flow test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 22 - Defection Isolation Test</h2>
+<p>Evidence source: <code>multi-asi-immune/tests/defection_tests.rs</code></p>
+<p>Purpose: show test-level evidence for isolation threshold behavior.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/18_defection_tests.jpg" alt="Defection isolation test screenshot" /><figcaption>Defection isolation test screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 23 - Identity Verification Tests</h2>
+<p>Evidence source: <code>multi-asi-immune/tests/identity_tests.rs</code></p>
+<p>Purpose: show correct signature verification and wrong-identity or modified-message failure.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/19_identity_tests.jpg" alt="Identity verification tests screenshot" /><figcaption>Identity verification tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 24 - Reputation Behavior Tests</h2>
+<p>Evidence source: <code>multi-asi-immune/tests/reputation_tests.rs</code></p>
+<p>Purpose: show positive behavior, negative behavior, and decay tests.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/20_reputation_tests.jpg" alt="Reputation behavior tests screenshot" /><figcaption>Reputation behavior tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 25 - Threat Memory Tests</h2>
+<p>Evidence source: <code>multi-asi-immune/tests/threat_propagation_tests.rs</code></p>
+<p>Purpose: show threat memory add, duplicate rejection, and multi-reporter confirmation.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/21_threat_memory_tests.jpg" alt="Threat memory tests screenshot" /><figcaption>Threat memory tests screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 26 - Package and Test Manifest</h2>
+<p>Evidence source: <code>multi-asi-immune/Cargo.toml</code></p>
+<p>Purpose: show crate dependencies and named test targets.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/22_package_manifest.jpg" alt="Package and test manifest screenshot" /><figcaption>Package and test manifest screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 27 - Public API Exports</h2>
+<p>Evidence source: <code>multi-asi-immune/src/lib.rs</code></p>
+<p>Purpose: show the public API surface exported for integration.</p>
+<figure class="evidence-shot"><img src="file:///Users/richardrich/Desktop/NEXUS/docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/23_api_exports.jpg" alt="Public API exports screenshot" /><figcaption>Public API exports screenshot</figcaption></figure>
+<div class="page-break"></div>
+<h2>Evidence Page 28 - Reviewer Repository Map</h2>
+<p>Public repository:</p>
+<ul>
+<li><code>https://github.com/richardrich999888-rgb/NEXUS</code></li>
+</ul>
+<p>Primary proposal package:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/</code></li>
+</ul>
+<p>Primary source modules:</p>
+<ul>
+<li><code>multi-asi-immune/src/identity/keypair.rs</code></li>
+<li><code>multi-asi-immune/src/reputation/score.rs</code></li>
+<li><code>multi-asi-immune/src/reputation/aggregation.rs</code></li>
+<li><code>multi-asi-immune/src/threat/pattern.rs</code></li>
+<li><code>multi-asi-immune/src/threat/signature.rs</code></li>
+<li><code>multi-asi-immune/src/threat/memory.rs</code></li>
+<li><code>multi-asi-immune/src/enforcement/defection.rs</code></li>
+<li><code>multi-asi-immune/src/node/state.rs</code></li>
+<li><code>multi-asi-immune/src/protocol/message.rs</code></li>
+</ul>
+<p>How to review quickly:</p>
+<ol>
+<li>Open the repository.</li>
+<li>Navigate to <code>multi-asi-immune/</code>.</li>
+<li>Compare source files with Evidence Pages 7-27.</li>
+<li>Run the command on Evidence Page 6.</li>
+</ol>
+<div class="page-break"></div>
+<h2>Evidence Page 29 - Claim To File Location Map</h2>
+<table><thead><tr><th>Claim</th><th>Repository location</th><th>Evidence page</th></tr></thead><tbody><tr><td>Threat categories are implemented</td><td><code>multi-asi-immune/src/threat/pattern.rs</code></td><td>Page 7</td></tr><tr><td>Defection classes are implemented</td><td><code>multi-asi-immune/src/enforcement/defection.rs</code></td><td>Page 8</td></tr><tr><td>Isolation threshold exists</td><td><code>multi-asi-immune/src/enforcement/defection.rs</code></td><td>Page 9</td></tr><tr><td>Identity signing and verification exist</td><td><code>multi-asi-immune/src/identity/keypair.rs</code></td><td>Page 10</td></tr><tr><td>Reputation decays over time</td><td><code>multi-asi-immune/src/reputation/score.rs</code></td><td>Page 11</td></tr><tr><td>Threat memory stores and deduplicates reports</td><td><code>multi-asi-immune/src/threat/memory.rs</code></td><td>Page 12</td></tr><tr><td>Signed threat reports exist</td><td><code>multi-asi-immune/src/threat/signature.rs</code></td><td>Page 13</td></tr><tr><td>Node policy can deny isolated/low-trust principals</td><td><code>multi-asi-immune/src/node/state.rs</code></td><td>Page 14</td></tr><tr><td>Verified threats can be broadcast</td><td><code>multi-asi-immune/src/node/state.rs</code></td><td>Page 15</td></tr><tr><td>Tests validate core behavior</td><td><code>multi-asi-immune/tests/</code></td><td>Pages 20-25</td></tr></tbody></table>
+<p>Reviewer note: these are software-subsystem evidence locations, not physical field qualification evidence.</p>
+<div class="page-break"></div>
+<h2>Evidence Page 30 - Test And Command Locations</h2>
+<p>Primary executed test command:</p>
+<pre data-lang="bash"><code>cargo test -p multi-asi-immune -- --nocapture</code></pre>
+<p>Test file locations:</p>
+<ul>
+<li><code>multi-asi-immune/tests/identity_tests.rs</code></li>
+<li><code>multi-asi-immune/tests/reputation_tests.rs</code></li>
+<li><code>multi-asi-immune/tests/defection_tests.rs</code></li>
+<li><code>multi-asi-immune/tests/threat_propagation_tests.rs</code></li>
+<li><code>multi-asi-immune/tests/integration_tests.rs</code></li>
+</ul>
+<p>Recorded output artifact:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/bioshield_swarm_test_output.txt</code></li>
+</ul>
+<p>Current recorded result:</p>
+<ul>
+<li><code>68 Rust tests passed; 0 failed; 1 doc-test ignored</code></li>
+<li>Fresh local run date: <code>17 May 2026</code></li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 31 - Generated Artifact Locations</h2>
+<p>Final PDF artifacts:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/01_SYNTRIASS_BioShield_Swarm_Annexure_1_Applicant_Details_and_Solution_Summary.pdf</code></li>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/02_SYNTRIASS_BioShield_Swarm_Annexure_2_Technical_Architecture.pdf</code></li>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/03_SYNTRIASS_BioShield_Swarm_Annexure_3_Advantages_and_Competencies.pdf</code></li>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/04_SYNTRIASS_BioShield_Swarm_Annexure_4_Supporting_Evidence_and_Screenshots.pdf</code></li>
+</ul>
+<p>Word artifacts:</p>
+<ul>
+<li>Same directory as above, with <code>.docx</code> extension.</li>
+</ul>
+<p>Evidence screenshot folder:</p>
+<ul>
+<li><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/</code></li>
+</ul>
+<p>Build scripts:</p>
+<ul>
+<li><code>generate_bioshield_swarm_evidence_screenshots.mjs</code></li>
+<li><code>build_syntriass_letterhead_problem2.mjs</code></li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 32 - Screenshot Artifact Index</h2>
+<p>Screenshot artifacts embedded in this Annexure:</p>
+<ul>
+<li><code>evidence_assets/01_github_repository.jpg</code></li>
+<li><code>evidence_assets/02_test_output.jpg</code></li>
+<li><code>evidence_assets/03_threat_categories.jpg</code></li>
+<li><code>evidence_assets/04_defection_types.jpg</code></li>
+<li><code>evidence_assets/05_isolation_logic.jpg</code></li>
+<li><code>evidence_assets/06_identity_sign_verify.jpg</code></li>
+<li><code>evidence_assets/07_reputation_decay.jpg</code></li>
+<li><code>evidence_assets/08_threat_memory_add.jpg</code></li>
+<li><code>evidence_assets/09_signed_threat_report.jpg</code></li>
+<li><code>evidence_assets/10_node_execution_gate.jpg</code></li>
+<li><code>evidence_assets/11_threat_gossip.jpg</code></li>
+<li><code>evidence_assets/12_protocol_messages.jpg</code></li>
+<li><code>evidence_assets/13_constraint_actions.jpg</code></li>
+<li><code>evidence_assets/14_network_health.jpg</code></li>
+<li><code>evidence_assets/15_homeostasis_bridge.jpg</code></li>
+<li><code>evidence_assets/16_integration_threat_propagation.jpg</code></li>
+<li><code>evidence_assets/17_full_protocol_flow.jpg</code></li>
+<li><code>evidence_assets/18_defection_tests.jpg</code></li>
+<li><code>evidence_assets/19_identity_tests.jpg</code></li>
+<li><code>evidence_assets/20_reputation_tests.jpg</code></li>
+<li><code>evidence_assets/21_threat_memory_tests.jpg</code></li>
+<li><code>evidence_assets/22_package_manifest.jpg</code></li>
+<li><code>evidence_assets/23_api_exports.jpg</code></li>
+</ul>
+<p>All screenshots are generated artifacts from local source/test output.</p>
+<div class="page-break"></div>
+<h2>Evidence Page 33 - Threat Model To Evidence Map</h2>
+<table><thead><tr><th>Threat / Failure Mode</th><th>Evidence Location</th></tr></thead><tbody><tr><td>Identity spoofing</td><td>Pages 10 and 23</td></tr><tr><td>Invalid signature</td><td>Pages 13 and 23</td></tr><tr><td>False threat reporting</td><td>Pages 12, 13, 25</td></tr><tr><td>Contradictory messages</td><td>Pages 8, 9, 22</td></tr><tr><td>Missed heartbeat / liveness loss</td><td>Pages 8, 16</td></tr><tr><td>Low reputation / bad actor</td><td>Pages 11, 14, 24</td></tr><tr><td>Threat propagation</td><td>Pages 15, 20, 21</td></tr><tr><td>Quarantine / isolation</td><td>Pages 9, 14, 17, 22</td></tr><tr><td>Degraded node ambiguity</td><td>Proposed iDEX calibration work</td></tr><tr><td>EW or radio-link stress</td><td>Proposed iDEX simulation work</td></tr></tbody></table>
+<p>Prototype-stage gaps still to validate:</p>
+<ul>
+<li>Hardware-in-loop drone or robot node testing.</li>
+<li>EW packet-loss and spoofing simulation.</li>
+<li>Mission-specific threshold calibration.</li>
+<li>Operator revalidation workflow.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 34 - Prototype Work Package Locations</h2>
+<p>Repository anchors for proposed iDEX prototype work:</p>
+<ul>
+<li>Swarm immune module: <code>multi-asi-immune/</code></li>
+<li>Identity and signing: <code>multi-asi-immune/src/identity/</code></li>
+<li>Threat category engine: <code>multi-asi-immune/src/threat/pattern.rs</code></li>
+<li>Threat report signatures: <code>multi-asi-immune/src/threat/signature.rs</code></li>
+<li>Threat memory: <code>multi-asi-immune/src/threat/memory.rs</code></li>
+<li>Reputation: <code>multi-asi-immune/src/reputation/</code></li>
+<li>Defection tracking: <code>multi-asi-immune/src/enforcement/</code></li>
+<li>Node processing and health: <code>multi-asi-immune/src/node/</code></li>
+<li>Protocol messages: <code>multi-asi-immune/src/protocol/</code></li>
+<li>Homeostatic integration: <code>multi-asi-immune/src/integration/</code></li>
+</ul>
+<p>Planned validation outputs during iDEX:</p>
+<ol>
+<li>Compromised-node simulation report.</li>
+<li>False-positive and false-negative analysis.</li>
+<li>Threshold calibration report.</li>
+<li>Quarantine/revalidation demo.</li>
+<li>Hardware-in-loop validation plan.</li>
+</ol>
+<div class="page-break"></div>
+<h2>Evidence Page 35 - Panel Review Checklist</h2>
+<p>Suggested reviewer checklist:</p>
+<ul>
+<li>Confirm GitHub repository link on Evidence Page 5.</li>
+<li>Open <code>multi-asi-immune/src/threat/pattern.rs</code> and inspect threat categories.</li>
+<li>Open <code>multi-asi-immune/src/enforcement/defection.rs</code> and inspect severity/isolation logic.</li>
+<li>Open <code>multi-asi-immune/src/identity/keypair.rs</code> and inspect signing/verification.</li>
+<li>Open <code>multi-asi-immune/src/reputation/score.rs</code> and inspect decay behavior.</li>
+<li>Open <code>multi-asi-immune/src/threat/memory.rs</code> and inspect duplicate rejection and confidence aggregation.</li>
+<li>Open <code>multi-asi-immune/tests/</code> and inspect identity, reputation, defection, threat propagation, and integration tests.</li>
+<li>Run <code>cargo test -p multi-asi-immune -- --nocapture</code>.</li>
+<li>Compare the terminal result with <code>evidence_assets/bioshield_swarm_test_output.txt</code>.</li>
+</ul>
+<p>Upload checks for this document:</p>
+<ul>
+<li>Annexure 4 page count target: <code>37</code>.</li>
+<li>Annexure 4 PDF size target: under <code>5 MB</code>.</li>
+<li>Evidence pages contain source/test screenshots or reviewer navigation material.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 36 - Readiness Statement And Caveats</h2>
+<p>Current readiness:</p>
+<ul>
+<li>Software subsystem TRL 3-4.</li>
+<li>Rust module and test evidence available.</li>
+<li>Software simulation evidence available.</li>
+<li>Physical military hardware validation not claimed.</li>
+<li>EW/radio-link simulation not yet claimed.</li>
+<li>Operational deployment not claimed.</li>
+</ul>
+<p>Caveats:</p>
+<ul>
+<li>Thresholds require mission-specific tuning.</li>
+<li>Degraded-but-benign nodes require careful policy treatment.</li>
+<li>Quarantine must be integrated with command policy and human review.</li>
+<li>Hardware-in-loop testing is required before higher readiness claims.</li>
+<li>The iDEX prototype should evaluate latency, false-positive rate, false-negative rate, and recovery/revalidation behavior.</li>
+</ul>
+<div class="page-break"></div>
+<h2>Evidence Page 37 - Declaration And Repository Coordinates</h2>
+<p>Declaration:</p>
+<p>BioShield Swarm is submitted as a software-subsystem prototype for governed multi-agent swarm integrity evaluation.</p>
+<p>Repository coordinates:</p>
+<ul>
+<li>Public repository: <code>https://github.com/richardrich999888-rgb/NEXUS</code></li>
+<li>Proposal folder: <code>docs/idex-open-challenge-2026/02-bioshield-swarm/</code></li>
+<li>Final documents: <code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/</code></li>
+<li>Evidence assets: <code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/</code></li>
+<li>Test output: <code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/bioshield_swarm_test_output.txt</code></li>
+</ul>
+<p>Submission caveat:</p>
+<ul>
+<li>The package is prepared for prototype review and iDEX-funded validation planning.</li>
+<li>No field deployment, weapons integration, or autonomous operational authority is claimed.</li>
+<li>Human approval, mission policy, and service-specific safety rules remain required for operational use.</li>
+</ul>
+  </main>
+</body>
+</html>

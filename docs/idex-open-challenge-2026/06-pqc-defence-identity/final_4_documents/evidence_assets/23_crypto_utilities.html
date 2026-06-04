@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">PQC Defence Identity Evidence Screenshot</div>
+    <h1>Classical Crypto Utilities</h1>
+    <div class="subtitle">Current production utility path provides Ed25519 key generation, signing, and verification.</div>
+    <div class="body"><pre>  44  // ============================================================================
+  45  // KEY GENERATION
+  46  // ============================================================================
+  47  
+  48  /// Generate a new Ed25519 signing key using OS-provided entropy
+  49  pub fn generate_signing_key() -&gt; SigningKey {
+  50      let mut secret = [0u8; 32];
+  51      rand::rngs::OsRng.fill_bytes(&amp;mut secret);
+  52      SigningKey::from_bytes(&amp;secret)
+  53  }
+  54  
+  55  /// Derive verifying (public) key from signing key
+  56  pub fn derive_verifying_key(signing_key: &amp;SigningKey) -&gt; VerifyingKey {
+  57      signing_key.verifying_key()
+  58  }
+  59  
+  60  // ============================================================================
+  61  // SIGNING
+  62  // ============================================================================
+  63  
+  64  /// Sign a message with Ed25519
+  65  pub fn sign(signing_key: &amp;SigningKey, message: &amp;[u8]) -&gt; Signature {
+  66      signing_key.sign(message)
+  67  }
+  68  
+  69  /// Sign and return raw bytes
+  70  pub fn sign_bytes(signing_key: &amp;SigningKey, message: &amp;[u8]) -&gt; [u8; 64] {
+  71      signing_key.sign(message).to_bytes()
+  72  }
+  73  
+  74  // ============================================================================
+  75  // VERIFICATION
+  76  // ============================================================================
+  77  
+  78  /// Verify an Ed25519 signature
+  79  pub fn verify(
+  80      verifying_key: &amp;VerifyingKey,
+  81      message: &amp;[u8],
+  82      signature: &amp;Signature,
+  83  ) -&gt; CryptoResult&lt;()&gt; {
+  84      verifying_key
+  85          .verify(message, signature)
+  86          .map_err(|_| CryptoError::VerificationFailed)
+  87  }
+  88  
+  89  /// Verify signature from raw bytes
+  90  pub fn verify_bytes(
+  91      verifying_key: &amp;VerifyingKey,
+  92      message: &amp;[u8],
+  93      signature_bytes: &amp;[u8; 64],
+  94  ) -&gt; CryptoResult&lt;()&gt; {
+  95      let signature = Signature::from_bytes(signature_bytes);
+  96      verify(verifying_key, message, &amp;signature)
+  97  }</pre></div>
+  </div>
+</body>
+</html>

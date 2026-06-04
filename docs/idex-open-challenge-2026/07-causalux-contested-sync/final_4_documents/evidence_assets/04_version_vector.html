@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Version Vector Causality</h1>
+    <div class="subtitle">Version vectors track happens-before ordering, conflict detection, and deterministic merge context.</div>
+    <div class="body"><pre>  28  #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+  29  pub struct VersionVector {
+  30      /// Map of node_id -&gt; operation_count
+  31      pub versions: BTreeMap&lt;String, u64&gt;,
+  32  }
+  33  
+  34  impl VersionVector {
+  35      /// Create a new empty version vector
+  36      pub fn new() -&gt; Self {
+  37          Self::default()
+  38      }
+  39  
+  40      /// Increment the count for a given node and return the new count
+  41      pub fn increment(&amp;mut self, node_id: &amp;str) -&gt; u64 {
+  42          let counter = self.versions.entry(node_id.to_string()).or_insert(0);
+  43          *counter += 1;
+  44          *counter
+  45      }
+  46  
+  47      /// Check if self happened-before other (self ≤ other)
+  48      /// 
+  49      /// Returns true if all entries in self are less than or equal to
+  50      /// the corresponding entries in other.
+  51      pub fn happens_before(&amp;self, other: &amp;VersionVector) -&gt; bool {
+  52          self.versions.iter().all(|(node, count)| {
+  53              other.versions.get(node).map_or(false, |other_count| count &lt;= other_count)
+  54          })
+  55      }
+  56  
+  57      /// Check if vectors conflict (neither dominates the other)
+  58      /// 
+  59      /// Returns true when concurrent operations from different nodes
+  60      /// exist, requiring conflict resolution.
+  61      pub fn conflicts_with(&amp;self, other: &amp;VersionVector) -&gt; bool {
+  62          !self.happens_before(other) &amp;&amp; !other.happens_before(self)
+  63      }
+  64  
+  65      /// Merge two version vectors (take max per node)
+  66      /// 
+  67      /// Creates a new version vector that represents the union of
+  68      /// causality from both input vectors.
+  69      pub fn merge(&amp;self, other: &amp;VersionVector) -&gt; VersionVector {
+  70          let mut merged = self.versions.clone();
+  71          for (node, count) in &amp;other.versions {
+  72              merged
+  73                  .entry(node.clone())
+  74                  .and_modify(|c| *c = (*c).max(*count))
+  75                  .or_insert(*count);
+  76          }
+  77          VersionVector { versions: merged }
+  78      }
+  79  
+  80      /// Get the count for a specific node (0 if not present)
+  81      pub fn get(&amp;self, node_id: &amp;str) -&gt; u64 {
+  82          self.versions.get(node_id).copied().unwrap_or(0)
+  83      }
+  84  
+  85      /// Get the total number of operations across all nodes
+  86      pub fn total_operations(&amp;self) -&gt; u64 {
+  87          self.versions.values().sum()
+  88      }
+  89  
+  90      /// Check if this vector is empty
+  91      pub fn is_empty(&amp;self) -&gt; bool {
+  92          self.versions.is_empty()
+  93      }
+  94  }
+
+ 100      #[test]
+ 101      fn test_increment() {
+ 102          let mut vv = VersionVector::new();
+ 103          assert_eq!(vv.increment(&quot;node1&quot;), 1);
+ 104          assert_eq!(vv.increment(&quot;node1&quot;), 2);
+ 105          assert_eq!(vv.increment(&quot;node2&quot;), 1);
+ 106          assert_eq!(vv.get(&quot;node1&quot;), 2);
+ 107          assert_eq!(vv.get(&quot;node2&quot;), 1);
+ 108      }
+ 109  
+ 110      #[test]
+ 111      fn test_happens_before() {
+ 112          let mut v1 = VersionVector::new();
+ 113          v1.increment(&quot;A&quot;);
+ 114          v1.increment(&quot;B&quot;);
+ 115  
+ 116          let mut v2 = VersionVector::new();
+ 117          v2.increment(&quot;A&quot;);
+ 118          v2.increment(&quot;A&quot;);
+ 119          v2.increment(&quot;B&quot;);
+ 120  
+ 121          assert!(v1.happens_before(&amp;v2));
+ 122          assert!(!v2.happens_before(&amp;v1));
+ 123      }
+ 124  
+ 125      #[test]
+ 126      fn test_conflict_detection() {
+ 127          let mut v1 = VersionVector::new();
+ 128          v1.increment(&quot;A&quot;);
+ 129          v1.increment(&quot;A&quot;);
+ 130          v1.increment(&quot;B&quot;);
+ 131  
+ 132          let mut v2 = VersionVector::new();
+ 133          v2.increment(&quot;A&quot;);
+ 134          v2.increment(&quot;B&quot;);
+ 135          v2.increment(&quot;B&quot;);
+ 136  
+ 137          assert!(v1.conflicts_with(&amp;v2));
+ 138          assert!(v2.conflicts_with(&amp;v1));
+ 139      }
+ 140  
+ 141      #[test]
+ 142      fn test_merge() {
+ 143          let mut v1 = VersionVector::new();
+ 144          v1.increment(&quot;A&quot;);
+ 145          v1.increment(&quot;B&quot;);
+ 146  
+ 147          let mut v2 = VersionVector::new();
+ 148          v2.increment(&quot;A&quot;);
+ 149          v2.increment(&quot;A&quot;);
+ 150          v2.increment(&quot;C&quot;);
+ 151  
+ 152          let merged = v1.merge(&amp;v2);
+ 153          assert_eq!(merged.get(&quot;A&quot;), 2);
+ 154          assert_eq!(merged.get(&quot;B&quot;), 1);
+ 155          assert_eq!(merged.get(&quot;C&quot;), 1);
+ 156      }
+ 157  
+ 158      #[test]
+ 159      fn test_total_operations() {
+ 160          let mut vv = VersionVector::new();
+ 161          vv.increment(&quot;A&quot;);
+ 162          vv.increment(&quot;A&quot;);
+ 163          vv.increment(&quot;B&quot;);
+ 164          
+ 165          assert_eq!(vv.total_operations(), 3);
+ 166      }</pre></div>
+  </div>
+</body>
+</html>

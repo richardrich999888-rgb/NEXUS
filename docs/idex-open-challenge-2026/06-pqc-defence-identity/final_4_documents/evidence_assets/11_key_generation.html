@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">PQC Defence Identity Evidence Screenshot</div>
+    <h1>Key Generation</h1>
+    <div class="subtitle">Generation uses OS entropy for Ed25519 and ML-DSA-65 when the feature is enabled.</div>
+    <div class="body"><pre> 203  impl HybridKeyPair {
+ 204      /// Generate a new keypair.
+ 205      pub fn generate() -&gt; PqcResult&lt;Self&gt; {
+ 206          use rand::RngCore;
+ 207  
+ 208          // 1. Generate classical Ed25519 key
+ 209          let mut secret = [0u8; 32];
+ 210          rand::rngs::OsRng.fill_bytes(&amp;mut secret);
+ 211          let classical = SigningKey::from_bytes(&amp;secret);
+ 212  
+ 213          // 2. Generate PQC ML-DSA-65 key if enabled
+ 214          #[cfg(feature = &quot;pqc&quot;)]
+ 215          {
+ 216              let mut rng = rand::rngs::OsRng;
+ 217              let (pk, sk) = ml_dsa_65::try_keygen_with_rng(&amp;mut rng)
+ 218                  .map_err(|e| PqcError::KeyGenerationFailed(format!(&quot;{:?}&quot;, e)))?;
+ 219              
+ 220              Ok(Self {
+ 221                  classical,
+ 222                  pqc_sk: Some(sk),
+ 223                  pqc_pk: Some(pk),
+ 224              })
+ 225          }
+ 226  
+ 227          #[cfg(not(feature = &quot;pqc&quot;))]
+ 228          Ok(Self {
+ 229              classical,
+ 230              _pqc_reserved: None,
+ 231          })
+ 232      }
+ 233  
+ 234      /// Create from existing Ed25519 key (classical-only mode)
+ 235      pub fn from_classical(signing_key: SigningKey) -&gt; Self {
+ 236          Self {
+ 237              classical: signing_key,
+ 238              #[cfg(feature = &quot;pqc&quot;)]
+ 239              pqc_sk: None,
+ 240              #[cfg(feature = &quot;pqc&quot;)]
+ 241              pqc_pk: None,
+ 242              #[cfg(not(feature = &quot;pqc&quot;))]
+ 243              _pqc_reserved: None,
+ 244          }
+ 245      }
+ 246  
+ 247      /// Get the classical verifying (public) key
+ 248      pub fn classical_verifying_key(&amp;self) -&gt; VerifyingKey {
+ 249          self.classical.verifying_key()
+ 250      }
+ 251  
+ 252      pub fn pqc_public_key(&amp;self) -&gt; Option&lt;Vec&lt;u8&gt;&gt; {
+ 253          #[cfg(feature = &quot;pqc&quot;)]
+ 254          {
+ 255              if let Some(pk) = &amp;self.pqc_pk {
+ 256                  return Some(pk.clone().into_bytes().to_vec());
+ 257              }
+ 258          }
+ 259          None
+ 260      }</pre></div>
+  </div>
+</body>
+</html>

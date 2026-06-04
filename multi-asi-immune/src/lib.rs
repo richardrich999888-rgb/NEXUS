@@ -4,7 +4,7 @@
 //!
 //! ## Core Mechanisms
 //!
-//! 1. **Identity**: Cryptographic, unforgeable identities via Ed25519
+//! 1. **Identity**: Cryptographically verifiable identities via Ed25519
 //! 2. **Reputation**: Earned, decaying, non-transferable trust scores
 //! 3. **Threat Signatures**: Signed, reputation-weighted threat reports
 //! 4. **Mutual Constraints**: Bilateral homeostatic agreements

@@ -1,6 +1,6 @@
 //! Ed25519 keypair for ASI identity.
 //!
-//! Each ASI instance has a unique, unforgeable identity based on Ed25519.
+//! Each ASI instance has a unique, cryptographically verifiable identity based on Ed25519.
 //! Identity is self-sovereign - no central registry required.
 
 use ed25519_dalek::{SigningKey, VerifyingKey, Signature, Signer, Verifier};
@@ -47,7 +47,7 @@ impl fmt::Display for AsiId {
     }
 }
 
-/// Unique, unforgeable identity for an ASI instance.
+/// Unique, cryptographically verifiable identity for an ASI instance.
 /// Based on Ed25519 for speed and security.
 #[derive(Clone)]
 pub struct AsiIdentity {

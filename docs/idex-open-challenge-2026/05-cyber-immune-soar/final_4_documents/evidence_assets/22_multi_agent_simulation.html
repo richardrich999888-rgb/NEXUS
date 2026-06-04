@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Multi-Agent Governance Simulation</h1>
+    <div class="subtitle">Twelve behavior profiles are exercised across task success, collaboration, risk, and ethics signals.</div>
+    <div class="body"><pre>  32  @dataclass
+  33  class AgentBehavior:
+  34      &quot;&quot;&quot;Defines an agent's behavior pattern&quot;&quot;&quot;
+  35      name: str
+  36      success_rate: float  # Task success probability
+  37      collaboration_tendency: float  # How often they collaborate
+  38      risk_taking: float  # Exploration vs exploitation
+  39      ethics_score: float  # Ethical behavior compliance
+  40  
+  41  
+  42  # Define 12 diverse agent behavior profiles
+  43  AGENT_PROFILES = [
+  44      AgentBehavior(&quot;Alpha&quot;, 0.95, 0.8, 0.3, 0.9),   # High performer, collaborative
+  45      AgentBehavior(&quot;Beta&quot;, 0.85, 0.7, 0.4, 0.85),   # Good performer
+  46      AgentBehavior(&quot;Gamma&quot;, 0.75, 0.6, 0.5, 0.8),   # Average performer
+  47      AgentBehavior(&quot;Delta&quot;, 0.6, 0.5, 0.6, 0.75),   # Below average
+  48      AgentBehavior(&quot;Epsilon&quot;, 0.9, 0.3, 0.7, 0.9),  # Solo high performer
+  49      AgentBehavior(&quot;Zeta&quot;, 0.7, 0.9, 0.2, 0.95),    # Highly collaborative
+  50      AgentBehavior(&quot;Eta&quot;, 0.5, 0.4, 0.9, 0.6),      # Risk taker, unreliable
+  51      AgentBehavior(&quot;Theta&quot;, 0.8, 0.5, 0.3, 1.0),    # Ethical, consistent
+  52      AgentBehavior(&quot;Iota&quot;, 0.3, 0.2, 0.8, 0.4),     # Malicious actor
+  53      AgentBehavior(&quot;Kappa&quot;, 0.85, 0.85, 0.4, 0.85), # Team player
+  54      AgentBehavior(&quot;Lambda&quot;, 0.65, 0.6, 0.5, 0.7),  # Average
+  55      AgentBehavior(&quot;Mu&quot;, 0.45, 0.3, 0.7, 0.5),      # Underperformer
+  56  ]
+  57  
+  58  
+  59  class GovernanceSimulation:
+  60      &quot;&quot;&quot;Multi-agent governance simulation&quot;&quot;&quot;
+  61  
+  62      def __init__(self):
+  63          self.engine = ReputationEngine()
+  64          self.agents: Dict[str, AGPAgent] = {}
+  65          self.history: List[Dict] = []
+  66          self.round = 0
+  67  
+  68      def create_agents(self, profiles: List[AgentBehavior]):
+  69          &quot;&quot;&quot;Create agents from behavior profiles&quot;&quot;&quot;
+  70          print(f&quot;\n{'='*70}&quot;)
+  71          print(f&quot;CREATING {len(profiles)} AGENTS&quot;)
+  72          print(f&quot;{'='*70}&quot;)
+  73  
+  74          for profile in profiles:
+  75              agent = agent_registry.create_agent(
+  76                  name=profile.name,
+  77                  model=&quot;gemini-2.0-flash&quot;,
+  78                  description=f&quot;Agent with behavior profile: success={profile.success_rate:.0%}&quot;
+  79              )
+  80              # Store profile on agent for simulation
+  81              agent._profile = profile
+  82              agent.ethical_actions = 0
+  83              agent.ethics_violations = 0
+  84              agent.risky_actions = 0
+  85              agent.collaborations = 0
+  86              self.agents[profile.name] = agent
+  87              print(f&quot;  Created: {profile.name} (success={profile.success_rate:.0%}, collab={profile.collaboration_tendency:.0%})&quot;)
+  88  
+  89          print(f&quot;\nTotal agents: {len(self.agents)}&quot;)</pre></div>
+  </div>
+</body>
+</html>

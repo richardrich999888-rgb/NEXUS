@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body {
+      position: relative;
+      z-index: 2;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note {
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .repo .note strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">NEXUS Guard Evidence Screenshot</div>
+    <h1>Protected Execution API Contract</h1>
+    <div class="subtitle">Library exports the executor, guard, context, result, proof, and host interface used by integrators.</div>
+    <div class="body"><pre>  84  // Re-exports for convenience
+  85  pub use cache::ResultCache;
+  86  pub use error::{ExecutorError, ExecutorResult};
+  87  pub use executor::{ExecutorBuilder, PcuExecutor};
+  88  pub use guard::{ExecutionGuard, GuardDecision};
+  89  pub use guards::{NervousSystemGuard, ImmuneGuard, CompositeGuard};
+  90  pub use limits::ExecutionLimits;
+  91  pub use proof::{ExecutionProof, NodeAttestation};
+  92  pub use nexus_pcu::NodeId;
+  93  pub use semantic_cache::{RoutingDecision, SemanticCache, SemanticCacheStats, SemanticKey};
+  94  pub use types::{ExecutionContext, ExecutionResult};
+  95  
+  96  // Re-export core types from nexus-pcu (single source of truth)
+  97  // NOTE: All PCU, Identity, and ContentHash types come from nexus-pcu
+  98  pub use nexus_pcu::{
+  99      ContentHash, ContentHasher,
+ 100      IdentityContext, PrincipalId, Capability, CapabilitySet, DelegationChain,
+ 101      PCU, WasmModule, ExecutionConstraints,
+ 102  };
+
+...
+
+ 113  /// Interface for PCU interaction with the host environment.
+ 114  pub trait NexusHost: Send + Sync {
+ 115      /// Read a Universal State Object (USO) by its content hash.
+ 116      fn uso_get(&amp;self, id: &amp;ContentHash) -&gt; Result&lt;Option&lt;Vec&lt;u8&gt;&gt;, ExecutorError&gt;;
+ 117  
+ 118      /// Create or update a USO.
+ 119      fn uso_put(&amp;self, data: &amp;[u8]) -&gt; Result&lt;ContentHash, ExecutorError&gt;;
+ 120  
+ 121      /// Apply a CRDT operation to a USO.
+ 122      fn uso_apply_op(&amp;self, id: &amp;ContentHash, op: &amp;[u8]) -&gt; Result&lt;ContentHash, ExecutorError&gt;;
+ 123  
+ 124      /// Log a message from the PCU.
+ 125      fn log(&amp;self, level: u32, message: &amp;str);
+ 126  
+ 127      /// Get current system time.
+ 128      fn get_time(&amp;self) -&gt; u64;
+ 129  
+ 130      /// Spawn a child PCU.
+ 131      fn spawn_pcu(&amp;self, pcu: &amp;PCU, inputs: Vec&lt;(ContentHash, Vec&lt;u8&gt;)&gt;) -&gt; Result&lt;ContentHash, ExecutorError&gt;;
+ 132  }</pre></div>
+  </div>
+</body>
+</html>

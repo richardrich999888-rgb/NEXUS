@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body {
+      position: relative;
+      z-index: 2;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note {
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .repo .note strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">NEXUS Guard Evidence Screenshot</div>
+    <h1>Offline Review Workflow</h1>
+    <div class="subtitle">ETK README documents local verify command, evidence files, and regulator-grade build checks.</div>
+    <div class="body"><pre>  46  ## CLI
+  47  
+  48  ```bash
+  49  cargo run -p etk-cli --bin etk -- verify &lt;proof.bin&gt; &lt;events.bin&gt; &lt;policy.bin&gt; &lt;pubkey.bin&gt; [--tolerance-ms N] [--verbose]
+  50  cargo run -p etk-cli --bin etk -- version
+  51  ```
+  52  
+  53  - **proof.bin**: 178 bytes (ExecutionProof canonical).
+  54  - **events.bin**: N × 276 bytes (ExecutionEvent canonical, concatenated).
+  55  - **policy.bin**: raw policy snapshot (verifier hashes and checks against proof.policy_ref).
+  56  - **pubkey.bin**: 32 bytes Ed25519 verifying key (producer of the proof).
+  57  
+  58  Output: `VALID` (exit 0) or `INVALID` (exit 1).
+  59  
+  60  ## Library (etk-core)
+  61  
+  62  ```rust
+  63  use etk_core::{EventChain, create_genesis, hash256, verify, Verdict};
+  64  use etk_types::{Hash256, OutcomeCode, ResourceClass};
+  65  use ed25519_dalek::SigningKey;
+  66  
+  67  let actor = hash256(b&quot;actor&quot;);
+  68  let workload = hash256(b&quot;workload&quot;);
+  69  let ctx = hash256(b&quot;context&quot;);
+  70  let policy = hash256(b&quot;policy-snapshot&quot;);
+  71  let mut chain = EventChain::new(actor, workload, ctx, ResourceClass::Cpu, 840, policy);
+  72  chain.append(now_ms + 1, OutcomeCode::Unknown).unwrap();
+  73  chain.append(now_ms + 2, OutcomeCode::Success).unwrap();
+  74  let proof = chain.finalize(&amp;signing_key).unwrap();
+  75  // Offline verify: proof, events, policy_resolver, verifier_pubkey, tolerance_ms
+  76  ```
+  77  
+  78  ## Regulator-grade build stack
+  79  
+  80  - **Deterministic builds**: `make repro` — SOURCE_DATE_EPOCH, no build-id; writes `build/build_hash.txt` and updates `supply-chain/provenance.json` (if `jq` present).
+  81  - **Signing**: `make sign` — signs `target/release/etk` with `private.pem`; output `build/etk.sig`. Keep private key offline.
+  82  - **Verification**: `make verify` — verifies binary with `public.pem` and `build/etk.sig` (what auditors run).
+  83  - **SBOM**: `make sbom` — auditable build; dependency list in `supply-chain/`.</pre></div>
+  </div>
+</body>
+</html>

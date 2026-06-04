@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AURA Trust Evidence Screenshot</div>
+    <h1>PQC Feature Tests</h1>
+    <div class="subtitle">Feature-gated tests include classical signing, serialization, bundle verification, size, and PQC fallback.</div>
+    <div class="body"><pre> 363  #[cfg(test)]
+ 364  mod tests {
+ 365      use super::*;
+ 366  
+ 367      #[test]
+ 368      fn test_hybrid_keypair_generation() {
+ 369          let kp = HybridKeyPair::generate().expect(&quot;Keypair generation failed&quot;);
+ 370          let _ = kp.classical_verifying_key();
+ 371          
+ 372          #[cfg(feature = &quot;pqc&quot;)]
+ 373          assert!(kp.has_pqc());
+ 374          #[cfg(not(feature = &quot;pqc&quot;))]
+ 375          assert!(!kp.has_pqc());
+ 376      }
+ 377  
+ 378      #[test]
+ 379      fn test_classical_signing_and_verification() {
+ 380          let kp = HybridKeyPair::generate().expect(&quot;Keypair generation failed&quot;);
+ 381          let message = b&quot;Hello, post-quantum world!&quot;;
+ 382  
+ 383          let signature = kp.sign(message);
+ 384  
+ 385          // Verify classical
+ 386          assert!(signature.verify_classical(message, &amp;kp.classical_verifying_key()));
+ 387  
+ 388          // Wrong message should fail
+ 389          assert!(!signature.verify_classical(b&quot;Wrong message&quot;, &amp;kp.classical_verifying_key()));
+ 390      }
+ 391  
+ 392      #[test]
+ 393      fn test_hybrid_signature_serialization() {
+ 394          let kp = HybridKeyPair::generate().expect(&quot;Keypair generation failed&quot;);
+ 395          let message = b&quot;Test message for serialization&quot;;
+ 396  
+ 397          let signature = kp.sign(message);
+ 398  
+ 399          // Serialize and deserialize
+ 400          let json = serde_json::to_string(&amp;signature).expect(&quot;Serialization failed&quot;);
+ 401          let restored: HybridSignature =
+ 402              serde_json::from_str(&amp;json).expect(&quot;Deserialization failed&quot;);
+ 403  
+ 404          // Should still verify
+ 405          assert!(restored.verify_classical(message, &amp;kp.classical_verifying_key()));
+ 406      }
+ 407  
+ 408      #[test]
+ 409      fn test_public_key_bundle() {
+ 410          let kp = HybridKeyPair::generate().expect(&quot;Keypair generation failed&quot;);
+ 411          let message = b&quot;Bundle verification test&quot;;
+ 412  
+ 413          let bundle = PublicKeyBundle::classical_only(&amp;kp.classical_verifying_key());
+ 414          let signature = kp.sign(message);
+ 415  
+ 416          assert!(bundle.verify(message, &amp;signature));
+ 417      }
+ 418  
+ 419      #[test]
+ 420      fn test_classical_only_mode() {
+ 421          use rand::RngCore;
+ 422          let mut secret = [0u8; 32];
+ 423          rand::rngs::OsRng.fill_bytes(&amp;mut secret);
+ 424          let signing_key = SigningKey::from_bytes(&amp;secret);
+ 425  
+ 426          let kp = HybridKeyPair::from_classical(signing_key);
+ 427          let message = b&quot;Classical only test&quot;;
+ 428  
+ 429          let signature = kp.sign(message);
+ 430          assert!(!signature.is_hybrid()); // Should be classical-only
+ 431          assert!(signature.verify_classical(message, &amp;kp.classical_verifying_key()));
+ 432      }
+ 433  
+ 434      #[test]
+ 435      fn test_signature_size() {
+ 436          let kp = HybridKeyPair::generate().expect(&quot;Keypair generation failed&quot;);
+ 437          let signature = kp.sign(b&quot;Size test&quot;);
+ 438  
+ 439          // Classical signature should be 64 bytes
+ 440          assert_eq!(signature.classical.len(), 64);
+ 441          
+ 442          #[cfg(feature = &quot;pqc&quot;)]
+ 443          assert_eq!(signature.size(), 64 + 3309); // Classical + ML-DSA-65
+ 444          #[cfg(not(feature = &quot;pqc&quot;))]
+ 445          assert_eq!(signature.size(), 64); // Classical only
+ 446      }
+ 447  
+ 448      #[cfg(feature = &quot;pqc&quot;)]
+ 449      #[test]
+ 450      fn test_pqc_component_verifies_when_classical_component_is_tampered() {
+ 451          let kp = HybridKeyPair::generate().expect(&quot;Keypair generation failed&quot;);
+ 452          let message = b&quot;PQC defense-in-depth test&quot;;
+ 453          let mut signature = kp.sign(message);
+ 454          let pqc_public_key = kp.pqc_public_key().expect(&quot;PQC public key should exist&quot;);
+ 455          let bundle = PublicKeyBundle::hybrid(&amp;kp.classical_verifying_key(), pqc_public_key);
+ 456  
+ 457          assert!(signature.is_hybrid());
+ 458          assert!(bundle.verify(message, &amp;signature));
+ 459  
+ 460          signature.classical[0] ^= 0xAA;
+ 461          assert!(
+ 462              bundle.verify(message, &amp;signature),
+ 463              &quot;PQC verification should still pass after classical signature tampering&quot;
+ 464          );
+ 465  
+ 466          let pqc = signature.pqc.as_mut().expect(&quot;PQC signature should exist&quot;);
+ 467          pqc[0] ^= 0x55;
+ 468          assert!(
+ 469              !bundle.verify(message, &amp;signature),
+ 470              &quot;Verification must fail once both signature components are invalid&quot;</pre></div>
+  </div>
+</body>
+</html>

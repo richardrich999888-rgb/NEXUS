@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>Production Adapter Test Scenario</h1>
+    <div class="subtitle">Test covers watchdog, velocity caps, heartbeat timeout, and deployment files.</div>
+    <div class="body"><pre>  34  # 1. Test Safety Watchdog
+  35  print(&quot;\n[1] TESTING SAFETY WATCHDOG...&quot;)
+  36  watchdog = SafetyWatchdog(WatchdogConfig(
+  37      heartbeat_timeout_ms=100,
+  38      max_velocity=1.0,
+  39      max_angular=0.5
+  40  ))
+  41  
+  42  test(&quot;Watchdog initialized&quot;, watchdog is not None)
+  43  test(&quot;Watchdog not armed initially&quot;, not watchdog.is_armed)
+  44  
+  45  watchdog.arm()
+  46  test(&quot;Watchdog armed&quot;, watchdog.is_armed)
+  47  test(&quot;Watchdog check passes&quot;, watchdog.check())
+  48  
+  49  # 2. Test velocity validation
+  50  print(&quot;\n[2] TESTING VELOCITY VALIDATION...&quot;)
+  51  validated = watchdog.validate_velocity(0.5, 0.3)
+  52  test(&quot;Normal velocity not capped&quot;, not validated[&quot;capped&quot;])
+  53  
+  54  validated = watchdog.validate_velocity(2.0, 1.5)
+  55  test(&quot;Excessive velocity capped&quot;, validated[&quot;capped&quot;])
+  56  test(&quot;Linear capped to max&quot;, validated[&quot;linear&quot;] == 1.0)
+  57  test(&quot;Angular capped to max&quot;, validated[&quot;angular&quot;] == 0.5)
+  58  
+  59  # 3. Test heartbeat timeout
+  60  print(&quot;\n[3] TESTING HEARTBEAT TIMEOUT...&quot;)
+  61  watchdog.heartbeat()
+  62  time.sleep(0.05)  # 50ms - under timeout
+  63  test(&quot;Watchdog OK under timeout&quot;, watchdog.check())
+  64  
+  65  time.sleep(0.1)  # Now over 100ms total
+  66  test(&quot;Watchdog triggers on timeout&quot;, not watchdog.check())
+  67  test(&quot;Emergency stop triggered&quot;, watchdog.emergency_stop_triggered)
+  68  
+  69  watchdog.reset()
+  70  test(&quot;Watchdog reset&quot;, not watchdog.emergency_stop_triggered)
+  71  
+  72  # 4. Test Production Adapter
+  73  print(&quot;\n[4] TESTING PRODUCTION ADAPTER...&quot;)
+  74  status = production_adapter.get_status()
+  75  test(&quot;Adapter initialized&quot;, status is not None)
+  76  test(&quot;Simulation mode (no rclpy)&quot;, status[&quot;mode&quot;] == &quot;simulation&quot; or status[&quot;ros2_available&quot;])
+  77  
+  78  # 5. Test connection
+  79  print(&quot;\n[5] TESTING CONNECTION...&quot;)
+  80  result = production_adapter.connect()
+  81  test(&quot;Connection successful&quot;, result.get(&quot;status&quot;) == &quot;connected&quot;)
+  82  test(&quot;Mode determined&quot;, &quot;mode&quot; in result)
+  83  
+  84  status = production_adapter.get_status()
+  85  test(&quot;Adapter connected&quot;, status[&quot;connected&quot;])
+  86  
+  87  # 6. Test velocity publishing
+  88  print(&quot;\n[6] TESTING VELOCITY PUBLISHING...&quot;)
+  89  from src.os.ros2.bridge import ros2_bridge
+  90  
+  91  # Spawn a test robot first
+  92  ros2_bridge.spawn_robot(&quot;test_robot&quot;, &quot;TestBot&quot;)
+  93  production_adapter.create_velocity_publisher(&quot;test_robot/cmd_vel&quot;)
+  94  
+  95  result = production_adapter.publish_velocity(&quot;test_robot/cmd_vel&quot;, 0.5, 0.2)
+  96  test(&quot;Velocity published&quot;, result.get(&quot;status&quot;) == &quot;published&quot;)
+  97  
+  98  # 7. Test emergency stop
+  99  print(&quot;\n[7] TESTING EMERGENCY STOP...&quot;)
+ 100  result = production_adapter.emergency_stop(&quot;test_robot/cmd_vel&quot;)
+ 101  test(&quot;Emergency stop sent&quot;, result.get(&quot;status&quot;) == &quot;published&quot;)
+ 102  
+ 103  # 8. Verify deployment files exist
+ 104  print(&quot;\n[8] VERIFYING DEPLOYMENT FILES...&quot;)
+ 105  deploy_dir = ROOT / &quot;deploy&quot;
+ 106  test(&quot;Dockerfile.ros2 exists&quot;, (deploy_dir / &quot;Dockerfile.ros2&quot;).exists())
+ 107  test(&quot;entrypoint.sh exists&quot;, (deploy_dir / &quot;entrypoint.sh&quot;).exists())
+ 108  test(&quot;systemd service exists&quot;, (deploy_dir / &quot;agp-os-robot.service&quot;).exists())</pre></div>
+  </div>
+</body>
+</html>

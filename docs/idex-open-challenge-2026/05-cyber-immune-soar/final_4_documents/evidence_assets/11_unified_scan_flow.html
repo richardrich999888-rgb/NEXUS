@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Unified Scan Flow</h1>
+    <div class="subtitle">Behavior vectors are normalized, scanned by AIS, scored, classified, and routed to governance action.</div>
+    <div class="body"><pre> 138      def scan_behavior(
+ 139          self,
+ 140          agent_id: str,
+ 141          behavior_vector: List[float],
+ 142          context: Optional[Dict[str, Any]] = None
+ 143      ) -&gt; ThreatReport:
+ 144          &quot;&quot;&quot;
+ 145          Perform comprehensive threat scan on agent behavior.
+ 146  
+ 147          Args:
+ 148              agent_id: Agent to scan
+ 149              behavior_vector: Behavioral embedding
+ 150              context: Additional context for evaluation
+ 151  
+ 152          Returns:
+ 153              ThreatReport with analysis and recommended actions
+ 154          &quot;&quot;&quot;
+ 155          import torch
+ 156          self.scan_count += 1
+ 157          context = context or {}
+ 158  
+ 159          normalized_behavior = self._normalize_behavior_values(behavior_vector)
+ 160          behavior_tensor = torch.tensor(normalized_behavior, dtype=torch.float32).unsqueeze(0)
+ 161          raw_magnitude = max((abs(float(v)) for v in behavior_vector), default=0.0)
+ 162  
+ 163          # Step 1 and 2: run the current AIS stack, then combine it with a
+ 164          # deterministic behavior-vector heuristic for integration tests.
+ 165          _, diagnostics = self.immune_system(
+ 166              behavior_tensor,
+ 167              enable_immunity=True,
+ 168              return_diagnostics=True,
+ 169          )
+ 170          diagnostics = diagnostics or {}
+ 171          known_match = self._known_threat_similarity(normalized_behavior)
+ 172          heuristic_score = max(raw_magnitude, known_match)
+ 173  
+ 174          innate_response = {
+ 175              &quot;is_threat&quot;: heuristic_score &gt;= 0.4,
+ 176              &quot;score&quot;: heuristic_score,
+ 177              &quot;diagnostics&quot;: diagnostics,
+ 178          }
+ 179          adaptive_response = {
+ 180              &quot;threat_level&quot;: heuristic_score,
+ 181              &quot;is_known_threat&quot;: known_match &gt;= 0.95,
+ 182              &quot;anomaly_score&quot;: heuristic_score,
+ 183              &quot;defection_detected&quot;: False,
+ 184              &quot;num_antibodies&quot;: 1 if known_match &gt;= 0.95 else 0,
+ 185              &quot;num_tcells&quot;: 0,
+ 186              &quot;antibodies_generated&quot;: 1 if known_match &gt;= 0.95 else 0,
+ 187          }
+ 188  
+ 189          # Step 3: Determine threat level
+ 190          threat_score = self._calculate_threat_score(
+ 191              innate_response, adaptive_response
+ 192          )
+ 193          severity = self._classify_severity(threat_score)
+ 194          threat_detected = severity.value &gt;= ThreatSeverity.MEDIUM.value
+ 195  
+ 196          # Step 4: Governance action
+ 197          if threat_detected and self.auto_enforce:
+ 198              governance_action = self._take_governance_action(
+ 199                  agent_id, severity, context
+ 200              )
+ 201          else:
+ 202              governance_action = &quot;monitor&quot; if threat_detected else &quot;allow&quot;
+ 203  
+ 204          # Step 5: AHES stress response
+ 205          ahes_stress = None
+ 206          if (
+ 207              self.bio_safety
+ 208              and self.enable_ahes
+ 209              and threat_detected
+ 210              and getattr(self.bio_safety, &quot;ahes&quot;, None)
+ 211          ):
+ 212              self.bio_safety.ahes.process_event(agent_id, &quot;threat_detected&quot;)
+ 213              state = self.bio_safety.ahes.get_state(agent_id)
+ 214              if state:
+ 215                  from ..ahes import Hormone
+ 216                  ahes_stress = state.levels.get(Hormone.CORTISOL, state.levels.get(list(state.levels.keys())[0])).level
+ 217  
+ 218          # Step 6: TELOS crossing block
+ 219          telos_blocked = False
+ 220          if self.bio_safety and self.enable_telos and severity.value &gt;= ThreatSeverity.HIGH.value:
+ 221              telos_blocked = True  # Block high-consequence crossings
+ 222  
+ 223          # Build report
+ 224          report = ThreatReport(
+ 225              agent_id=agent_id,
+ 226              threat_detected=threat_detected,
+ 227              severity=severity,
+ 228              threat_score=threat_score,
+ 229              threat_type=self._classify_threat_type(adaptive_response),
+ 230              innate_response={&quot;activated&quot;: innate_response[&quot;is_threat&quot;]},
+ 231              adaptive_response={
+ 232                  &quot;antibodies&quot;: adaptive_response.get(&quot;num_antibodies&quot;, 0),
+ 233                  &quot;t_cells&quot;: adaptive_response.get(&quot;num_tcells&quot;, 0)
+ 234              },
+ 235              governance_action=governance_action,
+ 236              quarantine_recommended=severity.value &gt;= ThreatSeverity.HIGH.value,
+ 237              antibodies_generated=adaptive_response.get(&quot;antibodies_generated&quot;, 0),
+ 238              immune_memory_updated=True,
+ 239              ahes_stress_level=ahes_stress,
+ 240              telos_crossing_blocked=telos_blocked
+ 241          )
+ 242  
+ 243          if threat_detected:
+ 244              self.threats_detected += 1
+ 245  
+ 246          log.info(&quot;behavior_scanned&quot;,
+ 247                   agent_id=agent_id,
+ 248                   threat_detected=threat_detected,
+ 249                   severity=severity.name,
+ 250                   action=governance_action)
+ 251  
+ 252          return report</pre></div>
+  </div>
+</body>
+</html>

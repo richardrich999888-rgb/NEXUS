@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-3 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-3</h1>
+    <div class="subtitle">Advantages, capabilities, and competencies</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-3</h1>
+<p>Advantages, capabilities, and competencies</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Advantages, Capabilities, and Competencies</h1>
+<h2>Company Identification Details</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Legal Entity Name</td><td>Syntriass Labs Private Limited</td></tr><tr><td>CIN</td><td>U62011AP2025PTC120239</td></tr><tr><td>PAN</td><td>ABQCS7152R</td></tr><tr><td>TAN</td><td>VPNS31351F</td></tr><tr><td>Registered Office</td><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td></tr><tr><td>Contact Email</td><td>kattanaga5555@gmail.com</td></tr><tr><td>Contact Phone</td><td>+91 88864 68060</td></tr><tr><td>Submission Date</td><td>17 May 2026</td></tr></tbody></table>
+<h2>Mandatory Defence Problem Fit</h2>
+<ul>
+<li>Addresses rogue, spoofed, degraded, or compromised participants in defence swarms.</li>
+<li>Provides machine-speed trust scoring without requiring continuous central command connectivity.</li>
+<li>Uses identity verification, signed threat reports, reputation decay, defection severity, and threat memory.</li>
+<li>Supports peer-to-peer threat propagation through gossip-style message handling.</li>
+<li>Provides graded response: observe, reduce cooperation, increase caution, warn, isolate, and revalidate.</li>
+<li>Produces source-level and test-level evidence for evaluator review.</li>
+<li>Fits drone swarms, ground robot teams, unmanned sensor meshes, ISR agent networks, and simulation-based autonomy assurance.</li>
+</ul>
+<h2>A. Technology Advantages</h2>
+<ul>
+<li>Combines signed identity, reputation, threat memory, defection scoring, and quarantine logic in one swarm-integrity layer.</li>
+<li>Uses bounded reputation scores that decay over time instead of permanent trust.</li>
+<li>Uses signed threat reports to bind reporter, pattern, confidence, timestamp, and signature.</li>
+<li>Detects multiple defection classes: missed heartbeats, contradiction, invalid signatures, false threat reports, constraint violation, and identity abuse.</li>
+<li>Supports distributed threat sharing when command links are degraded or unavailable.</li>
+<li>Provides deterministic test evidence for identity, reputation, defection, threat propagation, and integration behavior.</li>
+</ul>
+<h2>B. Product Advantages</h2>
+<ul>
+<li>Can be delivered as a swarm simulation tool, Rust SDK, command dashboard, or integration layer.</li>
+<li>Allows defence evaluators to inject compromised-node scenarios and observe isolation decisions.</li>
+<li>Provides a clear reviewer trail from problem statement to source files to test output.</li>
+<li>Supports scenario-specific thresholds for mission type, swarm size, environment, and acceptable false-positive rate.</li>
+<li>Can integrate with robotics middleware, simulation environments, and NEXUS Guard protected-action control.</li>
+</ul>
+<h2>C. Commercial Advantages</h2>
+<ul>
+<li>Dual-use relevance for industrial robotics, autonomous inspection fleets, warehouse robots, critical-infrastructure sensor meshes, telecom edge networks, and multi-agent cybersecurity systems.</li>
+<li>Product lines can include swarm-integrity SDK, fleet trust dashboard, compromised-node simulation toolkit, and audit evidence exporter.</li>
+<li>Sovereign deployment is possible because core detection and evidence workflows can run locally.</li>
+<li>Supports customers that need continuous trust scoring across many autonomous or semi-autonomous nodes.</li>
+<li>Creates reusable trust infrastructure rather than a single hard-coded drone application.</li>
+</ul>
+<h2>D. Capabilities and Competencies</h2>
+<ul>
+<li>Rust implementation of distributed immune protocol components under <code>multi-asi-immune</code>.</li>
+<li>Code-level implementation of node identity, signed threat reports, threat memory, reputation scoring, defection tracking, protocol messages, and node health.</li>
+<li>Test coverage across identity, reputation, defection, threat propagation, and integration flows.</li>
+<li>Ability to convert defence problem statements into evidence-mapped architecture documents.</li>
+<li>Ability to produce iDEX-ready evidence annexures with repository locations, artifact locations, screenshots, and fresh test output.</li>
+<li>Experience preparing conservative readiness language for defence evaluation: software subsystem TRL 3-4, simulation evidence now, hardware-in-loop validation proposed.</li>
+</ul>
+<h2>E. Evidence Summary</h2>
+<table><thead><tr><th>Evidence Item</th><th>Repository Location</th></tr></thead><tbody><tr><td>Core source module</td><td><code>multi-asi-immune/src/</code></td></tr><tr><td>Identity tests</td><td><code>multi-asi-immune/tests/identity_tests.rs</code></td></tr><tr><td>Reputation tests</td><td><code>multi-asi-immune/tests/reputation_tests.rs</code></td></tr><tr><td>Defection tests</td><td><code>multi-asi-immune/tests/defection_tests.rs</code></td></tr><tr><td>Threat propagation tests</td><td><code>multi-asi-immune/tests/threat_propagation_tests.rs</code></td></tr><tr><td>Integration tests</td><td><code>multi-asi-immune/tests/integration_tests.rs</code></td></tr><tr><td>Fresh test output</td><td><code>docs/idex-open-challenge-2026/02-bioshield-swarm/final_4_documents/evidence_assets/bioshield_swarm_test_output.txt</code></td></tr></tbody></table>
+<h2>F. Readiness Caveat</h2>
+<p>BioShield Swarm is submitted as a software-subsystem prototype. It has source and test evidence, but does not claim physical drone hardware validation, tactical radio validation, EW range testing, or operational deployment. Those are proposed iDEX prototype validation activities.</p>
+  </main>
+</body>
+</html>

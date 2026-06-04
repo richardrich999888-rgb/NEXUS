@@ -26,7 +26,7 @@ The pre-submission suite validates the execution guard, PQC activation path, RTO
 | --- | --- | --- |
 | Execution guard red team | `cargo test -p nexus-executor --test red_team_execution -- --nocapture` | PASS, 10/10 |
 | Homeostasis engine | `cargo test -p homeostasis-engine -- --nocapture` | PASS, 57/57 |
-| Multi-ASI immune | `cargo test -p multi-asi-immune -- --nocapture` | PASS, 68/68, 1 ignored doctest |
+| Multi-ASI immune | `cargo test -p multi-asi-immune --lib --tests -- --nocapture` | PASS, 68/68 library and integration tests; doctest not used as gate |
 | TELOS protocol | `cargo test -p telos-protocol --lib -- --nocapture` | PASS, 50/50 |
 | PQC path | `cargo test -p nexus-pcu --features pqc pqc -- --nocapture` | PASS, 7/7 |
 | RTOS core | `cargo test -p nexus-rtos-core -- --nocapture` | PASS, 4/4 |

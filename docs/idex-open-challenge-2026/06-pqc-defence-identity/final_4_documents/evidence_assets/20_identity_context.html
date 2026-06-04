@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">PQC Defence Identity Evidence Screenshot</div>
+    <h1>Embedded Identity Context</h1>
+    <div class="subtitle">PCU identity carries principal, capabilities, delegation, expiry, and signature.</div>
+    <div class="body"><pre> 302  /// Complete identity context for a computation
+ 303  /// 
+ 304  /// Key insight: This is embedded IN the PCU, not checked externally.
+ 305  /// The computation carries proof of authorization.
+ 306  #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+ 307  pub struct IdentityContext {
+ 308      /// Who requested this computation
+ 309      pub principal: PrincipalId,
+ 310      
+ 311      /// What permissions they have (capability-based)
+ 312      pub capabilities: CapabilitySet,
+ 313      
+ 314      /// Delegation chain (if acting on behalf of another)
+ 315      pub delegation: Option&lt;DelegationChain&gt;,
+ 316      
+ 317      /// Expiry (computation becomes invalid after this)
+ 318      pub valid_until: Timestamp,
+ 319      
+ 320      /// Signature proving identity owns this context
+ 321      pub signature: Vec&lt;u8&gt;,
+ 322  }
+ 323  
+ 324  impl IdentityContext {
+ 325      /// Create new identity context (needs to be signed afterwards)
+ 326      pub fn new(principal: PrincipalId, capabilities: CapabilitySet) -&gt; Self {
+ 327          IdentityContext {
+ 328              principal,
+ 329              capabilities,
+ 330              delegation: None,
+ 331              valid_until: crate::now() + 3600_000, // 1 hour default
+ 332              signature: Vec::new(),
+ 333          }
+ 334      }
+ 335  
+ 336      /// Create with delegation
+ 337      pub fn with_delegation(mut self, chain: DelegationChain) -&gt; Self {
+ 338          self.delegation = Some(chain);
+ 339          self
+ 340      }
+ 341  
+ 342      /// Create with custom expiry
+ 343      pub fn with_expiry(mut self, valid_until: Timestamp) -&gt; Self {
+ 344          self.valid_until = valid_until;
+ 345          self
+ 346      }
+ 347  
+ 348      /// Check if still valid
+ 349      pub fn is_valid(&amp;self) -&gt; bool {
+ 350          let now = crate::now();
+ 351          
+ 352          // Check expiry
+ 353          if now &gt;= self.valid_until {
+ 354              return false;
+ 355          }
+ 356          
+ 357          // Check delegation chain if present
+ 358          if let Some(ref chain) = self.delegation {
+ 359              if !chain.is_valid(now) {
+ 360                  return false;
+ 361              }
+ 362              // If delegated, the context principal must be the final delegatee in the chain
+ 363              if let Some(final_delegatee) = chain.final_delegatee() {
+ 364                  if self.principal != final_delegatee {
+ 365                      return false;
+ 366                  }
+ 367              }
+ 368          }
+ 369          
+ 370          // Check signature
+ 371          if !self.verify() {
+ 372              return false;
+ 373          }
+ 374  
+ 375          true
+ 376      }
+ 377  
+ 378      /// Verify signature of the context
+ 379      pub fn verify(&amp;self) -&gt; bool {
+ 380          let public_key_bytes = self.principal.as_bytes();
+ 381          let verifying_key = match VerifyingKey::from_bytes(public_key_bytes) {
+ 382              Ok(k) =&gt; k,
+ 383              Err(_) =&gt; return false,
+ 384          };
+ 385  
+ 386          let signature = match Signature::from_slice(&amp;self.signature) {
+ 387              Ok(s) =&gt; s,
+ 388              Err(_) =&gt; return false,
+ 389          };
+ 390  
+ 391          let data = self.signing_data();
+ 392          verifying_key.verify(&amp;data, &amp;signature).is_ok()
+ 393      }
+ 394  
+ 395      /// Sign the identity context
+ 396      pub fn sign(&amp;mut self, signing_key: &amp;SigningKey) -&gt; Result&lt;(), String&gt; {
+ 397          if signing_key.verifying_key().to_bytes() != *self.principal.as_bytes() {
+ 398              return Err(&quot;Signing key does not match principal PrincipalId&quot;.to_string());
+ 399          }
+ 400  
+ 401          let data = self.signing_data();
+ 402          let signature = signing_key.sign(&amp;data);
+ 403          self.signature = signature.to_bytes().to_vec();
+ 404          Ok(())
+ 405      }
+ 406  
+ 407      fn signing_data(&amp;self) -&gt; Vec&lt;u8&gt; {
+ 408          let mut data = Vec::new();
+ 409          data.extend_from_slice(self.principal.as_bytes());
+ 410          // Use bincode for stable serialization of complex types
+ 411          if let Ok(ser) = bincode::serialize(&amp;(&amp;self.capabilities, &amp;self.delegation, self.valid_until)) {
+ 412              data.extend_from_slice(&amp;ser);
+ 413          }
+ 414          data
+ 415      }
+ 416  
+ 417      /// Check if identity permits an action
+ 418      pub fn permits(&amp;self, resource: &amp;str, action: &amp;str) -&gt; bool {
+ 419          self.is_valid() &amp;&amp; self.capabilities.permits(resource, action)
+ 420      }</pre></div>
+  </div>
+</body>
+</html>

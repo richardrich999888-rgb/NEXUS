@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AGP-OS Robotics Evidence Screenshot</div>
+    <h1>Velocity Cap and Emergency Stop</h1>
+    <div class="subtitle">Velocity commands are capped and emergency stop publishes zero velocity.</div>
+    <div class="body"><pre>  84      def validate_velocity(self, linear: float, angular: float) -&gt; Dict:
+  85          &quot;&quot;&quot;Validate and cap velocity commands&quot;&quot;&quot;
+  86          capped = False
+  87          
+  88          if abs(linear) &gt; self.config.max_velocity:
+  89              linear = self.config.max_velocity if linear &gt; 0 else -self.config.max_velocity
+  90              capped = True
+  91          
+  92          if abs(angular) &gt; self.config.max_angular:
+  93              angular = self.config.max_angular if angular &gt; 0 else -self.config.max_angular
+  94              capped = True
+  95          
+  96          if capped:
+  97              logger.warning(&quot;velocity_capped&quot;, linear=linear, angular=angular)
+  98          
+  99          return {&quot;linear&quot;: linear, &quot;angular&quot;: angular, &quot;capped&quot;: capped}
+ 100      
+ 101      def _trigger_emergency_stop(self, reason: str):
+ 102          &quot;&quot;&quot;Trigger emergency stop&quot;&quot;&quot;
+ 103          self.emergency_stop_triggered = True
+ 104          logger.error(&quot;emergency_stop_triggered&quot;, reason=reason)
+ 105          
+ 106          if self.on_emergency_stop:
+ 107              self.on_emergency_stop(reason)
+ 108      
+ 109      def reset(self):
+ 110          &quot;&quot;&quot;Reset emergency stop state&quot;&quot;&quot;
+ 111          self.emergency_stop_triggered = False
+ 112          self.last_heartbeat = time.time()
+ 113          logger.info(&quot;watchdog_reset&quot;)
+
+ 185      def publish_velocity(self, topic: str, linear_x: float, angular_z: float) -&gt; Dict:
+ 186          &quot;&quot;&quot;Publish velocity command with safety validation&quot;&quot;&quot;
+ 187          # Watchdog check
+ 188          if not self.watchdog.check():
+ 189              return {&quot;status&quot;: &quot;blocked&quot;, &quot;reason&quot;: &quot;Emergency stop active&quot;}
+ 190          
+ 191          # Validate velocity
+ 192          validated = self.watchdog.validate_velocity(linear_x, angular_z)
+ 193          
+ 194          if self.simulation_mode:
+ 195              cmd = {
+ 196                  &quot;linear&quot;: {&quot;x&quot;: validated[&quot;linear&quot;], &quot;y&quot;: 0.0, &quot;z&quot;: 0.0},
+ 197                  &quot;angular&quot;: {&quot;x&quot;: 0.0, &quot;y&quot;: 0.0, &quot;z&quot;: validated[&quot;angular&quot;]}
+ 198              }
+ 199              result = self.sim_bridge.publish(topic, cmd)
+ 200              self.watchdog.heartbeat()
+ 201              return {**result, &quot;capped&quot;: validated[&quot;capped&quot;]}
+ 202          
+ 203          # Real ROS2 publish
+ 204          if topic not in self.publishers:
+ 205              return {&quot;status&quot;: &quot;error&quot;, &quot;reason&quot;: &quot;Publisher not found&quot;}
+ 206          
+ 207          msg = Twist()
+ 208          msg.linear.x = validated[&quot;linear&quot;]
+ 209          msg.angular.z = validated[&quot;angular&quot;]
+ 210          
+ 211          self.publishers[topic].publish(msg)
+ 212          self.watchdog.heartbeat()
+ 213          
+ 214          return {&quot;status&quot;: &quot;published&quot;, &quot;capped&quot;: validated[&quot;capped&quot;]}
+ 215      
+ 216      def emergency_stop(self, topic: str) -&gt; Dict:
+ 217          &quot;&quot;&quot;Send emergency stop (zero velocity)&quot;&quot;&quot;
+ 218          logger.warning(&quot;emergency_stop_commanded&quot;, topic=topic)
+ 219          return self.publish_velocity(topic, 0.0, 0.0)</pre></div>
+  </div>
+</body>
+</html>

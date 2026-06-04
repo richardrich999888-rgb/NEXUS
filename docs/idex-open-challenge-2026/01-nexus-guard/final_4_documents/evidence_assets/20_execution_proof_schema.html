@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body {
+      position: relative;
+      z-index: 2;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note {
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .repo .note strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">NEXUS Guard Evidence Screenshot</div>
+    <h1>Execution Proof Schema</h1>
+    <div class="subtitle">Allowed executions carry PCU hash, input hashes, output hash, identity hash, node ID, and attestation.</div>
+    <div class="body"><pre>  90  /// Proof of correct execution.
+  91  #[derive(Debug, Clone, Serialize, Deserialize)]
+  92  pub struct ExecutionProof {
+  93      /// Hash of the PCU code executed.
+  94      pub pcu_hash: ContentHash,
+  95      /// Hashes of the inputs used for execution.
+  96      pub input_hashes: Vec&lt;ContentHash&gt;,
+  97      /// Hash of the execution output.
+  98      pub output_hash: ContentHash,
+  99      /// Hash of the identity context used.
+ 100      pub identity_hash: ContentHash,
+ 101      /// ID of the node that performed the execution.
+ 102      pub executor_node: NodeId,
+ 103      /// Unix timestamp of execution.
+ 104      pub executed_at: u64,
+ 105      /// Duration of execution in milliseconds.
+ 106      pub duration_ms: u64,
+ 107      /// Fuel consumed during execution.
+ 108      pub fuel_consumed: u64,
+ 109      /// Peak memory usage in bytes.
+ 110      pub peak_memory: usize,
+ 111      /// Node attestation (signature + optional TEE quote).
+ 112      pub attestation: NodeAttestation,
+ 113  }
+ 114  
+ 115  impl ExecutionProof {
+ 116      /// Create a new execution proof.
+ 117      pub fn create(
+ 118          pcu: &amp;PCU,
+ 119          inputs: &amp;[(ContentHash, Vec&lt;u8&gt;)],
+ 120          result: &amp;ExecutionResult,
+ 121          identity: &amp;IdentityContext,
+ 122          node_key: &amp;SigningKey,
+ 123      ) -&gt; Self {
+ 124          let pcu_hash = pcu.content_hash();
+ 125          let input_hashes: Vec&lt;_&gt; = inputs.iter().map(|(h, _)| *h).collect();
+ 126          let identity_hash = identity.content_hash();
+ 127          let executor_node = NodeId::from_verifying_key(&amp;node_key.verifying_key());
+ 128  
+ 129          let executed_at = SystemTime::now()
+ 130              .duration_since(UNIX_EPOCH)
+ 131              .unwrap_or(std::time::Duration::ZERO)
+ 132              .as_secs();
+ 133  
+ 134          let mut proof = Self {
+ 135              pcu_hash,
+ 136              input_hashes,
+ 137              output_hash: result.output_hash,
+ 138              identity_hash,
+ 139              executor_node,
+ 140              executed_at,
+ 141              duration_ms: result.duration.as_millis() as u64,
+ 142              fuel_consumed: result.fuel_consumed,
+ 143              peak_memory: result.peak_memory,
+ 144              attestation: NodeAttestation::new(node_key.verifying_key().to_bytes()),
+ 145          };
+ 146  
+ 147          let signing_bytes = proof.signing_bytes();
+ 148          proof.attestation.signature = node_key.sign(&amp;signing_bytes);
+ 149  
+ 150          proof
+ 151      }
+ 152  
+ 153      /// Get the bytes to be signed for this proof.
+ 154      pub fn signing_bytes(&amp;self) -&gt; Vec&lt;u8&gt; {
+ 155          let mut bytes = Vec::with_capacity(256);
+ 156          bytes.extend_from_slice(self.pcu_hash.as_bytes());
+ 157          bytes.extend_from_slice(&amp;(self.input_hashes.len() as u32).to_le_bytes());
+ 158          for hash in &amp;self.input_hashes {
+ 159              bytes.extend_from_slice(hash.as_bytes());
+ 160          }
+ 161          bytes.extend_from_slice(self.output_hash.as_bytes());
+ 162          bytes.extend_from_slice(self.identity_hash.as_bytes());
+ 163          bytes.extend_from_slice(&amp;self.executor_node.0);
+ 164          bytes.extend_from_slice(&amp;self.executed_at.to_le_bytes());
+ 165          bytes.extend_from_slice(&amp;self.duration_ms.to_le_bytes());
+ 166          bytes.extend_from_slice(&amp;self.fuel_consumed.to_le_bytes());
+ 167          bytes.extend_from_slice(&amp;(self.peak_memory as u64).to_le_bytes());
+ 168          bytes.extend_from_slice(&amp;self.attestation.node_pubkey);
+ 169          bytes
+ 170      }
+ 171  
+ 172      /// Verify the proof signature.
+ 173      pub fn verify(&amp;self) -&gt; Result&lt;(), ProofError&gt; {
+ 174          let signing_bytes = self.signing_bytes();
+ 175          self.attestation
+ 176              .verify(&amp;signing_bytes)
+ 177              .map_err(|_| ProofError::InvalidSignature)
+ 178      }</pre></div>
+  </div>
+</body>
+</html>

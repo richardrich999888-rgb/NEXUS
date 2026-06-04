@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Counter, Set, and Map CRDTs</h1>
+    <div class="subtitle">Grow-only counter, PN counter, observed-remove set, and last-writer map are implemented.</div>
+    <div class="body"><pre> 172  #[derive(Clone, Debug, Serialize, Deserialize)]
+ 173  pub struct GCounter {
+ 174      counts: BTreeMap&lt;String, u64&gt;,
+ 175      node_id: String,
+ 176  }
+ 177  
+ 178  impl GCounter {
+ 179      pub fn new(node_id: String) -&gt; Self {
+ 180          let mut counts = BTreeMap::new();
+ 181          counts.insert(node_id.clone(), 0);
+ 182          Self { counts, node_id }
+ 183      }
+ 184  
+ 185      pub fn increment(&amp;mut self, amount: u64) {
+ 186          *self.counts.entry(self.node_id.clone()).or_insert(0) += amount;
+ 187      }
+ 188  
+ 189      pub fn value(&amp;self) -&gt; u64 {
+ 190          self.counts.values().sum()
+ 191      }
+ 192  
+ 193      pub fn merge(&amp;mut self, other: &amp;GCounter) {
+ 194          for (node, count) in &amp;other.counts {
+ 195              self.counts
+ 196                  .entry(node.clone())
+ 197                  .and_modify(|c| *c = (*c).max(*count))
+ 198                  .or_insert(*count);
+ 199          }
+ 200      }
+ 201  
+ 202      pub fn get_breakdown(&amp;self) -&gt; BTreeMap&lt;String, u64&gt; {
+ 203          self.counts.clone()
+ 204      }
+ 205  }
+ 206  
+ 207  // ============================================================================
+ 208  // PN-COUNTER CRDT: Positive-Negative counter
+ 209  // ============================================================================
+ 210  
+ 211  #[derive(Clone, Debug, Serialize, Deserialize)]
+ 212  pub struct PNCounter {
+ 213      positive: GCounter,
+ 214      negative: GCounter,
+ 215  }
+ 216  
+ 217  impl PNCounter {
+ 218      pub fn new(node_id: String) -&gt; Self {
+ 219          Self {
+ 220              positive: GCounter::new(node_id.clone()),
+ 221              negative: GCounter::new(node_id),
+ 222          }
+ 223      }
+ 224  
+ 225      pub fn increment(&amp;mut self, amount: u64) {
+ 226          self.positive.increment(amount);
+ 227      }
+ 228  
+ 229      pub fn decrement(&amp;mut self, amount: u64) {
+ 230          self.negative.increment(amount);
+ 231      }
+ 232  
+ 233      pub fn value(&amp;self) -&gt; i64 {
+ 234          self.positive.value() as i64 - self.negative.value() as i64
+ 235      }
+ 236  
+ 237      pub fn merge(&amp;mut self, other: &amp;PNCounter) {
+ 238          self.positive.merge(&amp;other.positive);
+ 239          self.negative.merge(&amp;other.negative);
+ 240      }
+
+ 287  // ============================================================================
+ 288  // OR-SET CRDT: Observed-Remove Set (add-wins)
+ 289  // ============================================================================
+ 290  
+ 291  #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Hash, PartialOrd, Ord)]
+ 292  pub struct ElementId {
+ 293      pub value_hash: String,
+ 294      pub timestamp: u64,
+ 295      pub node_id: String,
+ 296  }
+ 297  
+ 298  #[derive(Clone, Debug, Serialize, Deserialize)]
+ 299  pub struct ORSet&lt;T: Clone + Serialize&gt; {
+ 300      elements: HashMap&lt;String, BTreeSet&lt;ElementId&gt;&gt;,
+ 301      removed: BTreeSet&lt;ElementId&gt;,
+ 302      node_id: String,
+ 303      _phantom: std::marker::PhantomData&lt;T&gt;,
+ 304  }
+ 305  
+ 306  impl&lt;T: Clone + Serialize&gt; ORSet&lt;T&gt; {
+ 307      pub fn new(node_id: String) -&gt; Self {
+ 308          Self {
+ 309              elements: HashMap::new(),
+ 310              removed: BTreeSet::new(),
+ 311              node_id,
+ 312              _phantom: std::marker::PhantomData,
+ 313          }
+ 314      }
+ 315  
+ 316      pub fn add(&amp;mut self, value: T) -&gt; ElementId {
+ 317          let value_hash = Self::hash_value(&amp;value);
+ 318          let timestamp = std::time::SystemTime::now()
+ 319              .duration_since(std::time::UNIX_EPOCH)
+ 320              .unwrap()
+ 321              .as_micros() as u64;
+ 322  
+ 323          let element_id = ElementId {
+ 324              value_hash: value_hash.clone(),
+ 325              timestamp,
+ 326              node_id: self.node_id.clone(),
+ 327          };
+ 328  
+ 329          self.elements
+ 330              .entry(value_hash)
+ 331              .or_insert_with(BTreeSet::new)
+ 332              .insert(element_id.clone());
+ 333  
+ 334          element_id
+ 335      }
+ 336  
+ 337      pub fn remove(&amp;mut self, value: &amp;T) {
+ 338          let value_hash = Self::hash_value(value);
+ 339          
+ 340          if let Some(element_ids) = self.elements.get(&amp;value_hash) {
+ 341              for id in element_ids {
+ 342                  self.removed.insert(id.clone());
+ 343              }
+ 344          }
+ 345      }
+ 346  
+ 347      pub fn contains(&amp;self, value: &amp;T) -&gt; bool {
+ 348          let value_hash = Self::hash_value(value);
+ 349          
+ 350          if let Some(element_ids) = self.elements.get(&amp;value_hash) {
+ 351              element_ids.iter().any(|id| !self.removed.contains(id))
+ 352          } else {
+ 353              false
+ 354          }
+ 355      }
+ 356  
+ 357      pub fn elements(&amp;self) -&gt; Vec&lt;String&gt; {
+ 358          self.elements
+ 359              .iter()
+ 360              .filter(|(_, ids)| ids.iter().any(|id| !self.removed.contains(id)))
+ 361              .map(|(value_hash, _)| value_hash.clone())
+ 362              .collect()
+ 363      }
+ 364  
+ 365      pub fn merge(&amp;mut self, other: &amp;ORSet&lt;T&gt;) {
+ 366          for (value_hash, ids) in &amp;other.elements {
+ 367              self.elements
+ 368                  .entry(value_hash.clone())
+ 369                  .or_insert_with(BTreeSet::new)
+ 370                  .extend(ids.clone());
+ 371          }
+ 372          self.removed.extend(other.removed.clone());
+ 373      }
+ 374  
+ 375      fn hash_value(value: &amp;T) -&gt; String {
+ 376          let json = serde_json::to_string(value).unwrap();
+ 377          let mut hasher = Sha256::new();
+ 378          hasher.update(json.as_bytes());
+ 379          format!(&quot;{:x}&quot;, hasher.finalize())
+ 380      }
+ 381  }
+ 382  
+ 383  // ============================================================================
+ 384  // LWW-MAP CRDT: Last-Write-Wins Map
+ 385  // ============================================================================
+ 386  
+ 387  #[derive(Clone, Debug, Serialize, Deserialize)]
+ 388  pub struct LWWMap&lt;K: Clone + Eq + std::hash::Hash, V: Clone&gt; {
+ 389      entries: HashMap&lt;K, LWWRegister&lt;Option&lt;V&gt;&gt;&gt;,
+ 390      node_id: String,
+ 391  }
+ 392  
+ 393  impl&lt;K: Clone + Eq + std::hash::Hash, V: Clone&gt; LWWMap&lt;K, V&gt; {
+ 394      pub fn new(node_id: String) -&gt; Self {
+ 395          Self {
+ 396              entries: HashMap::new(),
+ 397              node_id,
+ 398          }
+ 399      }
+ 400  
+ 401      pub fn insert(&amp;mut self, key: K, value: V) {
+ 402          let register = self.entries
+ 403              .entry(key)
+ 404              .or_insert_with(|| LWWRegister::new(None, self.node_id.clone()));
+ 405          register.set(Some(value));
+ 406      }
+ 407  
+ 408      pub fn remove(&amp;mut self, key: &amp;K) {
+ 409          if let Some(register) = self.entries.get_mut(key) {
+ 410              register.set(None);
+ 411          }
+ 412      }
+ 413  
+ 414      pub fn get(&amp;self, key: &amp;K) -&gt; Option&lt;&amp;V&gt; {
+ 415          self.entries.get(key).and_then(|reg| reg.get().as_ref())
+ 416      }
+ 417  
+ 418      pub fn iter(&amp;self) -&gt; impl Iterator&lt;Item = (&amp;K, &amp;V)&gt; {
+ 419          self.entries.iter().filter_map(|(k, reg)| {
+ 420              reg.get().as_ref().map(|v| (k, v))
+ 421          })
+ 422      }
+ 423  
+ 424      pub fn merge(&amp;mut self, other: &amp;LWWMap&lt;K, V&gt;) {
+ 425          for (key, other_register) in &amp;other.entries {
+ 426              let register = self.entries
+ 427                  .entry(key.clone())
+ 428                  .or_insert_with(|| LWWRegister::new(None, self.node_id.clone()));
+ 429              register.merge(other_register);
+ 430          }
+ 431      }</pre></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AURA Trust Evidence Screenshot</div>
+    <h1>ETK Offline Verifier</h1>
+    <div class="subtitle">Verifier performs schema, signature, chain, time, policy, and outcome checks offline.</div>
+    <div class="body"><pre>  48              VerifierError::E3HashChainBroken =&gt; VerifierErrorCode::E3HashChainBroken,
+  49              VerifierError::E4PolicyReferenceInvalid =&gt; VerifierErrorCode::E4PolicyReferenceInvalid,
+  50              VerifierError::E5TemporalAnomaly =&gt; VerifierErrorCode::E5TemporalAnomaly,
+  51              VerifierError::E6ExecutionIncomplete =&gt; VerifierErrorCode::E6ExecutionIncomplete,
+  52          }
+  53      }
+  54  }
+  55  
+  56  /// Policy snapshot resolver: given policy_ref, return policy blob if valid.
+  57  /// Verifier hashes blob and checks hash == policy_ref. Caller provides resolution (e.g. file, store).
+  58  pub type PolicyResolver = dyn Fn(Hash256) -&gt; Option&lt;Vec&lt;u8&gt;&gt;;
+  59  
+  60  /// Verify ExecutionProof and event stream. Offline; no API calls.
+  61  /// Events may be in any order; verifier sorts by sequence_number and validates chain.
+  62  pub fn verify(
+  63      proof: &amp;ExecutionProofV1,
+  64      events: &amp;[ExecutionEventV1],
+  65      policy_resolver: &amp;PolicyResolver,
+  66      verifier_pubkey: &amp;VerifyingKey,
+  67      tolerance_ms: u64,
+  68  ) -&gt; Result&lt;Verdict, VerifierError&gt; {
+  69      // Phase 1: Schema &amp; version
+  70      if events.is_empty() {
+  71          return Err(VerifierError::E6ExecutionIncomplete);
+  72      }
+  73  
+  74      let mut events_sorted: Vec&lt;_&gt; = events.to_vec();
+  75      events_sorted.sort_by_key(|e| e.sequence_number);
+  76  
+  77      for ev in &amp;events_sorted {
+  78          if ev.compute_event_id() != ev.event_id {
+  79              return Err(VerifierError::E1SchemaViolation(SchemaError::EventIdMismatch));
+  80          }
+  81      }
+  82  
+  83      // Phase 2: Signature
+  84      let signing_bytes = proof.to_signing_bytes();
+  85      let sig = Signature::from_bytes(&amp;proof.verifier_signature);
+  86      verifier_pubkey
+  87          .verify(&amp;signing_bytes, &amp;sig)
+  88          .map_err(|_| VerifierError::E2SignatureInvalid)?;
+  89  
+  90      // Phase 3: Execution consistency
+  91      let execution_id = proof.execution_id;
+  92      let policy_ref = proof.policy_ref;
+  93      let jurisdiction_code = proof.jurisdiction_code;
+  94  
+  95      for (i, ev) in events_sorted.iter().enumerate() {
+  96          if ev.execution_id != execution_id {
+  97              return Err(VerifierError::E3HashChainBroken);
+  98          }
+  99          if ev.policy_ref != policy_ref {
+ 100              return Err(VerifierError::E3HashChainBroken);
+ 101          }
+ 102          if ev.jurisdiction_code != jurisdiction_code {
+ 103              return Err(VerifierError::E3HashChainBroken);
+ 104          }
+ 105          if ev.sequence_number != i as u64 {
+ 106              return Err(VerifierError::E3HashChainBroken);
+ 107          }
+ 108      }
+ 109  
+ 110      // Phase 4: Hash chain
+ 111      for (i, ev) in events_sorted.iter().enumerate() {
+ 112          if i == 0 {
+ 113              if !ev.previous_event_hash.is_zero() {
+ 114                  return Err(VerifierError::E3HashChainBroken);
+ 115              }
+ 116          } else {
+ 117              let prev_id = events_sorted[i - 1].event_id;
+ 118              if ev.previous_event_hash != prev_id {
+ 119                  return Err(VerifierError::E3HashChainBroken);
+ 120              }
+ 121          }
+ 122      }
+ 123  
+ 124      let last = events_sorted.last().unwrap();
+ 125      if proof.event_chain_root != last.event_id {
+ 126          return Err(VerifierError::E3HashChainBroken);
+ 127      }
+ 128  
+ 129      // Phase 5: Temporal sanity (non-trusting)
+ 130      for i in 1..events_sorted.len() {
+ 131          if events_sorted[i].timestamp_utc &lt; events_sorted[i - 1].timestamp_utc {
+ 132              return Err(VerifierError::E5TemporalAnomaly);
+ 133          }
+ 134      }
+ 135      if proof.end_timestamp &lt; proof.start_timestamp {
+ 136          return Err(VerifierError::E5TemporalAnomaly);
+ 137      }
+ 138      let now_ms = std::time::SystemTime::now()
+ 139          .duration_since(std::time::UNIX_EPOCH)
+ 140          .map(|d| d.as_millis() as u64)</pre></div>
+  </div>
+</body>
+</html>

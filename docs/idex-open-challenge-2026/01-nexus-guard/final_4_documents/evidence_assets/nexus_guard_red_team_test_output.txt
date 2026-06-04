@@ -1,0 +1,179 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/vectra/vectra/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/richardrich/Desktop/NEXUS/nexus-executor/Cargo.toml
+workspace: /Users/richardrich/Desktop/NEXUS/Cargo.toml
+warning: unused import: `CausalId`
+ --> nexus-core/src/migration.rs:7:13
+  |
+7 | use crate::{CausalId, Result, NexusError};
+  |             ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `calculator` is never read
+   --> nexus-core/src/cost_optimizer.rs:383:5
+    |
+382 | pub struct WorkloadOptimizer {
+    |            ----------------- field in this struct
+383 |     calculator: CostCalculator,
+    |     ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `kubeconfig` and `namespace` are never read
+  --> nexus-core/src/migration.rs:93:5
+   |
+92 | pub struct KubernetesMigrator {
+   |            ------------------ fields in this struct
+93 |     kubeconfig: String,
+   |     ^^^^^^^^^^
+94 |     namespace: Option<String>,
+   |     ^^^^^^^^^
+
+warning: field `connection_string` is never read
+   --> nexus-core/src/migration.rs:204:5
+    |
+203 | pub struct PostgreSQLMigrator {
+    |            ------------------ field in this struct
+204 |     connection_string: String,
+    |     ^^^^^^^^^^^^^^^^^
+
+warning: field `brokers` is never read
+   --> nexus-core/src/migration.rs:267:5
+    |
+266 | pub struct KafkaMigrator {
+    |            ------------- field in this struct
+267 |     brokers: Vec<String>,
+    |     ^^^^^^^
+
+warning: `nexus-core` (lib) generated 5 warnings (run `cargo fix --lib -p nexus-core` to apply 1 suggestion)
+warning: unused import: `WasmModule`
+  --> nexus-pcu/src/invariants.rs:32:27
+   |
+32 |     use crate::pcu::{PCU, WasmModule};
+   |                           ^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::identity::IdentityContext`
+  --> nexus-pcu/src/invariants.rs:33:9
+   |
+33 |     use crate::identity::IdentityContext;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `nexus-pcu` (lib) generated 2 warnings (run `cargo fix --lib -p nexus-pcu` to apply 2 suggestions)
+warning: unused variable: `dt`
+   --> autonomic-system/src/mode/controller.rs:140:33
+    |
+140 |     fn tick_internal(&mut self, dt: f64) -> Option<ModeTransition> {
+    |                                 ^^ help: if this is intentional, prefix it with an underscore: `_dt`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `sender_key`
+   --> multi-asi-immune/src/node/state.rs:415:62
+    |
+415 |     fn process_accusation(&mut self, acc: AccusationMessage, sender_key: &PublicIdentity) -> ProcessResult {
+    |                                                              ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_sender_key`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `metric_names` is never read
+  --> multi-asi-immune/src/integration/homeostasis_bridge.rs:44:5
+   |
+40 | pub struct HomeostaticBridge {
+   |            ----------------- field in this struct
+...
+44 |     metric_names: HashMap<u32, String>,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `autonomic-system` (lib) generated 1 warning
+warning: `multi-asi-immune` (lib) generated 2 warnings
+warning: unused import: `error`
+ --> nexus-observability/src/metrics.rs:9:21
+  |
+9 | use tracing::{info, error};
+  |                     ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `Deserialize` and `Serialize`
+  --> nervous-system/src/integration/coordinator.rs:13:13
+   |
+13 | use serde::{Deserialize, Serialize};
+   |             ^^^^^^^^^^^  ^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `nexus-observability` (lib) generated 1 warning (run `cargo fix --lib -p nexus-observability` to apply 1 suggestion)
+warning: `nervous-system` (lib) generated 1 warning (run `cargo fix --lib -p nervous-system` to apply 1 suggestion)
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:18:5
+   |
+18 |     pub node_pubkey: [u8; 32],
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: the lint level is defined here
+  --> nexus-executor/src/lib.rs:69:9
+   |
+69 | #![warn(missing_docs)]
+   |         ^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:19:5
+   |
+19 |     pub signature: Signature,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:20:5
+   |
+20 |     pub tee_quote: Option<TeeQuote>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:59:5
+   |
+59 |     pub tee_type: TeeType,
+   |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:60:5
+   |
+60 |     pub quote: Vec<u8>,
+   |     ^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:61:5
+   |
+61 |     pub endorsements: Vec<u8>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+  --> nexus-executor/src/proof.rs:63:5
+   |
+63 |     pub report_data: Vec<u8>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `nexus-executor` (lib) generated 7 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.78s
+     Running tests/red_team_execution.rs (target/debug/deps/red_team_execution-0f244f3933e2a2d3)
+
+running 10 tests
+test red_team_guard_runs_before_wasm_validation ... ok
+test red_team_composite_second_guard_blocks_when_first_allows ... ok
+test red_team_production_blocks_infant ... ok
+test red_team_no_cache_after_block ... ok
+test red_team_composite_first_deny_wins ... ok
+test red_team_guard_receives_request_context ... ok
+test red_team_flood_requests_all_blocked ... ok
+test red_team_composite_guard_order_second_evaluated_when_first_allows ... ok
+test red_team_composite_guard_order_invariance ... ok
+test red_team_no_guard_baseline_succeeds ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+

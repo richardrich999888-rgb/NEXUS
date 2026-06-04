@@ -69,6 +69,11 @@ impl HomeostaticBridge {
     pub fn standard_metrics(&self) -> StandardMetrics {
         self.metrics
     }
+
+    /// Returns the canonical name for a standard metric ID.
+    pub fn metric_name(&self, metric_id: u32) -> Option<&str> {
+        self.metric_names.get(&metric_id).map(String::as_str)
+    }
     
     /// Generates safety constraints based on homeostatic policy.
     pub fn generate_safety_constraints(&self) -> Vec<MutualConstraint> {

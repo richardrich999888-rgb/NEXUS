@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Governance Result Gate</h1>
+    <div class="subtitle">Simulation succeeds only when high performers rank high and the high-risk actor ranks low.</div>
+    <div class="body"><pre> 276      def analyze_governance(self, rankings: List[Dict]):
+ 277          &quot;&quot;&quot;Analyze governance effectiveness&quot;&quot;&quot;
+ 278          print(f&quot;\n{'='*70}&quot;)
+ 279          print(&quot;GOVERNANCE ANALYSIS&quot;)
+ 280          print(f&quot;{'='*70}&quot;)
+ 281  
+ 282          # Check if high performers are ranked highly
+ 283          top_3 = [r[&quot;name&quot;] for r in rankings[:3]]
+ 284          expected_top = [&quot;Alpha&quot;, &quot;Beta&quot;, &quot;Epsilon&quot;, &quot;Theta&quot;, &quot;Kappa&quot;]  # High success rate agents
+ 285  
+ 286          matches = sum(1 for t in top_3 if t in expected_top)
+ 287          print(f&quot;✓ Top 3 alignment includes {matches}/3 expected high performers: {top_3}&quot;)
+ 288  
+ 289          # Check if malicious actor (Iota) is ranked low
+ 290          iota_rank = next((i+1 for i, r in enumerate(rankings) if r[&quot;name&quot;] == &quot;Iota&quot;), 0)
+ 291          if iota_rank &gt;= len(rankings) - 3:
+ 292              print(f&quot;✓ Malicious actor 'Iota' correctly ranked low: #{iota_rank}&quot;)
+ 293          else:
+ 294              print(f&quot;⚠️ Malicious actor 'Iota' not ranked low enough: #{iota_rank}&quot;)
+ 295  
+ 296          # Check anomaly detection
+ 297          anomalies = [r[&quot;name&quot;] for r in rankings if r[&quot;is_anomaly&quot;]]
+ 298          if anomalies:
+ 299              print(f&quot;⚠️ Anomalous agents detected: {anomalies}&quot;)
+ 300          else:
+ 301              print(f&quot;✓ No anomalous agents detected&quot;)
+ 302  
+ 303          # Privilege distribution
+ 304          privileges = {}
+ 305          for r in rankings:
+ 306              p = r[&quot;privilege&quot;]
+ 307              privileges[p] = privileges.get(p, 0) + 1
+ 308          print(f&quot;✓ Privilege distribution: {privileges}&quot;)
+ 309  
+ 310          # Health status distribution
+ 311          health_counts = {}
+ 312          for r in rankings:
+ 313              h = r[&quot;health&quot;]
+ 314              health_counts[h] = health_counts.get(h, 0) + 1
+ 315          print(f&quot;✓ Health distribution: {health_counts}&quot;)
+ 316  
+ 317          return matches &gt;= 2 and iota_rank &gt;= len(rankings) - 3
+ 318  
+ 319  
+ 320  async def main():
+ 321      print(&quot;=&quot; * 70)
+ 322      print(&quot;AGP-CORE MULTI-AGENT GOVERNANCE SIMULATION&quot;)
+ 323      print(&quot;=&quot; * 70)
+ 324      print(f&quot;Started at: {datetime.now().isoformat()}&quot;)
+ 325      print(f&quot;Agents: {len(AGENT_PROFILES)}&quot;)
+ 326      print(f&quot;Simulation: 5 rounds&quot;)
+ 327      random.seed(42)
+ 328  
+ 329      # Add knowledge to RAG
+ 330      add_knowledge(&quot;High dopamine indicates successful task completion&quot;, category=&quot;behavior&quot;)
+ 331      add_knowledge(&quot;Low cortisol correlates with better performance&quot;, category=&quot;health&quot;)
+ 332      add_knowledge(&quot;High oxytocin indicates collaborative behavior&quot;, category=&quot;social&quot;)
+ 333  
+ 334      # Create simulation
+ 335      sim = GovernanceSimulation()
+ 336      sim.create_agents(AGENT_PROFILES)
+ 337  
+ 338      # Run 5 rounds
+ 339      for round_num in range(1, 6):
+ 340          await sim.simulate_round(round_num)
+ 341  
+ 342          # Print intermediate status
+ 343          if round_num == 3:
+ 344              print(&quot;\n--- Mid-simulation checkpoint ---&quot;)
+ 345              rankings = sim.get_rankings()
+ 346              print(f&quot;Current leader: {rankings[0]['name']} (alignment: {rankings[0]['alignment']:.3f})&quot;)
+ 347  
+ 348      # Final analysis
+ 349      rankings = sim.get_rankings()
+ 350  
+ 351      sim.print_rankings(rankings)
+ 352      sim.print_hormone_analysis(rankings)
+ 353      governance_success = sim.analyze_governance(rankings)
+ 354  
+ 355      # Summary
+ 356      print(f&quot;\n{'='*70}&quot;)
+ 357      if governance_success:
+ 358          print(&quot;🎉 GOVERNANCE SIMULATION SUCCESSFUL!&quot;)
+ 359          print(&quot;AGP correctly identified and ranked agents by behavior&quot;)
+ 360      else:
+ 361          print(&quot;⚠️ GOVERNANCE NEEDS TUNING&quot;)
+ 362          print(&quot;Rankings don't fully match expected behavior patterns&quot;)
+ 363      print(f&quot;{'='*70}&quot;)
+ 364      print(f&quot;Completed at: {datetime.now().isoformat()}&quot;)
+ 365  
+ 366      if not governance_success:
+ 367          sys.exit(1)
+ 368  
+ 369  
+ 370  if __name__ == &quot;__main__&quot;:
+ 371      asyncio.run(main())</pre></div>
+  </div>
+</body>
+</html>

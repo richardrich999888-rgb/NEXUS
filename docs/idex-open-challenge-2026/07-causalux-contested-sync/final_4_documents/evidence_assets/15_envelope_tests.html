@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Envelope Access Tests</h1>
+    <div class="subtitle">Tests cover key derivation, seal/unseal, wrong-key rejection, and key revocation.</div>
+    <div class="body"><pre> 345      #[test]
+ 346      fn test_key_derivation() {
+ 347          let mut kd = KeyDerivation::from_passphrase(&quot;my-secret&quot;, &quot;doc123&quot;.to_string());
+ 348          
+ 349          let key1 = kd.derive_key(KeyScope::FullDocument, 0);
+ 350          let key2 = kd.derive_key(KeyScope::ReadOnly, 0);
+ 351          
+ 352          // Keys should be different
+ 353          assert_ne!(key1.key_bytes, key2.key_bytes);
+ 354          
+ 355          // Keys should be retrievable
+ 356          assert!(kd.get_key(&amp;key1.key_id).is_some());
+ 357      }
+ 358  
+ 359      #[test]
+ 360      fn test_seal_unseal() {
+ 361          let mut kd = KeyDerivation::from_passphrase(&quot;my-secret&quot;, &quot;doc123&quot;.to_string());
+ 362          let key = kd.derive_key(KeyScope::FullDocument, 0);
+ 363          
+ 364          let op = create_test_op();
+ 365          
+ 366          // Seal
+ 367          let envelope = SovereignEnvelope::seal(&amp;op, &amp;key, &quot;doc123&quot;.to_string()).unwrap();
+ 368          
+ 369          // Metadata should be visible
+ 370          assert_eq!(envelope.metadata.operation_id, op.id);
+ 371          
+ 372          // Unseal
+ 373          let decrypted = envelope.unseal(&amp;key).unwrap();
+ 374          assert_eq!(decrypted.id, op.id);
+ 375      }
+ 376  
+ 377      #[test]
+ 378      fn test_wrong_key() {
+ 379          let mut kd = KeyDerivation::from_passphrase(&quot;my-secret&quot;, &quot;doc123&quot;.to_string());
+ 380          let key1 = kd.derive_key(KeyScope::FullDocument, 0);
+ 381          let key2 = kd.derive_key(KeyScope::ReadOnly, 0);
+ 382          
+ 383          let op = create_test_op();
+ 384          let envelope = SovereignEnvelope::seal(&amp;op, &amp;key1, &quot;doc123&quot;.to_string()).unwrap();
+ 385          
+ 386          // Should fail with wrong key
+ 387          let result = envelope.unseal(&amp;key2);
+ 388          assert!(matches!(result, Err(EnvelopeError::WrongKey)));
+ 389      }
+ 390  
+ 391      #[test]
+ 392      fn test_key_revocation() {
+ 393          let mut kd = KeyDerivation::from_passphrase(&quot;my-secret&quot;, &quot;doc123&quot;.to_string());
+ 394          let key = kd.derive_key(KeyScope::FullDocument, 0);
+ 395          
+ 396          assert!(kd.get_key(&amp;key.key_id).is_some());
+ 397          
+ 398          kd.revoke_key(&amp;key.key_id);
+ 399          
+ 400          assert!(kd.get_key(&amp;key.key_id).is_none());
+ 401      }</pre></div>
+  </div>
+</body>
+</html>

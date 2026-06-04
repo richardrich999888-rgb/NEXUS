@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Hierarchical Sync Protocol</h1>
+    <div class="subtitle">Sync requests carry node ID, version vector, latest snapshot ID, and Merkle-root context.</div>
+    <div class="body"><pre>  10  /// Sync request sent to peer
+  11  #[derive(Clone, Debug, Serialize, Deserialize)]
+  12  pub struct SyncRequest {
+  13      pub node_id: String,
+  14      pub version_vector: VersionVector,
+  15      pub latest_snapshot_id: Option&lt;String&gt;,
+  16      pub merkle_root: String,
+  17  }
+  18  
+  19  /// Sync response from peer
+  20  #[derive(Clone, Debug, Serialize, Deserialize)]
+  21  pub struct SyncResponse {
+  22      pub common_snapshot: Option&lt;Snapshot&gt;,
+  23      pub snapshot_to_download: Option&lt;String&gt;,
+  24      pub operations_after_snapshot: Vec&lt;CausalOp&gt;,
+  25      pub total_operations: usize,
+  26      pub estimated_size_bytes: usize,
+  27  }
+  28  
+  29  /// Sync statistics
+  30  #[derive(Clone, Debug)]
+  31  pub struct SyncStats {
+  32      pub snapshot_downloaded: bool,
+  33      pub snapshot_size_bytes: usize,
+  34      pub operations_applied: usize,
+  35      pub operations_size_bytes: usize,
+  36      pub total_bytes: usize,
+  37      pub sync_duration: Duration,
+  38  }
+  39  
+  40  /// Bandwidth savings calculation
+  41  #[derive(Debug, Clone)]
+  42  pub struct SyncSavings {
+  43      pub full_replication_bytes: usize,
+  44      pub hierarchical_bytes: usize,
+  45      pub bytes_saved: usize,
+  46      pub savings_percent: f64,
+  47  }
+  48  
+  49  /// Sync strategy selection
+  50  #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+  51  pub enum SyncStrategy {
+  52      /// Short partition: just diff operations via Merkle tree
+  53      MerkleDiff,
+  54      /// Long partition: download snapshot + recent operations
+  55      Hierarchical,
+  56  }
+
+  80  /// Hierarchical sync protocol implementation
+  81  pub struct HierarchicalSync {
+  82      local_snapshots: Vec&lt;Snapshot&gt;,
+  83      local_operations: Vec&lt;CausalOp&gt;,
+  84      batch_size: usize,
+  85      compression_enabled: bool,
+  86  }
+  87  
+  88  impl HierarchicalSync {
+  89      pub fn new(batch_size: usize, compression_enabled: bool) -&gt; Self {
+  90          Self {
+  91              local_snapshots: vec![],
+  92              local_operations: vec![],
+  93              batch_size,
+  94              compression_enabled,
+  95          }
+  96      }
+  97  
+  98      /// Add a snapshot to local storage
+  99      pub fn add_snapshot(&amp;mut self, snapshot: Snapshot) {
+ 100          self.local_snapshots.push(snapshot);
+ 101      }
+ 102  
+ 103      /// Add operations to local storage
+ 104      pub fn add_operations(&amp;mut self, ops: Vec&lt;CausalOp&gt;) {
+ 105          self.local_operations.extend(ops);
+ 106      }
+ 107  
+ 108      /// Prepare sync request
+ 109      pub fn prepare_sync_request(
+ 110          &amp;self,
+ 111          node_id: String,
+ 112          version_vector: VersionVector,
+ 113          merkle_root: String,
+ 114      ) -&gt; SyncRequest {
+ 115          SyncRequest {
+ 116              node_id,
+ 117              version_vector,
+ 118              latest_snapshot_id: self.local_snapshots.last().map(|s| s.id.clone()),
+ 119              merkle_root,
+ 120          }
+ 121      }
+ 122  
+ 123      /// Handle incoming sync request
+ 124      pub fn handle_sync_request(&amp;self, request: SyncRequest) -&gt; SyncResponse {
+ 125          let common_snapshot = self.find_common_snapshot(&amp;request);
+ 126  
+ 127          if let Some(common) = common_snapshot {
+ 128              let ops_after = self.get_operations_after_snapshot(&amp;common.id);
+ 129              
+ 130              SyncResponse {
+ 131                  common_snapshot: Some(common.clone()),
+ 132                  snapshot_to_download: None,
+ 133                  operations_after_snapshot: ops_after.clone(),
+ 134                  total_operations: ops_after.len(),
+ 135                  estimated_size_bytes: self.estimate_size(&amp;ops_after),
+ 136              }
+ 137          } else {
+ 138              let latest = self.local_snapshots.last();
+ 139              let ops = if let Some(snap) = latest {
+ 140                  self.get_operations_after_snapshot(&amp;snap.id)
+ 141              } else {
+ 142                  self.local_operations.clone()
+ 143              };
+ 144  
+ 145              SyncResponse {
+ 146                  common_snapshot: None,
+ 147                  snapshot_to_download: latest.map(|s| s.id.clone()),
+ 148                  operations_after_snapshot: ops.clone(),
+ 149                  total_operations: ops.len(),
+ 150                  estimated_size_bytes: self.estimate_snapshot_size(latest) + self.estimate_size(&amp;ops),
+ 151              }
+ 152          }
+ 153      }
+ 154  
+ 155      /// Apply sync response
+ 156      pub fn apply_sync_response(
+ 157          &amp;mut self,
+ 158          response: SyncResponse,
+ 159          snapshot_data: Option&lt;Snapshot&gt;,
+ 160      ) -&gt; Result&lt;SyncStats, SyncError&gt; {</pre></div>
+  </div>
+</body>
+</html>

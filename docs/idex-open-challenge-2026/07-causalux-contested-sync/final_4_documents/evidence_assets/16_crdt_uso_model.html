@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>CRDT-Backed USO Model</h1>
+    <div class="subtitle">USO types map raw, JSON, counters, sets, maps, and text to merge-specific CRDT state.</div>
+    <div class="body"><pre>   9  /// Type of CRDT backing this USO
+  10  #[derive(Debug, Clone, Serialize, Deserialize)]
+  11  pub enum USOType {
+  12      /// Raw bytes with last-writer-wins
+  13      Raw,
+  14      /// JSON with last-writer-wins
+  15      Json,
+  16      /// Grow-only counter
+  17      Counter,
+  18      /// Positive-negative counter
+  19      PNCounter,
+  20      /// Last-writer-wins register
+  21      Register,
+  22      /// Observed-remove set
+  23      Set,
+  24      /// Last-writer-wins map
+  25      Map,
+  26      /// Collaborative text (RGA)
+  27      Text,
+  28  }
+  29  
+  30  /// USO with automatic CRDT-based merge
+  31  #[derive(Clone, Debug)]
+  32  pub struct CrdtUSO {
+  33      /// Content-addressed ID
+  34      pub id: ContentHash,
+  35      
+  36      /// USO type determines merge behavior
+  37      pub uso_type: USOType,
+  38      
+  39      /// The CRDT state
+  40      pub state: CrdtState,
+  41      
+  42      /// Node ID for CRDT operations
+  43      node_id: String,
+  44      
+  45      /// Access policy
+  46      pub access: AccessPolicy,
+  47      
+  48      /// Sync policy
+  49      pub sync: SyncPolicy,
+  50  }
+  51  
+  52  /// Underlying CRDT state
+  53  #[derive(Clone, Debug)]
+  54  pub enum CrdtState {
+  55      Raw(Vec&lt;u8&gt;),
+  56      Json(serde_json::Value),
+  57      Counter(GCounter),
+  58      PNCounter(PNCounter),
+  59      Register(LWWRegister&lt;serde_json::Value&gt;),
+  60      Set(ORSet&lt;String&gt;),
+  61      Map(LWWMap&lt;String, serde_json::Value&gt;),
+  62      Text(RGAText),
+  63  }
+  64  
+  65  impl CrdtUSO {
+
+ 247      /// Merge with another CRDT USO of the same type
+ 248      pub fn merge(&amp;mut self, other: &amp;CrdtUSO) -&gt; Result&lt;(), CrdtError&gt; {
+ 249          match (&amp;mut self.state, &amp;other.state) {
+ 250              (CrdtState::Counter(a), CrdtState::Counter(b)) =&gt; {
+ 251                  a.merge(b);
+ 252                  self.update_id();
+ 253                  Ok(())
+ 254              }
+ 255              (CrdtState::PNCounter(a), CrdtState::PNCounter(b)) =&gt; {
+ 256                  a.merge(b);
+ 257                  self.update_id();
+ 258                  Ok(())
+ 259              }
+ 260              (CrdtState::Set(a), CrdtState::Set(b)) =&gt; {
+ 261                  a.merge(b);
+ 262                  self.update_id();
+ 263                  Ok(())
+ 264              }
+ 265              _ =&gt; Err(CrdtError::TypeMismatch),
+ 266          }
+ 267      }
+ 268  
+ 269      /// Update content-addressed ID after mutation
+ 270      fn update_id(&amp;mut self) {
+ 271          let bytes = match &amp;self.state {
+ 272              CrdtState::Raw(data) =&gt; data.clone(),
+ 273              CrdtState::Json(v) =&gt; v.to_string().into_bytes(),
+ 274              CrdtState::Counter(c) =&gt; c.value().to_le_bytes().to_vec(),
+ 275              CrdtState::PNCounter(c) =&gt; c.value().to_le_bytes().to_vec(),
+ 276              CrdtState::Register(r) =&gt; serde_json::to_vec(r).unwrap_or_default(),
+ 277              CrdtState::Set(s) =&gt; serde_json::to_vec(s).unwrap_or_default(),
+ 278              CrdtState::Map(m) =&gt; serde_json::to_vec(m).unwrap_or_default(),
+ 279              CrdtState::Text(t) =&gt; t.to_string().into_bytes(),
+ 280          };
+ 281          self.id = ContentHash::compute(&amp;bytes);
+ 282      }</pre></div>
+  </div>
+</body>
+</html>

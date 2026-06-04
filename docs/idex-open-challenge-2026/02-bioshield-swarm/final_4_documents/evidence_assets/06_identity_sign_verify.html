@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body {
+      position: relative;
+      z-index: 2;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin-top: 22px;
+      color: #263044;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+    .repo .note {
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .repo .note strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">BioShield Swarm Evidence Screenshot</div>
+    <h1>Cryptographic Identity Path</h1>
+    <div class="subtitle">Node identity derives from Ed25519 public key material and verifies signed data.</div>
+    <div class="body"><pre>  60  impl AsiIdentity {
+  61      /// Generates a new random identity.
+  62      pub fn generate() -&gt; Self {
+  63          let signing_key = SigningKey::generate(&amp;mut OsRng);
+  64          let verifying_key = signing_key.verifying_key();
+  65          let id = Self::derive_id(&amp;verifying_key);
+  66          
+  67          Self {
+  68              signing_key,
+  69              verifying_key,
+  70              id,
+  71          }
+  72      }
+  73      
+  74      /// Creates identity from existing signing key bytes.
+  75      pub fn from_bytes(bytes: &amp;[u8; 32]) -&gt; Self {
+  76          let signing_key = SigningKey::from_bytes(bytes);
+  77          let verifying_key = signing_key.verifying_key();
+  78          let id = Self::derive_id(&amp;verifying_key);
+  79          
+  80          Self {
+  81              signing_key,
+  82              verifying_key,
+  83              id,
+  84          }
+  85      }
+  86      
+  87      /// Derives a stable ID from the public key.
+  88      fn derive_id(vk: &amp;VerifyingKey) -&gt; AsiId {
+  89          let mut hasher = Sha256::new();
+  90          hasher.update(b&quot;ASI_ID_V1:&quot;);
+  91          hasher.update(vk.as_bytes());
+  92          let hash = hasher.finalize();
+  93          
+  94          let mut id = [0u8; 32];
+  95          id.copy_from_slice(&amp;hash);
+  96          AsiId(id)
+  97      }
+  98      
+  99      /// Signs arbitrary data.
+
+...
+
+ 131  /// Public identity information shareable with other ASIs.
+ 132  #[derive(Debug, Clone)]
+ 133  pub struct PublicIdentity {
+ 134      pub id: AsiId,
+ 135      pub verifying_key: VerifyingKey,
+ 136  }
+ 137  
+ 138  impl PublicIdentity {
+ 139      /// Creates from raw verifying key bytes.
+ 140      pub fn from_bytes(bytes: &amp;[u8; 32]) -&gt; Result&lt;Self, ed25519_dalek::SignatureError&gt; {
+ 141          let verifying_key = VerifyingKey::from_bytes(bytes)?;
+ 142          let id = AsiIdentity::derive_id(&amp;verifying_key);
+ 143          Ok(Self { id, verifying_key })
+ 144      }
+ 145      
+ 146      /// Verifies a signature from this identity.
+ 147      pub fn verify(&amp;self, data: &amp;[u8], signature: &amp;Signature) -&gt; bool {
+ 148          self.verifying_key.verify(data, signature).is_ok()
+ 149      }
+ 150      
+ 151      /// Returns the raw public key bytes.
+ 152      pub fn to_bytes(&amp;self) -&gt; [u8; 32] {
+ 153          self.verifying_key.to_bytes()
+ 154      }</pre></div>
+  </div>
+</body>
+</html>

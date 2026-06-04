@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">AURA Trust Evidence Screenshot</div>
+    <h1>ETK Execution Event Schema</h1>
+    <div class="subtitle">ETK uses canonical field order and deterministic event IDs for audit records.</div>
+    <div class="body"><pre>  99              4 =&gt; Self::Degraded,
+ 100              _ =&gt; Self::Unknown,
+ 101          }
+ 102      }
+ 103      pub fn to_u8(self) -&gt; u8 {
+ 104          self as u8
+ 105      }
+ 106  
+ 107      /// Terminal outcomes that end the execution lifecycle.
+ 108      pub fn is_terminal(self) -&gt; bool {
+ 109          matches!(
+ 110              self,
+ 111              OutcomeCode::Success | OutcomeCode::Failure | OutcomeCode::Terminated | OutcomeCode::Degraded
+ 112          )
+ 113      }
+ 114  }
+ 115  
+ 116  /// Canonical ExecutionEvent v1.0. Field order is fixed for deterministic serialization.
+ 117  #[derive(Clone, PartialEq, Eq)]
+ 118  pub struct ExecutionEventV1 {
+ 119      pub event_id: Hash256,
+ 120      pub execution_id: Hash256,
+ 121      pub sequence_number: u64,
+ 122      pub timestamp_utc: u64,
+ 123      pub actor_id: Hash256,
+ 124      pub workload_id: Hash256,
+ 125      pub execution_context: Hash256,
+ 126      pub resource_class: ResourceClass,
+ 127      pub jurisdiction_code: u16,
+ 128      pub policy_ref: Hash256,
+ 129      pub outcome_code: OutcomeCode,
+ 130      pub previous_event_hash: Hash256,
+ 131  }
+ 132  
+ 133  impl ExecutionEventV1 {
+ 134      /// Canonical serialization: field order exactly as schema. Big-endian. No optional fields.
+ 135      /// Used for storage/wire. event_id is included.
+ 136      pub fn to_canonical_bytes(&amp;self) -&gt; Vec&lt;u8&gt; {
+ 137          let mut out = Vec::with_capacity(32 * 8 + 8 + 8 + 1 + 2 + 1);
+ 138          out.extend_from_slice(&amp;self.event_id.0);
+ 139          out.extend_from_slice(&amp;self.execution_id.0);
+ 140          out.extend_from_slice(&amp;self.sequence_number.to_be_bytes());
+ 141          out.extend_from_slice(&amp;self.timestamp_utc.to_be_bytes());
+ 142          out.extend_from_slice(&amp;self.actor_id.0);
+ 143          out.extend_from_slice(&amp;self.workload_id.0);
+ 144          out.extend_from_slice(&amp;self.execution_context.0);
+ 145          out.push(self.resource_class.to_u8());
+ 146          out.extend_from_slice(&amp;self.jurisdiction_code.to_be_bytes());
+ 147          out.extend_from_slice(&amp;self.policy_ref.0);
+ 148          out.push(self.outcome_code.to_u8());
+ 149          out.extend_from_slice(&amp;self.previous_event_hash.0);
+ 150          out
+ 151      }
+ 152  
+ 153      /// Bytes used to compute event_id: same order but WITHOUT event_id (all other fields).
+ 154      fn to_canonical_bytes_for_event_id(&amp;self) -&gt; Vec&lt;u8&gt; {
+ 155          let mut out = Vec::with_capacity(32 * 7 + 8 + 8 + 1 + 2 + 1);
+ 156          out.extend_from_slice(&amp;self.execution_id.0);
+ 157          out.extend_from_slice(&amp;self.sequence_number.to_be_bytes());
+ 158          out.extend_from_slice(&amp;self.timestamp_utc.to_be_bytes());
+ 159          out.extend_from_slice(&amp;self.actor_id.0);
+ 160          out.extend_from_slice(&amp;self.workload_id.0);
+ 161          out.extend_from_slice(&amp;self.execution_context.0);
+ 162          out.push(self.resource_class.to_u8());
+ 163          out.extend_from_slice(&amp;self.jurisdiction_code.to_be_bytes());</pre></div>
+  </div>
+</body>
+</html>

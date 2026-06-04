@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>Encrypted Operation Envelope</h1>
+    <div class="subtitle">Operation envelope carries routing metadata while protecting operation contents through authenticated encryption.</div>
+    <div class="body"><pre> 164  /// Encrypted operation envelope
+ 165  /// 
+ 166  /// Contains a CausalOp encrypted so that only holders of the
+ 167  /// appropriate derived key can decrypt and read the content.
+ 168  #[derive(Clone, Debug, Serialize, Deserialize)]
+ 169  pub struct SovereignEnvelope {
+ 170      /// Envelope version
+ 171      pub version: u8,
+ 172      
+ 173      /// Document ID (plaintext for routing)
+ 174      pub document_id: String,
+ 175      
+ 176      /// Key ID used for encryption
+ 177      pub key_id: String,
+ 178      
+ 179      /// Encrypted operation (AES-256-GCM)
+ 180      pub ciphertext: Vec&lt;u8&gt;,
+ 181      
+ 182      /// Nonce for decryption
+ 183      pub nonce: [u8; 12],
+ 184      
+ 185      /// Authentication tag
+ 186      pub tag: [u8; 16],
+ 187      
+ 188      /// Plaintext metadata (for routing/filtering without decryption)
+ 189      pub metadata: EnvelopeMetadata,
+ 190  }
+ 191  
+ 192  /// Plaintext metadata visible without decryption
+ 193  #[derive(Clone, Debug, Serialize, Deserialize)]
+ 194  pub struct EnvelopeMetadata {
+ 195      /// Operation ID (hash, not content)
+ 196      pub operation_id: String,
+ 197      
+ 198      /// Creator identity (public key hash)
+ 199      pub creator_id: String,
+ 200      
+ 201      /// Timestamp
+ 202      pub timestamp: u64,
+ 203      
+ 204      /// Dependencies (operation IDs)
+ 205      pub dependencies: Vec&lt;String&gt;,
+ 206      
+ 207      /// Version vector summary (node_id -&gt; count)
+ 208      pub version_summary: HashMap&lt;String, u64&gt;,
+ 209  }
+ 210  
+ 211  impl SovereignEnvelope {
+ 212      /// Encrypt an operation into an envelope using AES-256-GCM
+ 213      /// 
+ 214      /// PRODUCTION-GRADE: Uses authenticated encryption with AES-GCM
+ 215      pub fn seal(op: &amp;CausalOp, key: &amp;DerivedKey, document_id: String) -&gt; Result&lt;Self, EnvelopeError&gt; {
+ 216          let plaintext = serde_json::to_vec(op)
+ 217              .map_err(|_| EnvelopeError::InvalidContent)?;
+ 218          
+ 219          // Initialize AES-256-GCM cipher
+ 220          let cipher = Aes256Gcm::new_from_slice(&amp;key.key_bytes)
+ 221              .map_err(|_| EnvelopeError::InvalidKey)?;
+ 222          
+ 223          // Generate cryptographically secure nonce (96 bits for GCM)
+ 224          let nonce_bytes = Self::generate_nonce();
+ 225          let nonce = Nonce::from_slice(&amp;nonce_bytes);
+ 226          
+ 227          // Encrypt with authenticated encryption (includes authentication tag)
+ 228          let ciphertext_with_tag = cipher.encrypt(nonce, plaintext.as_ref())
+ 229              .map_err(|_| EnvelopeError::EncryptionFailure)?;
+ 230          
+ 231          // GCM appends 16-byte tag to ciphertext
+ 232          let (ciphertext, tag_bytes) = ciphertext_with_tag.split_at(ciphertext_with_tag.len() - 16);
+ 233          let mut tag = [0u8; 16];
+ 234          tag.copy_from_slice(tag_bytes);
+ 235          
+ 236          Ok(Self {
+ 237              version: 1,
+ 238              document_id,
+ 239              key_id: key.key_id.clone(),
+ 240              ciphertext: ciphertext.to_vec(),
+ 241              nonce: nonce_bytes,
+ 242              tag,
+ 243              metadata: EnvelopeMetadata {
+ 244                  operation_id: op.id.clone(),
+ 245                  creator_id: op.identity.clone(),
+ 246                  timestamp: op.wall_clock,
+ 247                  dependencies: op.dependencies.iter().cloned().collect(),
+ 248                  version_summary: op.version_vector.versions.iter().map(|(k, v)| (k.clone(), *v)).collect(),
+ 249              },
+ 250          })
+ 251      }
+ 252  
+ 253      /// Decrypt an envelope to get the operation using AES-256-GCM
+ 254      pub fn unseal(&amp;self, key: &amp;DerivedKey) -&gt; Result&lt;CausalOp, EnvelopeError&gt; {
+ 255          // Verify key ID matches
+ 256          if self.key_id != key.key_id {
+ 257              return Err(EnvelopeError::WrongKey);
+ 258          }
+ 259          
+ 260          // Initialize AES-256-GCM cipher
+ 261          let cipher = Aes256Gcm::new_from_slice(&amp;key.key_bytes)
+ 262              .map_err(|_| EnvelopeError::InvalidKey)?;
+ 263          
+ 264          let nonce = Nonce::from_slice(&amp;self.nonce);
+ 265          
+ 266          // Reconstruct ciphertext with tag (GCM expects them together)
+ 267          let mut ciphertext_with_tag = self.ciphertext.clone();
+ 268          ciphertext_with_tag.extend_from_slice(&amp;self.tag);
+ 269          
+ 270          // Decrypt with authentication verification
+ 271          let plaintext = cipher.decrypt(nonce, ciphertext_with_tag.as_ref())
+ 272              .map_err(|_| EnvelopeError::IntegrityFailure)?;  // Auth tag verification happens here
+ 273          
+ 274          let op: CausalOp = serde_json::from_slice(&amp;plaintext)
+ 275              .map_err(|_| EnvelopeError::InvalidContent)?;
+ 276          
+ 277          Ok(op)
+ 278      }</pre></div>
+  </div>
+</body>
+</html>

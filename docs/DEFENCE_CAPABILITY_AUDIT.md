@@ -4,7 +4,7 @@
 
 **Date:** May 16, 2026  
 **Method:** Line-by-line source code analysis of all Rust crates and Python modules  
-**Total Codebase:** 1.4M+ LOC | 3,942 Rust tests | 86+ Python tests
+**Total Codebase:** 1.4M+ LOC | Defence-relevant test inventory documented below
 
 ---
 
@@ -16,14 +16,28 @@ This is **not** a documentation review. Every claim below is backed by:
 3. API contracts read from the code
 4. Data structures and algorithms inspected
 
+## Test Taxonomy
+
+The test figures in this document are not a single homogeneous benchmark. They include:
+
+| Category | Meaning |
+|----------|---------|
+| Unit tests | Function/crate/module-level correctness tests |
+| Integration tests | Multi-module flows such as AGP-OS, TELOS, ROS2 simulation, mesh, resource control |
+| Red-team tests | Explicit bypass/denial-path tests for execution guards |
+| Simulation tests | Software-only multi-agent, ROS2, and governance simulations |
+| Target checks | Compile/portability checks such as `wasm32-unknown-unknown` for RTOS/no_std readiness |
+
+Pre-submission executed results are recorded in `docs/IDEX_PRE_SUBMISSION_TEST_REPORT.md`. The repository-level counts should be read as a test inventory, not proof of field qualification.
+
 ---
 
-# DEFENCE-CRITICAL CAPABILITY 1: AUTONOMOUS SYSTEM KILL CHAIN
+# DEFENCE-CRITICAL CAPABILITY 1: AUTONOMOUS SYSTEM EXECUTION GOVERNANCE
 
 ## Problem It Solves
-**"How do you prevent an autonomous weapon from firing without authorization?"**
+**"How do you prevent a high-consequence autonomous system from executing without authorization?"**
 
-India is deploying AI-enabled weapon systems (DISC-14). The critical gap: no existing system provides a **mathematically unforgeable** chain from sensor → decision → action where every step requires authorization.
+AI-enabled defence systems increasingly connect perception, planning, and actuation. The critical assurance gap is a **cryptographically verifiable, tamper-evident** chain from sensor → decision → action where every high-consequence step requires authorization.
 
 ## What the Code Actually Does
 
@@ -36,7 +50,7 @@ pub trait ExecutionGuard: Send + Sync {
 ```
 
 **What this means for defence:**
-- Every computation (targeting, navigation, firing) is a `PCU`
+- Every computation (targeting, navigation, actuation, or firing if explicitly authorized) is a `PCU`
 - Every PCU MUST pass through `check()` before execution
 - The `FROZEN INTERFACE` comment means this contract is locked — it's the legal and technical enforcement point
 - `Send + Sync` means it works across threads (real-time multi-core systems)
@@ -52,7 +66,7 @@ for guard in &self.guards {
 }
 ```
 
-**Defence strength:** Guards are layered. A weapon system would have:
+**Defence strength:** Guards are layered. A high-consequence robotic system can have:
 1. `NervousSystemGuard` — bio-safety check
 2. `DevelopmentalStageGuard` — is this system mature enough?
 3. `ImmuneGuard` — has it been compromised?
@@ -72,9 +86,9 @@ If **ANY** guard says Deny → **no execution, no proof, no cache**. An adversar
 | `red_team_execution.rs` | Tests | Bypass attempt tests |
 | **Total** | ~400 | **5 tests passing** |
 
-### Defence Readiness: ★★★★★
-- **Code:** Production-grade, frozen interface
-- **Gap:** Need more integration tests with physical hardware
+### Software Readiness: Subsystem TRL 4, System TRL 3
+- **Code:** Production-grade execution-governance interface with red-team denial tests
+- **Gap:** Needs physical hardware-in-loop validation before TRL 5 claims
 
 ---
 
@@ -126,7 +140,7 @@ When cumulative defection severity exceeds the threshold → **automatic isolati
 ### Cryptographic Identity (`multi-asi-immune/src/identity/keypair.rs`)
 - **Ed25519** signing keys per drone
 - **Self-sovereign** — no central PKI needed (works when command link is jammed)
-- **AsiId** = SHA-256 hash of public key (32 bytes, unforgeable)
+- **AsiId** = SHA-256 hash of public key (32 bytes, cryptographically bound to identity material)
 
 ### Reputation System (`multi-asi-immune/src/reputation/`)
 - Trust scores that **decay over time** (can't coast on past good behavior)
@@ -146,7 +160,7 @@ When cumulative defection severity exceeds the threshold → **automatic isolati
 | `integration/` | 2 | ~200 | 5 |
 | **Total** | **20** | **2,715** | **68** |
 
-### Defence Readiness: ★★★★★
+### Software Readiness: Subsystem TRL 4, System TRL 3
 - **Code:** 2,715 lines of pure Rust, 68 tests
 - **Gap:** Needs embedded ARM port for actual drone hardware
 
@@ -155,9 +169,9 @@ When cumulative defection severity exceeds the threshold → **automatic isolati
 # DEFENCE-CRITICAL CAPABILITY 3: DECISION ACCOUNTABILITY (LAWS COMPLIANCE)
 
 ## Problem It Solves
-**"How do you prove, after a mission, that an autonomous weapon made decisions within legal boundaries — with cryptographic evidence that cannot be forged?"**
+**"How do you prove, after a mission, that an autonomous system made decisions within authorized boundaries — with cryptographic evidence that is tamper-evident?"**
 
-International Humanitarian Law requires **meaningful human control** over lethal autonomous weapons.
+For lethal or other high-consequence use cases, International Humanitarian Law and defence procurement review require meaningful human control, authorization evidence, and auditable decision records.
 
 ## What the Code Actually Does
 
@@ -195,7 +209,7 @@ def content_hash(self) -> str:
     return hashlib.sha256(content.encode()).hexdigest()[:16]
 ```
 
-Every decision has a **content-addressed hash**. You cannot modify the log after the fact without changing the hash. This creates an unforgeable mission audit trail.
+Every decision has a **content-addressed hash**. You cannot modify the log after the fact without changing the hash. This creates a tamper-evident, cryptographically anchored mission audit trail.
 
 ### Rust TELOS Protocol (`telos-protocol/`)
 - Merkle tree for cryptographic audit chain
@@ -203,7 +217,7 @@ Every decision has a **content-addressed hash**. You cannot modify the log after
 - VDF (Verifiable Delay Function) for entropy proofs
 - **50 Rust tests** covering all edge cases
 
-### Defence Readiness: ★★★★☆
+### Software Readiness: Subsystem TRL 3-4
 - **Code:** Fully functional in both Rust (50 tests) and Python (336 LOC)
 - **Gap:** Rust ↔ Python FFI not yet connected (both work independently)
 
@@ -394,7 +408,7 @@ pub struct HybridSignature {
 | **Rust LOC (defence-relevant)** | 18,631 |
 | **Python LOC (defence-relevant)** | 11,606 |
 | **Total defence-relevant LOC** | **30,237** |
-| **Total defence-relevant tests** | **3,942 (Rust) + 86 (Python) = 4,028** |
+| **Defence-relevant test inventory** | **3,942 Rust test annotations + 86+ Python checks/scripts** |
 
 ---
 
@@ -402,7 +416,7 @@ pub struct HybridSignature {
 
 | # | Problem | Solution | Evidence |
 |---|---------|----------|----------|
-| 1 | **Rogue autonomous weapon fires without authorization** | Execution Guard chain — FROZEN interface, first-deny-wins, no proof on deny | `guard.rs` (29 LOC), `composite.rs` (54 LOC), red-team tests |
+| 1 | **Unauthorized high-consequence actuation** | Execution Guard chain — FROZEN interface, first-deny-wins, no proof on deny | `guard.rs` (29 LOC), `composite.rs` (54 LOC), red-team tests |
 | 2 | **Hacked drone turns on friendly forces** | Multi-ASI Immune System — 10 threat categories, 6 defection types, auto-isolation | 2,715 LOC Rust, 68 tests, Ed25519 identity |
 | 3 | **No accountability for AI battlefield decisions** | TELOS membrane — 5 consequence tiers, entropy budget, Merkle audit log | 4,014 LOC Rust + 336 LOC Python, 53 tests |
 | 4 | **Autonomous vehicle exceeds safe limits** | Homeostasis hard bounds — mathematical clamping, cannot be overridden by AI | 2,290 LOC Rust, 52 tests, `clamp()` is inline |
@@ -414,19 +428,19 @@ pub struct HybridSignature {
 
 | Gap | Impact | Effort to Fix |
 |-----|--------|---------------|
-| No physical hardware testing | TRL 4 → need TRL 5-6 | ₹40L (10-drone testbed) |
-| Rust ↔ Python FFI not connected | Two systems work independently | 2-3 weeks (PyO3/maturin) |
-| PQC not active | Classical crypto works, PQC is types-only | Waiting on ml-dsa crate |
-| RTOS not on bare metal | Python-based, not hard real-time | Port critical path to Rust |
+| No physical hardware testing | Software subsystem TRL 3-4; cannot claim TRL 5+ | ₹40L (10-drone testbed) |
+| Rust ↔ Python FFI incomplete | Scaffold exists; production integration still pending | 2-3 weeks (PyO3/maturin) |
+| PQC not network-wide active | Hybrid-signature unit tests pass; full enforcement pending | Integrate into identity/network paths |
+| RTOS not on bare metal | no_std-safe core validates, but no MCU flashing evidence | Port and test critical path on target board |
 | No EW simulation testing | Not tested against jamming/spoofing | ₹20L (EW sim environment) |
-| `test_weighted_optimization` fails | Numerical tuning, not safety issue | 1 day fix |
-| Execution guard tests: only 5 | Need more adversarial testing | 1-2 weeks |
+| Governance health/anomaly calibration | Simulation passes ranking gate, but stress/anomaly thresholds need tuning | 1-2 weeks |
+| Execution guard test breadth | Core red-team tests pass; more adversarial scenarios needed | 1-2 weeks |
 
 ---
 
 # CONCLUSION
 
-NEXUS contains **30,237 lines of defence-relevant code** with **4,028 tests** solving the 5 most critical problems in autonomous military systems:
+NEXUS contains **30,237 lines of defence-relevant code** with a large test inventory addressing five critical assurance problems in governed autonomous systems:
 
 1. **Unauthorized execution** → Solved by Execution Guards (FROZEN interface)
 2. **Rogue swarm units** → Solved by Multi-ASI Immune System (68 Rust tests)
@@ -434,7 +448,7 @@ NEXUS contains **30,237 lines of defence-relevant code** with **4,028 tests** so
 4. **Unsafe operating limits** → Solved by Homeostasis (mathematical hard bounds)
 5. **Centralized failure** → Solved by Mesh + Gossip (decentralized coordination)
 
-**No other system in the world combines all five.** This is India's indigenous answer to the autonomous weapons governance problem.
+Few known systems integrate all five capabilities into one governed-autonomy stack. NEXUS is a sovereign governed-autonomy architecture developed in India, with current evidence strongest at the software subsystem level and a clear path to hardware validation.
 
 ---
 

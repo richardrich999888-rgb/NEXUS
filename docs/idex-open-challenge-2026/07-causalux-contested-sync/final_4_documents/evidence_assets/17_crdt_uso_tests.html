@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      font: 21px/1.32 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 590px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">CAUSALUX Contested Sync Evidence Screenshot</div>
+    <h1>CRDT USO Tests</h1>
+    <div class="subtitle">Tests cover counter, PN counter, set, text, and counter merge behavior.</div>
+    <div class="body"><pre> 303  #[cfg(test)]
+ 304  mod tests {
+ 305      use super::*;
+ 306  
+ 307      #[test]
+ 308      fn test_counter_uso() {
+ 309          let owner = PrincipalId::generate();
+ 310          let mut uso = CrdtUSO::counter(&quot;node1&quot;, owner);
+ 311          
+ 312          uso.increment(5).unwrap();
+ 313          uso.increment(3).unwrap();
+ 314          
+ 315          assert_eq!(uso.counter_value().unwrap(), 8);
+ 316      }
+ 317  
+ 318      #[test]
+ 319      fn test_pn_counter_uso() {
+ 320          let owner = PrincipalId::generate();
+ 321          let mut uso = CrdtUSO::pn_counter(&quot;node1&quot;, owner);
+ 322          
+ 323          uso.increment(10).unwrap();
+ 324          uso.decrement(3).unwrap();
+ 325          
+ 326          assert_eq!(uso.counter_value().unwrap(), 7);
+ 327      }
+ 328  
+ 329      #[test]
+ 330      fn test_set_uso() {
+ 331          let owner = PrincipalId::generate();
+ 332          let mut uso = CrdtUSO::set(&quot;node1&quot;, owner);
+ 333          
+ 334          uso.add_to_set(&quot;apple&quot;).unwrap();
+ 335          uso.add_to_set(&quot;banana&quot;).unwrap();
+ 336          
+ 337          assert!(uso.set_contains(&quot;apple&quot;).unwrap());
+ 338          assert!(uso.set_contains(&quot;banana&quot;).unwrap());
+ 339          assert!(!uso.set_contains(&quot;cherry&quot;).unwrap());
+ 340          
+ 341          uso.remove_from_set(&quot;apple&quot;).unwrap();
+ 342          assert!(!uso.set_contains(&quot;apple&quot;).unwrap());
+ 343      }
+ 344  
+ 345      #[test]
+ 346      fn test_text_uso() {
+ 347          let owner = PrincipalId::generate();
+ 348          let mut uso = CrdtUSO::text(&quot;node1&quot;, owner);
+ 349          
+ 350          uso.insert_text(0, 'H').unwrap();
+ 351          uso.insert_text(1, 'i').unwrap();
+ 352          
+ 353          assert_eq!(uso.get_text().unwrap(), &quot;Hi&quot;);
+ 354      }
+ 355  
+ 356      #[test]
+ 357      fn test_counter_merge() {
+ 358          let owner = PrincipalId::generate();
+ 359          
+ 360          let mut uso1 = CrdtUSO::counter(&quot;node1&quot;, owner);
+ 361          uso1.increment(5).unwrap();
+ 362          
+ 363          let mut uso2 = CrdtUSO::counter(&quot;node2&quot;, owner);
+ 364          uso2.increment(3).unwrap();
+ 365          
+ 366          uso1.merge(&amp;uso2).unwrap();
+ 367          
+ 368          // After merge, should have sum from both nodes
+ 369          assert_eq!(uso1.counter_value().unwrap(), 8);
+ 370      }</pre></div>
+  </div>
+</body>
+</html>

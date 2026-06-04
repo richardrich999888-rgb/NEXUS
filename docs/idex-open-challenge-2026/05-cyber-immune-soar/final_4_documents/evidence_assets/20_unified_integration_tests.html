@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Full Integration Test</h1>
+    <div class="subtitle">The suite registers agents, trains known threats, scans varied behavior, and checks status.</div>
+    <div class="body"><pre> 110      def test_governance_actions(self):
+ 111          &quot;&quot;&quot;Test governance actions are taken.&quot;&quot;&quot;
+ 112          from src.immunity.unified import UnifiedImmuneSystem
+ 113          
+ 114          immune = UnifiedImmuneSystem(auto_enforce=True)
+ 115          immune.register_agent(&quot;enforced-agent&quot;)
+ 116          
+ 117          # Normal scan
+ 118          normal = [0.1] * 8
+ 119          report = immune.scan_behavior(&quot;enforced-agent&quot;, normal)
+ 120          
+ 121          assert report.governance_action in [&quot;allow&quot;, &quot;monitor&quot;, &quot;warn&quot;, &quot;escalate&quot;, &quot;restrict&quot;, &quot;quarantine&quot;]
+ 122      
+ 123      def test_immune_status(self):
+ 124          &quot;&quot;&quot;Test status reporting.&quot;&quot;&quot;
+ 125          from src.immunity.unified import UnifiedImmuneSystem
+ 126          
+ 127          immune = UnifiedImmuneSystem()
+ 128          immune.register_agent(&quot;status-agent&quot;)
+ 129          
+ 130          # Do some scans
+ 131          for i in range(5):
+ 132              immune.scan_behavior(&quot;status-agent&quot;, [0.1 * i] * 8)
+ 133          
+ 134          status = immune.get_immune_status()
+ 135          
+ 136          assert status[&quot;scans_performed&quot;] == 5
+ 137          assert &quot;detection_rate&quot; in status
+ 138          assert &quot;ahes_enabled&quot; in status
+ 139      
+ 140      def test_create_helper(self):
+ 141          &quot;&quot;&quot;Test convenience function.&quot;&quot;&quot;
+ 142          from src.immunity.unified import create_immune_system
+ 143          
+ 144          immune = create_immune_system(with_ahes=True, with_telos=True)
+ 145          
+ 146          assert immune.enable_ahes
+ 147          assert immune.enable_telos
+ 148          assert immune.auto_enforce
+ 149      
+ 150      def test_full_integration(self):
+ 151          &quot;&quot;&quot;Full integration test with all components.&quot;&quot;&quot;
+ 152          from src.immunity.unified import UnifiedImmuneSystem
+ 153          
+ 154          # Create fully-featured system
+ 155          immune = UnifiedImmuneSystem(
+ 156              enable_ahes=True,
+ 157              enable_telos=True,
+ 158              auto_enforce=True
+ 159          )
+ 160          
+ 161          # Register multiple agents
+ 162          agents = [&quot;agent-1&quot;, &quot;agent-2&quot;, &quot;agent-3&quot;]
+ 163          for agent in agents:
+ 164              immune.register_agent(agent)
+ 165          
+ 166          # Train on known threats
+ 167          immune.train_on_threat([0.8, 0.9, 0.85, 0.88, 0.82, 0.91, 0.86, 0.89], &quot;pattern_a&quot;)
+ 168          immune.train_on_threat([0.7, 0.75, 0.72, 0.78, 0.71, 0.76, 0.73, 0.77], &quot;pattern_b&quot;)
+ 169          
+ 170          # Scan behaviors
+ 171          reports = []
+ 172          for i, agent in enumerate(agents):
+ 173              behavior = [0.1 + 0.2 * i] * 8  # Varying threat levels
+ 174              report = immune.scan_behavior(agent, behavior)
+ 175              reports.append(report)
+ 176          
+ 177          # Verify all scans completed
+ 178          assert len(reports) == 3
+ 179          assert immune.scan_count == 3
+ 180          
+ 181          # Get final status
+ 182          status = immune.get_immune_status()
+ 183          assert status[&quot;scans_performed&quot;] == 3
+ 184          
+ 185          print(&quot;✅ Full integration test passed!&quot;)</pre></div>
+  </div>
+</body>
+</html>

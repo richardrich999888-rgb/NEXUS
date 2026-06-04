@@ -29,8 +29,7 @@ use crate::content_hash::ContentHash;
 /// Violation of any invariant is a protocol error.
 pub mod pcu_invariants {
     use super::*;
-    use crate::pcu::{PCU, WasmModule};
-    use crate::identity::IdentityContext;
+    use crate::pcu::PCU;
 
     /// INV-PCU-001: PCU ID is deterministic
     /// Given the same (code, inputs, parameters, identity.principal), the ID must be identical.

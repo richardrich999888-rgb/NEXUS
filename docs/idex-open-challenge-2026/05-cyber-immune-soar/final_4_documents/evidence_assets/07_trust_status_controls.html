@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(37, 223, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(216, 43, 241, 0.13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+      color: #172033;
+      padding: 54px 64px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d7dce8;
+      border-radius: 28px;
+      padding: 42px 46px;
+      box-shadow: 0 20px 70px rgba(22, 32, 55, 0.08);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat;
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 210px 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d7dce8;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 190px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(18, 18, 63, 0.12);
+    }
+    .brand {
+      color: #12123f;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+    .tagline {
+      margin-top: 10px;
+      color: #677089;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+    .meta {
+      text-align: right;
+      color: #3d4558;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kicker {
+      margin-top: 30px;
+      color: #6a4dff;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: 42px;
+      line-height: 1.05;
+      color: #11152a;
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 2;
+    }
+    .subtitle {
+      color: #465169;
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .body { position: relative; z-index: 2; }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: #071122;
+      color: #d7e3ff;
+      border-radius: 18px;
+      padding: 28px 30px;
+      font: 22px/1.34 "SFMono-Regular", Consolas, Menlo, monospace;
+      border: 1px solid #1f3a5b;
+      max-height: 585px;
+      overflow: hidden;
+    }
+    .repo {
+      background: linear-gradient(135deg, #101440, #1b4fbc);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 34px 38px;
+      font-size: 28px;
+      line-height: 1.35;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .repo code {
+      display: block;
+      margin-top: 22px;
+      font: 26px/1.25 "SFMono-Regular", Consolas, Menlo, monospace;
+      color: #2fdfff;
+      overflow-wrap: anywhere;
+    }
+    .note { margin-top: 22px; color: #263044; font-size: 21px; line-height: 1.5; }
+    .repo .note { color: rgba(255, 255, 255, 0.82); }
+    .repo .note strong { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img class="logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="brand">SYNTRIASS LABS</div>
+        <div class="tagline">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="meta">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        kattanaga5555@gmail.com | +91 88864 68060
+      </div>
+    </div>
+    <div class="kicker">Cyber Immune SOAR Evidence Screenshot</div>
+    <h1>Trust, Suppression, and Status Controls</h1>
+    <div class="subtitle">The bridge exposes trust propagation, maintenance suppression, restoration, and status telemetry.</div>
+    <div class="body"><pre> 174      def clear_threat(self, agent_id: str) -&gt; Dict:
+ 175          &quot;&quot;&quot;Clear threat when immune system confirms resolution&quot;&quot;&quot;
+ 176          if agent_id in self.active_threats:
+ 177              del self.active_threats[agent_id]
+ 178              logger.info(&quot;threat_cleared&quot;, agent=agent_id)
+ 179              return {&quot;status&quot;: &quot;cleared&quot;, &quot;agent_id&quot;: agent_id}
+ 180          return {&quot;status&quot;: &quot;not_found&quot;, &quot;agent_id&quot;: agent_id}
+ 181  
+ 182      def get_trust(self, agent_id: str) -&gt; float:
+ 183          &quot;&quot;&quot;Get trust score for an agent&quot;&quot;&quot;
+ 184          return self.trust_scores.get(agent_id, 1.0)
+ 185  
+ 186      def update_trust(self, agent_id: str, delta: float):
+ 187          &quot;&quot;&quot;Update trust score based on behavior&quot;&quot;&quot;
+ 188          current = self.trust_scores.get(agent_id, 1.0)
+ 189          self.trust_scores[agent_id] = max(0.0, min(1.0, current + delta))
+ 190  
+ 191      def quarantine_agent(self, agent_id: str) -&gt; Dict:
+ 192          &quot;&quot;&quot;Compatibility helper for callers that request direct quarantine.&quot;&quot;&quot;
+ 193          signal = ThreatSignal(
+ 194              agent_id=agent_id,
+ 195              threat_level=ThreatLevel.CRITICAL,
+ 196              threat_type=&quot;manual_quarantine&quot;,
+ 197              confidence=1.0,
+ 198          )
+ 199          return self.register_threat(signal)
+ 200  
+ 201      def restrict_agent(self, agent_id: str, permissions: Optional[List[str]] = None) -&gt; Dict:
+ 202          &quot;&quot;&quot;Compatibility helper for restricting an agent's permissions.&quot;&quot;&quot;
+ 203          self.agent_permissions[agent_id] = permissions or [&quot;read&quot;]
+ 204          self.update_trust(agent_id, -0.25)
+ 205          return {
+ 206              &quot;action&quot;: &quot;restrict&quot;,
+ 207              &quot;agent_id&quot;: agent_id,
+ 208              &quot;permissions&quot;: self.agent_permissions[agent_id],
+ 209          }
+ 210  
+ 211      def propagate_trust(self, from_agent: str, to_agent: str, weight: float = 0.1):
+ 212          &quot;&quot;&quot;Propagate trust between agents in mesh&quot;&quot;&quot;
+ 213          from_trust = self.get_trust(from_agent)
+ 214          to_trust = self.get_trust(to_agent)
+ 215  
+ 216          # Weighted average towards from_agent's trust
+ 217          new_trust = to_trust + (from_trust - to_trust) * weight
+ 218          self.trust_scores[to_agent] = new_trust
+ 219  
+ 220          return {&quot;agent&quot;: to_agent, &quot;new_trust&quot;: new_trust}
+ 221  
+ 222      def suppress_immune(self, duration_seconds: int = 60):
+ 223          &quot;&quot;&quot;Temporarily suppress immune response (e.g., during updates)&quot;&quot;&quot;
+ 224          self.immune_suppressed = True
+ 225          logger.warning(&quot;immune_suppressed&quot;, duration=duration_seconds)
+ 226          # In production, would set a timer to re-enable
+ 227  
+ 228      def restore_immune(self):
+ 229          &quot;&quot;&quot;Restore immune response&quot;&quot;&quot;
+ 230          self.immune_suppressed = False
+ 231          logger.info(&quot;immune_restored&quot;)
+ 232  
+ 233      def get_status(self) -&gt; Dict:
+ 234          &quot;&quot;&quot;Get bridge status&quot;&quot;&quot;
+ 235          return {
+ 236              &quot;active_threats&quot;: len(self.active_threats),
+ 237              &quot;defection_signals&quot;: len(self.defection_signals),
+ 238              &quot;tracked_agents&quot;: len(self.trust_scores),
+ 239              &quot;immune_suppressed&quot;: self.immune_suppressed,
+ 240              &quot;threat_breakdown&quot;: {
+ 241                  level.name: sum(1 for t in self.active_threats.values()
+ 242                                 if t.threat_level == level)
+ 243                  for level in ThreatLevel
+ 244              }
+ 245          }</pre></div>
+  </div>
+</body>
+</html>

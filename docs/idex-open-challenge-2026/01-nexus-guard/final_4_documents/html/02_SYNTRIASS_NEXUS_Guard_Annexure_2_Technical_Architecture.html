@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Annexure-2 - Syntriass Labs Private Limited</title>
+  <style>
+    @page { size: A4; margin: 14mm 14mm 24mm 14mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #172033; font-family: "Aptos", "Calibri", "Arial", sans-serif; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brand { display: flex; align-items: center; gap: 4mm; min-width: 90mm; }
+    .brand img { width: 24mm; height: 14mm; object-fit: cover; border-radius: 2mm; }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: 1.8px; color: #12123f; text-transform: uppercase; }
+    .tagline { margin-top: 1mm; font-size: 7.5px; color: #677089; letter-spacing: 0.5px; }
+    .cover {
+      min-height: 224mm; margin: -12mm -2mm 0 -2mm; padding: 24mm 18mm;
+      border: 1px solid #d7dce8; border-radius: 4mm;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 223, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(216, 43, 241, 0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: ""; position: absolute; inset: auto -30mm -45mm auto; width: 105mm; height: 105mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.045; border-radius: 50%;
+    }
+    .cover-logo { width: 72mm; height: 42mm; object-fit: cover; border-radius: 4mm; border: 1px solid rgba(18, 18, 63, 0.12); display: block; margin-bottom: 24mm; }
+    .kicker { font-size: 10px; text-transform: uppercase; color: #6a4dff; font-weight: 800; letter-spacing: 2px; margin-bottom: 4mm; }
+    .cover h1 { margin: 0; font-size: 34px; line-height: 1.04; color: #11152a; letter-spacing: -0.5px; max-width: 155mm; }
+    .cover .subtitle { margin-top: 7mm; font-size: 15px; line-height: 1.35; color: #3e475c; max-width: 155mm; }
+    .cover-meta { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; border-top: 1px solid #d7dce8; padding-top: 6mm; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8mm; font-size: 9px; color: #4d566d; }
+    .cover-meta b { color: #11152a; }
+    .company-box { margin-top: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .company-box div { border: 1px solid #dfe5f1; border-radius: 2mm; padding: 4mm; background: rgba(255,255,255,0.76); font-size: 8px; color: #4d566d; }
+    .company-box b { display: block; color: #11152a; font-size: 9px; margin-bottom: 1mm; }
+    main { position: relative; }
+    main::before {
+      content: ""; position: fixed; right: -28mm; bottom: 8mm; width: 72mm; height: 72mm;
+      background: url("file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg") center/cover no-repeat; opacity: 0.026; border-radius: 50%; pointer-events: none;
+    }
+    .document-letterhead {
+      display: grid; grid-template-columns: 28mm minmax(0, 1fr) 74mm; gap: 6mm;
+      align-items: center; min-height: 22mm;
+      border-bottom: 1px solid #d7dce8; padding-bottom: 5mm; margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+    .doc-logo {
+      width: 28mm; height: 16mm; object-fit: cover; border-radius: 2mm;
+      border: 1px solid rgba(18, 18, 63, 0.14);
+    }
+    .doc-brand-title {
+      font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px;
+      color: #12123f; text-transform: uppercase; line-height: 1.12;
+    }
+    .doc-brand-subtitle {
+      margin-top: 1.2mm; font-size: 7.4px; line-height: 1.3;
+      color: #677089; letter-spacing: 0.35px;
+    }
+    .doc-id-block {
+      text-align: right; font-size: 7.1px; line-height: 1.42;
+      color: #3d4558; overflow-wrap: anywhere;
+    }
+    .doc-id-block strong {
+      display: block; margin-bottom: 1mm; color: #12123f; font-size: 7.8px;
+      text-transform: uppercase; letter-spacing: 0.35px;
+    }
+    h1, h2, h3, h4, p, ul, ol, table, pre, hr { position: relative; z-index: 1; }
+    main > h1:first-of-type { display: none; }
+    h1:first-child { margin-top: 0; }
+    h1 { color: #11152a; font-size: 24px; line-height: 1.12; margin: 13px 0 10px; page-break-after: avoid; }
+    h2 { color: #11152a; font-size: 15.5px; line-height: 1.22; margin: 18px 0 9px; padding-top: 8px; border-top: 2px solid #e6e9f2; page-break-after: avoid; }
+    h3 { color: #2858c8; font-size: 12.5px; margin: 14px 0 6px; page-break-after: avoid; }
+    h4 { color: #8c2bd9; font-size: 10.5px; margin: 11px 0 5px; page-break-after: avoid; }
+    p { color: #263044; font-size: 9.2px; line-height: 1.42; margin: 0 0 7px; orphans: 2; widows: 2; }
+    strong { color: #11152a; }
+    ul, ol { margin: 4px 0 9px 16px; padding: 0; }
+    li { color: #263044; font-size: 9.2px; line-height: 1.38; margin: 2.5px 0; padding-left: 3px; }
+    li::marker { color: #2858c8; font-weight: 700; }
+    code { font-family: Consolas, Menlo, monospace; color: #1b52bd; background: #eef4ff; padding: 1px 3px; border-radius: 2px; }
+    pre { background: #f5f7fb; border: 1px solid #dfe5f1; border-left: 4px solid #2fdfff; color: #263044; padding: 9px 11px; font-family: Consolas, Menlo, monospace; font-size: 7.7px; line-height: 1.28; white-space: pre-wrap; page-break-inside: avoid; margin: 7px 0 11px; }
+    .evidence-shot { margin: 8px 0 12px; page-break-inside: avoid; }
+    .evidence-shot img { width: 100%; max-height: 158mm; object-fit: contain; border: 1px solid #dfe5f1; border-radius: 3mm; box-shadow: 0 12px 35px rgba(22, 32, 55, 0.10); background: #ffffff; }
+    .evidence-shot figcaption { margin-top: 4px; color: #4d566d; font-size: 8px; line-height: 1.3; }
+    table { width: 100%; border-collapse: collapse; margin: 7px 0 12px; background: #ffffff; border: 1px solid #dfe5f1; page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th { background: linear-gradient(90deg, #101440, #1b4fbc); color: #ffffff; font-size: 7.6px; text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 7px; border: 1px solid #ccd5e6; text-align: left; vertical-align: middle; }
+    td { color: #253044; font-size: 7.8px; line-height: 1.30; padding: 6px 7px; border: 1px solid #dfe5f1; vertical-align: top; overflow-wrap: anywhere; }
+    td:first-child { color: #11152a; font-weight: 700; }
+    hr { border: 0; border-top: 2px solid #e6e9f2; margin: 12px 0 16px; }
+    .page-break { break-after: page; page-break-after: always; height: 0; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <img class="cover-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+    <div class="kicker">iDEX Open Challenge Submission</div>
+    <h1>Annexure-2</h1>
+    <div class="subtitle">Technical architecture and implementation approach</div>
+    <div class="company-box">
+      <div><b>CIN</b>U62011AP2025PTC120239</div>
+      <div><b>PAN</b>ABQCS7152R</div>
+      <div><b>TAN</b>VPNS31351F</div>
+    </div>
+    <div class="cover-meta">
+      <div><b>Applicant Entity</b><br />Syntriass Labs Private Limited<br />12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</div>
+      <div><b>Contact</b><br />kattanaga5555@gmail.com<br />+91 88864 68060</div>
+    </div>
+  </section>
+  <main>
+    <div class="document-letterhead">
+      <img class="doc-logo" src="file:///Users/richardrich/WhatsApp%20Image%202025-12-23%20at%2016.05.08.jpeg" alt="SYNTRIASS logo" />
+      <div>
+        <div class="doc-brand-title">SYNTRIASS LABS</div>
+        <div class="doc-brand-subtitle">Replacing Digital Laws. Rebuilding Civilization.</div>
+      </div>
+      <div class="doc-id-block">
+        <strong>Syntriass Labs Private Limited</strong><br />
+        CIN: U62011AP2025PTC120239<br />
+        PAN: ABQCS7152R &nbsp;|&nbsp; TAN: VPNS31351F<br />
+        kattanaga5555@gmail.com &nbsp;|&nbsp; +91 88864 68060
+      </div>
+    </div>
+    <h1>IDEX OPEN CHALLENGE SUBMISSION</h1>
+<h1>Annexure-2</h1>
+<p>Technical architecture and implementation approach</p>
+<table><thead><tr><th>CIN</th><th>PAN</th><th>TAN</th></tr></thead><tbody><tr><td>U62011AP2025PTC120239</td><td>ABQCS7152R</td><td>VPNS31351F</td></tr></tbody></table>
+<table><thead><tr><th>Applicant Entity</th><th>Contact</th></tr></thead><tbody><tr><td>Syntriass Labs Private Limited</td><td>kattanaga5555@gmail.com</td></tr><tr><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td><td>+91 88864 68060</td></tr></tbody></table>
+<h1>Technical Architecture and Approach</h1>
+<h2>Company Identification Details</h2>
+<table><thead><tr><th>Field</th><th>Details</th></tr></thead><tbody><tr><td>Legal Entity Name</td><td>Syntriass Labs Private Limited</td></tr><tr><td>CIN</td><td>U62011AP2025PTC120239</td></tr><tr><td>PAN</td><td>ABQCS7152R</td></tr><tr><td>TAN</td><td>VPNS31351F</td></tr><tr><td>Registered Office</td><td>12-50, SLV Market, 12 Ward, Dharmavaram, Ananthapur - 515671, Andhra Pradesh, India</td></tr><tr><td>Contact Email</td><td>kattanaga5555@gmail.com</td></tr><tr><td>Contact Phone</td><td>+91 88864 68060</td></tr><tr><td>Submission Date</td><td>17 May 2026</td></tr></tbody></table>
+<h2>1. Technical Architecture and Approach</h2>
+<h3>1.1 System Objective</h3>
+<p>NEXUS Guard provides governed execution control for autonomous defence software. It is designed to operate between autonomous clients, agents, robot-control software, mission tools, APIs, databases, MCP servers, and edge services. The architecture follows the principle:</p>
+<pre data-lang="text"><code>Identity + Context -&gt; Guard Evaluation -&gt; Consequence Budget -&gt; Execution or Denial -&gt; Audit Evidence</code></pre>
+<p>The system does not replace mission software. It provides a control and evidence layer that ensures high-consequence autonomous actions are policy-governed before execution, denied when unauthorized, and recorded when allowed.</p>
+<h3>1.2 Intended Defence End-User Environment</h3>
+<p>The intended users are Indian defence organizations that operate, evaluate, integrate, or assure autonomous and AI-enabled mission systems. This includes Indian Armed Forces units using unmanned systems, ISR workflows, autonomous logistics tools, cyber-physical platforms, and command-support software; DRDO laboratories and technical evaluators conducting validation; command-and-control assurance teams responsible for accountability; defence cyber and AI security teams responsible for tool-governance boundaries; and defence PSUs or system integrators deploying autonomous mission software.</p>
+<p>The system is designed for environments where autonomous software may invoke tools, APIs, databases, sensors, or command-support functions and where the evaluator must know whether the action was authorized, policy-compliant, denied before consequence, and auditable after the mission.</p>
+<h3>1.2A Official Problem Pull and Scope Boundary</h3>
+<p>NEXUS Guard is positioned as an Open Challenge proposal because it cuts across several official autonomy problem areas rather than fitting only one named challenge. The strongest demand signals are ADITI 4 autonomy classes and DISC 14 autonomy/UAS classes where autonomous software can invoke protected action paths.</p>
+<table><thead><tr><th>Alignment Area</th><th>Defence Pull</th><th>NEXUS Guard Scope</th><th>Explicit Non-Duplication Boundary</th></tr></thead><tbody><tr><td>ADITI 4 autonomy problem areas</td><td>Autonomous armoured vehicles, robot-team systems, and autonomous logistics require execution assurance before command paths are invoked.</td><td>Provide a reusable guard layer for protected software actions, command adapters, and evidence export.</td><td>Does not propose a space-domain training, surveillance, or operations tool under PS24.</td></tr><tr><td>DISC 14 UAS / multi-agent autonomy problem areas</td><td>AI-enabled UAS modules and robot-team autonomy need policy control around high-impact tool or mission calls.</td><td>Wrap protected actions with first-deny-wins guard checks and denial-path evidence.</td><td>Does not reuse PS24 datasets, operational scenarios, or space-domain deliverables.</td></tr><tr><td>Open Challenge route</td><td>The problem is a cross-cutting assurance gap rather than a single platform procurement item.</td><td>Deliver a 12-month software prototype, red-team denial harness, audit exporter, and evaluator runbook.</td><td>Current evidence remains software-subsystem TRL 3-4; hardware-in-loop validation is proposed work.</td></tr></tbody></table>
+<h3>1.3 Core Architecture</h3>
+<pre data-lang="text"><code>Autonomous Agent / Robot Controller / Mission Client
+        |
+        v
+Protected Execution Request
+        |
+        v
+NEXUS Guard Context Builder
+        |
+        v
+ExecutionGuard Chain
+        |
+        +--&gt; DENY -&gt; Block Execution -&gt; Denial Evidence -&gt; Audit Store
+        |
+        v
+TELOS Consequence Budget
+        |
+        v
+Allowed Execution
+        |
+        v
+ETK Audit Evidence + Replay Package</code></pre>
+<h3>1.4 ExecutionGuard Architecture</h3>
+<p>The ExecutionGuard layer is the pre-execution enforcement point. Each protected command becomes a proof-carrying execution request with identity, context, action type, authority scope, mission policy, and consequence class.</p>
+<p>The guard model supports layered checks:</p>
+<table><thead><tr><th>Guard Layer</th><th>Purpose</th></tr></thead><tbody><tr><td>Authority Guard</td><td>Verifies whether the requesting agent has permission for the action.</td></tr><tr><td>Mission Policy Guard</td><td>Checks whether the action fits the current mission context and policy bundle.</td></tr><tr><td>Immune/Compromise Guard</td><td>Blocks agents or requests marked as suspicious or compromised.</td></tr><tr><td>Reputation Guard</td><td>Applies trust-state and prior-behavior constraints.</td></tr><tr><td>Consequence Guard</td><td>Routes high-impact actions to TELOS consequence budget checks.</td></tr></tbody></table>
+<p>The core execution rule is first-deny-wins. If any guard denies, the action is blocked before execution.</p>
+<h3>1.5 Denial and No-Proof Flow</h3>
+<p>NEXUS Guard separates denial evidence from success evidence. A denied action is recorded as an attempted execution with reason codes, but it does not generate a success proof or execution-cache artifact.</p>
+<p>Execution denial flow:</p>
+<pre data-lang="text"><code>1. Agent submits protected action.
+2. NEXUS Guard validates request structure and context.
+3. ExecutionGuard chain evaluates authority and policy.
+4. Any Deny result stops execution.
+5. Denial reason is recorded.
+6. No protected action is forwarded.
+7. No success proof or success cache is generated.
+8. Denial evidence is exported for review.</code></pre>
+<h3>1.6 TELOS Consequence-Budget Flow</h3>
+<p>TELOS adds consequence accounting to execution control. Rather than treating every action as equal, actions are classified by consequence tier. High-consequence actions consume more budget and can require stricter policy or human attestation.</p>
+<table><thead><tr><th>Tier</th><th>Defence Meaning</th><th>Example</th></tr></thead><tbody><tr><td>Trivial</td><td>Low-risk system observation</td><td>Read telemetry</td></tr><tr><td>Low</td><td>Routine movement or benign tool action</td><td>Navigation adjustment</td></tr><tr><td>Medium</td><td>Mission parameter change</td><td>Update route or sensor tasking</td></tr><tr><td>High</td><td>High-impact action requiring strict control</td><td>Engage non-lethal system or restricted operation</td></tr><tr><td>Critical</td><td>Highest consequence class</td><td>Requires explicit human/command attestation before any operational claim</td></tr></tbody></table>
+<h3>1.7 ETK Audit Evidence Flow</h3>
+<p>For allowed actions, ETK-compatible records capture the execution request, policy decision, context hash, result hash, timestamp, and event linkage. This provides a tamper-evident evidence chain for after-action review.</p>
+<p>ETK record fields:</p>
+<table><thead><tr><th>Field</th><th>Purpose</th></tr></thead><tbody><tr><td>Previous Hash</td><td>Links the event to prior execution state.</td></tr><tr><td>Current Hash</td><td>Commits to the canonical execution record.</td></tr><tr><td>Request Hash</td><td>Proves the request payload was not modified.</td></tr><tr><td>Result Hash</td><td>Proves the execution result was not modified.</td></tr><tr><td>Guard Result</td><td>Records allow, deny, or escalate decision.</td></tr><tr><td>Reason Code</td><td>Explains which policy or guard caused the result.</td></tr><tr><td>Timestamp</td><td>Provides temporal ordering.</td></tr><tr><td>Signature / Proof Metadata</td><td>Supports verification and audit.</td></tr></tbody></table>
+<h3>1.8 Runtime Governance Pipeline</h3>
+<pre data-lang="text"><code>Request Intake
+   -&gt; Schema Validation
+   -&gt; Agent Identity and Context Binding
+   -&gt; Nonce / Replay Check
+   -&gt; Authority Scope Check
+   -&gt; Mission Policy Evaluation
+   -&gt; Risk and Consequence Classification
+   -&gt; Guard Decision
+   -&gt; Allow / Deny / Escalate
+   -&gt; ETK Audit or Denial Evidence
+   -&gt; Replay Store</code></pre>
+<p>The pipeline is deterministic and designed for auditability. Policy results are recorded as part of the execution chain and can be inspected during after-action review.</p>
+<h3>1.9 Critical Defence Problem-to-Control Mapping</h3>
+<table><thead><tr><th>Defence Problem</th><th>Consequence If Uncontrolled</th><th>System Control</th></tr></thead><tbody><tr><td>Unauthorized autonomous execution</td><td>A malicious, misconfigured, or over-permissioned agent can trigger restricted tools or mission actions.</td><td>ExecutionGuard blocks protected actions before operational consequence.</td></tr><tr><td>Tool escalation</td><td>An agent with limited authority can attempt a higher-risk API, shell, database, or external connector action.</td><td>Guard policy validates allowed tools, denied tools, action class, and authority scope.</td></tr><tr><td>High-consequence action without approval</td><td>An autonomous system may attempt an action requiring command or supervisor approval.</td><td>TELOS consequence tiers route high-impact actions to stricter policy or explicit attestation.</td></tr><tr><td>Denial-path ambiguity</td><td>Reviewers may not know whether an unsafe action was blocked or simply did not occur.</td><td>Denial evidence records attempted action and reason code while avoiding success proof artifacts.</td></tr><tr><td>Mission log tampering</td><td>Event records can be edited, deleted, reordered, or selectively presented.</td><td>ETK evidence uses hash-linked records and verification metadata.</td></tr><tr><td>Contested verification</td><td>Cloud-dependent verification may fail in forward-deployed, classified, or air-gapped environments.</td><td>Local policy bundles and portable evidence packets support offline review.</td></tr><tr><td>Policy bypass through encoded requests</td><td>Dangerous actions can be hidden inside tool arguments, prompt-injected text, or malformed payloads.</td><td>Schema validation, argument inspection, and guard policy checks occur before execution.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>2. Innovation</h2>
+<p>NEXUS Guard introduces a governed execution kernel for autonomous systems. The innovation is not limited to logging or dashboards. It combines mandatory pre-execution checks, layered first-deny-wins guard evaluation, consequence budgeting, and audit evidence into one deployable architecture.</p>
+<table><thead><tr><th>Innovation Area</th><th>Description</th></tr></thead><tbody><tr><td>Runtime-Native Governance</td><td>Policy is enforced before execution, not only observed after the event.</td></tr><tr><td>First-Deny-Wins Guard Chain</td><td>Multiple guard layers can protect one action; any denial blocks execution.</td></tr><tr><td>Denial Evidence Without Success Proof</td><td>Denied attempts are reviewable without creating artifacts that imply successful execution.</td></tr><tr><td>Consequence-Budgeted Autonomy</td><td>TELOS limits repeated or high-impact action attempts under configured policy.</td></tr><tr><td>Replay-Ready Audit Evidence</td><td>ETK-compatible records support after-action reconstruction and independent review.</td></tr><tr><td>Sovereign Deployment Path</td><td>The prototype is designed for local, on-premise, and air-gapped evaluation.</td></tr></tbody></table>
+<h2>3. Implementation and Feasibility</h2>
+<h3>3.1 Modular Deployment</h3>
+<table><thead><tr><th>Module</th><th>Function</th></tr></thead><tbody><tr><td>Guard Runtime</td><td>Receives protected requests and runs layered guard checks.</td></tr><tr><td>Context Builder</td><td>Binds request, identity, mission context, and policy metadata.</td></tr><tr><td>Policy Engine</td><td>Applies deterministic authority, action, risk, and mission constraints.</td></tr><tr><td>TELOS Adapter</td><td>Assigns consequence tier and updates consequence budget.</td></tr><tr><td>ETK Exporter</td><td>Produces audit records and verification artifacts.</td></tr><tr><td>Dashboard APIs</td><td>Exposes blocked actions, reason codes, and execution evidence.</td></tr></tbody></table>
+<h3>3.2 Edge Compatibility</h3>
+<p>The runtime is designed to operate close to the execution environment. Critical checks use deterministic policy evaluation and compact evidence records. This supports lab, on-premise, edge-node, or air-gapped evaluation environments.</p>
+<h3>3.3 Air-Gap Deployment</h3>
+<p>The architecture does not require external cloud access for core policy decisions. Policy bundles and public verification material can be provisioned locally. Audit and denial evidence can be exported as portable review packets.</p>
+<h3>3.4 API-First Architecture</h3>
+<p>The system can expose REST, JSON-RPC, MCP-compatible, and tool-router integration interfaces. Existing autonomous clients can route protected execution through NEXUS Guard without replacing the underlying mission software.</p>
+<h3>3.5 Scalability</h3>
+<p>Guard evaluation can be scaled horizontally where the policy state and audit store are managed through durable services. Nonce tracking, replay checks, and consequence budgets can be maintained through local stores appropriate to the deployment environment.</p>
+<h2>4. Challenges and Mitigation</h2>
+<table><thead><tr><th>Challenge</th><th>Risk</th><th>Mitigation Strategy</th></tr></thead><tbody><tr><td>Runtime Latency</td><td>Inline enforcement could add delay to time-sensitive workflows.</td><td>Keep policy evaluation deterministic, benchmark mission-specific latency, and run guard services close to execution.</td></tr><tr><td>Integration Bypass</td><td>A tool or agent may attempt to call protected actions directly.</td><td>Define protected interfaces and require command routing through the guard adapter.</td></tr><tr><td>Compromised Agent</td><td>A registered agent may attempt unauthorized tool use or privilege escalation.</td><td>Enforce least-privilege scopes, revocation, reputation signals, nonce checks, and policy denial.</td></tr><tr><td>Policy Bypass Attempts</td><td>Dangerous commands may be hidden inside arguments or malformed payloads.</td><td>Apply schema validation, pattern controls, tool-category restrictions, and raw argument inspection.</td></tr><tr><td>Replay Attacks</td><td>Previously valid requests may be resubmitted.</td><td>Use nonce protection, session-bound context, timestamp checks, and replay-store validation.</td></tr><tr><td>Evidence Integrity</td><td>An adversary may attempt to fabricate or reorder audit records.</td><td>Recompute hashes, validate event linkage, and verify signatures/proof metadata.</td></tr><tr><td>Hardware Readiness</td><td>Current evidence is software-subsystem level.</td><td>Conduct hardware-in-loop validation as a later iDEX work package before higher readiness claims.</td></tr></tbody></table>
+<div class="page-break"></div>
+<h2>5. Visual Architecture Diagrams</h2>
+<h3>5.1 Runtime Guard Architecture</h3>
+<pre data-lang="text"><code>AI Agent / Autonomous Client
+        |
+        | protected execution request
+        v
+NEXUS Guard Context Builder
+        |
+        | identity + authority + policy + mission context
+        v
+ExecutionGuard Chain
+        |
+        +-- DENY -&gt; Block Action -&gt; Denial Evidence
+        |
+        +-- ALLOW -&gt; TELOS Consequence Check
+                         |
+                         v
+                    Execute Tool / Mission API
+                         |
+                         v
+                    ETK Audit Evidence</code></pre>
+<h3>5.2 Denial Path</h3>
+<pre data-lang="text"><code>Unauthorized Request
+   -&gt; Guard Evaluation
+   -&gt; Deny Reason
+   -&gt; Action Not Forwarded
+   -&gt; No Success Proof
+   -&gt; No Success Cache
+   -&gt; Denial Evidence Export</code></pre>
+<h3>5.3 Audit and Replay Flow</h3>
+<pre data-lang="text"><code>Allowed Execution Record
+   -&gt; Request Hash
+   -&gt; Guard Decision
+   -&gt; Result Hash
+   -&gt; Previous Event Hash
+   -&gt; Current Event Hash
+   -&gt; Signature / Proof Metadata
+  -&gt; Replay Verification Result</code></pre>
+<div class="page-break"></div>
+<h2>6. Defence Use Cases</h2>
+<h3>6.1 Autonomous ISR Tool Control</h3>
+<p>ISR systems may trigger automated tasking, analysis, or data access. NEXUS Guard can block restricted actions before execution and record allowed actions for review.</p>
+<h3>6.2 Robotic Command Admission</h3>
+<p>Robotic controllers may receive commands from AI planners. NEXUS Guard can require protected motion, actuator, or mission commands to pass policy and consequence checks.</p>
+<h3>6.3 Command-Support Agent Governance</h3>
+<p>Command-support agents may call databases, APIs, or planning tools. NEXUS Guard can enforce role, mission, and action-level constraints.</p>
+<h3>6.4 Red-Team Policy Bypass Testing</h3>
+<p>Evaluators can inject unauthorized commands, malformed payloads, replay attempts, or restricted tool calls to verify denial behavior.</p>
+<h3>6.5 After-Action Review</h3>
+<p>For a mission anomaly or policy violation, ETK audit evidence can help reconstruct requested actions, guard decisions, denial reasons, and allowed execution results.</p>
+<h3>6.6 Air-Gapped Evaluation</h3>
+<p>Forward-deployed or classified environments can review local evidence packets without depending on foreign cloud services.</p>
+  </main>
+</body>
+</html>
